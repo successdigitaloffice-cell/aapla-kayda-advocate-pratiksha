@@ -29,6 +29,8 @@ sys.path.insert(0, CURRENT_DIR)
 from engine.legal_topics import get_all_topics, get_topic_by_id, generate_custom_script
 from engine.tts_engine import generate_voiceover, generate_scenes_audio, get_audio_duration, speed_to_rate, normalize_marathi_for_speech
 from engine.video_renderer import create_scene_image, render_scene_clip, combine_clips_with_music, BG_AUDIO_DIR
+from engine.avatar_talking_engine import render_advocate_talking_reel, MASTER_AVATAR_PATH, TalkingAvatarSynthesizer
+from engine.marathi_normalizer import normalize_marathi_text
 
 app = Flask(__name__, static_folder="public", static_url_path="")
 CORS(app)
@@ -309,11 +311,24 @@ def api_generate_script():
         "script": script
     })
 
-def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, custom_audio_file, speed=1.10):
+def resolve_avatar_image(avatar_hint=None):
+    if avatar_hint and os.path.exists(avatar_hint):
+        return avatar_hint
+    if os.path.exists(MASTER_AVATAR_PATH):
+        return MASTER_AVATAR_PATH
+    backend_avatars = r"D:\INSTA SCRIPT AI\backend\data\uploads\avatars"
+    if os.path.exists(backend_avatars):
+        for f in os.listdir(backend_avatars):
+            if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+                return os.path.join(backend_avatars, f)
+    return None
+
+def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, custom_audio_file, speed=1.10, avatar_path=None):
     try:
+        resolved_avatar = resolve_avatar_image(avatar_path)
         JOBS[job_id]["status"] = "processing"
-        JOBS[job_id]["progress"] = 10
-        JOBS[job_id]["message"] = f"मराठी व्हॉइस-ओव्हर ({speed:.2f}x वेग) आणि दृश्यांची तयारी सुरू आहे..."
+        JOBS[job_id]["progress"] = 15
+        JOBS[job_id]["message"] = f"मराठी कायदेशीर उच्चार आणि व्हॉइस-ओव्हर ({speed:.2f}x) तयार होत आहे..."
         
         # 1. Create dedicated reel folder
         reel_title_slug = secure_filename(script_data.get("id", "reel"))
@@ -335,13 +350,12 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
         scenes = script_data.get("scenes", [])
         total_scenes = len(scenes)
         
-        # 2. Audio Generation with custom speaking speed & Marathi phonetic dictionary
-        JOBS[job_id]["progress"] = 25
-        JOBS[job_id]["message"] = f"मराठी ऑडिओ ({speed:.2f}x) तयार होत आहे... (एकूण सीन्स: {total_scenes})"
+        # 2. Audio Generation with Marathi Normalizer (7/12 -> सातबारा, कलमे, BNSS)
+        JOBS[job_id]["progress"] = 30
+        JOBS[job_id]["message"] = f"Advocate Pratiksha यांचा मराठी आवाज तयार होत आहे... ({total_scenes} सीन्स)"
         
         scenes_with_audio = []
         if custom_audio_file and os.path.exists(custom_audio_file):
-            # User uploaded full audio
             overall_dur = get_audio_duration(custom_audio_file)
             per_scene_dur = max(round(overall_dur / total_scenes, 2), 3.5)
             for sc in scenes:
@@ -352,52 +366,20 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
         else:
             scenes_with_audio = generate_scenes_audio(scenes, voice_key=voice_key, speed=speed, output_dir=reel_dir)
             
-        # 3. Render individual scene clips
-        clip_paths = []
-        clip_meta = []
+        # 3. Real Talking Advocate Avatar Video Generation with Lip-Sync
+        JOBS[job_id]["progress"] = 55
+        JOBS[job_id]["message"] = "Advocate Pratiksha यांच्या मूळ फोटोवरून लिप-सिंक (Lip Sync) व टॉकिंग अवतार व्हिडिओ रेंडर होत आहे..."
         
-        for idx, sc in enumerate(scenes_with_audio):
-            s_num = sc.get("scene_num", idx + 1)
-            pct = 35 + int((idx / total_scenes) * 45)
-            JOBS[job_id]["progress"] = pct
-            JOBS[job_id]["message"] = f"क्लिप #{s_num} चे 9:16 दृश्य व अ‍ॅनिमेशन रेंडर होत आहे ({idx+1}/{total_scenes})..."
-            
-            # Create Scene Image
-            img_path = os.path.join(images_dir, f"scene_{s_num}.png")
-            create_scene_image(sc, script_data.get("title_mr", ""), img_path)
-            
-            # Render MP4 Clip
-            clip_path = os.path.join(clips_dir, f"clip_{s_num:02d}.mp4")
-            render_scene_clip(img_path, sc["audio_file"], sc["duration"], clip_path)
-            clip_paths.append(clip_path)
-            
-            clip_meta.append({
-                "scene_num": s_num,
-                "title": sc.get("title", ""),
-                "text": sc.get("text", ""),
-                "duration": sc["duration"],
-                "clip_file": f"clip_{s_num:02d}.mp4",
-                "image_file": f"scene_{s_num}.png"
-            })
-            
-        # 4. Stitch Clips & Add Background Music
-        JOBS[job_id]["progress"] = 85
-        JOBS[job_id]["message"] = "सर्व क्लिप्स एकत्र जोडून पार्श्वसंगीत (Music Mix) सिंक केले जात आहे..."
+        final_mp4_path, clip_meta = render_advocate_talking_reel(
+            scenes_with_audio=scenes_with_audio,
+            avatar_path=resolved_avatar,
+            bg_music_preset=bg_music_preset,
+            output_dir=reel_dir
+        )
         
-        bg_audio_path = None
-        if bg_music_preset and bg_music_preset != "none":
-            preset_files = {
-                "legal_ambient": "legal_ambient_bg.mp3",
-                "dramatic_suspense": "dramatic_suspense_bg.mp3",
-                "inspirational_success": "inspirational_success_bg.mp3"
-            }
-            fname = preset_files.get(bg_music_preset, "legal_ambient_bg.mp3")
-            bg_audio_path = os.path.join(BG_AUDIO_DIR, fname)
-            
-        final_mp4_path = os.path.join(reel_dir, "final_reel.mp4")
-        combine_clips_with_music(clip_paths, bg_audio_path, final_mp4_path)
+        JOBS[job_id]["progress"] = 95
+        JOBS[job_id]["message"] = "अंतिम व्हिडिओ MP4 आणि ऑडिओ एकत्र सिंक केला जात आहे..."
         
-        # Calculate final reel duration and size
         final_dur = get_audio_duration(final_mp4_path)
         final_size_mb = round(os.path.getsize(final_mp4_path) / (1024 * 1024), 2)
         
@@ -410,6 +392,8 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             "voice": voice_key,
             "speed": speed,
             "bg_music": bg_music_preset,
+            "avatar_used": os.path.basename(resolved_avatar) if resolved_avatar else "Default",
+            "talking_avatar_rendered": True,
             "clips": clip_meta,
             "final_video": "final_reel.mp4"
         }
@@ -418,7 +402,7 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             
         JOBS[job_id]["progress"] = 100
         JOBS[job_id]["status"] = "completed"
-        JOBS[job_id]["message"] = "अभिनंदन! तुमचा संपूर्ण व्हिडिओ (Reel MP4) यशस्वीरीत्या तयार झाला आहे."
+        JOBS[job_id]["message"] = "अभिनंदन! Advocate Pratiksha यांचा टॉकिंग अवतार व्हिडिओ (Reel MP4) यशस्वीरीत्या तयार झाला आहे."
         JOBS[job_id]["result"] = {
             "folder_name": folder_name,
             "final_video_url": f"/api/preview/{folder_name}/final_reel.mp4",
@@ -426,12 +410,14 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             "duration": round(final_dur, 1),
             "size_mb": final_size_mb,
             "speed": speed,
+            "talking_avatar": True,
             "clips": clip_meta
         }
     except Exception as e:
         import traceback
         traceback.print_exc()
         JOBS[job_id]["status"] = "failed"
+        JOBS[job_id]["error"] = str(e)
         JOBS[job_id]["message"] = f"त्रुटी: {str(e)}"
 
 @app.route("/api/preview-voice", methods=["POST"])
@@ -546,8 +532,9 @@ def api_generate_video():
         "created_at": time.time()
     }
     
+    avatar_path = data.get("avatar_path")
     # Launch in background thread
-    t = threading.Thread(target=run_video_generation_job, args=(job_id, script_data, voice_key, bg_music, custom_audio, speed))
+    t = threading.Thread(target=run_video_generation_job, args=(job_id, script_data, voice_key, bg_music, custom_audio, speed, avatar_path))
     t.daemon = True
     t.start()
     

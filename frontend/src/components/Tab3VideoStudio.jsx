@@ -226,6 +226,7 @@ export default function Tab3VideoStudio({
         speed: chosenSpeed,
         voice: selectedVoice,
         bg_music: selectedMusic,
+        avatar_path: selectedAvatar?.filename || null,
         force_regenerate: true
       };
 
@@ -992,12 +993,12 @@ export default function Tab3VideoStudio({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-navy-800 pb-3">
               <h2 className="text-base sm:text-lg font-bold text-white flex items-center space-x-2">
                 <span className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">8</span>
-                <span>व्हिडिओ प्रिव्ह्यू, डाऊनलोड व एक्सपोर्ट (Video Preview & Export)</span>
+                <span>Advocate Pratiksha टॉकिंग अवतार प्रिव्ह्यू व डाऊनलोड (Talking Avatar Video)</span>
               </h2>
               {renderedVideoUrl && (
                 <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Reel MP4 तयार आहे</span>
+                  <span>Real Talking Avatar MP4 • Lip-Synced</span>
                 </span>
               )}
             </div>

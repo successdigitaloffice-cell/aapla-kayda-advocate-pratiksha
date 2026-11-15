@@ -21,6 +21,7 @@ import json
 import time
 import edge_tts
 import imageio_ffmpeg
+from engine.marathi_normalizer import normalize_marathi_text, number_to_marathi_words
 
 FFMPEG_EXE = imageio_ffmpeg.get_ffmpeg_exe()
 
@@ -95,150 +96,10 @@ def _num_to_mr_word(n: int) -> str:
 def normalize_marathi_for_speech(text: str) -> str:
     """
     Transforms English legal terms, acronyms, court names, sections (कलमे),
-    land records, and numbers into natural Devanagari Marathi phonetics.
-    Guarantees that Edge-TTS speaks 7/12 as 'सातबारा', BNSS as 'भारतीय नागरिक सुरक्षा संहिता',
-    कलम 318(4) as 'कलम तीनशे अठरा उपकलम चार', etc., with natural pauses and clean intonation.
+    land records (7/12 -> सातबारा), acts (BNSS, BNS, BSA, IPC, CrPC), dates,
+    and numbers into 100% natural Devanagari Marathi phonetics via marathi_normalizer.
     """
-    if not text:
-        return ""
-        
-    s = text
-
-    # Strip visual emojis from spoken audio to prevent TTS glitches
-    s = re.sub(r'[\U00010000-\U0010ffff]', ' ', s)
-    s = re.sub(r'[🚨⚠️🏛️⚖️👉🎙️✨🎬📌🎣🔴📢✅❌💯🔹🔸💡⏱️]', ' ', s)
-
-    # Convert Devanagari numerals to standard digits for rule matching
-    d2e = str.maketrans('०१२३४५६७८९', '0123456789')
-    
-    # 1. Land & Revenue Terms & Abbreviations
-    s = re.sub(r'7\s*/\s*12|७\s*/\s*१२', 'सातबारा', s)
-    s = re.sub(r'(?:\b8[-/\s]*[Aa]\b|\b८[-/\s]*[अaA]\b)', 'आठ-अ', s)
-    s = re.sub(r'\bCTS\b|\bसीटीएस\b', 'सिटी सर्व्हे नंबर', s, flags=re.I)
-    s = re.sub(r'\bPOA\b|\bपीओए\b', 'पॉवर ऑफ ॲटर्नी कुलमुखत्यारपत्र', s, flags=re.I)
-    s = re.sub(r'\bNOC\b|\bएनओसी\b', 'ना हरकत प्रमाणपत्र', s, flags=re.I)
-    s = re.sub(r'\bNA\b|\bN\.A\.|\bएनए\b', 'एन.ए. अकृषिक', s, flags=re.I)
-    s = re.sub(r'\bGR\b|\bजीआर\b', 'शासन निर्णय जी.आर.', s, flags=re.I)
-    s = re.sub(r'\bSDO\b|\bएसडीओ\b', 'उपविभागीय अधिकारी एस.डी.ओ.', s, flags=re.I)
-    s = re.sub(r'\bRTI\b|\bआरटीआय\b', 'माहिती अधिकार आर.टी.आय.', s, flags=re.I)
-    s = re.sub(r'\bRERA\b|\bमहारेरा\b|\bरेरा\b', 'महारेरा', s, flags=re.I)
-    s = re.sub(r'\bMLRC\b|\bएमएलआरसी\b', 'महाराष्ट्र जमीन महसूल संहिता', s, flags=re.I)
-    s = re.sub(r'\be-?haqq\b|\be-?हक्क\b', 'ई-हक्क प्रणाली', s, flags=re.I)
-    s = re.sub(r'\be-?ferfar\b|\be-?फेरफार\b', 'ई-फेरफार', s, flags=re.I)
-
-    # 2. Advocate & Brand Names
-    s = re.sub(r'\bAdvocate\s+Pratiksha\b|\bAdv\.\s*Pratiksha\b', 'ॲडव्होकेट प्रतीक्षा', s, flags=re.I)
-    s = re.sub(r'\bAdvocate\b|\bAdv\.\b', 'ॲडव्होकेट', s, flags=re.I)
-    s = re.sub(r'\bAapla\s+Kayda\b', 'आपला कायदा', s, flags=re.I)
-
-    # 3. Criminal Law & New Sanhitas (BNSS, BNS, BSA)
-    s = re.sub(r'\bBNSS\b|\bबीएनएसएस\b', 'भारतीय नागरिक सुरक्षा संहिता बी.एन.एस.एस.', s, flags=re.I)
-    s = re.sub(r'\bBNS\b|\bबीएनएस\b', 'भारतीय न्याय संहिता बी.एन.एस.', s, flags=re.I)
-    s = re.sub(r'\bBSA\b|\bबीएसए\b', 'भारतीय साक्ष्य अधिनियम बी.एस.ए.', s, flags=re.I)
-    s = re.sub(r'\bCrPC\b|\bसीआरपीसी\b', 'फौजदारी प्रक्रिया संहिता सी.आर.पी.सी.', s, flags=re.I)
-    s = re.sub(r'\bIPC\b|\bआयपीसी\b', 'भारतीय दंड विधान आय.पी.सी.', s, flags=re.I)
-    s = re.sub(r'\bCPC\b|\bसीपीसी\b', 'दिवाणी प्रक्रिया संहिता सी.पी.सी.', s, flags=re.I)
-    s = re.sub(r'\bFIR\b|\bएफआयआर\b', 'एफ.आय.आर. प्रथम माहिती अहवाल', s, flags=re.I)
-
-    # 4. Courts, Procedures & Legal English Terms
-    s = re.sub(r'\bSupreme Court\b|\bसुप्रीम कोर्ट\b', 'सर्वोच्च न्यायालय सुप्रीम कोर्ट', s, flags=re.I)
-    s = re.sub(r'\bHigh Court\b|\bहायकोर्ट\b', 'उच्च न्यायालय हायकोर्ट', s, flags=re.I)
-    s = re.sub(r'\bDistrict Court\b', 'जिल्हा न्यायालय', s, flags=re.I)
-    s = re.sub(r'\bSessions Court\b', 'सत्र न्यायालय', s, flags=re.I)
-    s = re.sub(r'\bPolice Station\b', 'पोलीस ठाणे', s, flags=re.I)
-    s = re.sub(r'\bAnticipatory Bail\b', 'अटकपूर्व जामीन', s, flags=re.I)
-    s = re.sub(r'\bBail\b', 'जामीन', s, flags=re.I)
-    s = re.sub(r'\bStay Order\b|\bस्टे ऑर्डर\b', 'स्थगिती आदेश स्टे ऑर्डर', s, flags=re.I)
-    s = re.sub(r'\bInjunction\b', 'मनाई हुकूम', s, flags=re.I)
-    s = re.sub(r'\bCaveat\b|\bकॅव्हेएट\b', 'कॅव्हेएट अर्ज', s, flags=re.I)
-    s = re.sub(r'\bSummons\b', 'समन्स', s, flags=re.I)
-    s = re.sub(r'\bWarrant\b', 'वारंट', s, flags=re.I)
-    s = re.sub(r'\bCharge Sheet\b|\bचार्जशीट\b', 'दोषारोपपत्र चार्जशीट', s, flags=re.I)
-    s = re.sub(r'\bLegal Notice\b', 'कायदेशीर नोटीस', s, flags=re.I)
-    s = re.sub(r'\bAffidavit\b', 'प्रतिज्ञापत्र', s, flags=re.I)
-    s = re.sub(r'\bAgreement\b', 'करारनामा', s, flags=re.I)
-    s = re.sub(r'\bSale Deed\b', 'खरेदीखत', s, flags=re.I)
-    s = re.sub(r'\bGift Deed\b', 'बक्षीसपत्र', s, flags=re.I)
-
-    # 5. Helplines & Important Contact Numbers
-    s = re.sub(r'\b1930\b|\b१९३०\b', 'एकोणीस तीस', s)
-    s = re.sub(r'\b112\b|\b११२\b', 'एक एक दोन', s)
-    s = re.sub(r'\b100\b|\b१००\b', 'शंभर', s)
-    s = re.sub(r'\b1090\b|\b१०९०\b', 'दहा नव्वद', s)
-    s = re.sub(r'\b1091\b|\b१०९१\b', 'दहा एक्क्याण्णव', s)
-    s = re.sub(r'\b181\b|\b१८१\b', 'एक आठ एक', s)
-
-    # 6. Currency, Percentages & Units
-    s = re.sub(r'₹\s*(\d+)|Rs\.?\s*(\d+)', r'\1 रुपये', s)
-    s = re.sub(r'100\s*%|१००\s*%', 'शंभर टक्के', s)
-    s = re.sub(r'50\s*%|५०\s*%', 'पन्नास टक्के', s)
-    s = re.sub(r'(\d+)\s*%', r'\1 टक्के', s)
-    s = re.sub(r'(\d+)\s*sq\s*ft|(\d+)\s*स्क्वेअर\s*फूट', r'\1 चौरस फूट', s, flags=re.I)
-    s = re.sub(r'(\d+)\s*sq\s*mtr|(\d+)\s*चौ\.?\s*मी\.?', r'\1 चौरस मीटर', s, flags=re.I)
-
-    # 7. Common Range & Quantity Expressions
-    s = re.sub(r'1\s*ते\s*3|१\s*ते\s*३', 'एक ते तीन', s)
-    s = re.sub(r'1\s*ते\s*2|१\s*ते\s*२', 'एक ते दोन', s)
-    s = re.sub(r'2\s*ते\s*3|२\s*ते\s*३', 'दोन ते तीन', s)
-    s = re.sub(r'3\s*ते\s*5|३\s*ते\s*५', 'तीन ते पाच', s)
-    s = re.sub(r'1\s*गुंठा|१\s*गुंठा', 'एक गुंठा', s)
-    s = re.sub(r'2\s*गुंठे|२\s*गुंठे', 'दोन गुंठे', s)
-    s = re.sub(r'3\s*गुंठे|३\s*गुंठे', 'तीन गुंठे', s)
-
-    # 8. Law & Historical Years
-    years_map = {
-        '1882': 'अठराशे ब्याऐंशी', '1908': 'एकोणीसशे आठ', '1947': 'एकोणीसशे सेहेचाळीस',
-        '1956': 'एकोणीसशे छप्पन्न', '1966': 'एकोणीसशे छासष्ट', '2000': 'दोन हजार',
-        '2001': 'दोन हजार एक', '2005': 'दोन हजार पाच', '2016': 'दोन हजार सोळा',
-        '2020': 'दोन हजार वीस', '2021': 'दोन हजार एकवीस', '2022': 'दोन हजार बावीस',
-        '2023': 'दोन हजार तेवीस', '2024': 'दोन हजार चोवीस', '2025': 'दोन हजार पंचवीस',
-        '2026': 'दोन हजार सव्वीस'
-    }
-    for y_k, y_v in years_map.items():
-        s = re.sub(rf'\b{y_k}\b', y_v, s)
-
-    # 9. Dynamic Section (कलम) Expansion
-    # Matches: कलम 318(4), कलम 41A, कलम ३५, कलम 138, etc.
-    def replace_kalam(match):
-        raw = match.group(1).translate(d2e).strip()
-        # Check sub-section e.g. 318(4)
-        sub_match = re.match(r'^(\d+)\((\d+)\)$', raw)
-        if sub_match:
-            main_sec = int(sub_match.group(1))
-            sub_sec = int(sub_match.group(2))
-            return f"कलम {_num_to_mr_word(main_sec)} उपकलम {_num_to_mr_word(sub_sec)}"
-        # Check sub-clause with letter e.g. 41A or 41-A or 8B
-        sub_letter = re.match(r'^(\d+)[-]?([a-zA-Z])$', raw)
-        if sub_letter:
-            main_sec = int(sub_letter.group(1))
-            letter = sub_letter.group(2).upper()
-            letter_mr = {'A': 'अ', 'B': 'ब', 'C': 'क', 'D': 'ड'}.get(letter, letter)
-            return f"कलम {_num_to_mr_word(main_sec)}-{letter_mr}"
-        # Pure numeric section e.g. 35, 138, 302, 420
-        if raw.isdigit():
-            val = int(raw)
-            if val <= 999:
-                return f"कलम {_num_to_mr_word(val)}"
-        return f"कलम {raw}"
-
-    s = re.sub(r'कलम\s*([०-९\d]+(?:\([०-९\d]+\)|[-][a-zA-Zअ-ह]|(?=[a-zA-Z])\w+)?)', replace_kalam, s)
-
-    # 10. Small digits to Marathi in time contexts (उदा. २ तासांत, 15 दिवसांत, 3 महिने)
-    num_to_mr = {
-        '1': 'एक', '2': 'दोन', '3': 'तीन', '4': 'चार', '5': 'पाच',
-        '6': 'सहा', '7': 'सात', '8': 'आठ', '9': 'नऊ', '10': 'दहा',
-        '15': 'पंधरा', '30': 'तीस', '60': 'साठ', '90': 'नव्वद'
-    }
-    for n_k, n_v in num_to_mr.items():
-        s = re.sub(rf'(?<!\d){n_k}\s*(तास|दिवस|महिने|वर्षे|महिन्या|वर्षां|लाख|हजार)', f'{n_v} \\1', s)
-
-    # 11. Normalize Punctuation for Natural Pausing
-    # Replace multiple exclamation marks or question marks with clean single pauses
-    s = re.sub(r'!+', '.', s)
-    s = re.sub(r'\?+', '?', s)
-    s = re.sub(r'\s{2,}', ' ', s)
-
-    return s.strip()
+    return normalize_marathi_text(text)
 
 async def _synthesize_async(text, voice, out_mp3, out_vtt=None, rate="+10%", pitch="+0Hz"):
     clean_text = text.strip() if text else "अधिक माहितीसाठी आपला कायदा फॉलो करा."
