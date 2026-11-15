@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: './', // Relative base for universal compatibility (Localhost, Cloudflare, GitHub Pages)
   plugins: [
     react(),
     tailwindcss()

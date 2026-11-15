@@ -1,73 +1,64 @@
 # ⚖️ आपला कायदा – Advocate Pratiksha
 ### AI Legal Content, Video Generation & Instagram Growth Platform
 
-> **अधिकृत Instagram ब्रँड:** आपला कायदा – Advocate Pratiksha  
-> **मुख्य उद्दिष्ट:** ६० दिवसांत ६० उच्च-गुणवत्तेच्या कायदेशीर Reels तयार करणे आणि १ लाख Instagram Followers च्या लक्ष्याकडे डेटा-आधारित प्रगती करणे.  
-> **कायदेशीर अचूकता:** १००% अधिकृत सरकारी कायदे, शासन निर्णय, सर्वोच्च न्यायालय व मुंबई उच्च न्यायालय न्यायनिर्णयांवर आधारित.
+<div align="center">
+
+[![Live Dashboard](https://img.shields.io/badge/🚀_LIVE_DASHBOARD-OPEN_NOW-D4AF37?style=for-the-badge&logo=google-chrome&logoColor=black)](https://geography-cartoons-soon-incentives.trycloudflare.com)
+[![GitHub Pages](https://img.shields.io/badge/🌐_GITHUB_PAGES-DIRECT_ACCESS-10B981?style=for-the-badge&logo=github&logoColor=white)](https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/)
+[![Mobile PIN](https://img.shields.io/badge/🔒_SECURITY_PIN-2026-6366F1?style=for-the-badge)](https://geography-cartoons-soon-incentives.trycloudflare.com)
+
+### 📲 **थेट डॅशबोर्ड आणि व्हिडिओ स्टुडिओ वापरण्यासाठी खालील लिंकवर क्लिक करा:**
+## 👉 [https://geography-cartoons-soon-incentives.trycloudflare.com](https://geography-cartoons-soon-incentives.trycloudflare.com) 👈
+*(किंवा GitHub Pages: **[https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/](https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/)**)*
+
+**ही लिंक तुम्ही थेट मोबाईलवर उघडू शकता आणि इतरांना व्हिडिओ बनवण्यासाठी शेअरही करू शकता!**
+
+<br/>
+
+![Mobile Scan QR](https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=2&data=https%3A%2F%2Fgeography-cartoons-soon-incentives.trycloudflare.com)  
+*मोबाईल कॅमेऱ्याने QR कोड स्कॅन करून थेट डॅशबोर्डवर जा (Security PIN: **2026**)*
+
+</div>
 
 ---
 
-## 🏛️ १. नवीन आधुनिक ५-टॅब रचना (Consolidated 5-Tab Architecture)
+## 🏛️ १. आधुनिक ५-टॅब रचना (5 Clean SaaS Tabs)
 
-पूर्वीचे ११ विखुरलेले टॅब्स एकत्रित करून अत्यंत साधा, सुंदर आणि वेगवान **५ मुख्य टॅब्स** मध्ये प्लॅटफॉर्मची पुनर्रचना करण्यात आली आहे:
+1. **📊 TAB 1: DASHBOARD (मुख्य विहंगावलोकन):**
+   - दैनिक १० ट्रेंडिंग कायदेशीर विषय व #१ अग्रगण्य विषय.
+   - ६० दिवस कंटेंट टार्गेट प्रोग्रेस व ९० दिवस विषय ट्रॅकर.
+   - तयार व्हिडिओ मोजणी आणि Instagram Graph API रिअल-टाइम थेट विश्लेषण (खोटे आकडे शून्य).
 
-### 📊 TAB 1 – DASHBOARD (मुख्य विहंगावलोकन)
-- **दैनिक अपडेट्स:** आजचे १० नवीन कायदेशीर ट्रेंडिंग विषय.
-- **६० दिवस कंटेंट टार्गेट:** एकूण ६० दिवसांपैकी पूर्ण झालेले, रेकॉर्डिंगसाठी तयार असलेले व उर्वरित विषयांची प्रगती.
-- **९० दिवस विषय ट्रॅकर:** अधिकृत राजपत्रावर आधारित विषयांचे थेट प्रमाणीकरण.
-- **तयार व्हिडिओ मोजणी:** स्टुडिओमध्ये तयार असलेल्या सर्व व्हिडिओंची अचूक नोंद.
-- **Instagram Live Analysis (Zero Fake Stats):** अधिकृत Instagram Graph API द्वारे थेट आकडेवारी. (API जोडलेली नसल्यास स्पष्टपणे 'Not Connected' दर्शविले जाते; खोटे फॉलोअर्स पूर्णपणे प्रतिबंधित).
+2. **🔥 TAB 2: TRENDING TOPICS (कायदेशीर ट्रेंड्स):**
+   - महाराष्ट्र जमीन महसूल (MLRC १९६६), गुंठेवारी (३१/१२/२०२० कट-ऑफ), तुकडेबंदी कायदा १९४७, ७/१२ फेरफार (कलम १५०), आणि BNSS २०२३ चे रोजचे विषय.
+   - १-क्लिक "Send to Video Studio" बटण.
 
-### 🔥 TAB 2 – TRENDING TOPICS (कायदेशीर ट्रेंड्स)
-- **दैनिक ट्रेंड्स:** महाराष्ट्र जमीन महसूल (MLRC 1966), गुंठेवारी (३१/१२/२०२० कट-ऑफ), तुकडेबंदी कायदा १९४७, ७/१२ फेरफार (कलम १५०), आणि BNSS २०२३ चे रोजचे विषय.
-- **६० दिवस कंटेंट प्लॅनर:** ६० दिवसांचे ६० पूर्व-नियोजित, कायदेशीरदृष्ट्या पडताळलेले विषय.
-- **९० दिवस विषय ट्रॅकर:** राजपत्र तारखा व सुप्रीम कोर्ट निवाड्यांसह सविस्तर माहिती.
-- **१-क्लिक ॲक्शन:** थेट विषयावर क्लिक करून एकाच सेकंदात 'व्हिडिओ स्टुडिओ' मध्ये पाठवण्याची सुविधा.
+3. **🎬 TAB 3: VIDEO STUDIO (एकात्मिक १-क्लिक व्हिडिओ स्टुडिओ):**
+   - **रेकॉर्डिंग व्हिडिओ (Teleprompter)** आणि **क्रिएटिव्ह AI व्हिडिओ** एकाच वर्कफ्लोमध्ये.
+   - ८-पायऱ्यांचा अखंड वर्कफ्लो: विषय ➡️ स्क्रिप्ट (Format A/B) ➡️ कायदेशीर पडताळणी ➡️ व्हिज्युअल प्रॉम्ट ➡️ ॲडव्होकेट फोटो ➡️ व्हॉईस/व्हिडिओ ➡️ कॅप्शन्स व SEO ➡️ डाऊनलोड.
 
-### 🎬 TAB 3 – VIDEO STUDIO (एकात्मिक व्हिडिओ स्टुडिओ)
-- **दोन मुख्य पर्याय:**
-  1. *रेकॉर्डिंग व्हिडिओ (Teleprompter & Camera Recording)*
-  2. *क्रिएटिव्ह AI व्हिडिओ (AI Generated Reel & Avatar)*
-- **८-पायऱ्यांचा अखंड वर्कफ्लो (Unified 1-Click Workflow):**
-  - **Step 1:** विषय निवड (Select/Custom Legal Topic)
-  - **Step 2:** कायदेशीर स्क्रिप्ट (Format A Dramatic Hook / Format B Step-by-Step)
-  - **Step 3:** कायदेशीर अचूकता पडताळणी (MLRC व BNSS कलम तपासणी)
-  - **Step 4:** AI व्हिज्युअल व सीन प्रॉम्ट
-  - **Step 5:** Advocate Pratiksha अधिकृत रेफरन्स फोटो निवड
-  - **Step 6:** व्हिडिओ व ऑडिओ निर्मिती (३०/४५/६० सेकंद, संथ/मध्यम/वेगवान आवाज)
-  - **Step 7:** कॅप्शन्स, SEO व हॅशटॅग्स (१-क्लिक कॉपी)
-  - **Step 8:** प्रिव्ह्यू, टेलिप्रॉम्प्टर व डाऊनलोड
+4. **👤 TAB 4: MY PHOTO / AVATAR STUDIO (माझा फोटो अवतार):**
+   - Advocate Pratiksha यांचा मूळ चेहरा कायमस्वरूपी सुरक्षित सेव्ह.
+   - १००% मूळ चेहरा ओळख टिकवून काळा कोट, पांढरा शर्ट, कॉलर बँड व हायकोर्ट पार्श्वभूमी.
 
-### 👤 TAB 4 – MY PHOTO / AVATAR STUDIO (माझा फोटो अवतार)
-- **कायमस्वरूपी सुरक्षित फोटो साठवण:** Advocate Pratiksha यांचा मूळ फोटो कायमस्वरूपी सुरक्षित साठवणे.
-- **चेहरा सुरक्षा नियम (Zero Alteration):** अपलोड केलेल्या मूळ चेहऱ्याची ओळख १००% कायम ठेवली जाते; कोणतेही बनावट रूप किंवा अवास्तव बदल केला जात नाही.
-- **व्यावसायिक ॲडव्होकेट वेषभूषा:** काळा ॲडव्होकेट कोट, पांढरा कॉलर शर्ट आणि लीगल नेक बँड.
-- **उच्च न्यायालयीन पार्श्वभूमी:** 'आपला कायदा – Advocate Pratiksha' लोगो व कायदेशीर ग्रंथालयाची पार्श्वभूमी.
-
-### ⚙️ TAB 5 – SETTINGS & DEPLOYMENT (सेटिंग्ज व डिप्लॉयमेंट)
-- **क्लाउड होस्टिंग व मोबाईल ॲक्सेस:** २४/७ सुरक्षित Cloudflare HTTPS लिंक आणि मोबाईल QR कोड.
-- **मोबाईल सिक्युरिटी पिन:** दूरवरून किंवा मोबाईलवरून वापरताना सुरक्षिततेसाठी ४-अंकी पिन संरक्षण (Default: 2026).
-- **API जोडणी:** Google Gemini API Key व Instagram Graph API जोडून थेट लाइव्ह डेटा मिळवणे.
-- **डेटाबेस सुरक्षितता व बॅकअप:** १-क्लिक डेटाबेस बॅकअप आणि रिस्टोअर सुविधा.
+5. **⚙️ TAB 5: SETTINGS & CLOUD (सेटिंग्ज व सुरक्षा):**
+   - २४/७ Cloudflare HTTPS थेट लिंक, QR कोड आणि ४-अंकी मोबाईल सिक्युरिटी पिन (`2026`).
+   - Gemini API आणि Instagram Graph API जोडणी.
 
 ---
 
-## 🚀 २. सिस्टीम कशी चालवायची (How to Run)
+## 🚀 २. शेअरिंग व थेट ॲक्सेस लिंक्स (Live Access & Sharing Links)
 
-### लोकल पीसीवर (Port 5050):
-`OPEN_DASHBOARD_5050.bat` वर डबल-क्लिक करा किंवा ब्राऊझरमध्ये उघडा:
-👉 **http://localhost:5050**
-
-### २४/७ बॅकग्राउंड सुपरवायझर व टनेल सुरू करणे:
-`START_AAPLA_KAYDA_HOST.bat` वर डबल-क्लिक करा:
-- Port 5050 (Node.js Backend & React Dashboard)
-- Port 5055 (Python Video Generator Studio)
-- Cloudflare Secure HTTPS Tunnel (मोबाईलसाठी)
+| सेवा / पोर्टल | प्रवेश लिंक (Click to Open) | माहिती |
+| :--- | :--- | :--- |
+| **थेट ऑनलाइन डॅशबोर्ड (Live Cloud)** | 👉 **[https://geography-cartoons-soon-incentives.trycloudflare.com](https://geography-cartoons-soon-incentives.trycloudflare.com)** | २४/७ मोबाईल व पीसीसाठी थेट कार्यरत |
+| **GitHub Pages थेट ॲप** | 👉 **[https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/](https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/)** | थेट ब्राऊझरवरून व्हिडिओ बनवण्यासाठी |
+| **स्थानिक पीसी डॅशबोर्ड** | 👉 **[http://localhost:5050](http://localhost:5050)** | Local Port 5050 |
+| **सिक्युरिटी पिन** | **`2026`** | 🔒 अनधिकृत ॲक्सेसपासून संरक्षण |
 
 ---
 
-## 🔒 ३. सुरक्षितता आणि डेटा गोपनीयता
+## 🛠️ ३. GitHub वर कोड अपडेट कसा करायचा
 
-1. `.env`, सीक्रेट्स, टोकन्स आणि पासवर्ड्स कधीही GitHub वर अपलोड केले जात नाहीत.
-2. बॅकअप्स आणि तात्पुरत्या फाईल्स `.gitignore` मध्ये योग्यरित्या समाविष्ट आहेत.
-3. कॉम्प्युटर बंद असला तरी मोबाईलवरून वापरण्यासाठी क्लाउड होस्टिंग व पिन ऑथेंटिकेशन कार्यरत आहे.
+डेस्कटॉपवरील **`PUSH_TO_GITHUB.bat`** वर डबल-क्लिक करा.  
+सर्व नवीन कोड आणि `docs/` फोल्डर थेट तुमच्या GitHub रिपॉझिटरीवर सिंक होईल!
