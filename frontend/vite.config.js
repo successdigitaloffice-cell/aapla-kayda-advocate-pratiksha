@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    tailwindcss()
+  ],
   server: {
     port: 3000,
     proxy: {
@@ -11,11 +15,7 @@ export default defineConfig({
         target: 'http://localhost:5050',
         changeOrigin: true
       },
-      '/video-api': {
-        target: 'http://localhost:5050',
-        changeOrigin: true
-      },
-      '/studio': {
+      '/uploads': {
         target: 'http://localhost:5050',
         changeOrigin: true
       }

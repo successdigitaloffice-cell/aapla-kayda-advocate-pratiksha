@@ -19,8 +19,16 @@ initDatabase();
 
 // Middleware
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+
+// Static uploads directory (for avatar photos and generated media)
+const uploadsDir = path.resolve(__dirname, '../../backend/data/uploads');
+const avatarsDir = path.join(uploadsDir, 'avatars');
+if (!fs.existsSync(avatarsDir)) {
+  fs.mkdirSync(avatarsDir, { recursive: true });
+}
+app.use('/uploads', express.static(uploadsDir));
 
 // Request logging middleware
 app.use((req, res, next) => {

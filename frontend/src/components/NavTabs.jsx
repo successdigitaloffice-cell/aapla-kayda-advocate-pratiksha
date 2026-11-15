@@ -1,134 +1,96 @@
 import React from 'react';
 import {
+  LayoutDashboard,
   Flame,
-  Award,
-  Film,
-  FileText,
-  ShieldCheck,
-  Archive,
-  BarChart3,
+  Clapperboard,
+  UserCheck,
   Settings,
-  Video,
-  Sparkles,
-  Calendar
+  Sparkles
 } from 'lucide-react';
 
 export default function NavTabs({ activeTab, setActiveTab, counts = {} }) {
   const tabs = [
     {
-      id: 'tab1',
+      id: 'dashboard',
       number: '१',
-      label: "Today's Trends",
-      marathi: "दैनिक ट्रेंड्स",
-      icon: Flame,
-      badge: counts.trends || 10
+      label: 'Dashboard',
+      marathi: 'डॅशबोर्ड',
+      icon: LayoutDashboard,
+      badge: counts.activeReels || 'Live'
     },
     {
-      id: 'tab2',
+      id: 'trends',
       number: '२',
-      label: "Top 3 Recommended",
-      marathi: "Top 3 शिफारसी",
-      icon: Award,
-      badge: "Top 3"
+      label: 'Trending Topics',
+      marathi: 'कायदेशीर ट्रेंड्स',
+      icon: Flame,
+      badge: counts.trendsCount || '10 नवीन'
     },
     {
-      id: 'tab3',
+      id: 'studio',
       number: '३',
-      label: "Ready-to-Record Scripts",
-      marathi: "रेकॉर्डिंग स्क्रिप्ट्स",
-      icon: Film,
-      badge: counts.activeStatus || "Active"
+      label: 'Video Studio',
+      marathi: 'व्हिडिओ स्टुडिओ',
+      icon: Clapperboard,
+      badge: '1-Click'
     },
     {
-      id: 'tab4',
+      id: 'photo',
       number: '४',
-      label: "Captions & SEO",
-      marathi: "कॅप्शन व SEO",
-      icon: FileText
+      label: 'My Photo Studio',
+      marathi: 'माझा फोटो अवतार',
+      icon: UserCheck,
+      badge: counts.hasPhoto ? 'Active' : 'Upload'
     },
     {
-      id: 'tab5',
+      id: 'settings',
       number: '५',
-      label: "Legal Verification",
-      marathi: "कायदेशीर पडताळणी",
-      icon: ShieldCheck,
-      badge: "Verified"
-    },
-    {
-      id: 'tab6',
-      number: '६',
-      label: "Published Archive",
-      marathi: "प्रकाशित अर्काइव्ह",
-      icon: Archive,
-      badge: counts.published || 7
-    },
-    {
-      id: 'tab7',
-      number: '७',
-      label: "Performance Analytics",
-      marathi: "कामगिरी विश्लेषण",
-      icon: BarChart3
-    },
-    {
-      id: 'tab8',
-      number: '८',
-      label: "Settings & Security",
-      marathi: "सेटिंग्ज व अहवाल",
+      label: 'Settings & Cloud',
+      marathi: 'सेटिंग्ज व डिप्लॉय',
       icon: Settings
-    },
-    {
-      id: 'tab9',
-      number: '९',
-      label: "Direct Video Generator",
-      marathi: "व्हिडिओ निर्मिती (Reels)",
-      icon: Video,
-      badge: "NEW"
-    },
-    {
-      id: 'tab10',
-      number: '१०',
-      label: "AI Content Studio",
-      marathi: "कंटेंट सुचना व निर्मिती",
-      icon: Sparkles,
-      badge: "AI ✨"
-    },
-    {
-      id: 'tab11',
-      number: '११',
-      label: "60-Day Trend Ideas",
-      marathi: "६० दिवस SEO आयडिया",
-      icon: Calendar,
-      badge: "60 Reels"
     }
   ];
 
   return (
-    <nav className="nav-tabs-wrapper">
-      <div className="nav-tabs-container">
-        {tabs.map(tab => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`nav-tab-btn ${isActive ? 'active' : ''}`}
-              title={`${tab.marathi} (${tab.label})`}
-            >
-              <Icon size={16} strokeWidth={isActive ? 2.5 : 2} color={isActive ? '#0F172A' : '#D4AF37'} />
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1.15 }}>
-                <span style={{ fontWeight: isActive ? 800 : 600, color: isActive ? '#0F172A' : '#F8FAFC' }}>
-                  <strong style={{ color: isActive ? '#0F172A' : '#D4AF37', marginRight: '4px' }}>Tab {tab.number}:</strong>
-                  {tab.marathi}
-                </span>
-                <span style={{ fontSize: '0.68rem', color: isActive ? '#0F172A' : '#94A3B8' }}>{tab.label}</span>
-              </div>
-              {tab.badge && (
-                <span className="tab-badge">{tab.badge}</span>
-              )}
-            </button>
-          );
-        })}
+    <nav className="border-b border-navy-700 bg-navy-900/90 backdrop-blur-md sticky top-0 z-40">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4">
+        {/* Horizontal scroll container for mobile responsiveness */}
+        <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto py-2.5 no-scrollbar">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center space-x-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-medium text-xs sm:text-sm whitespace-nowrap transition-all duration-200 border ${
+                  isActive
+                    ? 'bg-gradient-to-r from-gold-500/20 to-amber-500/10 text-gold-400 border-gold-500/40 shadow-lg shadow-gold-500/10 font-bold'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-navy-800/60 border-transparent'
+                }`}
+              >
+                <div className={`p-1 rounded-lg ${isActive ? 'bg-gold-500/20 text-gold-400' : 'bg-navy-800 text-slate-400'}`}>
+                  <Icon className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="leading-tight text-xs sm:text-sm">{tab.marathi}</span>
+                  <span className="text-[10px] text-slate-400 font-sans tracking-wide hidden sm:inline">{tab.label}</span>
+                </div>
+                {tab.badge && (
+                  <span
+                    className={`ml-1 px-1.5 py-0.5 text-[10px] rounded-full font-sans font-semibold ${
+                      isActive
+                        ? 'bg-gold-500 text-navy-950'
+                        : 'bg-navy-800 text-slate-300 border border-slate-700'
+                    }`}
+                  >
+                    {tab.badge}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </nav>
   );

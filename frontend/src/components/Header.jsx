@@ -1,53 +1,46 @@
 import React from 'react';
-import { Scale, ShieldCheck, Flame, Users, Calendar } from 'lucide-react';
+import { Scale, ShieldCheck, Calendar, Sparkles, Smartphone } from 'lucide-react';
 
-export default function Header({ systemHealth, activeDay = 8, totalPublished = 7, targetFollowers = 100000, currentFollowers = 27890 }) {
-  const followerPct = Math.min(100, ((currentFollowers / targetFollowers) * 100).toFixed(1));
-
+export default function Header({ activeDay = 8, totalPublished = 7, onNavigateTab }) {
   return (
-    <header className="top-header">
-      <div className="header-content">
-        <div className="brand-badge-group">
-          <div className="brand-logo-icon">
-            <Scale size={26} strokeWidth={2.3} />
+    <header className="border-b border-navy-750 bg-navy-950/95 backdrop-blur-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-3">
+        {/* Brand Title & Logo */}
+        <div
+          onClick={() => onNavigateTab && onNavigateTab('dashboard')}
+          className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group"
+        >
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-gold-600 to-amber-400 p-0.5 shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform flex items-center justify-center">
+            <div className="w-full h-full bg-navy-950 rounded-[10px] flex items-center justify-center text-gold-400">
+              <Scale className="w-5 h-5 sm:w-5 sm:h-5" />
+            </div>
           </div>
-          <div className="brand-titles">
-            <h1 className="brand-name">
-              आपला कायदा <span className="gold-text">– Advocate Pratiksha</span>
-            </h1>
-            <span className="brand-sub">
-              Chief AI Legal Researcher & Instagram Growth Agent • 60 Days Legal Mastery
-            </span>
+          <div>
+            <div className="flex items-center space-x-1.5">
+              <h1 className="text-base sm:text-lg font-extrabold text-white tracking-tight leading-none group-hover:text-gold-300 transition-colors">
+                आपला कायदा <span className="text-gold-400">– Advocate Pratiksha</span>
+              </h1>
+            </div>
+            <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5 leading-none font-medium">
+              कायदेशीर AI व्हिडिओ व Instagram ग्रोथ प्लॅटफॉर्म
+            </p>
           </div>
         </div>
 
-        <div className="header-actions">
-          {/* Calendar Day Progress */}
-          <div className="metric-box" style={{ padding: '0.4rem 0.9rem', flexDirection: 'row', alignItems: 'center', gap: '0.75rem' }}>
-            <Calendar size={18} color="#D4AF37" />
-            <div>
-              <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>कॅलेंडर दिवस</div>
-              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#FFF' }}>
-                Day {activeDay} <span style={{ fontSize: '0.75rem', color: '#64748B' }}>/ 60</span>
-              </div>
-            </div>
+        {/* Right Badges / Actions */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* 60-Day Progress Pill */}
+          <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1 rounded-full bg-navy-900 border border-navy-750 text-xs">
+            <Calendar className="w-3.5 h-3.5 text-gold-400" />
+            <span className="text-slate-300 font-medium">दिवस:</span>
+            <span className="text-white font-bold">{totalPublished}</span>
+            <span className="text-slate-400">/ ६०</span>
           </div>
 
-          {/* 100K Followers Goal Progress */}
-          <div className="metric-box" style={{ padding: '0.4rem 0.9rem', flexDirection: 'row', alignItems: 'center', gap: '0.75rem' }}>
-            <Users size={18} color="#10B981" />
-            <div>
-              <div style={{ fontSize: '0.72rem', color: '#94A3B8' }}>1 लाख Followers ध्येय</div>
-              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#10B981' }}>
-                {followerPct}% <span style={{ fontSize: '0.75rem', color: '#64748B' }}>({currentFollowers.toLocaleString('en-IN')})</span>
-              </div>
-            </div>
-          </div>
-
-          {/* 24-Hour Land Engine Status */}
-          <div className="status-indicator-pill" style={{ background: 'rgba(212, 175, 55, 0.12)', borderColor: 'rgba(212, 175, 55, 0.4)', color: '#F3E5AB' }}>
-            <span className="pulse-dot" style={{ background: '#D4AF37', boxShadow: '0 0 8px #D4AF37' }}></span>
-            <span>24h Land & Gunthewari Engine: Active</span>
+          {/* 24/7 Engine Status */}
+          <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] text-emerald-400 font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="hidden xs:inline">24/7 Active</span>
           </div>
         </div>
       </div>

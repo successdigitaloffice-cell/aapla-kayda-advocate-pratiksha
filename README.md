@@ -1,126 +1,73 @@
 # ⚖️ आपला कायदा – Advocate Pratiksha
-### AI Legal Content, Teleprompter & Social Media Growth Agent
+### AI Legal Content, Video Generation & Instagram Growth Platform
 
 > **अधिकृत Instagram ब्रँड:** आपला कायदा – Advocate Pratiksha  
-> **मुख्य ध्येय:** 60 दिवसांत 60 उच्च-गुणवत्तेच्या कायदेशीर Reels तयार करणे आणि 1 लाख Instagram Followers च्या लक्ष्याकडे डेटा-आधारित प्रगती करणे.  
-> **कायदेशीर अचूकता:** 100% अधिकृत सरकारी कायदे, सर्वोच्च न्यायालय न्यायनिर्णय आणि शासन निर्णयांवर आधारित.
+> **मुख्य उद्दिष्ट:** ६० दिवसांत ६० उच्च-गुणवत्तेच्या कायदेशीर Reels तयार करणे आणि १ लाख Instagram Followers च्या लक्ष्याकडे डेटा-आधारित प्रगती करणे.  
+> **कायदेशीर अचूकता:** १००% अधिकृत सरकारी कायदे, शासन निर्णय, सर्वोच्च न्यायालय व मुंबई उच्च न्यायालय न्यायनिर्णयांवर आधारित.
 
 ---
 
-## 🏛️ १. सिस्टीमची वैशिष्ट्ये (System Highlights)
+## 🏛️ १. नवीन आधुनिक ५-टॅब रचना (Consolidated 5-Tab Architecture)
 
-1. **दररोजचे Trend Research Engine (Tab 1):**
-   - रोज 10 संभाव्य कायदेशीर विषयांचे सखोल संशोधन (Google Trends Maharashtra, Mahabhumi Circulars, Supreme Court Decisions).
-   - Top 3 अंतिम निवडलेले विषय आणि #1 आजचा सर्वोत्तम विषय.
-   - व्हायरल न वाटणाऱ्या विषयांसाठी विश्वसनीय **Evergreen Legal Guide** लेबलिंग.
+पूर्वीचे ११ विखुरलेले टॅब्स एकत्रित करून अत्यंत साधा, सुंदर आणि वेगवान **५ मुख्य टॅब्स** मध्ये प्लॅटफॉर्मची पुनर्रचना करण्यात आली आहे:
 
-2. **Reel Script Generator & Teleprompter (Tab 2):**
-   - **Format A (30–40 सेकंद):** ~75–100 शब्द, जलद व थेट माहिती.
-   - **Format B (50–60 सेकंद):** ~125–155 शब्द, सविस्तर कायदेशीर बारकावे.
-   - **Fullscreen Teleprompter Mode:** Advocate Pratiksha यांच्यासाठी कॅमेऱ्यासमोर थेट वाचण्यासाठी ऑटो-स्क्रोल, मिरर मोड (Beam Splitter Glass), फॉन्ट साईझ आणि स्पीड ऍडजस्टमेंट.
-   - 1-क्लिक **Copy Script**, **Copy Caption**, आणि **Copy Hashtags**.
+### 📊 TAB 1 – DASHBOARD (मुख्य विहंगावलोकन)
+- **दैनिक अपडेट्स:** आजचे १० नवीन कायदेशीर ट्रेंडिंग विषय.
+- **६० दिवस कंटेंट टार्गेट:** एकूण ६० दिवसांपैकी पूर्ण झालेले, रेकॉर्डिंगसाठी तयार असलेले व उर्वरित विषयांची प्रगती.
+- **९० दिवस विषय ट्रॅकर:** अधिकृत राजपत्रावर आधारित विषयांचे थेट प्रमाणीकरण.
+- **तयार व्हिडिओ मोजणी:** स्टुडिओमध्ये तयार असलेल्या सर्व व्हिडिओंची अचूक नोंद.
+- **Instagram Live Analysis (Zero Fake Stats):** अधिकृत Instagram Graph API द्वारे थेट आकडेवारी. (API जोडलेली नसल्यास स्पष्टपणे 'Not Connected' दर्शविले जाते; खोटे फॉलोअर्स पूर्णपणे प्रतिबंधित).
 
-3. **Duplicate Prevention Engine & Published Archive (Tab 3):**
-   - शीर्षकाव्यतिरिक्त मुख्य कायदेशीर प्रश्न, वापरलेले कलम, Hook आणि कीवर्ड्सची तुलना.
-   - 60 दिवसांचा दृश्यमान रोडमॅप आणि शोधण्यायोग्य अर्काइव्ह.
-   - कायमस्वरूपी डेटा जतन (Published Archive मधून कोणतीही नोंद हटवली जात नाही).
+### 🔥 TAB 2 – TRENDING TOPICS (कायदेशीर ट्रेंड्स)
+- **दैनिक ट्रेंड्स:** महाराष्ट्र जमीन महसूल (MLRC 1966), गुंठेवारी (३१/१२/२०२० कट-ऑफ), तुकडेबंदी कायदा १९४७, ७/१२ फेरफार (कलम १५०), आणि BNSS २०२३ चे रोजचे विषय.
+- **६० दिवस कंटेंट प्लॅनर:** ६० दिवसांचे ६० पूर्व-नियोजित, कायदेशीरदृष्ट्या पडताळलेले विषय.
+- **९० दिवस विषय ट्रॅकर:** राजपत्र तारखा व सुप्रीम कोर्ट निवाड्यांसह सविस्तर माहिती.
+- **१-क्लिक ॲक्शन:** थेट विषयावर क्लिक करून एकाच सेकंदात 'व्हिडिओ स्टुडिओ' मध्ये पाठवण्याची सुविधा.
 
-4. **Performance Analytics & 100K Follower Tracker (Tab 4):**
-   - Views, Reach, Average Watch Time, Likes, Comments, Profile Visits.
-   - **Sends/Reach %** आणि **Saves/Reach %** (Instagram Algorithm चा मुख्य आधार).
-   - वस्तुनिष्ठ डेटा ट्रॅकिंग (कोणत्याही खोट्या हमीशिवाय प्रत्यक्ष आकडेवारीवर आधारित प्रगती).
-   - **Posting Time Optimization:** दुपारी 12:30 PM, संध्याकाळी 07:00 PM, आणि रात्री 08:30 PM चाचणी निष्कर्ष.
+### 🎬 TAB 3 – VIDEO STUDIO (एकात्मिक व्हिडिओ स्टुडिओ)
+- **दोन मुख्य पर्याय:**
+  1. *रेकॉर्डिंग व्हिडिओ (Teleprompter & Camera Recording)*
+  2. *क्रिएटिव्ह AI व्हिडिओ (AI Generated Reel & Avatar)*
+- **८-पायऱ्यांचा अखंड वर्कफ्लो (Unified 1-Click Workflow):**
+  - **Step 1:** विषय निवड (Select/Custom Legal Topic)
+  - **Step 2:** कायदेशीर स्क्रिप्ट (Format A Dramatic Hook / Format B Step-by-Step)
+  - **Step 3:** कायदेशीर अचूकता पडताळणी (MLRC व BNSS कलम तपासणी)
+  - **Step 4:** AI व्हिज्युअल व सीन प्रॉम्ट
+  - **Step 5:** Advocate Pratiksha अधिकृत रेफरन्स फोटो निवड
+  - **Step 6:** व्हिडिओ व ऑडिओ निर्मिती (३०/४५/६० सेकंद, संथ/मध्यम/वेगवान आवाज)
+  - **Step 7:** कॅप्शन्स, SEO व हॅशटॅग्स (१-क्लिक कॉपी)
+  - **Step 8:** प्रिव्ह्यू, टेलिप्रॉम्प्टर व डाऊनलोड
 
-5. **Legal Accuracy Engine (Tab 5):**
-   - अधिकृत प्राथमिक स्रोत: India Code, Supreme Court, Bhulekh Mahabhumi, IGR Maharashtra, E-Daakhil, Cybercrime Portal (1930).
-   - **CrPC/IPC ➡️ BNSS/BNS 2023 संक्रमण तक्ता:** नवीन फौजदारी कायद्यांतील कलमांची अचूक तुलना.
-   - Unverified Claims Tracker.
+### 👤 TAB 4 – MY PHOTO / AVATAR STUDIO (माझा फोटो अवतार)
+- **कायमस्वरूपी सुरक्षित फोटो साठवण:** Advocate Pratiksha यांचा मूळ फोटो कायमस्वरूपी सुरक्षित साठवणे.
+- **चेहरा सुरक्षा नियम (Zero Alteration):** अपलोड केलेल्या मूळ चेहऱ्याची ओळख १००% कायम ठेवली जाते; कोणतेही बनावट रूप किंवा अवास्तव बदल केला जात नाही.
+- **व्यावसायिक ॲडव्होकेट वेषभूषा:** काळा ॲडव्होकेट कोट, पांढरा कॉलर शर्ट आणि लीगल नेक बँड.
+- **उच्च न्यायालयीन पार्श्वभूमी:** 'आपला कायदा – Advocate Pratiksha' लोगो व कायदेशीर ग्रंथालयाची पार्श्वभूमी.
 
-6. **Settings, Persistent Storage & रोजचा Final Report (Tab 6):**
-   - **रोजचा 17-Point Final Report Generator:** मास्टर प्रॉम्प्टच्या कलम 16 नुसार संपूर्ण दैनिक अहवाल.
-   - **Persistent SQLite Database:** Node.js 24 च्या बिल्ट-इन `node:sqlite` वर आधारित WAL मोड, शून्य बाह्य C++ डिपेंडन्सी.
-   - **Automated & Manual Backups:** दर 12 तासांनी स्वयंचलित स्नॅपशॉट आणि 1-क्लिक रिस्टोअर टेस्ट.
-
----
-
-## 🚀 २. स्थानिक रन करणे (How to Run Locally)
-
-### पद्धत A: 1-Click Windows ऑटो-स्टार्ट (सर्वात सोपे)
-फक्त रूट डिरेक्टरीमधील `start-aapla-kayda.bat` वर डबल-क्लिक करा.
-- डेटाबेस तपासला जाईल आणि सिस्टीम सुरू होईल.
-- सिस्टीम URL: **`http://localhost:5000`**
-
-### पद्धत B: टर्मिनलवरून चालवणे
-```bash
-# 1. बॅकएंड डिरेक्टरीमध्ये जा
-cd backend
-
-# 2. डेटाबेस सीड करा (पहिल्या वेळेस)
-node src/db/seed.js
-
-# 3. सर्व्हर सुरू करा
-node src/server.js
-```
-सर्व्हर सुरू झाल्यावर ब्राउझरमध्ये उघडा:
-👉 **http://localhost:5000**  
-👉 आरोग्य तपासणी: **http://localhost:5000/api/health**
+### ⚙️ TAB 5 – SETTINGS & DEPLOYMENT (सेटिंग्ज व डिप्लॉयमेंट)
+- **क्लाउड होस्टिंग व मोबाईल ॲक्सेस:** २४/७ सुरक्षित Cloudflare HTTPS लिंक आणि मोबाईल QR कोड.
+- **मोबाईल सिक्युरिटी पिन:** दूरवरून किंवा मोबाईलवरून वापरताना सुरक्षिततेसाठी ४-अंकी पिन संरक्षण (Default: 2026).
+- **API जोडणी:** Google Gemini API Key व Instagram Graph API जोडून थेट लाइव्ह डेटा मिळवणे.
+- **डेटाबेस सुरक्षितता व बॅकअप:** १-क्लिक डेटाबेस बॅकअप आणि रिस्टोअर सुविधा.
 
 ---
 
-## 🌐 ३. VPS / Cloud Hosting वर सुरक्षित HTTPS सह चालवणे (Production Deployment)
+## 🚀 २. सिस्टीम कशी चालवायची (How to Run)
 
-### पर्याय १: Docker Compose (शिफारस केलेला मार्ग)
-```bash
-# कंटेनर तयार करून बॅकग्राउंडमध्ये चालवा
-docker compose up -d --build
+### लोकल पीसीवर (Port 5050):
+`OPEN_DASHBOARD_5050.bat` वर डबल-क्लिक करा किंवा ब्राऊझरमध्ये उघडा:
+👉 **http://localhost:5050**
 
-# कंटेनरचे स्टेटस तपासा
-docker compose ps
-```
-
-### पर्याय २: PM2 Process Manager
-```bash
-cd /d/INSTA\ SCRIPT\ AI
-npm install -g pm2
-pm2 start ecosystem.config.cjs
-pm2 save
-pm2 startup
-```
-
-### सुरक्षित Nginx रिव्हर्स प्रॉक्सी आणि मोफत HTTPS (Let's Encrypt SSL)
-`/etc/nginx/sites-available/aaplakayda.conf`:
-```nginx
-server {
-    server_name aaplakayda.yourdomain.com;
-
-    location / {
-        proxy_pass http://localhost:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-SSL सर्टिफिकेट सक्रिय करा:
-```bash
-sudo certbot --nginx -d aaplakayda.yourdomain.com
-```
+### २४/७ बॅकग्राउंड सुपरवायझर व टनेल सुरू करणे:
+`START_AAPLA_KAYDA_HOST.bat` वर डबल-क्लिक करा:
+- Port 5050 (Node.js Backend & React Dashboard)
+- Port 5055 (Python Video Generator Studio)
+- Cloudflare Secure HTTPS Tunnel (मोबाईलसाठी)
 
 ---
 
-## 📋 ४. दैनिक कार्यप्रवाह (Daily Workflow for Advocate Pratiksha)
+## 🔒 ३. सुरक्षितता आणि डेटा गोपनीयता
 
-1. **सकाळी 09:00 AM:** **TAB 1 (Today's Trends)** उघडा आणि `Find Today's Trending Topics` वर क्लिक करा.
-2. **विषय निवड:** Top 3 पैकी #1 विषयाची किंवा तुमच्या पसंतीच्या विषयाची `स्क्रिप्ट बनवा` वर क्लिक करा.
-3. **कायदेशीर पडताळणी:** **TAB 2 (Ready Reels)** मध्ये कलम, कायदा आणि भारत सरकारच्या अधिकृत लिंक्स तपासा.
-4. **स्क्रिप्ट मंजुरी:** `Approve Script` वर क्लिक करा (स्थिती *Ready to Record* होईल).
-5. **व्हिडिओ रेकॉर्डिंग:** कॅमेरा ऑन करा आणि डॅशबोर्डवरील `Open Teleprompter` बटण दाबा. स्पेसबार दाबून स्पीड आणि फॉन्ट ऍडजस्ट करा आणि थेट वाचून व्हिडिओ रेकॉर्ड करा.
-6. **रेकॉर्ड पूर्ण:** `Mark as Recorded` दाबा.
-7. **प्रकाशन:** Reel इन्स्टाग्रामवर पोस्ट झाल्यावर `Mark as Published` दाबा. Reel ची लिंक व तारीख टाका.
-8. **अहवाल:** **TAB 6** मध्ये जावून `Copy Final Report` द्वारे 17-मुद्द्यांचा दैनिक अहवाल सेव्ह करा!
-
----
-
-*आपला कायदा – Advocate Pratiksha © 2026. All rights reserved.*
+1. `.env`, सीक्रेट्स, टोकन्स आणि पासवर्ड्स कधीही GitHub वर अपलोड केले जात नाहीत.
+2. बॅकअप्स आणि तात्पुरत्या फाईल्स `.gitignore` मध्ये योग्यरित्या समाविष्ट आहेत.
+3. कॉम्प्युटर बंद असला तरी मोबाईलवरून वापरण्यासाठी क्लाउड होस्टिंग व पिन ऑथेंटिकेशन कार्यरत आहे.

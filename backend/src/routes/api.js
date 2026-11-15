@@ -10,6 +10,9 @@ import { generateDailyFinalReport, getLatestDailyReport } from '../services/repo
 import { run24HourAnalysisCycle } from '../services/dailyAnalysisCron.js';
 import { getSuggestedTopics, createCustomReelPackage } from '../services/contentSuggester.js';
 import { get60DaysContentBank } from '../services/contentBank60Days.js';
+import { getAvatarsList, saveAvatarPhoto, setDefaultAvatar, deleteAvatarPhoto, getDefaultAvatar, generateAdvocateVisualPrompt } from '../services/avatarService.js';
+import { getInstagramLiveAnalytics } from '../services/instagramService.js';
+import { get60DaysTarget, get90DaysTracker } from '../services/legalTrackerService.js';
 
 const router = Router();
 
@@ -739,6 +742,178 @@ router.post('/content/60-days-refresh-trends', (req, res) => {
       message: 'दैनिक SEO, Google व Instagram ट्रेंडिंग संकेत यशस्वीरीत्या अद्यतनित झाले.',
       total: ideas.length,
       ideas
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ==========================================
+// 12. TAB 4: MY PHOTO / AVATAR STUDIO ENDPOINTS
+// ==========================================
+
+router.get('/avatar/list', (req, res) => {
+  try {
+    const avatars = getAvatarsList();
+    const defaultAvatar = getDefaultAvatar();
+    res.json({
+      success: true,
+      total: avatars.length,
+      defaultAvatar,
+      avatars
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/avatar/upload', (req, res) => {
+  try {
+    const { imageBase64, filename } = req.body;
+    if (!imageBase64) {
+      return res.status(400).json({ error: 'imageBase64 फील्ड आवश्यक आहे.' });
+    }
+    const saved = saveAvatarPhoto(imageBase64, filename || 'advocate_pratiksha.jpg');
+    res.json({
+      success: true,
+      message: 'Advocate Pratiksha यांचा अधिकृत फोटो सुरक्षितपणे जतन करण्यात आला आहे.',
+      photo: saved
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/avatar/set-default', (req, res) => {
+  try {
+    const { filename } = req.body;
+    if (!filename) {
+      return res.status(400).json({ error: 'filename आवश्यक आहे.' });
+    }
+    const result = setDefaultAvatar(filename);
+    res.json({
+      success: true,
+      message: 'हा फोटो डीफॉल्ट रेफरन्स म्हणून सेट करण्यात आला आहे.',
+      result
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete('/avatar/:filename', (req, res) => {
+  try {
+    const { filename } = req.params;
+    deleteAvatarPhoto(filename);
+    res.json({
+      success: true,
+      message: 'फोटो यशस्वीरीत्या डिलीट करण्यात आला आहे.'
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/avatar/generate-prompt', (req, res) => {
+  try {
+    const { title, category, options } = req.body;
+    const promptData = generateAdvocateVisualPrompt(title, category, options);
+    res.json({
+      success: true,
+      promptData
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ==========================================
+// 13. INSTAGRAM LIVE ANALYTICS (NO FAKE STATS)
+// ==========================================
+
+router.get('/instagram/analytics', async (req, res) => {
+  try {
+    const analytics = await getInstagramLiveAnalytics();
+    res.json({
+      success: true,
+      analytics
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ==========================================
+// 14. 60-DAY CONTENT TARGET & 90-DAY TOPIC TRACKER
+// ==========================================
+
+router.get('/content/60-days-target', (req, res) => {
+  try {
+    const targetData = get60DaysTarget();
+    res.json({
+      success: true,
+      data: targetData
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/content/90-days-tracker', (req, res) => {
+  try {
+    const tracker = get90DaysTracker();
+    res.json({
+      success: true,
+      totalTracked: tracker.length,
+      tracker
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// ==========================================
+// 15. MOBILE SECURITY PIN AUTHENTICATION
+// ==========================================
+
+router.post('/auth/verify-pin', (req, res) => {
+  try {
+    const { pin } = req.body;
+    const pinRow = db.prepare("SELECT value FROM system_settings WHERE key = 'dashboard_access_pin'").get();
+    const correctPin = pinRow ? pinRow.value : (process.env.DASHBOARD_ACCESS_PIN || '2026');
+
+    if (String(pin).trim() === String(correctPin).trim()) {
+      res.json({
+        success: true,
+        authenticated: true,
+        token: `auth_${Date.now()}_ak_pratiksha`
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        error: 'अवैध पिन कोड. कृपया बरोबर सिक्युरिटी पिन टाका.'
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.post('/auth/update-pin', (req, res) => {
+  try {
+    const { newPin } = req.body;
+    if (!newPin || String(newPin).length < 4) {
+      return res.status(400).json({ error: 'पिन किमान ४ अंकांचा असावा.' });
+    }
+    db.prepare(`
+      INSERT INTO system_settings (key, value, updated_at)
+      VALUES ('dashboard_access_pin', ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = CURRENT_TIMESTAMP
+    `).run(String(newPin).trim());
+
+    res.json({
+      success: true,
+      message: 'सिक्युरिटी पिन यशस्वीरीत्या अपडेट करण्यात आला.'
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
