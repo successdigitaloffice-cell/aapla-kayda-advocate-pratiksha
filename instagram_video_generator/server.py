@@ -156,6 +156,11 @@ def parse_pasted_script(raw_text: str, custom_title: str = None, duration: str =
         "best_posting_time": "संध्याकाळी ०७:०० PM ते ०८:३० PM"
     }
 
+@app.route("/health", methods=["GET"])
+@app.route("/api/health", methods=["GET"])
+def health_check():
+    return jsonify({"status": "UP", "service": "Python Video Studio", "port": 5055})
+
 @app.route("/")
 def index():
     resp = send_from_directory("public", "index.html")
