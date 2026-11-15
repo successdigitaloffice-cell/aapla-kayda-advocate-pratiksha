@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import db from '../db/database.js';
 import { getTodayTrends, runDailyTrendResearch, selectBestTodayTopic } from '../services/trendEngine.js';
 import { generateReelScript } from '../services/scriptGenerator.js';
@@ -918,6 +921,154 @@ router.post('/auth/update-pin', (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
+
+// ==========================================
+// 16. VIDEO STUDIO & GOOGLE FLOW REAL VIDEO ENGINE PROXY
+// Connects unified dashboard (Port 5050 & Cloudflare Remote)
+// directly to high-impact Marathi video renderer (Port 5055)
+// ==========================================
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const VIDEO_ENGINE_BASE = process.env.VIDEO_STUDIO_URL || 'http://127.0.0.1:5055';
+const OUTPUT_REELS_DIR = path.resolve(__dirname, '../../../instagram_video_generator/output_reels');
+const VIDEO_UPLOADS_DIR = path.resolve(__dirname, '../../../instagram_video_generator/uploads');
+
+router.post('/video-engine/generate-video', async (req, res) => {
+  try {
+    const response = await fetch(`${VIDEO_ENGINE_BASE}/api/generate-video`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    res.status(502).json({
+      success: false,
+      error: `व्हिडिओ इंजिन (Port 5055) शी संपर्क होऊ शकला नाही: ${error.message}`
+    });
+  }
+});
+
+router.get('/video-engine/video-status/:jobId', async (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const response = await fetch(`${VIDEO_ENGINE_BASE}/api/video-status/${jobId}`);
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    res.status(502).json({
+      success: false,
+      error: `व्हिडिओ स्टेटस तपासण्यात त्रुटी: ${error.message}`
+    });
+  }
+});
+
+router.post('/video-engine/preview-voice', async (req, res) => {
+  try {
+    const response = await fetch(`${VIDEO_ENGINE_BASE}/api/preview-voice`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body)
+    });
+    const data = await response.json();
+    res.status(response.status).json(data);
+  } catch (error) {
+    res.status(502).json({
+      success: false,
+      error: `व्हॉइस प्रिव्ह्यू तयार करताना त्रुटी: ${error.message}`
+    });
+  }
+});
+
+router.get('/video-engine/preview-audio/:filename', (req, res) => {
+  try {
+    const safeFilename = path.basename(req.params.filename);
+    const filePath = path.join(VIDEO_UPLOADS_DIR, safeFilename);
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'ऑडिओ फाईल आढळली नाही' });
+    }
+    res.setHeader('Content-Type', 'audio/mpeg');
+    res.sendFile(filePath);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/video-engine/preview/:folder/:filename', (req, res) => {
+  try {
+    const safeFolder = path.basename(req.params.folder);
+    const safeFilename = path.basename(req.params.filename);
+    const filePath = path.join(OUTPUT_REELS_DIR, safeFolder, safeFilename);
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'व्हिडिओ फाईल आढळली नाही' });
+    }
+
+    res.setHeader('Content-Type', 'video/mp4');
+    res.setHeader('Accept-Ranges', 'bytes');
+    res.sendFile(filePath);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/video-engine/download/:folder/:filename', (req, res) => {
+  try {
+    const safeFolder = path.basename(req.params.folder);
+    const safeFilename = path.basename(req.params.filename);
+    const filePath = path.join(OUTPUT_REELS_DIR, safeFolder, safeFilename);
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).json({ error: 'व्हिडिओ फाईल आढळली नाही' });
+    }
+
+    res.download(filePath, safeFilename);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/video-engine/history', async (req, res) => {
+  try {
+    const reels = [];
+    if (fs.existsSync(OUTPUT_REELS_DIR)) {
+      const folders = fs.readdirSync(OUTPUT_REELS_DIR);
+      for (const fname of folders) {
+        const manPath = path.join(OUTPUT_REELS_DIR, fname, 'manifest.json');
+        if (fs.existsSync(manPath)) {
+          try {
+            const man = JSON.parse(fs.readFileSync(manPath, 'utf8'));
+            man.preview_url = `/api/video-engine/preview/${fname}/final_reel.mp4`;
+            man.download_url = `/api/video-engine/download/${fname}/final_reel.mp4`;
+            reels.push(man);
+          } catch (e) {
+            // ignore malformed manifest
+          }
+        }
+      }
+    }
+    res.json({ success: true, reels: reels.reverse() });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/video-engine/google-flow-status', (req, res) => {
+  res.json({
+    status: 'active',
+    tool_name: 'Google Flow / Veo Video Pipeline & Marathi Neural Studio',
+    analysis: {
+      engine: 'Direct High-Speed MP4 Video Engine (FFmpeg 7.1 + Edge Neural Marathi TTS + PIL Compositor)',
+      output_format: '1080x1920 Full HD Instagram Reel 9:16',
+      remote_ready: true,
+      cost: '100% Free / Zero Cloud Billing',
+      voice_support: ['Aarohi (Female)', 'Manohar (Male)'],
+      gemini_flow_ready: Boolean(process.env.GEMINI_API_KEY)
+    }
+  });
 });
 
 export default router;
