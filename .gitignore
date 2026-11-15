@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Secrets and environment configurations
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+token.json
+
+# Local runtime databases & volatile storage
+backend/data/*.db-wal
+backend/data/*.db-shm
+backend/data/watchdog.pid
+backend/data/tunnel.pid
+data/*.pid
+data/*.db-wal
+data/*.db-shm
+
+# Backups & local logs
+backups/
+logs/
+*.log
+
+# Frontend build outputs
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# Python cache & video output assets
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+instagram_video_generator/output_reels/*
+!instagram_video_generator/output_reels/.gitkeep
+instagram_video_generator/uploads/*
+!instagram_video_generator/uploads/.gitkeep
+
+# IDE & OS temporary files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large binaries (bin/git, cloudflared)
+bin/git/
+bin/cloudflared.exe

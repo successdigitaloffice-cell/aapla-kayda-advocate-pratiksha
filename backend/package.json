@@ -1,0 +1,16 @@
+{
+  "name": "aapla-kayda-backend",
+  "version": "1.0.0",
+  "description": "आपला कायदा AI Legal Content & Growth Agent Backend",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node src/db/seed.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
