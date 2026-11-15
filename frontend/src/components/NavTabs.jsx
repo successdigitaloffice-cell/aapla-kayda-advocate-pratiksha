@@ -3,7 +3,7 @@ import {
   LayoutDashboard,
   Flame,
   Clapperboard,
-  UserCheck,
+  FileText,
   Settings,
   Sparkles
 } from 'lucide-react';
@@ -37,10 +37,10 @@ export default function NavTabs({ activeTab, setActiveTab, counts = {} }) {
     {
       id: 'photo',
       number: '४',
-      label: 'My Photo Studio',
-      marathi: 'माझा फोटो अवतार',
-      icon: UserCheck,
-      badge: counts.hasPhoto ? 'Active' : 'Upload'
+      label: 'Document Library',
+      marathi: 'कायदेशीर कागदपत्रे',
+      icon: FileText,
+      badge: 'अधिकृत'
     },
     {
       id: 'settings',

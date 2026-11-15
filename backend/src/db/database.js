@@ -160,8 +160,83 @@ export function initDatabase() {
     );
   `);
 
-  // Seed default settings if not exist
+  // 8. Multi-User Authentication & Friend Access (Phase 4)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password_hash TEXT NOT NULL,
+      role TEXT DEFAULT 'friend',
+      is_active INTEGER DEFAULT 1,
+      invited_by TEXT,
+      invitation_code TEXT,
+      videos_generated_count INTEGER DEFAULT 0,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      last_login_at TEXT
+    );
+  `);
+
+  // 9. Admin Invitations for Friends
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS invitations (
+      code TEXT PRIMARY KEY,
+      created_by TEXT NOT NULL,
+      recipient_name TEXT,
+      recipient_email TEXT,
+      max_uses INTEGER DEFAULT 5,
+      used_count INTEGER DEFAULT 0,
+      is_active INTEGER DEFAULT 1,
+      expires_at TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
+  // 10. User Workspace Projects
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS user_projects (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL REFERENCES users(id),
+      title TEXT NOT NULL,
+      category TEXT,
+      script_data TEXT,
+      status TEXT DEFAULT 'draft',
+      video_folder TEXT,
+      video_url TEXT,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
+  // Seed default settings and initial admin account
   seedDefaultSettings();
+  seedInitialAdmin();
+}
+
+function seedInitialAdmin() {
+  const checkAdmin = db.prepare("SELECT id FROM users WHERE role = 'admin'").get();
+  if (!checkAdmin) {
+    db.prepare(`
+      INSERT INTO users (id, name, email, password_hash, role, is_active, created_at)
+      VALUES (?, ?, ?, ?, 'admin', 1, CURRENT_TIMESTAMP)
+    `).run(
+      'admin_pratiksha',
+      'Advocate Pratiksha (Admin)',
+      'advocate.pratiksha.legal@gmail.com',
+      'pratiksha@2026'
+    );
+    console.log('[DB] Seeded initial Admin user: advocate.pratiksha.legal@gmail.com');
+  }
+
+  // Seed default VIP friend invitation code
+  const checkInvite = db.prepare("SELECT code FROM invitations WHERE code = 'PRATIKSHA-VIP-2026'").get();
+  if (!checkInvite) {
+    db.prepare(`
+      INSERT INTO invitations (code, created_by, recipient_name, max_uses, is_active)
+      VALUES ('PRATIKSHA-VIP-2026', 'admin_pratiksha', 'VIP Friends Access', 50, 1)
+    `).run();
+    console.log('[DB] Seeded default invitation code: PRATIKSHA-VIP-2026');
+  }
 }
 
 function seedDefaultSettings() {

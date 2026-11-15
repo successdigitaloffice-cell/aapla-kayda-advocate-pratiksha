@@ -1,7 +1,7 @@
 import React from 'react';
-import { Scale, ShieldCheck, Calendar, Sparkles, Smartphone } from 'lucide-react';
+import { Scale, ShieldCheck, Calendar, Sparkles, Smartphone, User, LogOut } from 'lucide-react';
 
-export default function Header({ activeDay = 8, totalPublished = 7, onNavigateTab }) {
+export default function Header({ activeDay = 8, totalPublished = 7, onNavigateTab, currentUser, onLogout }) {
   return (
     <header className="border-b border-navy-750 bg-navy-950/95 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-3">
@@ -29,6 +29,28 @@ export default function Header({ activeDay = 8, totalPublished = 7, onNavigateTa
 
         {/* Right Badges / Actions */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* User Profile Pill */}
+          {currentUser && (
+            <div className="flex items-center space-x-1.5">
+              <div className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-navy-900 border border-gold-500/30 text-xs text-gold-300">
+                <User className="w-3.5 h-3.5 text-gold-400" />
+                <span className="font-bold max-w-[110px] sm:max-w-[140px] truncate">{currentUser.name}</span>
+                <span className="text-[10px] px-1.5 py-0.5 bg-gold-500/20 rounded font-semibold text-gold-400">
+                  {currentUser.role === 'admin' ? 'ॲडमिन' : 'मित्र'}
+                </span>
+              </div>
+              {onLogout && (
+                <button
+                  onClick={onLogout}
+                  title="लॉगआउट करा"
+                  className="p-1.5 rounded-lg bg-navy-900 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-navy-750 transition-colors"
+                >
+                  <LogOut className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+          )}
+
           {/* 60-Day Progress Pill */}
           <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1 rounded-full bg-navy-900 border border-navy-750 text-xs">
             <Calendar className="w-3.5 h-3.5 text-gold-400" />

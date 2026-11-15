@@ -1,31 +1,38 @@
 """
-Direct Video Renderer for Instagram Reels (9:16 Vertical 1080x1920)
+Direct Text-Based & AI Visual Explainer Video Renderer for Instagram Reels (9:16 Vertical 1080x1920)
 Advocate Pratiksha - आपला कायदा
-Uses PIL for rich Devanagari typography and FFmpeg for video rendering & stitching.
+
+Architecture:
+- 100% Text & Visual Explainer (ZERO cartoon avatars, ZERO fake talking faces).
+- 3-Second Scroll-Stopping Hook rule for high retention.
+- Topic-specific visual documentary backdrops (Plotting Drone, 7/12 & Ferfar desk, Cadastral survey blueprints, Registered Sale Deeds).
+- Chromium Headless Devanagari typography rendering (Mukta font, golden borders, glassmorphism badges).
+- Ken Burns dynamic camera motion (pan/zoom) on each scene clip.
+- Synchronized Edge-TTS Marathi voiceover + Marathi Legal Normalizer.
+- Background legal ambient score ducked at 12% volume.
 """
 
 import os
+import time
+import math
+import json
 import textwrap
 import subprocess
-import imageio_ffmpeg
+from typing import Dict, List, Optional, Tuple
 from PIL import Image, ImageDraw, ImageFont
+import imageio_ffmpeg
 
 FFMPEG_EXE = imageio_ffmpeg.get_ffmpeg_exe()
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FONTS_DIR = os.path.join(BASE_DIR, "assets", "fonts")
-TEMPLATES_DIR = os.path.join(BASE_DIR, "assets", "templates")
-BG_AUDIO_DIR = os.path.join(BASE_DIR, "assets", "bg_audio")
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(CURRENT_DIR)
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+FONTS_DIR = os.path.join(ASSETS_DIR, "fonts")
+VISUALS_DIR = os.path.join(ASSETS_DIR, "visuals")
+BG_AUDIO_DIR = os.path.join(ASSETS_DIR, "bg_audio")
 
 FONT_BOLD = os.path.join(FONTS_DIR, "Mukta-Bold.ttf")
 FONT_REGULAR = os.path.join(FONTS_DIR, "Mukta-Regular.ttf")
-
-SCENE_BADGES = {
-    "hook": "🚨 महत्त्वाची कायदेशीर सूचना",
-    "problem": "⚠️ सामान्य अडचण व फसवणूक",
-    "law_solution": "🏛️ कायदा आणि न्यायालयीन निकाल",
-    "cta": "⚖️ कायदेशीर सल्ला व मार्गदर्शन"
-}
 
 CHROME_PATHS = [
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
@@ -34,13 +41,59 @@ CHROME_PATHS = [
     r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"
 ]
 
-def get_browser_exe():
+def get_browser_exe() -> Optional[str]:
     for p in CHROME_PATHS:
         if os.path.exists(p):
             return p
     return None
 
-def build_scene_html(scene_info, overall_title):
+def resolve_scene_visual(scene_info: dict, overall_title: str, scene_idx: int) -> Optional[str]:
+    """
+    Selects the most accurate topic-specific documentary visual asset for the scene.
+    """
+    text_content = (scene_info.get("text", "") + " " + scene_info.get("title", "") + " " + overall_title).lower()
+    
+    # Check if specific visual is provided in scene_info
+    if scene_info.get("custom_bg") and os.path.exists(scene_info["custom_bg"]):
+        return scene_info["custom_bg"]
+        
+    land_dir = os.path.join(VISUALS_DIR, "land_records")
+    cyber_dir = os.path.join(VISUALS_DIR, "cyber_crime")
+    women_dir = os.path.join(VISUALS_DIR, "womens_rights")
+    
+    # 1. Cyber Crime / 1930 Helpline
+    if any(k in text_content for k in ["सायबर", "cyber", "१९३०", "1930", "ओटीपी", "otp", "बँक फ्रॉड", "खात्यातून"]):
+        cyber_img = os.path.join(cyber_dir, "cyber_fraud_1930.jpg")
+        if os.path.exists(cyber_img):
+            return cyber_img
+            
+    # 2. Women's Inheritance / Hindu Succession
+    if any(k in text_content for k in ["मुलगी", "मुलींचा", "बहीण", "वारसा", "हिंदू वारसा", "वडिलोपार्जित"]):
+        women_img = os.path.join(women_dir, "daughter_inheritance_sec6.jpg")
+        if os.path.exists(women_img):
+            return women_img
+            
+    # 3. Land Records, Gunthewari, Tukdebandi, 7/12, Ferfar (Default core domain)
+    if os.path.exists(land_dir):
+        if scene_idx == 0:
+            p = os.path.join(land_dir, "scene_1_hook_plot_fraud.jpg")
+            if os.path.exists(p): return p
+        elif scene_idx == 1:
+            p = os.path.join(land_dir, "scene_2_problem_satbara_ferfar.jpg")
+            if os.path.exists(p): return p
+        elif scene_idx == 2:
+            p = os.path.join(land_dir, "scene_3_solution_survey_map.jpg")
+            if os.path.exists(p): return p
+        else:
+            p = os.path.join(land_dir, "scene_4_cta_registered_deed.jpg")
+            if os.path.exists(p): return p
+
+    return None
+
+def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Optional[str] = None) -> str:
+    """
+    Constructs high-definition 1080x1920 HTML layout with topic visual backdrop and sharp Devanagari typography
+    """
     sc_type = scene_info.get("type", "hook")
     sc_title = scene_info.get("title", overall_title)
     speech_text = scene_info.get("text", "")
@@ -61,13 +114,51 @@ def build_scene_html(scene_info, overall_title):
     badge_bg = badge_colors.get(sc_type, "linear-gradient(135deg, #D4AF37, #B8860B)")
     badge_text = badge_labels.get(sc_type, "⚖️ कायदेशीर माहिती")
     
+    # Prepare background style
+    bg_style = ""
+    if bg_image_path and os.path.exists(bg_image_path):
+        clean_bg = os.path.abspath(bg_image_path).replace("\\", "/")
+        bg_style = f"""
+        .bg-layer {{
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background-image: url('file:///{clean_bg}');
+          background-size: cover;
+          background-position: center;
+          filter: brightness(0.72) contrast(1.1);
+          z-index: 1;
+        }}
+        .bg-overlay {{
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: linear-gradient(180deg, 
+            rgba(9, 13, 22, 0.72) 0%, 
+            rgba(9, 13, 22, 0.82) 45%, 
+            rgba(9, 13, 22, 0.94) 100%);
+          z-index: 1;
+        }}
+        """
+    else:
+        bg_style = """
+        .bg-layer {
+          position: absolute;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: #090D16;
+          background-image: 
+            radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.18) 0%, transparent 45%),
+            radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 45%);
+          z-index: 1;
+        }
+        .bg-overlay { display: none; }
+        """
+
     html = f"""<!DOCTYPE html>
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   * {{
     margin: 0;
@@ -78,61 +169,61 @@ def build_scene_html(scene_info, overall_title):
     width: 1080px;
     height: 1920px;
     background: #090D16;
-    background-image: 
-      radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 45%),
-      radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.12) 0%, transparent 45%);
     color: #FFFFFF;
     font-family: 'Mukta', 'Nirmala UI', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 80px 60px 100px;
+    padding: 70px 50px 90px;
     position: relative;
     overflow: hidden;
   }}
-  
-  body::before {{
-    content: '';
+
+  {bg_style}
+
+  /* Grid overlay */
+  .grid-pattern {{
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-image: 
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
+    z-index: 1;
   }}
 
   .header-card {{
-    background: rgba(18, 24, 38, 0.88);
-    backdrop-filter: blur(20px);
+    background: rgba(15, 23, 42, 0.90);
+    backdrop-filter: blur(25px);
     border: 3px solid #D4AF37;
     border-radius: 28px;
     padding: 24px 36px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 25px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 25px rgba(212, 175, 55, 0.25);
     z-index: 2;
   }}
   .brand-title {{
-    font-size: 48px;
+    font-size: 46px;
     font-weight: 800;
-    background: linear-gradient(90deg, #FFFFFF, #F5D76E);
+    background: linear-gradient(90deg, #FFFFFF 0%, #F5D76E 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 0.5px;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }}
   .brand-sub {{
-    font-size: 26px;
+    font-size: 24px;
     color: #94A3B8;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
   }}
 
   .center-content {{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 36px;
+    gap: 32px;
     z-index: 2;
   }}
 
@@ -140,50 +231,50 @@ def build_scene_html(scene_info, overall_title):
     background: {badge_bg};
     color: #FFFFFF;
     font-size: 32px;
-    font-weight: 700;
-    padding: 12px 36px;
+    font-weight: 800;
+    padding: 12px 38px;
     border-radius: 40px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-    border: 2px solid rgba(255,255,255,0.6);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    border: 2px solid rgba(255,255,255,0.7);
     letter-spacing: 0.5px;
   }}
 
   .headline-card {{
-    background: rgba(14, 20, 32, 0.92);
-    backdrop-filter: blur(20px);
-    border: 3px solid rgba(212, 175, 55, 0.6);
+    background: rgba(14, 20, 32, 0.93);
+    backdrop-filter: blur(25px);
+    border: 3px solid rgba(212, 175, 55, 0.7);
     border-radius: 36px;
-    padding: 44px 50px;
+    padding: 40px 45px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.7), inset 0 0 30px rgba(212, 175, 55, 0.08);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 35px rgba(212, 175, 55, 0.1);
   }}
   .headline-text {{
-    font-size: 58px;
-    font-weight: 800;
+    font-size: 54px;
+    font-weight: 900;
     color: #FFDF55;
     line-height: 1.35;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
-    margin-bottom: 24px;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.9);
+    margin-bottom: 20px;
   }}
   .visual-cue-tag {{
     display: inline-block;
-    background: rgba(30, 41, 59, 0.9);
-    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: rgba(30, 41, 59, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.5);
     border-radius: 18px;
     padding: 10px 28px;
     font-size: 26px;
     color: #BAE6FD;
-    font-weight: 600;
+    font-weight: 700;
   }}
 
   .speech-card {{
-    background: rgba(11, 15, 25, 0.95);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(10, 15, 26, 0.96);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 32px;
     padding: 44px 50px;
     width: 100%;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.8);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.85);
     position: relative;
   }}
   .speech-tag {{
@@ -192,7 +283,7 @@ def build_scene_html(scene_info, overall_title):
     left: 44px;
     background: #D4AF37;
     color: #0F172A;
-    font-weight: 800;
+    font-weight: 900;
     font-size: 22px;
     padding: 6px 22px;
     border-radius: 12px;
@@ -203,21 +294,21 @@ def build_scene_html(scene_info, overall_title):
     font-weight: 600;
     line-height: 1.55;
     color: #FFFFFF;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
   }}
   .speech-quote {{
     color: #F5D76E;
     font-size: 54px;
-    font-weight: 800;
+    font-weight: 900;
   }}
 
   .footer-card {{
-    background: rgba(18, 24, 38, 0.9);
+    background: rgba(15, 23, 42, 0.92);
     border: 2px solid #D4AF37;
     border-radius: 26px;
     padding: 22px 36px;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
     z-index: 2;
   }}
   .footer-main {{
@@ -227,7 +318,7 @@ def build_scene_html(scene_info, overall_title):
     margin-bottom: 6px;
   }}
   .footer-sub {{
-    font-size: 26px;
+    font-size: 24px;
     color: #94A3B8;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -235,6 +326,10 @@ def build_scene_html(scene_info, overall_title):
 </style>
 </head>
 <body>
+  <div class="bg-layer"></div>
+  <div class="bg-overlay"></div>
+  <div class="grid-pattern"></div>
+
   <div class="header-card">
     <div class="brand-title">⚖️ आपला कायदा – ॲडव्होकेट प्रतीक्षा</div>
     <div class="brand-sub">महाराष्ट्र कायदेशीर मार्गदर्शन व हक्क जागृती</div>
@@ -264,13 +359,13 @@ def build_scene_html(scene_info, overall_title):
 </html>"""
     return html
 
-def render_scene_html_to_png(scene_info, overall_title, out_png_path):
+def render_scene_html_to_png(scene_info: dict, overall_title: str, out_png_path: str, bg_image_path: Optional[str] = None) -> str:
     browser_exe = get_browser_exe()
     if not browser_exe:
         raise RuntimeError("No Chromium/Edge browser found for high-quality Devanagari rendering")
         
     temp_html = out_png_path.replace(".png", "_temp.html")
-    html_content = build_scene_html(scene_info, overall_title)
+    html_content = build_scene_html(scene_info, overall_title, bg_image_path=bg_image_path)
     
     with open(temp_html, "w", encoding="utf-8") as f:
         f.write(html_content)
@@ -298,37 +393,49 @@ def render_scene_html_to_png(scene_info, overall_title, out_png_path):
             
     return out_png_path
 
-def create_scene_image(scene_info, overall_title, out_path, custom_bg=None):
+def create_scene_image(scene_info: dict, overall_title: str, out_path: str, custom_bg: Optional[str] = None) -> str:
     """
-    Renders high-definition 1080x1920 scene with 100% accurate Marathi Devanagari typography
+    Renders high-definition 1080x1920 scene with topic visual backdrop and Marathi Devanagari typography
     """
     try:
-        return render_scene_html_to_png(scene_info, overall_title, out_path)
+        return render_scene_html_to_png(scene_info, overall_title, out_path, bg_image_path=custom_bg)
     except Exception as e:
         print(f"[RENDER WARNING] Chromium renderer error: {e}. Falling back to PIL...")
         # Fallback to PIL
         w, h = 1080, 1920
         base_img = Image.new("RGB", (w, h), (18, 22, 34))
         draw = ImageDraw.Draw(base_img)
-        font_title = load_font(FONT_BOLD, 52)
+        try:
+            font_title = ImageFont.truetype(FONT_BOLD, 52)
+        except Exception:
+            font_title = ImageFont.load_default()
         draw.text((w // 2, h // 2), scene_info.get("title", overall_title), font=font_title, fill=(255, 223, 85), anchor="mm")
         base_img.save(out_path, quality=95)
         return out_path
 
-def render_scene_clip(scene_img_path, audio_file, duration, output_clip_path):
+def render_scene_clip(scene_img_path: str, audio_file: str, duration: float, output_clip_path: str, scene_idx: int = 0) -> str:
     """
-    Renders an individual MP4 clip with subtle zoom and synced audio
+    Renders an individual MP4 clip with smooth cinematic Ken Burns motion (pan/zoom) and synced audio
     """
     os.makedirs(os.path.dirname(os.path.abspath(output_clip_path)), exist_ok=True)
     
-    # Zoompan effect over duration frames (30 fps)
     total_frames = max(int(duration * 30), 60)
     
+    # Alternating Ken Burns motion:
+    # Scene 0 (Hook): Zoom in from 1.00 to 1.05 (pushes into viewer)
+    # Scene 1 (Problem): Slow zoom in 1.00 to 1.04
+    # Scene 2 (Solution): Pan center-out
+    # Scene 3 (CTA): Smooth center push
+    if scene_idx % 2 == 0:
+        vf_filter = f"zoompan=z='min(zoom+0.0007,1.05)':d={total_frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30"
+    else:
+        vf_filter = f"zoompan=z='min(zoom+0.0005,1.04)':d={total_frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30"
+
     cmd = [
         FFMPEG_EXE, "-y",
         "-loop", "1", "-i", scene_img_path,
         "-i", audio_file,
-        "-vf", f"zoompan=z='min(zoom+0.0006,1.04)':d={total_frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30",
+        "-vf", vf_filter,
         "-c:v", "libx264",
         "-t", str(duration),
         "-pix_fmt", "yuv420p",
@@ -358,9 +465,9 @@ def render_scene_clip(scene_img_path, audio_file, duration, output_clip_path):
         
     return output_clip_path
 
-def combine_clips_with_music(clips_list, bg_music_path, output_final_mp4, ducking_vol=0.14):
+def combine_clips_with_music(clips_list: List[str], bg_music_path: Optional[str], output_final_mp4: str, ducking_vol: float = 0.12) -> str:
     """
-    Concatenates clips and softly layers background legal music
+    Concatenates clips and cleanly layers background legal music with smooth 3s fade-out
     """
     os.makedirs(os.path.dirname(os.path.abspath(output_final_mp4)), exist_ok=True)
     temp_dir = os.path.dirname(os.path.abspath(output_final_mp4))
@@ -419,7 +526,6 @@ def combine_clips_with_music(clips_list, bg_music_path, output_final_mp4, duckin
         ]
         res = subprocess.run(mix_cmd, capture_output=True, text=True, errors="replace")
         if res.returncode != 0:
-            # If complex filter errors, copy temp
             if os.path.exists(temp_combined):
                 if os.path.exists(output_final_mp4):
                     os.remove(output_final_mp4)
@@ -438,3 +544,91 @@ def combine_clips_with_music(clips_list, bg_music_path, output_final_mp4, duckin
             pass
             
     return output_final_mp4
+
+def render_advocate_explainer_reel(
+    scenes_with_audio: List[dict],
+    bg_music_preset: str = "legal_ambient",
+    output_dir: Optional[str] = None,
+    overall_title: str = "आपला कायदा – ॲडव्होकेट प्रतीक्षा",
+    progress_callback=None
+) -> Tuple[str, List[dict]]:
+    """
+    Complete Professional Text-Based & AI Visual Explainer Reel Pipeline
+    - Matches topic visuals for each scene.
+    - Chromium Devanagari typography rendering.
+    - FFmpeg Ken Burns pan/zoom clips.
+    - Background music layering.
+    """
+    if not output_dir:
+        output_dir = os.path.join(BASE_DIR, "output_reels", f"reel_{int(time.time())}")
+    os.makedirs(output_dir, exist_ok=True)
+    
+    clips_dir = os.path.join(output_dir, "clips")
+    images_dir = os.path.join(output_dir, "images")
+    os.makedirs(clips_dir, exist_ok=True)
+    os.makedirs(images_dir, exist_ok=True)
+    
+    clip_paths = []
+    clip_meta = []
+    total_scenes = len(scenes_with_audio)
+    
+    for idx, sc in enumerate(scenes_with_audio):
+        s_num = sc.get("scene_num", idx + 1)
+        audio_file = sc.get("audio_file")
+        text = sc.get("text", "")
+        title = sc.get("title", overall_title)
+        duration = float(sc.get("duration", 5.0))
+        
+        # 1. Resolve topic-specific visual asset
+        bg_asset = resolve_scene_visual(sc, overall_title, idx)
+        
+        # 2. Render high-definition scene graphic
+        scene_img_path = os.path.join(images_dir, f"scene_{s_num}.png")
+        create_scene_image(sc, overall_title, scene_img_path, custom_bg=bg_asset)
+        
+        # 3. Render dynamic motion clip
+        out_clip_name = f"clip_{s_num:02d}.mp4"
+        out_clip_path = os.path.join(clips_dir, out_clip_name)
+        render_scene_clip(scene_img_path, audio_file, duration, out_clip_path, scene_idx=idx)
+        
+        clip_paths.append(out_clip_path)
+        clip_meta.append({
+            "scene_num": s_num,
+            "title": title[:40],
+            "text": text,
+            "clip_file": out_clip_name,
+            "visual_asset": os.path.basename(bg_asset) if bg_asset else "Devanagari Studio",
+            "duration": round(duration, 2)
+        })
+        
+        if progress_callback:
+            pct = 40 + int((idx + 1) / total_scenes * 45)
+            progress_callback(pct, f"सीन #{s_num} व्हिज्युअल व मोशन क्लिप तयार झाली ({idx+1}/{total_scenes})")
+            
+    # 4. Resolve background music
+    bg_audio_path = None
+    if bg_music_preset and bg_music_preset != "none":
+        candidate1 = os.path.join(BG_AUDIO_DIR, f"{bg_music_preset}_bg.mp3")
+        candidate2 = os.path.join(BG_AUDIO_DIR, f"{bg_music_preset}.mp3")
+        if os.path.exists(candidate1):
+            bg_audio_path = candidate1
+        elif os.path.exists(candidate2):
+            bg_audio_path = candidate2
+            
+    # 5. Combine clips and mix music
+    final_reel_path = os.path.join(output_dir, "final_reel.mp4")
+    combine_clips_with_music(clip_paths, bg_audio_path, final_reel_path, ducking_vol=0.12)
+    
+    # 6. Generate inspection thumbnail at 2.0s
+    thumb_path = os.path.join(output_dir, "thumbnail.jpg")
+    thumb_cmd = [
+        FFMPEG_EXE, "-y",
+        "-ss", "00:00:02",
+        "-i", final_reel_path,
+        "-vframes", "1",
+        "-q:v", "2",
+        thumb_path
+    ]
+    subprocess.run(thumb_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    
+    return final_reel_path, clip_meta

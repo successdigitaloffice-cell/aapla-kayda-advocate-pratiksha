@@ -1,17 +1,20 @@
 # ⚖️ आपला कायदा – Advocate Pratiksha
 ### AI Legal Content, Video Generation & Instagram Growth Platform
+#### (100% Text-Based & Documentary Visuals • Multi-User Friend Access • Permanent Cloud Deployment)
 
 <div align="center">
 
 [![Live Dashboard](https://img.shields.io/badge/🚀_LIVE_DASHBOARD-OPEN_NOW-D4AF37?style=for-the-badge&logo=google-chrome&logoColor=black)](https://geography-cartoons-soon-incentives.trycloudflare.com)
 [![GitHub Pages](https://img.shields.io/badge/🌐_GITHUB_PAGES-DIRECT_ACCESS-10B981?style=for-the-badge&logo=github&logoColor=white)](https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/)
-[![Mobile PIN](https://img.shields.io/badge/🔒_SECURITY_PIN-2026-6366F1?style=for-the-badge)](https://geography-cartoons-soon-incentives.trycloudflare.com)
+[![Deploy on Render](https://img.shields.io/badge/Render-Deploy_Web_Service-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/deploy)
+[![Deploy on Railway](https://img.shields.io/badge/Railway-Deploy_Stack-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://railway.app/new)
+[![Mobile PIN](https://img.shields.io/badge/🔒_ADMIN_PIN-2026-6366F1?style=for-the-badge)](https://geography-cartoons-soon-incentives.trycloudflare.com)
 
 ### 📲 **थेट डॅशबोर्ड आणि व्हिडिओ स्टुडिओ वापरण्यासाठी खालील लिंकवर क्लिक करा:**
 ## 👉 [https://geography-cartoons-soon-incentives.trycloudflare.com](https://geography-cartoons-soon-incentives.trycloudflare.com) 👈
 *(किंवा GitHub Pages: **[https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/](https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/)**)*
 
-**ही लिंक तुम्ही थेट मोबाईलवर उघडू शकता आणि इतरांना व्हिडिओ बनवण्यासाठी शेअरही करू शकता!**
+**ही लिंक तुम्ही थेट मोबाईलवर उघडू शकता आणि मित्र किंवा सहकाऱ्यांना व्हिडिओ बनवण्यासाठी स्वतंत्र ॲक्सेस कोड देऊ शकता!**
 
 <br/>
 
@@ -22,43 +25,84 @@
 
 ---
 
-## 🏛️ १. आधुनिक ५-टॅब रचना (5 Clean SaaS Tabs)
+## 🏛️ १. आधुनिक ५-टॅब रचना (5 Clean SaaS Architecture)
 
 1. **📊 TAB 1: DASHBOARD (मुख्य विहंगावलोकन):**
    - दैनिक १० ट्रेंडिंग कायदेशीर विषय व #१ अग्रगण्य विषय.
    - ६० दिवस कंटेंट टार्गेट प्रोग्रेस व ९० दिवस विषय ट्रॅकर.
-   - तयार व्हिडिओ मोजणी आणि Instagram Graph API रिअल-टाइम थेट विश्लेषण (खोटे आकडे शून्य).
+   - तयार व्हिडिओ मोजणी आणि Instagram Graph API रिअल-टाइम थेट विश्लेषण (Zero fake numbers).
 
 2. **🔥 TAB 2: TRENDING TOPICS (कायदेशीर ट्रेंड्स):**
    - महाराष्ट्र जमीन महसूल (MLRC १९६६), गुंठेवारी (३१/१२/२०२० कट-ऑफ), तुकडेबंदी कायदा १९४७, ७/१२ फेरफार (कलम १५०), आणि BNSS २०२३ चे रोजचे विषय.
    - १-क्लिक "Send to Video Studio" बटण.
 
-3. **🎬 TAB 3: VIDEO STUDIO (एकात्मिक १-क्लिक व्हिडिओ स्टुडिओ):**
-   - **रेकॉर्डिंग व्हिडिओ (Teleprompter)** आणि **क्रिएटिव्ह AI व्हिडिओ** एकाच वर्कफ्लोमध्ये.
-   - ८-पायऱ्यांचा अखंड वर्कफ्लो: विषय ➡️ स्क्रिप्ट (Format A/B) ➡️ कायदेशीर पडताळणी ➡️ व्हिज्युअल प्रॉम्ट ➡️ ॲडव्होकेट फोटो ➡️ व्हॉईस/व्हिडिओ ➡️ कॅप्शन्स व SEO ➡️ डाऊनलोड.
+3. **🎬 TAB 3: VIDEO STUDIO (१००% टेक्स्ट व डॉक्युमेंटरी व्हिज्युअल व्हिडिओ स्टुडिओ):**
+   - **झिरो अवतार / झिरो सेल्फी / झिरो फेस-मॅचिंग**: पूर्णपणे व्यावसायिक कायदेशीर पुरावे, ७/१२ उतारे, मोजणी नकाशे, फेरफार नोंदवह्या आणि मुद्रांक दस्तऐवजांवर आधारित.
+   - ३-सेकंद हुक नियम (कोणतेही 'नमस्कार मी...' नाही; थेट मुख्य समस्येपासून सुरुवात).
+   - देवनागरी टायपोग्राफी (Mukta-Bold), गोल्डन बॉर्डर आणि केन बर्न्स मोशन इफेक्ट्स.
+   - पार्श्वभूमी ऑडिओ डकिंग (12% व्हॉल्यूम व 3 सेकंद स्मूथ फेड-आऊट).
 
-4. **👤 TAB 4: MY PHOTO / AVATAR STUDIO (माझा फोटो अवतार):**
-   - Advocate Pratiksha यांचा मूळ चेहरा कायमस्वरूपी सुरक्षित सेव्ह.
-   - १००% मूळ चेहरा ओळख टिकवून काळा कोट, पांढरा शर्ट, कॉलर बँड व हायकोर्ट पार्श्वभूमी.
+4. **📁 TAB 4: LEGAL DOCUMENTS & VISUAL LIBRARY (कायदेशीर कागदपत्रे व व्हिज्युअल लायब्ररी):**
+   - महाराष्ट्र जमीन महसूल व फौजदारी कायद्यांशी संबंधित अधिकृत दस्तऐवज.
+   - प्लॉटिंग फ्रॉड अलर्ट, ७/१२ फेरफार डेस्क, कॅडस्ट्रल सर्व्हे मॅप, अधिकृत नोंदणीकृत खरेदीखत.
 
-5. **⚙️ TAB 5: SETTINGS & CLOUD (सेटिंग्ज व सुरक्षा):**
-   - २४/७ Cloudflare HTTPS थेट लिंक, QR कोड आणि ४-अंकी मोबाईल सिक्युरिटी पिन (`2026`).
-   - Gemini API आणि Instagram Graph API जोडणी.
+5. **⚙️ TAB 5: SETTINGS & MULTI-USER CLOUD (सेटिंग्ज व मित्र ॲक्सेस व्यवस्थापन):**
+   - **मित्र ॲक्सेस (Multi-User Friend Access)**: मित्रांना स्वतंत्र वर्कस्पेस, स्क्रिप्ट्स व व्हिडिओ बनवण्यासाठी इनव्हिटेशन कोड व्यवस्थापन.
+   - **ॲडमिन व्यवस्थापन**: नवीन इनव्हिटेशन कोड जनरेट करणे, युझर सक्रिय/बंद करणे आणि वापर ट्रॅक करणे.
+   - २४/७ Cloudflare HTTPS थेट लिंक, QR कोड आणि मोबाईल सिक्युरिटी पिन (`2026`).
 
 ---
 
-## 🚀 २. शेअरिंग व थेट ॲक्सेस लिंक्स (Live Access & Sharing Links)
+## 👥 २. मित्र व सहकारी ॲक्सेस प्रणाली (Multi-User & Friend System)
+
+| युझर प्रकार | लॉगिन पद्धत | उपलब्ध सुविधा |
+| :--- | :--- | :--- |
+| **👑 मुख्य ॲडमिन (Advocate Pratiksha)** | पिन **`2026`** किंवा `advocate.pratiksha.legal@gmail.com` | संपूर्ण डॅशबोर्ड, व्हिडिओ जनरेशन, मित्र खाती व्यवस्थापन, इनव्हिटेशन निर्मिती |
+| **👥 मित्र सदस्य (Invited Friends / Team)** | इनव्हिटेशन कोड **`PRATIKSHA-VIP-2026`** द्वारे नवीन नोंदणी | स्वतंत्र वर्कस्पेस, स्वतःचे कायदेशीर व्हिडिओ, स्वतंत्र स्क्रिप्ट जनरेशन |
+
+---
+
+## ☁️ ३. कायमस्वरूपी क्लाउड डिप्लॉयमेंट (Permanent Cloud Deployment)
+
+हे प्लॅटफॉर्म खालील सर्व क्लाउड सर्व्हिसेसवर थेट चालवण्यासाठी सज्ज आहे:
+
+1. **Docker / Docker Compose**:
+   ```bash
+   docker compose up --build -d
+   ```
+   - Node.js 20 (API & Web: Port 5050)
+   - Python 3.12 + FFmpeg + Chromium (Video Studio: Port 5055)
+
+2. **Render (1-Click Blueprint)**:
+   - `render.yaml` वापरून Render वर Web Service तयार करा.
+
+3. **Railway**:
+   - `railway.json` आणि `Dockerfile` द्वारे थेट 1-क्लिक डिप्लॉय.
+
+4. **GitHub Actions CI/CD**:
+   - `.github/workflows/ci-cd.yml` द्वारे प्रत्येक `git push` वर आपोआप बिल्ड आणि GitHub Pages वर डिप्लॉय.
+
+---
+
+## 🔗 ४. थेट ॲक्सेस व लाइव्ह लिंक्स (Live Access & Sharing Links)
 
 | सेवा / पोर्टल | प्रवेश लिंक (Click to Open) | माहिती |
 | :--- | :--- | :--- |
 | **थेट ऑनलाइन डॅशबोर्ड (Live Cloud)** | 👉 **[https://geography-cartoons-soon-incentives.trycloudflare.com](https://geography-cartoons-soon-incentives.trycloudflare.com)** | २४/७ मोबाईल व पीसीसाठी थेट कार्यरत |
 | **GitHub Pages थेट ॲप** | 👉 **[https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/](https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/)** | थेट ब्राऊझरवरून व्हिडिओ बनवण्यासाठी |
-| **स्थानिक पीसी डॅशबोर्ड** | 👉 **[http://localhost:5050](http://localhost:5050)** | Local Port 5050 |
-| **सिक्युरिटी पिन** | **`2026`** | 🔒 अनधिकृत ॲक्सेसपासून संरक्षण |
+| **GitHub Repository** | 👉 **[https://github.com/successdigitaloffice-cell/aapla-kayda-advocate-pratiksha](https://github.com/successdigitaloffice-cell/aapla-kayda-advocate-pratiksha)** | संपूर्ण सोर्स कोड |
+| **स्थानिक पीसी डॅशबोर्ड** | 👉 **[http://localhost:5050](http://localhost:5050)** | Local Port 5050 (NEVER 5000) |
+| **ॲडमिन सिक्युरिटी पिन** | **`2026`** | 🔒 अनधिकृत ॲक्सेसपासून संरक्षण |
+| **मित्रांसाठी VIP इनव्हिटेशन कोड** | **`PRATIKSHA-VIP-2026`** | 👥 मित्रांच्या मोफत नोंदणीसाठी |
 
 ---
 
-## 🛠️ ३. GitHub वर कोड अपडेट कसा करायचा
+## 🛠️ ५. GitHub वर कोड अपडेट कसा करायचा
 
-डेस्कटॉपवरील **`PUSH_TO_GITHUB.bat`** वर डबल-क्लिक करा.  
+डेस्कटॉपवरील **`PUSH_TO_GITHUB.bat`** वर डबल-क्लिक करा किंवा खालील कमांड चालवा:
+```powershell
+& "D:\INSTA SCRIPT AI\bin\git\cmd\git.exe" add .
+& "D:\INSTA SCRIPT AI\bin\git\cmd\git.exe" commit -m "feat: permanent cloud deployment and multi-user friend access"
+& "D:\INSTA SCRIPT AI\bin\git\cmd\git.exe" push origin main
+```
 सर्व नवीन कोड आणि `docs/` फोल्डर थेट तुमच्या GitHub रिपॉझिटरीवर सिंक होईल!

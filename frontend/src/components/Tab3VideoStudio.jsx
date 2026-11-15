@@ -60,8 +60,7 @@ export default function Tab3VideoStudio({
   });
 
   const [visualPrompt, setVisualPrompt] = useState('');
-  const [avatarList, setAvatarList] = useState([]);
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [selectedVisualAsset, setSelectedVisualAsset] = useState('land_records');
 
   // SEO & Captions
   const [captionText, setCaptionText] = useState('');
@@ -94,26 +93,8 @@ export default function Tab3VideoStudio({
       setTopicTitle(defaultTitle);
       generateWorkflowScript(defaultTitle, 'महाराष्ट्र जमीन महसूल व गुंठेवारी');
     }
-    loadAvatars();
     loadReelsHistory();
   }, [selectedTopic]);
-
-  const loadAvatars = async () => {
-    try {
-      const res = await fetch('/api/avatar/list');
-      if (res.ok) {
-        const data = await res.json();
-        setAvatarList(data.avatars || []);
-        if (data.defaultAvatar) {
-          setSelectedAvatar(data.defaultAvatar);
-        } else if (data.avatars && data.avatars.length > 0) {
-          setSelectedAvatar(data.avatars[0]);
-        }
-      }
-    } catch (e) {
-      console.error('Failed to load avatars in Studio:', e);
-    }
-  };
 
   const loadReelsHistory = async () => {
     try {
@@ -137,31 +118,28 @@ export default function Tab3VideoStudio({
   const generateWorkflowScript = (title, category) => {
     const isLand = (category || '').includes('जमीन') || (category || '').includes('गुंठेवारी') || (title || '').includes('फेरफार');
 
-    const hook = `तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे का? मग हा कायदेशीर नियम नक्की समजून घ्या; नाहीतर मोठे आर्थिक नुकसान होऊ शकते!`;
-    const formatA = `नमस्कार, मी Advocate Pratiksha.\n\n` +
-      `जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा अनधिकृत प्लॉट खरेदी केला असेल किंवा तलाठी फेरफार नोंद प्रमाणित करण्यास टाळाटाळ करत असेल, तर घाबरू नका.\n\n` +
-      `महाराष्ट्र शासन नियमांनुसार सक्षम प्राधिकरणाकडे नियमितीकरण शुल्क (Compounding Fee) भरून गुंठेवारी कायदेशीर करता येते. तसेच तलाठ्याला १५ दिवसांच्या आत फेरफार करणे बंधनकारक आहे.\n\n` +
-      `अधिकार समजून घ्या, जागरूक राहा!`;
+    const hook = `प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!`;
+    const formatA = `महाराष्ट्र जमीन महसूल संहिता कलम १५० आणि गुंठेवारी कायद्यानुसार केवळ खरेदीखत पुरेसे नसते.\n\n` +
+      `जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा १ ते ३ गुंठे प्लॉट घेतला असेल, तर तुकडेबंदी कलम ८ब नुसार अधिकृत मोजणी नकाशा घेऊन सक्षम प्राधिकरणाकडे नियमितीकरण शुल्क भरा.\n\n` +
+      `तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद प्रमाणित करणे कायद्याने बंधनकारक आहे.`;
 
-    const formatB = `नमस्कार, मी Advocate Pratiksha.\n\n` +
-      `जमीन किंवा घर खरेदी करताना या २ पायऱ्या लगेच पूर्ण करा:\n` +
-      `पायरी १: ई-फेरफार पोर्टलवरून अर्जाची स्थिती तपासा आणि कलम १५० अन्वये नोटीस जारी झाली आहे का याची खात्री करा.\n` +
-      `पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यानुसार तहसीलदारांकडे प्रथम अपील नोंदवा.\n\n` +
-      `कायद्याची ही ताकद प्रत्येक नागरिकाला माहीत हवी.`;
+    const formatB = `जमीन किंवा घर खरेदी करताना या २ महत्त्वाच्या कायदेशीर पायऱ्या लगेच पूर्ण करा:\n\n` +
+      `पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२ वर खरेदीदाराच्या नावाची फेरफार नोंद तातडीने तपासा.\n\n` +
+      `पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करा.`;
 
-    const cta = `हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व जमीन खरेदीदार मित्रांना नक्की शेअर करा! Follow आपला कायदा – Advocate Pratiksha.`;
+    const cta = `हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!`;
 
     setScriptData({
       hook,
       bodyFormatA: formatA,
       bodyFormatB: formatB,
-      legalSection: isLand ? 'महाराष्ट्र जमीन महसूल संहिता १९६६ कलम १५० व गुंठेवारी कायदा कलम ३' : 'भारतीय नागरिक सुरक्षा संहिता २०२३ कलम १७५(३)',
+      legalSection: isLand ? 'महाराष्ट्र जमीन महसूल संहिता १९६६ कलम १५० व तुकडेबंदी कलम ८ब' : 'भारतीय नागरिक सुरक्षा संहिता २०२३ कलम १७५(३)',
       callToAction: cta,
       fullText: `${hook}\n\n${formatA}\n\n${cta}`
     });
 
-    setCaptionText(`${title}\n\nकायदेशीर सल्ल्यासाठी पाहा संपूर्ण व्हिडिओ. अधिक माहितीसाठी फॉलो करा आपला कायदा!\n\n#आपलाकायदा #AdvocatePratiksha #LandLaws #Maharashtra #BNSS2023`);
-    setVisualPrompt(`Cinematic vertical reel of female Advocate Pratiksha wearing black advocate coat and white neck band, seated in high court law office, confidently explaining Maharashtra land laws with natural gestures.`);
+    setCaptionText(`${title}\n\nअधिकृत कायदेशीर माहिती व सल्ल्यासाठी पाहा संपूर्ण Reel. अधिक माहितीसाठी फॉलो करा आपला कायदा!\n\n#आपलाकायदा #AdvocatePratiksha #LandLaws #Maharashtra #Satbara #Gunthewari`);
+    setVisualPrompt(`100% Text & Topic Visual Explainer with Cadastral Survey Blueprint, 7/12 Ferfar Register, and Registered Sale Deed Stamps.`);
   };
 
   const copyToClipboard = (text, fieldName) => {
@@ -174,7 +152,7 @@ export default function Tab3VideoStudio({
     setIsPreviewPlaying(true);
     try {
       const speedMap = { slow: 0.95, normal: 1.10, fast: 1.25 };
-      const sample = `नमस्कार, मी Advocate Pratiksha. आपला कायदा मध्ये आपले स्वागत आहे.`;
+      const sample = `प्लॉट खरेदी करताना हा एक कागद तपासला नाही, तर तुमचे लाखो रुपये अडकू शकतात!`;
       const res = await fetch('/api/video-engine/preview-voice', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -210,7 +188,7 @@ export default function Tab3VideoStudio({
     setIsGenerating(true);
     setRenderError(null);
     setRenderProgress(10);
-    setRenderStatusMessage('Google Flow & Marathi Video Engine सुरू होत आहे...');
+    setRenderStatusMessage('100% Text & Topic Visual Explainer Engine सुरू होत आहे...');
 
     try {
       const scriptBody = selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB;
@@ -226,7 +204,6 @@ export default function Tab3VideoStudio({
         speed: chosenSpeed,
         voice: selectedVoice,
         bg_music: selectedMusic,
-        avatar_path: selectedAvatar?.filename || null,
         force_regenerate: true
       };
 
@@ -668,60 +645,56 @@ export default function Tab3VideoStudio({
                 onClick={() => setCurrentStep(5)}
                 className="flex items-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md"
               >
-                <span>पुढील: ॲडव्होकेट फोटो निवड</span>
+                <span>पुढील: कायदेशीर व्हिज्युअल्स व पुरावे</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
 
-        {/* STEP 5: ADVOCATE PHOTO SELECTION */}
+        {/* STEP 5: TOPIC-SPECIFIC LEGAL VISUAL ASSETS */}
         {currentStep === 5 && (
           <div className="space-y-4">
             <h2 className="text-base sm:text-lg font-bold text-white flex items-center space-x-2">
               <span className="w-6 h-6 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center text-xs font-bold">5</span>
-              <span>ॲडव्होकेट फोटो संदर्भ (Advocate Reference Photo)</span>
+              <span>कायदेशीर कागदपत्रे व व्हिज्युअल्स (Topic Visual Assets)</span>
             </h2>
 
-            <div className="p-4 rounded-xl bg-navy-900 border border-navy-750">
-              <p className="text-xs text-slate-300 mb-3">
-                व्हिडिओसाठी खालील कायमस्वरूपी अपलोड केलेल्या फोटोंमधून Advocate Pratiksha यांचा संदर्भ फोटो निवडा:
-              </p>
+            <div className="p-4 rounded-xl bg-navy-900 border border-navy-750 space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="text-xs text-slate-300">
+                  या Reel साठी खालील विषयाशी संबंधित अधिकृत व्हिज्युअल्स व देवनागरी टायपोग्राफी आपोआप सिंक केली जाईल:
+                </p>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shrink-0">
+                  ✓ Zero Avatar / 100% Topic Visuals
+                </span>
+              </div>
 
-              {avatarList.length === 0 ? (
-                <div className="p-6 text-center border border-dashed border-navy-700 rounded-xl">
-                  <p className="text-xs text-slate-400 mb-2">अद्याप कोणताही फोटो अपलोड केलेला नाही.</p>
-                  <button
-                    onClick={() => onNavigateTab && onNavigateTab('photo')}
-                    className="px-4 py-2 rounded-xl bg-gold-500/20 text-gold-400 text-xs font-bold hover:bg-gold-500/30"
-                  >
-                    Tab 4: My Photo Studio मध्ये फोटो अपलोड करा
-                  </button>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="p-3 rounded-xl bg-navy-950 border border-gold-500/50 shadow-md">
+                  <div className="text-[10px] uppercase font-bold text-gold-400 mb-1">सीन १ (0-3s Hook)</div>
+                  <div className="font-bold text-xs text-white mb-1">प्लॉट सीमांकन ड्रोण व्हिज्युअल</div>
+                  <p className="text-[10px] text-slate-400">लेआउट सीमा, धोक्याचा इशारा बॅनर</p>
                 </div>
-              ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {avatarList.map((av) => (
-                    <div
-                      key={av.id || av.filename}
-                      onClick={() => setSelectedAvatar(av)}
-                      className={`cursor-pointer rounded-xl overflow-hidden border-2 transition-all p-1.5 bg-navy-950 text-center ${
-                        selectedAvatar?.filename === av.filename
-                          ? 'border-gold-500 shadow-lg shadow-gold-500/20 ring-1 ring-gold-500'
-                          : 'border-navy-750 hover:border-slate-500'
-                      }`}
-                    >
-                      <img
-                        src={av.url}
-                        alt="Advocate"
-                        className="w-full h-28 object-cover rounded-lg mb-1.5"
-                      />
-                      <span className="text-[11px] font-semibold text-slate-200 block truncate">
-                        {av.filename}
-                      </span>
-                    </div>
-                  ))}
+
+                <div className="p-3 rounded-xl bg-navy-950 border border-gold-500/50 shadow-md">
+                  <div className="text-[10px] uppercase font-bold text-gold-400 mb-1">सीन २ (Problem/Risk)</div>
+                  <div className="font-bold text-xs text-white mb-1">७/१२ व फेरफार रजिस्टर</div>
+                  <p className="text-[10px] text-slate-400">गाव नमुना ७ व १२, तलाठी नोंद</p>
                 </div>
-              )}
+
+                <div className="p-3 rounded-xl bg-navy-950 border border-gold-500/50 shadow-md">
+                  <div className="text-[10px] uppercase font-bold text-gold-400 mb-1">सीन ३ (The Law)</div>
+                  <div className="font-bold text-xs text-white mb-1">भूमी अभिलेख मोजणी नकाशा</div>
+                  <p className="text-[10px] text-slate-400">तुकडेबंदी कलम ८ब, अधिकृत नकाशा</p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-navy-950 border border-gold-500/50 shadow-md">
+                  <div className="text-[10px] uppercase font-bold text-gold-400 mb-1">सीन ४ (Action/CTA)</div>
+                  <div className="font-bold text-xs text-white mb-1">नोंदणीकृत खरेदीखत</div>
+                  <p className="text-[10px] text-slate-400">दुय्यम निबंधक स्टॅम्प, न्यायदेवता हमी</p>
+                </div>
+              </div>
             </div>
 
             <div className="pt-4 flex items-center justify-between">
@@ -736,7 +709,7 @@ export default function Tab3VideoStudio({
                 onClick={() => setCurrentStep(6)}
                 className="flex items-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md"
               >
-                <span>पुढील: व्हिडिओ व ऑडिओ निर्मिती</span>
+                <span>पुढील: व्हिडिओ निर्मिती (Render Reel)</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

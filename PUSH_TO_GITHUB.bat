@@ -15,15 +15,23 @@ set REPO_URL=https://github.com/successdigitaloffice-cell/aapla-kayda-advocate-p
 
 echo [Target Repository]: %REPO_URL%
 echo.
-echo [1/3] Configuring Remote Origin...
+
+echo [1/4] Staging and Committing all project files...
+git add .
+git commit -m "feat: permanent cloud deployment, 100% text-based visual explainer, and multi-user friend access"
+
+echo.
+echo [2/4] Configuring Remote Origin...
 git remote remove origin 2>nul
 git remote add origin %REPO_URL%
 
-echo [2/3] Setting Main Branch...
+echo.
+echo [3/4] Setting Main Branch...
 git branch -M main
 
-echo [3/3] Pushing Code to GitHub...
-echo (जर लॉगिन किंवा टोकन विचारले तर तुमची GitHub माहिती टाका)
+echo.
+echo [4/4] Pushing Code to GitHub...
+echo (जर लॉगिन किंवा टोकन विचारले तर तुमची GitHub माहिती किंवा Personal Access Token टाका)
 echo.
 git push -u origin main
 
@@ -32,13 +40,13 @@ if %errorlevel% equ 0 (
     echo ==============================================================================
     echo  [SUCCESS] GitHub वर सर्व कोड यशस्वीरीत्या अपलोड झाला आहे!
     echo  Repository Link: https://github.com/successdigitaloffice-cell/aapla-kayda-advocate-pratiksha
+    echo  GitHub Pages:   https://successdigitaloffice-cell.github.io/aapla-kayda-advocate-pratiksha/
     echo ==============================================================================
 ) else (
     echo.
     echo ==============================================================================
-    echo  [सूचना] जर रिपॉझिटरी आधीच तयार नसेल, तर कृपया खालील लिंकवर जाऊन 
-    echo  "Create repository" वर १-क्लिक करा:
-    echo  https://github.com/new?name=aapla-kayda-advocate-pratiksha^&private=true
+    echo  [सूचना] जर पुश करताना अडचण आली, तर GitHub क्रेडेंशियल मॅनेजरमध्ये लॉगिन करा
+    echo  किंवा GitHub Personal Access Token (PAT) वापरा.
     echo ==============================================================================
 )
 

@@ -28,8 +28,7 @@ sys.path.insert(0, CURRENT_DIR)
 
 from engine.legal_topics import get_all_topics, get_topic_by_id, generate_custom_script
 from engine.tts_engine import generate_voiceover, generate_scenes_audio, get_audio_duration, speed_to_rate, normalize_marathi_for_speech
-from engine.video_renderer import create_scene_image, render_scene_clip, combine_clips_with_music, BG_AUDIO_DIR
-from engine.avatar_talking_engine import render_advocate_talking_reel, MASTER_AVATAR_PATH, TalkingAvatarSynthesizer
+from engine.video_renderer import create_scene_image, render_scene_clip, combine_clips_with_music, render_advocate_explainer_reel, BG_AUDIO_DIR
 from engine.marathi_normalizer import normalize_marathi_text
 
 app = Flask(__name__, static_folder="public", static_url_path="")
@@ -311,21 +310,8 @@ def api_generate_script():
         "script": script
     })
 
-def resolve_avatar_image(avatar_hint=None):
-    if avatar_hint and os.path.exists(avatar_hint):
-        return avatar_hint
-    if os.path.exists(MASTER_AVATAR_PATH):
-        return MASTER_AVATAR_PATH
-    backend_avatars = r"D:\INSTA SCRIPT AI\backend\data\uploads\avatars"
-    if os.path.exists(backend_avatars):
-        for f in os.listdir(backend_avatars):
-            if f.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
-                return os.path.join(backend_avatars, f)
-    return None
-
 def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, custom_audio_file, speed=1.10, avatar_path=None):
     try:
-        resolved_avatar = resolve_avatar_image(avatar_path)
         JOBS[job_id]["status"] = "processing"
         JOBS[job_id]["progress"] = 15
         JOBS[job_id]["message"] = f"मराठी कायदेशीर उच्चार आणि व्हॉइस-ओव्हर ({speed:.2f}x) तयार होत आहे..."
@@ -366,19 +352,24 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
         else:
             scenes_with_audio = generate_scenes_audio(scenes, voice_key=voice_key, speed=speed, output_dir=reel_dir)
             
-        # 3. Real Talking Advocate Avatar Video Generation with Lip-Sync
+        # 3. 100% Text-Based & AI Visual Explainer Reel Generation (No Avatars, No Lip-Sync)
         JOBS[job_id]["progress"] = 55
-        JOBS[job_id]["message"] = "Advocate Pratiksha यांच्या मूळ फोटोवरून लिप-सिंक (Lip Sync) व टॉकिंग अवतार व्हिडिओ रेंडर होत आहे..."
+        JOBS[job_id]["message"] = "कायदेशीर कागदपत्रे (७/१२, मोजणी नकाशा, खरेदीखत) आणि देवनागरी टायपोग्राफी तयार होत आहे..."
         
-        final_mp4_path, clip_meta = render_advocate_talking_reel(
+        def job_progress_cb(pct, msg):
+            JOBS[job_id]["progress"] = pct
+            JOBS[job_id]["message"] = msg
+
+        final_mp4_path, clip_meta = render_advocate_explainer_reel(
             scenes_with_audio=scenes_with_audio,
-            avatar_path=resolved_avatar,
             bg_music_preset=bg_music_preset,
-            output_dir=reel_dir
+            output_dir=reel_dir,
+            overall_title=script_data.get("title_mr", "आपला कायदा – ॲडव्होकेट प्रतीक्षा"),
+            progress_callback=job_progress_cb
         )
         
         JOBS[job_id]["progress"] = 95
-        JOBS[job_id]["message"] = "अंतिम व्हिडिओ MP4 आणि ऑडिओ एकत्र सिंक केला जात आहे..."
+        JOBS[job_id]["message"] = "अंतिम 9:16 Full HD व्हिडिओ (1080x1920) सिंक केला जात आहे..."
         
         final_dur = get_audio_duration(final_mp4_path)
         final_size_mb = round(os.path.getsize(final_mp4_path) / (1024 * 1024), 2)
@@ -392,8 +383,7 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             "voice": voice_key,
             "speed": speed,
             "bg_music": bg_music_preset,
-            "avatar_used": os.path.basename(resolved_avatar) if resolved_avatar else "Default",
-            "talking_avatar_rendered": True,
+            "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
             "clips": clip_meta,
             "final_video": "final_reel.mp4"
         }
@@ -402,7 +392,7 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             
         JOBS[job_id]["progress"] = 100
         JOBS[job_id]["status"] = "completed"
-        JOBS[job_id]["message"] = "अभिनंदन! Advocate Pratiksha यांचा टॉकिंग अवतार व्हिडिओ (Reel MP4) यशस्वीरीत्या तयार झाला आहे."
+        JOBS[job_id]["message"] = "अभिनंदन! 100% Text & AI Visual Explainer Reel (1080x1920) यशस्वीरीत्या तयार झाला आहे."
         JOBS[job_id]["result"] = {
             "folder_name": folder_name,
             "final_video_url": f"/api/preview/{folder_name}/final_reel.mp4",
@@ -410,14 +400,14 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             "duration": round(final_dur, 1),
             "size_mb": final_size_mb,
             "speed": speed,
-            "talking_avatar": True,
+            "explainer_mode": True,
             "clips": clip_meta
         }
     except Exception as e:
         import traceback
         traceback.print_exc()
         JOBS[job_id]["status"] = "failed"
-        JOBS[job_id]["error"] = str(e)
+        JOBS[job_id]["error"] = traceback.format_exc()
         JOBS[job_id]["message"] = f"त्रुटी: {str(e)}"
 
 @app.route("/api/preview-voice", methods=["POST"])
@@ -458,7 +448,7 @@ def serve_preview_audio(filename):
 def api_generate_video():
     import hashlib
     data = request.json or {}
-    raw_script = data.get("script")
+    raw_script = data.get("script") or data.get("script_data")
     script_text = data.get("script_text")
     script_title = data.get("script_title")
     duration = str(data.get("duration", "45"))

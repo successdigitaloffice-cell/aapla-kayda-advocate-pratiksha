@@ -14,10 +14,18 @@ import {
   Download,
   AlertTriangle,
   Sliders,
-  Volume2
+  Volume2,
+  Users,
+  UserPlus,
+  Copy,
+  Check,
+  UserCheck,
+  UserX,
+  Sparkles,
+  ShieldAlert
 } from 'lucide-react';
 
-export default function Tab5Settings() {
+export default function Tab5Settings({ currentUser, authToken, notify }) {
   const [settings, setSettings] = useState({
     gemini_api_key: '',
     instagram_access_token: '',
@@ -33,11 +41,22 @@ export default function Tab5Settings() {
   const [saveStatus, setSaveStatus] = useState(null);
   const [backupStatus, setBackupStatus] = useState(null);
 
+  // Multi-user & Friend Access Management State (Admin only)
+  const [usersList, setUsersList] = useState([]);
+  const [invitationsList, setInvitationsList] = useState([]);
+  const [newInviteRecipient, setNewInviteRecipient] = useState('');
+  const [newInviteMaxUses, setNewInviteMaxUses] = useState(5);
+  const [inviteCreating, setInviteCreating] = useState(false);
+  const [copiedCode, setCopiedCode] = useState('');
+
   useEffect(() => {
     loadSettings();
     loadBackups();
     loadPublicUrl();
-  }, []);
+    if (currentUser?.role === 'admin') {
+      loadAdminData();
+    }
+  }, [currentUser]);
 
   const loadSettings = async () => {
     try {
@@ -80,6 +99,24 @@ export default function Tab5Settings() {
     }
   };
 
+  const loadAdminData = async () => {
+    try {
+      const token = authToken || localStorage.getItem('ak_auth_token') || 'admin_token_default_local';
+      const res = await fetch('/api/admin/users', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.users) setUsersList(data.users);
+        if (data.invitations) setInvitationsList(data.invitations);
+      }
+    } catch (e) {
+      console.error('Error loading admin users data:', e);
+    }
+  };
+
   const handleSaveSettings = async () => {
     setLoading(true);
     try {
@@ -115,6 +152,68 @@ export default function Tab5Settings() {
     }
   };
 
+  const handleGenerateInvite = async (e) => {
+    e.preventDefault();
+    if (!newInviteRecipient.trim()) return;
+    setInviteCreating(true);
+    try {
+      const token = authToken || localStorage.getItem('ak_auth_token') || 'admin_token_default_local';
+      const res = await fetch('/api/admin/create-invite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          recipient_name: newInviteRecipient.trim(),
+          max_uses: Number(newInviteMaxUses) || 5
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setNewInviteRecipient('');
+        loadAdminData();
+        if (notify) notify(`नवीन इनव्हिटेशन कोड ${data.code} तयार झाला!`);
+      } else {
+        alert(data.error || 'इनव्हिटेशन तयार करता आले नाही.');
+      }
+    } catch (err) {
+      alert('त्रुटी: ' + err.message);
+    } finally {
+      setInviteCreating(false);
+    }
+  };
+
+  const handleToggleUser = async (userId) => {
+    try {
+      const token = authToken || localStorage.getItem('ak_auth_token') || 'admin_token_default_local';
+      const res = await fetch('/api/admin/toggle-user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ userId })
+      });
+      const data = await res.json();
+      if (data.success) {
+        loadAdminData();
+        if (notify) notify(data.message);
+      } else {
+        alert(data.error || 'क्रिया अयशस्वी.');
+      }
+    } catch (err) {
+      alert('त्रुटी: ' + err.message);
+    }
+  };
+
+  const copyToClipboard = (text, codeId) => {
+    navigator.clipboard.writeText(text);
+    setCopiedCode(codeId);
+    setTimeout(() => setCopiedCode(''), 3000);
+    if (notify) notify('इनव्हिटेशन कोड क्लिपबोर्डवर कॉपी झाला!');
+  };
+
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
       {/* Header Banner */}
@@ -128,7 +227,7 @@ export default function Tab5Settings() {
               सिस्टीम सेटिंग्ज, सुरक्षा व क्लाउड डिप्लॉयमेंट
             </h1>
             <p className="text-xs text-slate-400">
-              API जोडणी, मोबाईल ॲक्सेस, सिक्युरिटी पिन आणि डेटाबेस बॅकअप व्यवस्थापन
+              API जोडणी, मोबाईल ॲक्सेस, युझर मॅनेजमेंट आणि डेटाबेस बॅकअप व्यवस्थापन
             </p>
           </div>
         </div>
@@ -313,6 +412,7 @@ export default function Tab5Settings() {
           <div className="p-3 rounded-xl bg-navy-900 border border-navy-750 text-xs text-slate-400 space-y-1">
             <p><strong>भाषा:</strong> मराठी (Marathi - Official Legal Tone)</p>
             <p><strong>आस्पेक्ट रेशो:</strong> 9:16 Vertical Instagram Reel (1080x1920)</p>
+            <p><strong>व्हिज्युअल मॉडेल:</strong> १००% कायदेशीर दस्तऐवज व पुरावे (Documentary Explainer)</p>
           </div>
         </div>
 
@@ -356,6 +456,173 @@ export default function Tab5Settings() {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Card 5: Full Width - Multi-User Friend Access & User Management */}
+      <div className="bg-navy-850 border border-gold-500/30 rounded-2xl p-5 sm:p-6 shadow-xl space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-navy-750 pb-4">
+          <div className="flex items-center space-x-3">
+            <div className="p-2.5 rounded-xl bg-gold-500/20 text-gold-400">
+              <Users className="w-6 h-6" />
+            </div>
+            <div>
+              <h2 className="text-base sm:text-lg font-bold text-white flex items-center space-x-2">
+                <span>मित्र व सहकारी ॲक्सेस व्यवस्थापन (Friend & Multi-User Access)</span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] bg-gold-500/20 text-gold-400 font-bold border border-gold-500/30">
+                  Secure Isolation
+                </span>
+              </h2>
+              <p className="text-xs text-slate-400">
+                मित्रांना त्यांच्या स्वतंत्र वर्कस्पेस, स्क्रिप्ट व व्हिडिओ जनरेशनसाठी इनव्हिटेशन कोड द्या.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <span className="text-xs font-semibold text-slate-300">
+              एकूण युझर्स: <strong className="text-gold-400 font-mono">{usersList.length || 1}</strong>
+            </span>
+          </div>
+        </div>
+
+        {/* Generate New Invitation Code Form */}
+        {currentUser?.role === 'admin' ? (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="bg-navy-900 border border-navy-750 rounded-xl p-4 space-y-4">
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center space-x-1.5 text-gold-400">
+                <UserPlus className="w-4 h-4" />
+                <span>नवीन इनव्हिटेशन कोड तयार करा</span>
+              </h3>
+
+              <form onSubmit={handleGenerateInvite} className="space-y-3">
+                <div>
+                  <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+                    मित्राचे / वकिलाचे नाव:
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={newInviteRecipient}
+                    onChange={(e) => setNewInviteRecipient(e.target.value)}
+                    placeholder="उदा. ॲड. सचिन मोरे"
+                    className="w-full bg-navy-950 border border-navy-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] font-semibold text-slate-300 block mb-1">
+                    कमाल वापर मर्यादा (Max Uses):
+                  </label>
+                  <select
+                    value={newInviteMaxUses}
+                    onChange={(e) => setNewInviteMaxUses(e.target.value)}
+                    className="w-full bg-navy-950 border border-navy-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-gold-500"
+                  >
+                    <option value="1">१ व्यक्ती (Single Use)</option>
+                    <option value="5">५ व्यक्ती (Small Team)</option>
+                    <option value="10">१० व्यक्ती (Law Firm)</option>
+                    <option value="50">५० व्यक्ती (VIP Batch)</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={inviteCreating}
+                  className="w-full flex items-center justify-center space-x-1.5 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 text-navy-950 py-2 rounded-lg font-bold text-xs shadow-md transition-all disabled:opacity-50"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{inviteCreating ? 'कोड तयार होत आहे...' : 'कोड जनरेट करा'}</span>
+                </button>
+              </form>
+            </div>
+
+            {/* Active Invitations List */}
+            <div className="bg-navy-900 border border-navy-750 rounded-xl p-4 space-y-3">
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center space-x-1.5 text-gold-400">
+                <Key className="w-4 h-4" />
+                <span>सक्रिय इनव्हिटेशन कोड्स ({invitationsList.length})</span>
+              </h3>
+
+              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                {invitationsList.map((inv) => (
+                  <div
+                    key={inv.code}
+                    className="p-2.5 rounded-lg bg-navy-950 border border-navy-800 flex items-center justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center space-x-2">
+                        <span className="font-mono text-xs font-bold text-gold-400">{inv.code}</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-navy-850 text-slate-400">
+                          {inv.used_count}/{inv.max_uses} वापरले
+                        </span>
+                      </div>
+                      <span className="text-[10px] text-slate-400 block mt-0.5">{inv.recipient_name}</span>
+                    </div>
+
+                    <button
+                      onClick={() => copyToClipboard(inv.code, inv.code)}
+                      className="p-1.5 rounded-lg bg-navy-850 hover:bg-gold-500/20 text-slate-300 hover:text-gold-400 border border-navy-750 transition-colors"
+                      title="कोड कॉपी करा"
+                    >
+                      {copiedCode === inv.code ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Users Registered Table */}
+            <div className="bg-navy-900 border border-navy-750 rounded-xl p-4 space-y-3">
+              <h3 className="text-xs font-bold text-white uppercase tracking-wider flex items-center space-x-1.5 text-emerald-400">
+                <UserCheck className="w-4 h-4" />
+                <span>नोंदणीकृत युझर्स ({usersList.length})</span>
+              </h3>
+
+              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
+                {usersList.map((usr) => (
+                  <div
+                    key={usr.id}
+                    className="p-2.5 rounded-lg bg-navy-950 border border-navy-800 flex items-center justify-between"
+                  >
+                    <div className="truncate mr-2">
+                      <div className="flex items-center space-x-1.5">
+                        <span className="text-xs font-bold text-white truncate">{usr.name}</span>
+                        <span className={`text-[9px] px-1.5 py-0.2 rounded font-semibold ${usr.role === 'admin' ? 'bg-gold-500/20 text-gold-400' : 'bg-cyan-500/20 text-cyan-400'}`}>
+                          {usr.role === 'admin' ? 'ॲडमिन' : 'मित्र'}
+                        </span>
+                      </div>
+                      <span className="text-[10px] text-slate-400 block truncate">{usr.email}</span>
+                      <span className="text-[9px] text-slate-500">व्हिडिओ: {usr.videos_generated_count || 0}</span>
+                    </div>
+
+                    {usr.role !== 'admin' && (
+                      <button
+                        onClick={() => handleToggleUser(usr.id)}
+                        className={`px-2 py-1 rounded text-[10px] font-bold border transition-colors ${
+                          usr.is_active
+                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30 hover:bg-red-500/20 hover:text-red-400'
+                            : 'bg-red-500/10 text-red-400 border-red-500/30 hover:bg-emerald-500/20 hover:text-emerald-400'
+                        }`}
+                        title={usr.is_active ? 'खाते तात्पुरते बंद करा' : 'खाते पुन्हा सक्रिय करा'}
+                      >
+                        {usr.is_active ? 'सक्रिय' : 'बंद'}
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-navy-900 border border-navy-750 rounded-xl p-4 text-center space-y-2">
+            <p className="text-xs text-slate-300">
+              तुम्ही <strong>मित्र (Friend / Guest)</strong> म्हणून लॉगिन आहात.
+            </p>
+            <p className="text-[11px] text-slate-400">
+              तुमची जनरेट केलेली सर्व स्क्रिप्ट्स व व्हिडिओ पूर्णपणे सुरक्षित व वेगळे (Isolated) ठेवले आहेत.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
