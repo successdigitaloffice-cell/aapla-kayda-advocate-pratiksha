@@ -23,6 +23,7 @@ data/*.db-shm
 # Backups & local logs
 backups/
 logs/
+scratch/
 *.log
 
 # Frontend build outputs

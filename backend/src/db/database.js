@@ -294,7 +294,8 @@ function migrateTableColumns() {
   const trendNewCols = [
     ['trend_score', 'INTEGER DEFAULT 85'],
     ['score_breakdown', 'TEXT'],
-    ['competition_saturation', 'TEXT']
+    ['competition_saturation', 'TEXT'],
+    ['real_life_scenario', 'TEXT']
   ];
   for (const [col, type] of trendNewCols) {
     if (trendCols.size > 0 && !trendCols.has(col)) {

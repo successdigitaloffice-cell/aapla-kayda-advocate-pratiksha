@@ -199,6 +199,7 @@ export default function Tab2TrendingTopics({
             className="w-full bg-navy-900 border border-navy-700/80 rounded-xl px-3 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-gold-500"
           >
             <option value="all">सर्व कायदेशीर प्रवर्ग (All Categories)</option>
+            <option value="प्रेम">प्रेम व कौटुंबिक कायदे (Love Life & Marriage)</option>
             <option value="जमीन">जमीन महसूल व गुंठेवारी</option>
             <option value="तुकडेबंदी">तुकडेबंदी व खरेदीखत</option>
             <option value="७/१२">७/१२ फेरफार व वारस नोंद</option>
@@ -257,6 +258,20 @@ export default function Tab2TrendingTopics({
               <p className="text-xs text-slate-300 mt-2 line-clamp-3 leading-relaxed">
                 {item.why}
               </p>
+
+              {item.raw?.real_life_scenario && (
+                <div className="mt-2.5 p-2.5 rounded-xl bg-gold-500/10 border border-gold-500/25 text-xs text-amber-200/90 leading-relaxed italic">
+                  <span className="font-bold text-gold-400 not-italic mr-1.5">💡 वास्तववादी उदाहरण:</span>
+                  "{item.raw.real_life_scenario}"
+                </div>
+              )}
+
+              {item.raw?.search_signals && (
+                <div className="mt-2 p-2 rounded-lg bg-navy-900 border border-blue-500/20 text-[11px] text-slate-300">
+                  <span className="font-bold text-blue-400 mr-1">🔍 सर्च ट्रेंड्स (Google व Meta):</span>
+                  <span>{item.raw.search_signals}</span>
+                </div>
+              )}
 
               <div className="mt-3 pt-3 border-t border-navy-800 flex flex-wrap items-center gap-2 text-[11px]">
                 <div className="text-slate-400 flex items-center">
