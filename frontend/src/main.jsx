@@ -7,8 +7,8 @@ import './index.css';
 const originalFetch = window.fetch;
 window.fetch = function(input, init) {
   if (typeof input === 'string') {
-    if (window.location.hostname.includes('github.io')) {
-      const liveBackend = 'https://geography-cartoons-soon-incentives.trycloudflare.com';
+    if (window.location.hostname.includes('github.io') || window.location.hostname.includes('netlify.app') || window.location.hostname.includes('vercel.app')) {
+      const liveBackend = window.__AK_BACKEND_URL__ || 'https://powers-segments-measurements-lenders.trycloudflare.com';
       if (input.startsWith('/api') || input.startsWith('/uploads')) {
         input = `${liveBackend}${input}`;
       }
