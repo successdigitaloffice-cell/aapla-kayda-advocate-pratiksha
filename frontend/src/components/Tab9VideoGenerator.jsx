@@ -24,14 +24,13 @@ import {
   Sliders,
   ShieldCheck
 } from 'lucide-react';
+import { resolveMediaUrl, downloadFileFromUrl } from '../utils/api';
 
-const VIDEO_API_BASE = '/video-api';
+const VIDEO_API_BASE = '/api/video-engine';
 
 const toVideoUrl = (p) => {
   if (!p) return '';
-  if (p.startsWith('http://') || p.startsWith('https://')) return p;
-  if (p.startsWith('/api/')) return `/video-api${p.replace('/api', '')}`;
-  return `/video-api${p}`;
+  return resolveMediaUrl(p);
 };
 
 const SAMPLE_SCRIPTS = [
@@ -1216,9 +1215,9 @@ export default function Tab9VideoGenerator({ activeReel, onNotify }) {
             {/* Download Button */}
             {videoResult?.download_url && (
               <div style={{ width: '280px', marginTop: '14px', textAlign: 'center' }}>
-                <a
-                  href={videoResult.download_url}
-                  download
+                <button
+                  type="button"
+                  onClick={() => downloadFileFromUrl(videoResult.download_url, `Advocate_Pratiksha_Reel_${Date.now()}.mp4`)}
                   className="btn btn-download btn-block"
                   style={{
                     background: 'linear-gradient(135deg, #10B981, #059669)',
@@ -1230,13 +1229,15 @@ export default function Tab9VideoGenerator({ activeReel, onNotify }) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    textDecoration: 'none',
+                    width: '100%',
+                    border: 'none',
+                    cursor: 'pointer',
                     boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
                   }}
                 >
                   <Download size={18} />
                   <span>Download Final MP4</span>
-                </a>
+                </button>
                 <div style={{ fontSize: '0.75rem', color: '#94A3B8', marginTop: '6px' }}>
                   कालावधी: <strong style={{ color: '#FFF' }}>{videoResult.duration}s</strong> | आकार: <strong style={{ color: '#FFF' }}>{videoResult.size_mb} MB</strong> | गती: <strong style={{ color: '#34D399' }}>{videoResult.speed || speakingSpeed}x</strong>
                 </div>

@@ -24,6 +24,7 @@ import {
   Music,
   Check
 } from 'lucide-react';
+import { resolveMediaUrl, downloadFileFromUrl } from '../utils/api';
 
 export default function Tab3VideoStudio({
   selectedTopic,
@@ -106,8 +107,8 @@ export default function Tab3VideoStudio({
         if (reels.length > 0 && !renderedVideoUrl) {
           // Pre-load latest completed reel into Step 8 preview
           const latest = reels[0];
-          setRenderedVideoUrl(latest.preview_url);
-          setDownloadVideoUrl(latest.download_url);
+          setRenderedVideoUrl(resolveMediaUrl(latest.preview_url));
+          setDownloadVideoUrl(resolveMediaUrl(latest.download_url));
         }
       }
     } catch (e) {
@@ -166,7 +167,8 @@ export default function Tab3VideoStudio({
         const data = await res.json();
         if (data.audio_url) {
           const directUrl = data.audio_url.replace('/api/', '/api/video-engine/');
-          const audio = new Audio(directUrl);
+          const resolvedAudio = resolveMediaUrl(directUrl);
+          const audio = new Audio(resolvedAudio);
           audioPreviewRef.current = audio;
           audio.play();
           audio.onended = () => setIsPreviewPlaying(false);
@@ -227,8 +229,8 @@ export default function Tab3VideoStudio({
         setRenderProgress(100);
         setRenderStatusMessage('व्हिडिओ तयार आहे!');
         const folder = initData.result.folder_name;
-        setRenderedVideoUrl(`/api/video-engine/preview/${folder}/final_reel.mp4`);
-        setDownloadVideoUrl(`/api/video-engine/download/${folder}/final_reel.mp4`);
+        setRenderedVideoUrl(resolveMediaUrl(`/api/video-engine/preview/${folder}/final_reel.mp4`));
+        setDownloadVideoUrl(resolveMediaUrl(`/api/video-engine/download/${folder}/final_reel.mp4`));
         setIsGenerating(false);
         setCurrentStep(8);
         loadReelsHistory();
@@ -257,8 +259,8 @@ export default function Tab3VideoStudio({
             setRenderStatusMessage('अभिनंदन! तुमचा व्हिडिओ यशस्वीरीत्या तयार झाला आहे.');
             const folder = job.result?.folder_name;
             if (folder) {
-              setRenderedVideoUrl(`/api/video-engine/preview/${folder}/final_reel.mp4`);
-              setDownloadVideoUrl(`/api/video-engine/download/${folder}/final_reel.mp4`);
+              setRenderedVideoUrl(resolveMediaUrl(`/api/video-engine/preview/${folder}/final_reel.mp4`));
+              setDownloadVideoUrl(resolveMediaUrl(`/api/video-engine/download/${folder}/final_reel.mp4`));
             }
             setCurrentStep(8);
             loadReelsHistory();
@@ -983,11 +985,12 @@ export default function Tab3VideoStudio({
                   <div className="w-full flex flex-col items-center">
                     <div className="relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden border-2 border-gold-500/50 shadow-2xl bg-black mb-3">
                       <video
-                        key={renderedVideoUrl}
+                        key={resolveMediaUrl(renderedVideoUrl)}
                         controls
                         playsInline
+                        crossOrigin="anonymous"
                         autoPlay
-                        src={renderedVideoUrl}
+                        src={resolveMediaUrl(renderedVideoUrl)}
                         className="w-full h-full object-contain"
                       />
                     </div>
@@ -999,14 +1002,14 @@ export default function Tab3VideoStudio({
                     </div>
 
                     {downloadVideoUrl && (
-                      <a
-                        href={downloadVideoUrl}
-                        download={`Advocate_Pratiksha_Reel_${Date.now()}.mp4`}
-                        className="mt-3 w-full max-w-[260px] flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 font-extrabold text-xs shadow-lg shadow-gold-500/20 transition-all"
+                      <button
+                        type="button"
+                        onClick={() => downloadFileFromUrl(downloadVideoUrl, `Advocate_Pratiksha_${(topicTitle || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
+                        className="mt-3 w-full max-w-[260px] flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 font-extrabold text-xs shadow-lg shadow-gold-500/20 transition-all cursor-pointer"
                       >
                         <Download className="w-4 h-4" />
                         <span>Reel MP4 डाऊनलोड करा</span>
-                      </a>
+                      </button>
                     )}
                   </div>
                 ) : (
@@ -1069,14 +1072,14 @@ export default function Tab3VideoStudio({
                 {/* Primary Action Buttons */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                   {downloadVideoUrl && (
-                    <a
-                      href={downloadVideoUrl}
-                      download="Advocate_Pratiksha_Reel.mp4"
-                      className="flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 font-bold text-xs sm:text-sm shadow-lg shadow-gold-500/20 transition-all"
+                    <button
+                      type="button"
+                      onClick={() => downloadFileFromUrl(downloadVideoUrl, `Advocate_Pratiksha_${(topicTitle || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
+                      className="flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 font-bold text-xs sm:text-sm shadow-lg shadow-gold-500/20 transition-all cursor-pointer"
                     >
                       <Download className="w-4 h-4" />
                       <span>व्हिडिओ डाऊनलोड (.MP4)</span>
-                    </a>
+                    </button>
                   )}
 
                   <button
@@ -1119,22 +1122,24 @@ export default function Tab3VideoStudio({
                       </div>
                       <div className="mt-2.5 flex items-center space-x-2">
                         <button
+                          type="button"
                           onClick={() => {
-                            setRenderedVideoUrl(reel.preview_url);
-                            setDownloadVideoUrl(reel.download_url);
+                            setRenderedVideoUrl(resolveMediaUrl(reel.preview_url));
+                            setDownloadVideoUrl(resolveMediaUrl(reel.download_url));
                           }}
-                          className="flex-1 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-750 text-[11px] font-bold text-gold-400 flex items-center justify-center space-x-1"
+                          className="flex-1 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-750 text-[11px] font-bold text-gold-400 flex items-center justify-center space-x-1 cursor-pointer"
                         >
                           <Play className="w-3 h-3" />
                           <span>पहा</span>
                         </button>
-                        <a
-                          href={reel.download_url}
-                          download="Reel.mp4"
-                          className="p-1.5 rounded-lg bg-gold-500/20 hover:bg-gold-500/30 text-gold-400"
+                        <button
+                          type="button"
+                          onClick={() => downloadFileFromUrl(reel.download_url, `${(reel.title || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
+                          className="p-1.5 rounded-lg bg-gold-500/20 hover:bg-gold-500/30 text-gold-400 cursor-pointer"
+                          title="Download Reel MP4"
                         >
                           <Download className="w-3.5 h-3.5" />
-                        </a>
+                        </button>
                       </div>
                     </div>
                   ))}
