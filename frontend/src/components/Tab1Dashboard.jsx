@@ -4,16 +4,13 @@ import {
   CheckCircle2,
   Clock,
   Video,
-  Instagram,
   ArrowRight,
   TrendingUp,
   FileText,
   ShieldCheck,
   Calendar,
   Sparkles,
-  ExternalLink,
-  RefreshCw,
-  AlertCircle
+  RefreshCw
 } from 'lucide-react';
 
 export default function Tab1Dashboard({
@@ -30,7 +27,6 @@ export default function Tab1Dashboard({
     tracked90Days: 90,
     updatedToday: 10
   });
-  const [instaData, setInstaData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -53,13 +49,6 @@ export default function Tab1Dashboard({
             total60Days: tJson.data.targetTotalDays
           }));
         }
-      }
-
-      // 2. Fetch Instagram live stats
-      const instaRes = await fetch('/api/instagram/analytics');
-      if (instaRes.ok) {
-        const iJson = await instaRes.json();
-        setInstaData(iJson.analytics);
       }
     } catch (err) {
       console.error('Error loading dashboard data:', err);
@@ -179,7 +168,7 @@ export default function Tab1Dashboard({
         </div>
       </div>
 
-      {/* Main Row: Top Trending Topic Spotlight & Instagram Live Card */}
+      {/* Main Row: Top Trending Topic Spotlight & Detailed Video Studio */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column (2 Cols): Today's #1 Trending Legal Topic */}
         <div className="lg:col-span-2 bg-navy-850/90 border border-navy-700 rounded-2xl p-5 sm:p-6 shadow-lg">
@@ -250,74 +239,60 @@ export default function Tab1Dashboard({
           )}
         </div>
 
-        {/* Right Column (1 Col): Instagram Followers & Live Analytics (STRICTLY NO FAKE STATS) */}
-        <div className="bg-navy-850/90 border border-navy-700 rounded-2xl p-5 shadow-lg flex flex-col justify-between">
+        {/* Right Column (1 Col): Detailed Legal Video Studio Quick Launch */}
+        <div className="bg-navy-850/90 border border-gold-500/30 rounded-2xl p-5 shadow-lg flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-2">
-                <div className="p-1.5 rounded-lg bg-pink-500/20 text-pink-400">
-                  <Instagram className="w-4 h-4" />
+                <div className="p-1.5 rounded-lg bg-gold-500/20 text-gold-400">
+                  <Video className="w-4 h-4" />
                 </div>
-                <h3 className="text-sm sm:text-base font-bold text-white">Instagram Live Analysis</h3>
+                <h3 className="text-sm sm:text-base font-bold text-white">सखोल कायदेशीर व्हिडिओ स्टुडिओ</h3>
               </div>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-navy-800 text-slate-400 border border-navy-700">
-                Official Graph API
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold-500/20 text-gold-300 border border-gold-500/40 font-bold">
+                100% Legal Details
               </span>
             </div>
 
-            {instaData && instaData.connected ? (
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3 p-3 rounded-xl bg-navy-900 border border-navy-750">
-                  {instaData.profilePic ? (
-                    <img src={instaData.profilePic} alt="Profile" className="w-12 h-12 rounded-full border border-gold-500/40" />
-                  ) : (
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-500 to-pink-500 flex items-center justify-center font-bold text-white">
-                      AP
-                    </div>
-                  )}
+            <div className="space-y-3">
+              <div className="p-3 rounded-xl bg-navy-900 border border-navy-750 space-y-2">
+                <div className="flex items-start space-x-2 text-xs text-slate-200">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-sm font-bold text-white">{instaData.name || 'Advocate Pratiksha'}</h4>
-                    <p className="text-xs text-slate-400">@{instaData.username}</p>
+                    <strong className="text-gold-400">संपूर्ण कायदेशीर माहिती:</strong> अपूर्ण माहिती न देता कलमे, शासन निर्णय (GR), आवश्यक कागदपत्रे व अपील पायऱ्यांसह व्हिडिओ निर्मिती.
                   </div>
                 </div>
+              </div>
 
-                <div className="grid grid-cols-2 gap-2 text-center">
-                  <div className="p-3 rounded-xl bg-navy-900/80 border border-navy-800">
-                    <span className="text-xs text-slate-400">Followers</span>
-                    <div className="text-xl font-extrabold text-white mt-0.5">
-                      {instaData.followers?.toLocaleString() || '0'}
-                    </div>
+              <div className="grid grid-cols-2 gap-2 text-center">
+                <div className="p-2.5 rounded-xl bg-navy-900/80 border border-navy-800">
+                  <span className="text-[10px] text-slate-400">व्हिडिओ फॉरमॅट</span>
+                  <div className="text-xs font-extrabold text-gold-400 mt-0.5">
+                    1080x1920 Reel
                   </div>
-                  <div className="p-3 rounded-xl bg-navy-900/80 border border-navy-800">
-                    <span className="text-xs text-slate-400">Media Reels</span>
-                    <div className="text-xl font-extrabold text-white mt-0.5">
-                      {instaData.mediaCount || '0'}
-                    </div>
+                </div>
+                <div className="p-2.5 rounded-xl bg-navy-900/80 border border-navy-800">
+                  <span className="text-[10px] text-slate-400">व्हिज्युअल पद्धत</span>
+                  <div className="text-xs font-extrabold text-emerald-400 mt-0.5">
+                    100% Text & Docs
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="p-4 rounded-xl bg-navy-900/80 border border-dashed border-navy-700 space-y-3">
-                <div className="flex items-start space-x-2 text-amber-400">
-                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-                  <p className="text-xs leading-relaxed text-slate-300">
-                    <strong className="text-amber-400">अधिकृत माहिती:</strong> Instagram Graph API अद्याप जोडलेली नाही. खोटे किंवा अंदाजे फॉलोअर्स दाखवणे सिस्टीम नियमांनुसार पूर्णपणे बंद आहे.
-                  </p>
-                </div>
-                <div className="p-2.5 rounded-lg bg-navy-950 text-[11px] text-slate-400 border border-navy-800">
-                  फॉलोअर्स, रीच व एंगेजमेंट लाइव्ह पाहण्यासाठी Settings टॅबमध्ये अधिकृत Instagram Graph API जोडा.
-                </div>
-              </div>
-            )}
+
+              <p className="text-[11px] text-slate-400 leading-relaxed px-1">
+                महाराष्ट्र जमीन महसूल, गुंठेवारी, तुकडेबंदी ८ब, ७/१२ फेरफार, वारस हक्क आणि BNSS २०२३ वर संपूर्ण सविस्तर रील तयार करा.
+              </p>
+            </div>
           </div>
 
           <div className="pt-4 border-t border-navy-800 mt-4">
             <button
-              onClick={() => onNavigateTab('settings')}
-              className="w-full py-2 px-3 rounded-xl bg-navy-800 hover:bg-navy-750 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center space-x-1.5 transition-all"
+              onClick={() => onNavigateTab('studio')}
+              className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 text-xs font-bold flex items-center justify-center space-x-2 shadow-lg shadow-gold-500/20 transition-all cursor-pointer"
             >
-              <span>Instagram API Settings</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <Video className="w-4 h-4" />
+              <span>व्हिडिओ स्टुडिओ उघडा</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

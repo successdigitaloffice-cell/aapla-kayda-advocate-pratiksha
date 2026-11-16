@@ -88,7 +88,7 @@ export default function Tab3VideoStudio({
       const title = selectedTopic.topic_name || selectedTopic.title || '';
       setTopicTitle(title);
       setTopicCategory(selectedTopic.category || 'महाराष्ट्र जमीन महसूल');
-      generateWorkflowScript(title, selectedTopic.category);
+      generateWorkflowScript(selectedTopic, selectedTopic.category);
     } else {
       const defaultTitle = 'गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!';
       setTopicTitle(defaultTitle);
@@ -116,31 +116,162 @@ export default function Tab3VideoStudio({
     }
   };
 
-  const generateWorkflowScript = (title, category) => {
-    const isLand = (category || '').includes('जमीन') || (category || '').includes('गुंठेवारी') || (title || '').includes('फेरफार');
+  const generateWorkflowScript = (topicInput, categoryInput) => {
+    let title = typeof topicInput === 'string' ? topicInput : (topicInput?.topic_name || topicInput?.title || '');
+    let category = categoryInput || (typeof topicInput === 'object' ? topicInput?.category : '') || 'महाराष्ट्र जमीन महसूल व गुंठेवारी';
 
-    const hook = `प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!`;
-    const formatA = `महाराष्ट्र जमीन महसूल संहिता कलम १५० आणि गुंठेवारी कायद्यानुसार केवळ खरेदीखत पुरेसे नसते.\n\n` +
-      `जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा १ ते ३ गुंठे प्लॉट घेतला असेल, तर तुकडेबंदी कलम ८ब नुसार अधिकृत मोजणी नकाशा घेऊन सक्षम प्राधिकरणाकडे नियमितीकरण शुल्क भरा.\n\n` +
-      `तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद प्रमाणित करणे कायद्याने बंधनकारक आहे.`;
+    // If pre-existing rich verified script exists in the topic object
+    if (typeof topicInput === 'object' && topicInput?.script_format_a && topicInput?.hook) {
+      const hook = topicInput.hook;
+      const formatA = topicInput.script_format_a;
+      const formatB = topicInput.script_format_b || formatA;
+      const cta = topicInput.call_to_action || `हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!`;
+      const legalSection = topicInput.applicable_section ? `${topicInput.applicable_law || ''} (कलम ${topicInput.applicable_section})` : (topicInput.applicable_law || 'महाराष्ट्र शासन अधिकृत कायदे');
+      setScriptData({
+        hook,
+        bodyFormatA: formatA,
+        bodyFormatB: formatB,
+        legalSection,
+        callToAction: cta,
+        fullText: `${hook}\n\n${formatA}\n\n${cta}`
+      });
+      setCaptionText(`${title} ⚖️📜\n\n${topicInput.caption || formatA}\n\n${topicInput.hashtags || '#आपलाकायदा #AdvocatePratiksha #LandLaws #Maharashtra'}`);
+      setVisualPrompt(`100% Text & Topic Documentary Visual Explainer: Cadastral Survey Blueprint, 7/12 Ferfar Register, and Registered Sale Deed Stamps.`);
+      return;
+    }
 
-    const formatB = `जमीन किंवा घर खरेदी करताना या २ महत्त्वाच्या कायदेशीर पायऱ्या लगेच पूर्ण करा:\n\n` +
-      `पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२ वर खरेदीदाराच्या नावाची फेरफार नोंद तातडीने तपासा.\n\n` +
-      `पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करा.`;
+    const tLower = (title + ' ' + category).toLowerCase();
 
-    const cta = `हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!`;
+    let hook = '';
+    let formatA = '';
+    let formatB = '';
+    let legalSection = '';
+    let visualPromptCue = '';
+
+    if (tLower.includes('गुंठेवारी') || tLower.includes('gunthewari') || tLower.includes('नियमितीकरण')) {
+      legalSection = 'महाराष्ट्र गुंठेवारी विकास अधिनियम २००१ (सुधारित शासन निर्णय २०२१) कलम ३ व ४';
+      hook = `तुम्ही १ किंवा २ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे? मनपा किंवा नगरपालिकेकडून नोटीस येण्यापूर्वी हा एक गुंठेवारी नियम त्वरित समजून घ्या!`;
+      formatA = `समजा, तुम्ही १ ते ३ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे किंवा खरेदीखत केले आहे, तर केवळ नोटरीवर किंवा साध्या स्टॅम्पवर बँकेचे कर्ज मिळत नाही आणि ७/१२ वर स्वतंत्र मालकी हक्क सिद्ध करताना मोठी कायदेशीर अडचण येते.\n\n` +
+        `महाराष्ट्र गुंठेवारी विकास अधिनियम २००१ (२०२१ सुधारित शासन निर्णय) नुसार ३१ डिसेंबर २०२० पूर्वी झालेले ५०० चौरस मीटर आतील भूखंड अधिकृत कम्पाउंडिंग शुल्क भरून महापालिकेत किंवा प्राधिकरणात नियमित करून घेता येतात.\n\n` +
+        `यासाठी परवानाधारक वास्तुविशारदाकडून (Architect) लेआउट व मोजणी नकाशा मंजूर करून घ्या आणि सक्षम प्राधिकरणाकडे (मनपा/नगरपरिषद/PMDRA/CIDCO) आवश्यक कागदपत्रांसह अधिकृत नियमितीकरण दाखल्यासाठी अर्ज करा.\n\n` +
+        `दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq) पोर्टलद्वारे अर्ज करून ७/१२ उताऱ्यावर स्वतंत्र मालकीची व बिनशेती (NA) नोंद करून घ्या; काम प्रलंबित ठेवल्यास लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील करा.`;
+      formatB = `गुंठेवारी प्लॉट नियमित करताना या ३ महत्त्वाच्या कायदेशीर पायऱ्या त्वरित पूर्ण करा:\n\n` +
+        `पायरी १: जागेचे ३० वर्षांचे जुने खरेदीखत, इंडेक्स २ आणि मूळ ७/१२ उतारा काढून ३१ डिसेंबर २०२० पूर्वीची नोंद व ताबा तपासा.\n\n` +
+        `पायरी २: सक्षम प्राधिकरणाकडे अधिकृत मोजणी नकाशासह गुंठेवारी शुल्क भरून कायदेशीर नियमितीकरण आदेश (Regularization Certificate) प्राप्त करा.\n\n` +
+        `पायरी ३: दाखल्याच्या आधारे तलाठ्याकडे फेरफार नोंद प्रमाणित करून घ्या; तलाठ्याने अडवल्यास लोकसेवा हक्क कायद्यान्वये उपविभागीय अधिकाऱ्यांकडे (SDO) दाद मागा.`;
+      visualPromptCue = 'Plot layout map with Gunthewari compounding fee receipt, cadastral survey blueprint, and official Municipal Corporation seal';
+    } else if (tLower.includes('तुकडेबंदी') || tLower.includes('tukdebandi') || tLower.includes('८ब') || tLower.includes('8b')) {
+      legalSection = 'मुंबई तुकडे प्रतिबंध व एकत्रीकरण कायदा १९४७ कलम ८-ब व उच्च न्यायालय निकाल';
+      hook = `शेतजमिनीचा १ ते ३ गुंठे तुकडा खरेदी केलाय, पण तलाठी ७/१२ वर नाव लावायला नकार देतोय? मुंबई उच्च न्यायालयाचा हा महत्त्वाचा निकाल नक्की ऐका!`;
+      formatA = `समजा, तुम्ही शेतजमिनीचा १ किंवा २ गुंठ्यांचा तुकडा खरेदी केला आणि निबंधकांकडे रीतसर दस्त नोंदवला, तरी तुकडेबंदी कायद्यामुळे तलाठी फेरफार नोंद नामंजूर करतो आणि खरेदीदाराचे नाव अडकून राहते.\n\n` +
+        `मुंबई तुकडे प्रतिबंध व एकत्रीकरण कायदा १९४७ कलम ८-ब नुसार अकृषिक (NA) मंजुरी किंवा सक्षम अधिकाऱ्याचे रेखांकन असल्याशिवाय शेतजमिनीच्या लहान तुकड्यांची स्वतंत्र नोंद घेण्यास मनाई आहे.\n\n` +
+        `जर जमिनीचा तुकडा प्राधिकरणाच्या हद्दीत असेल तर गुंठेवारी अंतर्गत नियमित करून घ्या किंवा शेतजमिनीचे अधिकृत पोटहिस्सा मोजणी (Hissa Mojani) करून घेऊन सहहिस्सेदार म्हणून नोंद करा.\n\n` +
+        `नोंदणीकृत दस्त असताना तलाठ्याने मनमानी नकार दिल्यास महाराष्ट्र जमीन महसूल संहिता कलम १५० व २४७ अन्वये उपविभागीय अधिकाऱ्यांकडे (SDO) ६० दिवसांत अपील दाखल करा.`;
+      formatB = `तुकडेबंदी जागेचा फेरफार मंजूर करण्यासाठी या ३ कायदेशीर पायऱ्या अमलात आणा:\n\n` +
+        `पायरी १: नोंदणीकृत खरेदीखतासोबत उपअधीक्षक भूमी अभिलेख (DySLR) कार्यालयाकडून अधिकृत मोजणी नकाशा व क वर्ग प्रत मिळवा.\n\n` +
+        `पायरी २: ई-हक्क प्रणालीवरून फेरफार नोंदीसाठी ऑनलाईन अर्ज करा आणि महसूल मंडळाधिकाऱ्यांसमोर (Circle Officer) कागदपत्रे सादर करा.\n\n` +
+        `पायरी ३: चुकीचा शेरा मारल्यास थेट उपविभागीय अधिकारी (SDO) यांच्या न्यायालयात कलम २४७ अंतर्गत महसुली अपील दाखल करा.`;
+      visualPromptCue = 'Tukdebandi prevention act official gazette, 1 to 3 guntha agricultural plot survey map with sub-division boundary markings';
+    } else if (tLower.includes('बोजा') || tLower.includes('कर्ज') || tLower.includes('boja') || tLower.includes('noc')) {
+      legalSection = 'महाराष्ट्र जमीन महसूल संहिता १९६६ कलम १४९ व १५० आणि ई-हक्क नियमावली';
+      hook = `बँकेचे शेती किंवा गृहकर्ज पूर्ण फिटले, पण ७/१२ वरील इतर हक्कातील बोजा अजूनही हटलेला नाही? हा एक अर्ज करा, बोजा लगेच कमी होईल!`;
+      formatA = `समजा, तुम्ही बँकेचे संपूर्ण कर्ज वेळेत फेडले, तरी तलाठी दप्तरी आपोआप नोंद होत नाही आणि इतर हक्कातील बोजा कायम राहिल्याने जमीन विकताना किंवा वारस नोंद करताना मोठी कायदेशीर अडचण येते.\n\n` +
+        `महाराष्ट्र जमीन महसूल संहिता कलम १४९ व १५० नुसार बँकेकडून मिळणारे मूळ 'ना-हरकत प्रमाणपत्र' (NOC) आणि विहित नमुन्यातील फॉर्म १६/२२ घेऊन ई-हक्क (e-Haqq) पोर्टलवर बोजा कमी करण्यासाठी ऑनलाईन अर्ज दाखल करा.\n\n` +
+        `मूळ कागदपत्रांची प्रत तलाठ्याकडे जमा केल्यानंतर तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद घालून बोजा कमी करणे कायद्याने बंधनकारक आहे.\n\n` +
+        `तलाठ्याने मुदतीत नोंद न दिल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करून त्वरित आदेश मिळवा.`;
+      formatB = `७/१२ वरून बोजा हटवण्याची अधिकृत ३ टप्प्यांची पद्धत:\n\n` +
+        `पायरी १: बँकेतून संपूर्ण कर्ज निल (No Dues Certificate) झाल्याचे प्रमाणपत्र व तलाठ्याच्या नावे असलेले बँक रिलीज लेटर घ्या.\n\n` +
+        `पायरी २: महाभूमी ई-हक्क पोर्टलवर जाऊन 'बोजा कमी करणे' हा पर्याय निवडून अर्ज करा व पोहोच पावती डाऊनलोड करा.\n\n` +
+        `पायरी ३: तलाठ्याकडून १५ दिवसांत कच्चा फेरफार व मंजुरी मिळवा; विलंब झाल्यास तहसीलदारांकडे लोकसेवा हक्क कायद्यान्वये तक्रार नोंदवा.`;
+      visualPromptCue = 'Satbara 7/12 document with Bank Loan encumbrance removal stamp, Bank No Objection Certificate NOC, and e-Haqq receipt';
+    } else if (tLower.includes('फेरफार') || tLower.includes('७/१२') || tLower.includes('7/12') || tLower.includes('तलाठी') || tLower.includes('satbara')) {
+      legalSection = 'महाराष्ट्र जमीन महसूल संहिता १९६६ कलम १४९, १५० व २४७ (अपील अधिकार)';
+      hook = `वडिलोपार्जित शेतीवर किंवा खरेदी केलेल्या जमिनीवर तलाठी ७/१२ फेरफार नोंद प्रमाणित करत नाहीये? तुमचे कायदेशीर अधिकार जाणून घ्या!`;
+      formatA = `समजा, तुम्ही कायदेशीर खरेदीखत केले किंवा कुटुंबप्रमुखांच्या निधनानंतर वारस नोंदीसाठी अर्ज केला, परंतु तलाठ्याकडून विनाकारण फेरफार प्रलंबित ठेवला जात आहे.\n\n` +
+        `महाराष्ट्र जमीन महसूल संहिता १९६६ कलम १५० नुसार तलाठ्याने १५ दिवसांच्या आत नोटीस जारी करून हरकती मागवणे आणि हरकत नसल्यास फेरफार प्रमाणित करणे अनिवार्य आहे.\n\n` +
+        `जर कोणी खोटी हरकत घेतली असेल, तर प्रकरण वादग्रस्त फेरफार नोंदवहीत (Register of Disputed Cases) वर्ग होते आणि मंडळ अधिकाऱ्यांसमोर (Circle Officer) दोन्ही बाजूंची रीतसर सुनावणी होते.\n\n` +
+        `मंडळ अधिकाऱ्यांचा निर्णय अमान्य असल्यास कलम २४७ अन्वये उपविभागीय अधिकाऱ्यांकडे (SDO) ६० दिवसांच्या आत अपील दाखल करून न्याय मिळवता येतो.`;
+      formatB = `७/१२ फेरफार अडकल्यास कायदेशीर हक्क मिळवण्याच्या ३ पायऱ्या:\n\n` +
+        `पायरी १: ई-हक्क प्रणालीवरून ऑनलाईन अर्ज करून अर्जाची पावती व आवश्यक कागदपत्रे (खरेदीखत/मृत्यू दाखला/वारस प्रतिज्ञापत्र) तलाठ्याकडे जमा करा.\n\n` +
+        `पायरी २: १५ दिवसांनंतर तलाठ्याकडून नोटीस व कच्चा फेरफार क्रमांक मागून घ्या आणि हरकतींची स्थिती तपासा.\n\n` +
+        `पायरी ३: तलाठ्याने विनाकारण अडवणूक केल्यास लोकसेवा हक्क कायद्यानुसार तहसीलदारांकडे प्रथम अपील दाखल करा.`;
+      visualPromptCue = 'Maharashtra Land Record Register of Ferfar Mutations, 7/12 Extract, Talathi official office record and Section 150 notice';
+    } else if (tLower.includes('वारस') || tLower.includes('मुलगी') || tLower.includes('बहीण') || tLower.includes('वडिलोपार्जित') || tLower.includes('वाटप')) {
+      legalSection = 'हिंदू वारसा सुधारणा कायदा २००५ कलम ६ व सर्वोच्च न्यायालय निकाल २०२० (विनीता शर्मा विरुद्ध राकेश शर्मा)';
+      hook = `वडिलोपार्जित शेतजमिनीत लग्न झालेल्या बहिणीला वाटा नाकारला जातोय? सर्वोच्च न्यायालयाचा हा ऐतिहासिक निकाल भावांना दाखवा!`;
+      formatA = `समजा, वडिलोपार्जित शेतजमीन किंवा घराचे वाटप करताना लग्न २००५ पूर्वी झाले या कारणावरून बहिणीला किंवा मुलीला हक्क देण्यास नकार दिला जात आहे.\n\n` +
+        `सर्वोच्च न्यायालयाच्या विनीता शर्मा विरुद्ध राकेश शर्मा (२०२०) या ऐतिहासिक निकालानुसार आणि हिंदू वारसा कायदा कलम ६ अन्वये मुलीला जन्मापासून मुलाइतकाच समान वारसा हक्क आहे.\n\n` +
+        `बहिणीची लेखी संमती किंवा स्वाक्षरी असल्याशिवाय ७/१२ वर झालेले परस्पर वाटप अथवा जमिनीची विक्री कायद्याच्या नजरेत बेकायदेशीर ठरते.\n\n` +
+        `हक्क नाकारल्यास सक्षम दिवाणी न्यायालयात फाळणी व स्वतंत्र वाटपाचा (Partition Suit) दावा दाखल करून स्वतःचा कायदेशीर हिस्सा आणि महसुली नोंद मिळवता येते.`;
+      formatB = `वडिलोपार्जित जमिनीत मुलींचा हक्क सिद्ध करण्याच्या ३ पायऱ्या:\n\n` +
+        `पायरी १: जमिनीचा मूळ ७/१२ उतारा, पूर्वजांचे फेरफार नोंदी आणि अधिकृत कौटुंबिक वंशावळ (Pedigree Tree) तयार करा.\n\n` +
+        `पायरी २: तलाठ्याकडे ई-हक्क प्रणालीद्वारे वारस नोंदीत मुलीचे/बहिणीचे नाव समाविष्ट करण्याचा अधिकृत अर्ज सादर करा.\n\n` +
+        `पायरी ३: सहहिस्सेदारांनी नकार दिल्यास दिवाणी न्यायालयात दावा दाखल करून मनाई हुकूम (Injunction Order) मिळवा.`;
+      visualPromptCue = 'Supreme Court of India judgment book, family pedigree genealogical tree, and equal coparcenary rights legal deed';
+    } else if (tLower.includes('पोलीस') || tLower.includes('अटक') || tLower.includes('bnss') || tLower.includes('bns') || tLower.includes('fir')) {
+      legalSection = 'भारतीय नागरिक सुरक्षा संहिता २०२३ (BNSS 2023) कलम ३५ व कलम १७५(३)';
+      hook = `पोलीस ठाण्यातून फोन आला की लगेच हजर राहा, नाहीतर अटक करू अशी भीती वाटतेय? नवीन BNSS २०२३ कायद्यातील तुमचे अधिकार जाणून घ्या!`;
+      formatA = `समजा, एखाद्या अदखलपात्र किंवा सामान्य तक्रारीवरून पोलीस तुम्हाला थेट पोलीस ठाण्यात बोलावून अटकेची धमकी देत असतील, तर घाबरून जाऊ नका.\n\n` +
+        `भारतीय नागरिक सुरक्षा संहिता २०२३ (BNSS 2023) कलम ३५ नुसार ७ वर्षांपेक्षा कमी शिक्षा असलेल्या गुन्ह्यांमध्ये पोलिसांना कोणालाही थेट अटक करता येत नाही; लेखी कायदेशीर नोटीस देणे अनिवार्य आहे.\n\n` +
+        `नोटीस मिळाल्यावर घाबरून न जाता वकिलामार्फत अधिकृत कायदेशीर जबाब नोंदवा आणि अटकेचे कारण लेखी स्वरूपात मागण्याचा नागरिकांना पूर्ण अधिकार आहे.\n\n` +
+        `विनाकारण त्रास दिल्यास पोलीस अधीक्षकांकडे (SP) किंवा सक्षम दंडाधिकाऱ्यांकडे BNSS कलम १७५(३) अन्वये तक्रार दाखल करता येते.`;
+      formatB = `पोलीस कारवाई आणि अटकेपासून संरक्षणाच्या ३ कायदेशीर पायऱ्या:\n\n` +
+        `पायरी १: पोलिसांना अटकेचे कारण आणि BNSS कलम ३५ अन्वये अधिकृत लेखी नोटीस देण्याची लेखी मागणी करा.\n\n` +
+        `पायरी २: नोटीस मिळाल्यानंतर स्वतः एकटे न जाता कायदेशीर सल्लागारांच्या (Advocate) मार्गदर्शनाखाली जबाब नोंदवा.\n\n` +
+        `पायरी ३: बेकायदेशीर अटकेची भीती असल्यास सत्र न्यायालयात अटकपूर्व जामीन (Anticipatory Bail) अर्ज तातडीने दाखल करा.`;
+      visualPromptCue = 'BNSS 2023 Law Book, Section 35 Legal Notice format, Police Station legal rights declaration poster';
+    } else if (tLower.includes('चेक') || tLower.includes('cheque') || tLower.includes('बाउन्स') || tLower.includes('138')) {
+      legalSection = 'निगोशिएबल इन्स्ट्रुमेंट्स ॲक्ट १८८१ कलम १३८ व भारतीय न्याय संहिता (BNS 2023)';
+      hook = `कोणाला उसने किंवा व्यवसायात दिलेले पैसे परत मिळवण्यासाठी घेतलेला चेक बँकेत बाउन्स झाला? या ३० दिवसांच्या मुदतीत हे पाऊल उचला!`;
+      formatA = `समजा, समोरच्या व्यक्तीने दिलेला चेक बँकेत 'अपूरा निधी' (Insufficient Funds) असल्यामुळे बाउन्स झाला आणि बँक मेमो मिळाला, तर वेळ वाया घालवू नका.\n\n` +
+        `निगोशिएबल इन्स्ट्रुमेंट्स ॲक्ट १८८१ कलम १३८ नुसार बँक मेमो मिळाल्यापासून ३० दिवसांच्या आत वकिलामार्फत १५ दिवसांची कायदेशीर नोटीस पाठवणे बंधनकारक आहे.\n\n` +
+        `नोटीस मिळाल्यापासून १५ दिवसांत समोरील व्यक्तीने पैसे न दिल्यास, पुढील ३० दिवसांच्या आत न्यायालयात फौजदारी खटला दाखल करावा लागतो.\n\n` +
+        `न्यायालयात गुन्हा सिद्ध झाल्यास चेकच्या रकमेच्या दुप्पट दंड आणि २ वर्षांपर्यंतच्या तुरुंगवासाची कायद्यात कडक तरतूद आहे.`;
+      formatB = `चेक बाउन्स झाल्यास पैसे वसूल करण्याच्या ३ महत्त्वाच्या पायऱ्या:\n\n` +
+        `पायरी १: बँकेतून मिळालेला मूळ बाउन्स झालेला चेक आणि बँक रिटर्न मेमो सुरक्षित ठेवा.\n\n` +
+        `पायरी २: ३० दिवसांच्या आत सक्षम वकिलामार्फत रजिस्टर्ड पोस्टाने १५ दिवसांची डिमांड नोटीस पाठवा.\n\n` +
+        `पायरी ३: नोटीस मुदत संपताच पुढील ३० दिवसांच्या आत न्यायदंडाधिकारी न्यायालयात फौजदारी तक्रार दाखल करा.`;
+      visualPromptCue = 'Dishonored bank cheque with Insufficient Funds memo, Legal Demand Notice, and Court Summons';
+    } else if (tLower.includes('सायबर') || tLower.includes('cyber') || tLower.includes('1930') || tLower.includes('ओटीपी')) {
+      legalSection = 'राष्ट्रीय सायबर सुरक्षा हेल्पलाईन १९३० व भारतीय न्याय संहिता (BNS 2023) कलम ३१८(४)';
+      hook = `ऑनलाइन लिंकवर क्लिक करून किंवा ओटीपी शेअर होऊन बँक खात्यातून पैसे कट झाले? पहिल्या 'गोल्डन अवर' मध्ये हे काम लगेच करा!`;
+      formatA = `समजा, वीज बिल, लॉटरी किंवा बँक केवायसीच्या खोट्या मेसेजवर क्लिक करून तुमच्या खात्यातून परस्पर पैसे कापले गेले, तर वेळ अजिबात वाया घालवू नका.\n\n` +
+        `फसवणूक झाल्यापासून पहिल्या १ ते २ तासांत (Golden Hour) राष्ट्रीय सायबर हेल्पलाइन १९३० वर त्वरित कॉल करा किंवा cybercrime.gov.in वर तक्रार नोंदवा.\n\n` +
+        `यामुळे पैसे ट्रान्सफर झालेले संशयित बँक खाते त्वरित फ्रीज केले जाते आणि तुमची रक्कम सुरक्षित राहण्याची शक्यता ९०% वाढते.\n\n` +
+        `तात्काळ बँक स्टेटमेंटसह जवळच्या सायबर पोलीस ठाण्यात भारतीय न्याय संहिता (BNS 2023) कलम ३१८(४) नुसार रीतसर तक्रार दाखल करा.`;
+      formatB = `सायबर फसवणुकीत पैसे परत मिळवण्याच्या ३ तात्काळ पायऱ्या:\n\n` +
+        `पायरी १: त्वरित १९३० क्रमांकावर कॉल करून ट्रान्झॅक्शन आयडी, बँक खाते क्रमांक व फसवणुकीची वेळ सांगा.\n\n` +
+        `पायरी २: बँकेला फोन करून संबंधित डेबिट कार्ड/नेट बँकिंग तात्काळ ब्लॉक करा आणि बँक स्टेटमेंट मिळवा.\n\n` +
+        `पायरी ३: नॅशनल सायबर क्राईम पोर्टलवरून मिळालेली पोचपावती घेऊन स्थानिक सायबर सेलमध्ये लेखी एफआयआर नोंदवा.`;
+      visualPromptCue = 'Cyber Crime Portal helpline 1930 logo, frozen bank account alert, and digital transaction security guide';
+    } else {
+      // General comprehensive legal explainer
+      legalSection = 'महाराष्ट्र शासन कायदे, महसूल संहिता व भारतीय न्याय संहिता २०२३';
+      hook = `${title.replace(/[?!।]/g, '')} या समस्येत अडकला आहात? कायद्याची ही महत्त्वाची तरतूद तुम्हाला माहिती असायलाच हवी!`;
+      formatA = `समजा, ${title} या विषयाबाबत तुमच्यावर किंवा तुमच्या कुटुंबावर अन्याय होत असेल, तर घाबरून न जाता कायद्याची अचूक माहिती जाणून घेणे गरजेचे आहे.\n\n` +
+        `महाराष्ट्र शासन नियम आणि भारतीय कायद्यानुसार सामान्य नागरिकांना त्यांच्या हक्कांचे संपूर्ण कायदेशीर संरक्षण देण्यात आले आहे.\n\n` +
+        `यासाठी संबंधित मूळ दस्तऐवज, अर्ज व पुरावे गोळा करा आणि तोंडी चर्चेवर अवलंबून न राहता सक्षम प्राधिकरणाकडे अधिकृत लेखी नोटीस किंवा तक्रार दाखल करा.\n\n` +
+        `संबंधित अधिकाऱ्याने मुदतीत काम न केल्यास किंवा दाद न दिल्यास वरिष्ठ अपील अधिकारी अथवा न्यायालयात कायदेशीर दाद मिळवण्याचा नागरिकांना पूर्ण अधिकार आहे.`;
+      formatB = `या विषयातील कायदेशीर उपाययोजना आणि अधिकृत ३ पायऱ्या:\n\n` +
+        `पायरी १: प्रकरणाशी संबंधित सर्व मूळ कागदपत्रे, नोंदी व पुरावे सुरक्षित गोळा करा.\n\n` +
+        `पायरी २: संबंधित शासकीय कार्यालयात किंवा सक्षम प्राधिकरणाकडे विहित नमुन्यात लेखी अर्ज सादर करून पोचपावती घ्या.\n\n` +
+        `पायरी ३: विहित मुदतीत न्याय न मिळाल्यास कायद्यातील तरतुदींनुसार वरिष्ठ प्राधिकरणाकडे तात्काळ अपील दाखल करा.`;
+      visualPromptCue = 'Official Law Books, Maharashtra Government Gazette notification, Courtroom scales and verified citizen rights charter';
+    }
+
+    const cta = `हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!`;
 
     setScriptData({
       hook,
       bodyFormatA: formatA,
       bodyFormatB: formatB,
-      legalSection: isLand ? 'महाराष्ट्र जमीन महसूल संहिता १९६६ कलम १५० व तुकडेबंदी कलम ८ब' : 'भारतीय नागरिक सुरक्षा संहिता २०२३ कलम १७५(३)',
+      legalSection,
       callToAction: cta,
       fullText: `${hook}\n\n${formatA}\n\n${cta}`
     });
 
-    setCaptionText(`${title}\n\nअधिकृत कायदेशीर माहिती व सल्ल्यासाठी पाहा संपूर्ण Reel. अधिक माहितीसाठी फॉलो करा आपला कायदा!\n\n#आपलाकायदा #AdvocatePratiksha #LandLaws #Maharashtra #Satbara #Gunthewari`);
-    setVisualPrompt(`100% Text & Topic Visual Explainer with Cadastral Survey Blueprint, 7/12 Ferfar Register, and Registered Sale Deed Stamps.`);
+    setCaptionText(`${title} ⚖️📜\n\nAdvocate Pratiksha यांच्याकडून सोप्या मराठीत सविस्तर कायदेशीर मार्गदर्शन.\n\n📌 लागू कायदा व तरतूद: ${legalSection}\n\n💡 महत्त्वाचा सल्ला:\n${formatA}\n\n👉 ही अत्यंत महत्त्वाची कायदेशीर माहिती आपल्या कुटुंबियांना व मित्रांना नक्की शेअर करा!\nफॉलो करा 👉 @aaplakayda\n\n#आपलाकायदा #AdvocatePratiksha #MarathiLaw #कायदेशीरहक्क #महाराष्ट्र #जमीनकायदे #Satbara #Gunthewari`);
+    setVisualPrompt(visualPromptCue);
   };
 
   const copyToClipboard = (text, fieldName) => {
@@ -421,17 +552,21 @@ export default function Tab3VideoStudio({
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-1">व्हिडिओची अपेक्षित लांबी (Duration):</label>
                   <div className="grid grid-cols-3 gap-2">
-                    {[30, 45, 60].map((dur) => (
+                    {[
+                      { dur: 30, label: '३० सेकंद (संक्षिप्त)' },
+                      { dur: 45, label: '४५ सेकंद (सविस्तर)' },
+                      { dur: 60, label: '६० सेकंद (संपूर्ण सखोल)' }
+                    ].map((item) => (
                       <button
-                        key={dur}
-                        onClick={() => setVideoDuration(dur)}
-                        className={`py-2 rounded-xl text-xs font-bold border transition-all ${
-                          videoDuration === dur
+                        key={item.dur}
+                        onClick={() => setVideoDuration(item.dur)}
+                        className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all ${
+                          videoDuration === item.dur
                             ? 'bg-gold-500/20 text-gold-400 border-gold-500/50'
                             : 'bg-navy-900 text-slate-400 border-navy-750 hover:border-slate-600'
                         }`}
                       >
-                        {dur} सेकंद
+                        {item.label}
                       </button>
                     ))}
                   </div>
@@ -476,7 +611,7 @@ export default function Tab3VideoStudio({
                     selectedFormat === 'A' ? 'bg-gold-500 text-navy-950' : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  Format A (३०-४०s)
+                  Format A (सविस्तर अडचण व उपाय)
                 </button>
                 <button
                   onClick={() => setSelectedFormat('B')}
@@ -484,7 +619,7 @@ export default function Tab3VideoStudio({
                     selectedFormat === 'B' ? 'bg-gold-500 text-navy-950' : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  Format B (५०-६०s)
+                  Format B (३ टप्प्यांचे कायदेशीर मार्गदर्शन)
                 </button>
               </div>
             </div>
@@ -505,11 +640,16 @@ export default function Tab3VideoStudio({
 
               {/* Main Body */}
               <div className="bg-navy-900 rounded-xl p-3.5 border border-navy-750">
-                <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
-                  कायदेशीर मुद्दे व मार्गदर्शन (Legal Body & Solution):
-                </label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                    सखोल कायदेशीर मुद्दे व संपूर्ण मार्गदर्शन (Legal Body & Solution):
+                  </label>
+                  <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                    कलमे, शासन निर्णय व प्रत्यक्ष उपाय
+                  </span>
+                </div>
                 <textarea
-                  rows={6}
+                  rows={9}
                   value={selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB}
                   onChange={(e) => {
                     if (selectedFormat === 'A') {
@@ -518,7 +658,7 @@ export default function Tab3VideoStudio({
                       setScriptData({ ...scriptData, bodyFormatB: e.target.value });
                     }
                   }}
-                  className="w-full bg-transparent text-xs sm:text-sm text-slate-200 focus:outline-none leading-relaxed"
+                  className="w-full bg-transparent text-xs sm:text-sm text-slate-200 focus:outline-none leading-relaxed min-h-[190px]"
                 />
               </div>
 

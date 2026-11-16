@@ -103,16 +103,35 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
         "hook": "linear-gradient(135deg, #DC2626, #991B1B)",
         "problem": "linear-gradient(135deg, #EA580C, #9A3412)",
         "law_solution": "linear-gradient(135deg, #16A34A, #166534)",
+        "procedure": "linear-gradient(135deg, #0284C7, #0369A1)",
+        "remedy": "linear-gradient(135deg, #7C3AED, #5B21B6)",
         "cta": "linear-gradient(135deg, #2563EB, #1E40AF)"
     }
     badge_labels = {
         "hook": "🚨 महत्त्वाची कायदेशीर सूचना (Legal Alert)",
         "problem": "⚠️ सामान्य अडचण व फसवणूक (The Risk)",
         "law_solution": "🏛️ कायदा आणि शासन निर्णय (The Law)",
-        "cta": "⚖️ कायदेशीर सल्ला व मार्गदर्शन (Action)"
+        "procedure": "📋 अधिकृत पायऱ्या व कागदपत्रे (Procedure)",
+        "remedy": "⚖️ कायदेशीर उपाय व दाद (Legal Remedy)",
+        "cta": "📢 कायदेशीर सल्ला व पुढील कृती (Action)"
     }
     badge_bg = badge_colors.get(sc_type, "linear-gradient(135deg, #D4AF37, #B8860B)")
     badge_text = badge_labels.get(sc_type, "⚖️ कायदेशीर माहिती")
+
+    # Responsive typography for detailed multi-sentence legal advice
+    text_len = len(speech_text)
+    if text_len > 250:
+        speech_font_size = "32px"
+        speech_line_height = "1.45"
+    elif text_len > 160:
+        speech_font_size = "37px"
+        speech_line_height = "1.5"
+    elif text_len > 90:
+        speech_font_size = "43px"
+        speech_line_height = "1.52"
+    else:
+        speech_font_size = "48px"
+        speech_line_height = "1.55"
     
     # Prepare background style
     bg_style = ""
@@ -290,9 +309,9 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
     letter-spacing: 0.5px;
   }}
   .speech-text {{
-    font-size: 46px;
+    font-size: {speech_font_size};
     font-weight: 600;
-    line-height: 1.55;
+    line-height: {speech_line_height};
     color: #FFFFFF;
     text-shadow: 0 2px 10px rgba(0,0,0,0.9);
   }}

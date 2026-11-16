@@ -83,17 +83,18 @@ def parse_pasted_script(raw_text: str, custom_title: str = None, duration: str =
     if not chunks:
         chunks = [text]
 
-    # Target number of scenes based on chosen duration
+    # Dynamic target scenes for thorough, detailed legal breakdown
+    # If the user provides a detailed script with 4 to 6 paragraphs, preserve each step!
     dur_str = str(duration)
     if dur_str == "30":
-        t_count = 3
+        max_scenes = 4
     elif dur_str == "60":
-        t_count = 5
+        max_scenes = 6
     else:
-        t_count = 4
+        max_scenes = 5
 
-    # Merge shortest adjacent chunks if there are too many
-    while len(chunks) > t_count:
+    # Only merge if chunks strictly exceed max_scenes
+    while len(chunks) > max_scenes:
         min_idx = 0
         min_len = len(chunks[0]) + len(chunks[1])
         for i in range(1, len(chunks) - 1):
@@ -104,11 +105,13 @@ def parse_pasted_script(raw_text: str, custom_title: str = None, duration: str =
         chunks[min_idx] = chunks[min_idx] + "\n" + chunks[min_idx + 1]
         chunks.pop(min_idx + 1)
 
-    types = ["hook", "problem", "law_solution", "cta", "cta"]
+    types = ["hook", "problem", "law_solution", "procedure", "remedy", "cta"]
     badge_titles = {
         "hook": "महत्त्वाची कायदेशीर सूचना",
-        "problem": "सामान्य अडचण व जोखीम",
-        "law_solution": "कायदा आणि अधिकृत तरतूद",
+        "problem": "सामान्य अडचण व फसवणूक",
+        "law_solution": "कायदा, कलम व शासन निर्णय",
+        "procedure": "प्रत्यक्ष पायऱ्या व कागदपत्रे",
+        "remedy": "कायदेशीर उपाय व अपील",
         "cta": "कायदेशीर सल्ला व पुढील कृती"
     }
 
