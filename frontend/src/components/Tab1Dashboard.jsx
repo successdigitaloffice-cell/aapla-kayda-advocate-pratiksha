@@ -57,7 +57,16 @@ export default function Tab1Dashboard({
     }
   };
 
-  const topTrend = trends && trends.length > 0 ? trends[0] : null;
+  const trendsList = Array.isArray(trends)
+    ? trends
+    : (Array.isArray(trends?.trends)
+      ? trends.trends
+      : (Array.isArray(trends?.allTopics)
+        ? trends.allTopics
+        : (Array.isArray(trends?.top3)
+          ? trends.top3
+          : [])));
+  const topTrend = trendsList.length > 0 ? trendsList[0] : null;
 
   return (
     <div className="space-y-6 animate-fadeIn pb-12">

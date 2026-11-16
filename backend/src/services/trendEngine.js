@@ -28,7 +28,8 @@ export function getTodayTrends() {
     totalEvaluated: trends.length,
     bestToday,
     top3,
-    allTopics: trends
+    allTopics: trends,
+    trends // Direct array for API consumers
   };
 }
 

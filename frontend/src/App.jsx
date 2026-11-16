@@ -170,9 +170,19 @@ export default function App() {
       fetch('/api/trends/today')
         .then(r => r.json())
         .then(data => {
-          if (data && data.trends) setTrends(data.trends);
+          if (!data) return;
+          const list = Array.isArray(data.trends)
+            ? data.trends
+            : (Array.isArray(data.allTopics)
+              ? data.allTopics
+              : (Array.isArray(data.top3)
+                ? data.top3
+                : (Array.isArray(data) ? data : [])));
+          if (list.length > 0) {
+            setTrends(list);
+          }
         })
-        .catch(() => {});
+        .catch(err => console.error('Error loading trends:', err));
 
       // 2. Fetch active reel
       fetch('/api/reels/active')
@@ -190,8 +200,15 @@ export default function App() {
     try {
       const res = await fetch('/api/trends/refresh', { method: 'POST' });
       const data = await res.json();
-      if (data.trends) {
-        setTrends(data.trends);
+      const list = Array.isArray(data.trends)
+        ? data.trends
+        : (Array.isArray(data.allTopics)
+          ? data.allTopics
+          : (Array.isArray(data.trendsData?.allTopics)
+            ? data.trendsData.allTopics
+            : []));
+      if (list.length > 0) {
+        setTrends(list);
         notify('नवीन कायदेशीर ट्रेंड्स यशस्वीरीत्या अपडेट झाले!');
       }
     } catch (e) {

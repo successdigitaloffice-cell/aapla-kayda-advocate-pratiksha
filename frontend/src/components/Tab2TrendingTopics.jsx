@@ -58,7 +58,17 @@ export default function Tab2TrendingTopics({
   // Determine which list to display
   let currentList = [];
   if (subView === 'daily') {
-    currentList = trends.map((t, idx) => ({
+    const dailyTrendsList = Array.isArray(trends)
+      ? trends
+      : (Array.isArray(trends?.trends)
+        ? trends.trends
+        : (Array.isArray(trends?.allTopics)
+          ? trends.allTopics
+          : (Array.isArray(trends?.top3)
+            ? trends.top3
+            : [])));
+
+    currentList = dailyTrendsList.map((t, idx) => ({
       id: t.id || idx,
       title: t.topic_name || t.title,
       category: t.category || 'महाराष्ट्र जमीन महसूल',

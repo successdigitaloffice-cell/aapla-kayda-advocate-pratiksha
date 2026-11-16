@@ -74,8 +74,13 @@ router.post('/settings', (req, res) => {
 
 router.get('/trends/today', (req, res) => {
   try {
-    const trends = getTodayTrends();
-    res.json(trends);
+    const trendsData = getTodayTrends();
+    const allTopics = trendsData.allTopics || [];
+    res.json({
+      ...trendsData,
+      trends: allTopics,
+      allTopics
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -83,11 +88,14 @@ router.get('/trends/today', (req, res) => {
 
 router.post('/trends/refresh', (req, res) => {
   try {
-    const trends = runDailyTrendResearch();
+    const trendsData = runDailyTrendResearch();
+    const allTopics = trendsData.allTopics || [];
     res.json({
       success: true,
       message: 'आजचे 10 ट्रेंडिंग कायदेशीर विषय यशस्वीरीत्या तपासले गेले.',
-      trends
+      trends: allTopics,
+      allTopics,
+      trendsData
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
