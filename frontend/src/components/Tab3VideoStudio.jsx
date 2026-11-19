@@ -28,7 +28,14 @@ import {
   Compass,
   Heart
 } from 'lucide-react';
-import { resolveMediaUrl, downloadFileFromUrl } from '../utils/api';
+import {
+  resolveMediaUrl,
+  downloadFileFromUrl,
+  getApiUrl,
+  getActiveBackendUrl,
+  setCustomBackendUrl,
+  resetBackendUrl
+} from '../utils/api';
 
 export default function Tab3VideoStudio({
   selectedTopic,
@@ -90,6 +97,28 @@ export default function Tab3VideoStudio({
   const [historyReels, setHistoryReels] = useState([]);
   const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
   const [copiedField, setCopiedField] = useState(null);
+  const [cloudBackendUrl, setCloudBackendUrl] = useState(getActiveBackendUrl());
+  const [customUrlInput, setCustomUrlInput] = useState(getActiveBackendUrl());
+  const [showBackendConfig, setShowBackendConfig] = useState(false);
+  const [backendTestStatus, setBackendTestStatus] = useState(null);
+
+  const handleTestBackend = async (url) => {
+    setBackendTestStatus('testing');
+    try {
+      const target = (url || customUrlInput).trim().replace(/\/$/, '');
+      const res = await fetch(`${target}/api/video-engine/history`, { signal: AbortSignal.timeout(6000) });
+      if (res.ok) {
+        setBackendTestStatus('success');
+        setCustomBackendUrl(target);
+        setCloudBackendUrl(target);
+        loadReelsHistory();
+      } else {
+        setBackendTestStatus('error');
+      }
+    } catch (e) {
+      setBackendTestStatus('error');
+    }
+  };
 
   const audioPreviewRef = useRef(null);
 
@@ -110,7 +139,7 @@ export default function Tab3VideoStudio({
 
   const loadReelsHistory = async () => {
     try {
-      const res = await fetch('/api/video-engine/history');
+      const res = await fetch(getApiUrl('/api/video-engine/history'));
       if (res.ok) {
         const data = await res.json();
         const reels = data.reels || [];
@@ -689,7 +718,7 @@ export default function Tab3VideoStudio({
     try {
       const speedMap = { slow: 0.95, normal: 1.10, fast: 1.25 };
       const sample = `प्लॉट खरेदी करताना हा एक कागद तपासला नाही, तर तुमचे लाखो रुपये अडकू शकतात!`;
-      const res = await fetch('/api/video-engine/preview-voice', {
+      const res = await fetch(getApiUrl('/api/video-engine/preview-voice'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -744,7 +773,7 @@ export default function Tab3VideoStudio({
         force_regenerate: true
       };
 
-      const res = await fetch('/api/video-engine/generate-video', {
+      const res = await fetch(getApiUrl('/api/video-engine/generate-video'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -775,7 +804,7 @@ export default function Tab3VideoStudio({
       // Poll video job status
       const pollTimer = setInterval(async () => {
         try {
-          const pollRes = await fetch(`/api/video-engine/video-status/${jobId}`);
+          const pollRes = await fetch(getApiUrl(`/api/video-engine/video-status/${jobId}`));
           if (!pollRes.ok) return;
 
           const pollData = await pollRes.json();
@@ -846,32 +875,109 @@ export default function Tab3VideoStudio({
           </div>
         </div>
 
-        {/* 2 Primary Modes */}
-        <div className="flex items-center bg-navy-950 p-1 rounded-xl border border-navy-800 text-xs">
+        <div className="flex flex-wrap items-center gap-2">
+          {/* Cloud Server Status Pill */}
           <button
-            onClick={() => setStudioMode('creative')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-              studioMode === 'creative'
-                ? 'bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 shadow-md'
-                : 'text-slate-400 hover:text-white'
-            }`}
+            onClick={() => setShowBackendConfig(!showBackendConfig)}
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-navy-950 border border-gold-500/30 text-gold-400 hover:border-gold-500 text-xs font-semibold transition-all shadow-sm"
+            title="क्लाउड व्हिडिओ सर्व्हर स्थिती तपासा किंवा बदला"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>क्रिएटिव्ह AI व्हिडिओ</span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="hidden md:inline">Cloud Server:</span>
+            <span className="text-slate-200 font-mono text-[11px] max-w-[140px] truncate">
+              {cloudBackendUrl.replace('https://', '').replace('.trycloudflare.com', '')}
+            </span>
           </button>
-          <button
-            onClick={() => setStudioMode('recording')}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
-              studioMode === 'recording'
-                ? 'bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 shadow-md'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Video className="w-3.5 h-3.5" />
-            <span>रेकॉर्डिंग व्हिडिओ (Teleprompter)</span>
-          </button>
+
+          {/* 2 Primary Modes */}
+          <div className="flex items-center bg-navy-950 p-1 rounded-xl border border-navy-800 text-xs">
+            <button
+              onClick={() => setStudioMode('creative')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                studioMode === 'creative'
+                  ? 'bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>क्रिएटिव्ह AI व्हिडिओ</span>
+            </button>
+            <button
+              onClick={() => setStudioMode('recording')}
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-bold transition-all ${
+                studioMode === 'recording'
+                  ? 'bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Video className="w-3.5 h-3.5" />
+              <span>रेकॉर्डिंग व्हिडिओ (Teleprompter)</span>
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Cloud Server Configuration Card (When clicked) */}
+      {showBackendConfig && (
+        <div className="p-4 rounded-2xl bg-navy-900 border border-gold-500/40 text-xs space-y-3 animate-fadeIn">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-gold-400 font-bold">
+              <Globe className="w-4 h-4" />
+              <span>क्लाउड व्हिडिओ रेंडरिंग सर्व्हर (Live Backend Connection)</span>
+            </div>
+            <button
+              onClick={() => setShowBackendConfig(false)}
+              className="text-slate-400 hover:text-white text-xs px-2 py-0.5 rounded bg-navy-800"
+            >
+              बंद करा ✕
+            </button>
+          </div>
+          <p className="text-slate-300">
+            GitHub Pages वरून व्हिडिओ निर्मिती, व्हॉईस-ओव्हर आणि रील्स रेंडरिंग या क्लाउड सर्व्हरद्वारे चालते.
+          </p>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <input
+              type="text"
+              value={customUrlInput}
+              onChange={(e) => setCustomUrlInput(e.target.value)}
+              placeholder="https://your-tunnel.trycloudflare.com"
+              className="flex-1 bg-navy-950 border border-navy-700 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-gold-500"
+            />
+            <button
+              onClick={() => handleTestBackend(customUrlInput)}
+              disabled={backendTestStatus === 'testing'}
+              className="px-4 py-2 rounded-xl bg-gold-500 text-navy-950 font-bold hover:bg-gold-400 flex items-center justify-center space-x-1.5"
+            >
+              {backendTestStatus === 'testing' ? <RefreshCw className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />}
+              <span>{backendTestStatus === 'testing' ? 'तपासत आहे...' : 'कनेक्शन तपासा व सेव्ह करा'}</span>
+            </button>
+            <button
+              onClick={() => {
+                resetBackendUrl();
+                setCustomUrlInput(getActiveBackendUrl());
+                setCloudBackendUrl(getActiveBackendUrl());
+                setBackendTestStatus(null);
+                loadReelsHistory();
+              }}
+              className="px-3 py-2 rounded-xl bg-navy-800 text-slate-300 hover:text-white font-semibold"
+            >
+              डिफ़ॉल्ट रिसेट
+            </button>
+          </div>
+          {backendTestStatus === 'success' && (
+            <div className="text-emerald-400 font-bold flex items-center space-x-1.5 text-xs">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>क्लाउड सर्व्हरशी यशस्वीरीत्या कनेक्ट झाले! व्हिडिओ रेंडरिंग आता पूर्णपणे कार्यरत आहे.</span>
+            </div>
+          )}
+          {backendTestStatus === 'error' && (
+            <div className="text-rose-400 font-bold flex items-center space-x-1.5 text-xs">
+              <AlertCircle className="w-4 h-4" />
+              <span>सर्व्हरशी संपर्क होऊ शकला नाही. कृपया URL तपासा किंवा लोकल टनेल चालू असल्याची खात्री करा.</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 8-Step Progress Stepper Bar (Horizontal Scrollable for Mobile) */}
       <div className="bg-navy-850/80 border border-navy-700/80 rounded-2xl p-3 sm:p-4 overflow-x-auto no-scrollbar">

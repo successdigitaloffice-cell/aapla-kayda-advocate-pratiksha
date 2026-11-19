@@ -270,6 +270,23 @@ function updateTunnelStatus() {
     fs.writeFileSync(TUNNEL_FILE, JSON.stringify(info, null, 2), 'utf8');
     fs.writeFileSync(TUNNEL_TXT, primaryUrl, 'utf8');
     if (activeCloudflareUrl) fs.writeFileSync(CF_TXT, activeCloudflareUrl, 'utf8');
+
+    // Also write to docs/tunnel_info.json so GitHub Pages can discover it directly
+    const docsDir = path.join(ROOT_DIR, 'docs');
+    if (fs.existsSync(docsDir)) {
+      fs.writeFileSync(path.join(docsDir, 'tunnel_info.json'), JSON.stringify(info, null, 2), 'utf8');
+    }
+
+    // Keep frontend/src/utils/api.js updated with activeCloudflareUrl if present
+    if (activeCloudflareUrl) {
+      const apiJsPath = path.join(ROOT_DIR, 'frontend', 'src', 'utils', 'api.js');
+      if (fs.existsSync(apiJsPath)) {
+        let content = fs.readFileSync(apiJsPath, 'utf8');
+        content = content.replace(/DEFAULT_LIVE_BACKEND_URL\s*=\s*['"][^'"]+['"]/, `DEFAULT_LIVE_BACKEND_URL = '${activeCloudflareUrl}'`);
+        fs.writeFileSync(apiJsPath, content, 'utf8');
+      }
+    }
+
     updateDesktopShortcuts(primaryUrl);
   } catch (e) {
     console.error('[AaplaKaydaTunnel] Error updating tunnel status:', e.message);
