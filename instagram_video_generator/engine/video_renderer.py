@@ -50,8 +50,15 @@ def get_browser_exe() -> Optional[str]:
 def resolve_scene_visual(scene_info: dict, overall_title: str, scene_idx: int) -> Optional[str]:
     """
     Selects the most accurate topic-specific documentary visual asset for the scene.
+    Ensures every legal video topic (Marriage, Land, Police/BNSS, Farm Road, Cheque Bounce, Women's Rights, Cyber)
+    displays authentic, context-matching background imagery.
     """
-    text_content = (scene_info.get("text", "") + " " + scene_info.get("title", "") + " " + overall_title).lower()
+    text_content = (
+        scene_info.get("text", "") + " " +
+        scene_info.get("title", "") + " " +
+        scene_info.get("visual_cue", "") + " " +
+        overall_title
+    ).lower()
     
     # Check if specific visual is provided in scene_info
     if scene_info.get("custom_bg") and os.path.exists(scene_info["custom_bg"]):
@@ -60,33 +67,94 @@ def resolve_scene_visual(scene_info: dict, overall_title: str, scene_idx: int) -
     land_dir = os.path.join(VISUALS_DIR, "land_records")
     cyber_dir = os.path.join(VISUALS_DIR, "cyber_crime")
     women_dir = os.path.join(VISUALS_DIR, "womens_rights")
-    
-    # 1. Cyber Crime / 1930 Helpline
-    if any(k in text_content for k in ["सायबर", "cyber", "१९३०", "1930", "ओटीपी", "otp", "बँक फ्रॉड", "खात्यातून"]):
+    court_marriage_dir = os.path.join(VISUALS_DIR, "court_marriage")
+    police_dir = os.path.join(VISUALS_DIR, "police_bnss")
+    cheque_dir = os.path.join(VISUALS_DIR, "cheque_bounce")
+    farm_road_dir = os.path.join(VISUALS_DIR, "farm_road")
+    court_dir = os.path.join(VISUALS_DIR, "general_court")
+
+    # 1. Court Marriage, Love Life, Special Marriage Act, Inter-caste Marriage, Police Protection for Couples
+    if any(k in text_content for k in [
+        "कोर्ट मॅरेज", "मॅरेज", "court marriage", "लग्न", "विवाह", "special marriage", "स्पेशल मॅरेज",
+        "प्रेमविवाह", "आंतरजातीय", "अंतरधर्मीय", "लता सिंग", "जोडीदार", "पती", "पत्नी", "लव्ह"
+    ]):
+        if os.path.exists(court_marriage_dir):
+            if scene_idx % 2 == 0:
+                p = os.path.join(court_marriage_dir, "court_marriage_registrar.jpg")
+            else:
+                p = os.path.join(court_marriage_dir, "special_marriage_act.jpg")
+            if os.path.exists(p): return p
+
+    # 2. Police, BNSS 2023, FIR, Arrest Rights, Bail, Police Protection, Criminal Law
+    if any(k in text_content for k in [
+        "पोलीस", "police", "bnss", "bns", "बीएनएसएस", "एफआयआर", "fir", "अटक", "arrest",
+        "जामीन", "bail", "कलम ३५", "कलम १७३", "कलम १७५", "फौजदारी", "गुन्हा", "४२०", "318", "३१८", "दंडाधिकारी"
+    ]):
+        if os.path.exists(police_dir):
+            if scene_idx % 2 == 0:
+                p = os.path.join(police_dir, "bnss_2023_police_justice.jpg")
+            else:
+                p = os.path.join(police_dir, "police_rights_notice_35.jpg")
+            if os.path.exists(p): return p
+
+    # 3. Cyber Crime / 1930 Helpline / Online Bank Fraud
+    if any(k in text_content for k in [
+        "सायबर", "cyber", "१९३०", "1930", "ओटीपी", "otp", "बँक फ्रॉड", "खात्यातून पैसे",
+        "डिजिटल अरेस्ट", "हॅकिंग", "ऑनलाइन फसवणूक"
+    ]):
         cyber_img = os.path.join(cyber_dir, "cyber_fraud_1930.jpg")
-        if os.path.exists(cyber_img):
-            return cyber_img
-            
-    # 2. Women's Inheritance / Hindu Succession
-    if any(k in text_content for k in ["मुलगी", "मुलींचा", "बहीण", "वारसा", "हिंदू वारसा", "वडिलोपार्जित"]):
+        if os.path.exists(cyber_img): return cyber_img
+
+    # 4. Cheque Bounce, NI Act Section 138, Dishonoured Cheque, Return Memo
+    if any(k in text_content for k in [
+        "चेक", "धनादेश", "बाऊन्स", "बाउन्स", "bounce", "१३८", "138", "ni act",
+        "बँक मेमो", "अपुऱ्या निधी", "चेक अनादर", "धनादेश अनादर"
+    ]):
+        if os.path.exists(cheque_dir):
+            p = os.path.join(cheque_dir, "cheque_bounce_memo_138.jpg")
+            if os.path.exists(p): return p
+
+    # 5. Farm Road, Sheti Vahiwat, Mamlatdar Court Section 5, Land Boundaries, E-Mojani
+    if any(k in text_content for k in [
+        "रस्ता", "शेतरस्ता", "शेत रस्ता", "वहिवाट", "मामलतदार", "मामलेदार", "mlrc 143", "बांध", "सीमावाद", "मोजणी", "पांदण"
+    ]):
+        if os.path.exists(farm_road_dir):
+            p = os.path.join(farm_road_dir, "rural_farm_road_vahiwat.jpg")
+            if os.path.exists(p): return p
+
+    # 6. Women's Rights, Stridhan, Domestic Violence, Daughter's Equal Inheritance
+    if any(k in text_content for k in ["स्त्रीधन", "stridhan", "दागिने", "कौटुंबिक हिंसाचार", "घरगुती हिंसाचार", "पोटगी", "maintenance", "dv act"]):
+        p = os.path.join(women_dir, "stridhan_legal_protection.jpg")
+        if os.path.exists(p): return p
+    if any(k in text_content for k in ["मुलगी", "मुलींचा", "बहीण", "वारसा", "वारस", "हिंदू वारसा", "वडिलोपार्जित"]):
         women_img = os.path.join(women_dir, "daughter_inheritance_sec6.jpg")
-        if os.path.exists(women_img):
-            return women_img
-            
-    # 3. Land Records, Gunthewari, Tukdebandi, 7/12, Ferfar (Default core domain)
+        if os.path.exists(women_img): return women_img
+
+    # 7. Land Records, Gunthewari, Tukdebandi, 7/12, Ferfar, Plotting, Registered Deeds
+    if any(k in text_content for k in [
+        "सातबारा", "7/12", "फेरफार", "गुंठेवारी", "तुकडेबंदी", "प्लॉट", "जमीन", "खरेदीखत", "नोंदणी",
+        "तलाठी", "मुद्रांक", "सर्च रिपोर्ट", "इंडेक्स २", "बिनशेती", "na जमीन"
+    ]):
+        if os.path.exists(land_dir):
+            land_cycle = [
+                "scene_1_hook_plot_fraud.jpg",
+                "scene_2_problem_satbara_ferfar.jpg",
+                "scene_3_solution_survey_map.jpg",
+                "scene_4_cta_registered_deed.jpg"
+            ]
+            chosen = land_cycle[scene_idx % len(land_cycle)]
+            p = os.path.join(land_dir, chosen)
+            if os.path.exists(p): return p
+
+    # 8. High Court, Constitution, General Legal Justice (High-Quality Default)
+    if os.path.exists(court_dir):
+        p = os.path.join(court_dir, "high_court_constitution_scales.jpg")
+        if os.path.exists(p): return p
+
+    # Fallback to land records if available
     if os.path.exists(land_dir):
-        if scene_idx == 0:
-            p = os.path.join(land_dir, "scene_1_hook_plot_fraud.jpg")
-            if os.path.exists(p): return p
-        elif scene_idx == 1:
-            p = os.path.join(land_dir, "scene_2_problem_satbara_ferfar.jpg")
-            if os.path.exists(p): return p
-        elif scene_idx == 2:
-            p = os.path.join(land_dir, "scene_3_solution_survey_map.jpg")
-            if os.path.exists(p): return p
-        else:
-            p = os.path.join(land_dir, "scene_4_cta_registered_deed.jpg")
-            if os.path.exists(p): return p
+        p = os.path.join(land_dir, "scene_2_problem_satbara_ferfar.jpg")
+        if os.path.exists(p): return p
 
     return None
 
@@ -144,16 +212,16 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
           background-image: url('file:///{clean_bg}');
           background-size: cover;
           background-position: center;
-          filter: brightness(0.72) contrast(1.1);
+          filter: brightness(0.88) contrast(1.08);
           z-index: 1;
         }}
         .bg-overlay {{
           position: absolute;
           top: 0; left: 0; width: 100%; height: 100%;
           background: linear-gradient(180deg, 
-            rgba(9, 13, 22, 0.72) 0%, 
-            rgba(9, 13, 22, 0.82) 45%, 
-            rgba(9, 13, 22, 0.94) 100%);
+            rgba(9, 13, 22, 0.45) 0%, 
+            rgba(9, 13, 22, 0.60) 45%, 
+            rgba(9, 13, 22, 0.82) 100%);
           z-index: 1;
         }}
         """
@@ -164,8 +232,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
           top: 0; left: 0; width: 100%; height: 100%;
           background: #090D16;
           background-image: 
-            radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.18) 0%, transparent 45%),
-            radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 45%);
+            radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.25) 0%, transparent 45%),
+            radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.22) 0%, transparent 45%);
           z-index: 1;
         }
         .bg-overlay { display: none; }
@@ -213,8 +281,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   }}
 
   .header-card {{
-    background: rgba(15, 23, 42, 0.90);
-    backdrop-filter: blur(25px);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
     border: 3px solid #D4AF37;
     border-radius: 28px;
     padding: 24px 36px;
@@ -259,8 +327,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   }}
 
   .headline-card {{
-    background: rgba(14, 20, 32, 0.93);
-    backdrop-filter: blur(25px);
+    background: rgba(14, 20, 32, 0.82);
+    backdrop-filter: blur(20px);
     border: 3px solid rgba(212, 175, 55, 0.7);
     border-radius: 36px;
     padding: 40px 45px;
@@ -278,7 +346,7 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   }}
   .visual-cue-tag {{
     display: inline-block;
-    background: rgba(30, 41, 59, 0.92);
+    background: rgba(30, 41, 59, 0.88);
     border: 1px solid rgba(148, 163, 184, 0.5);
     border-radius: 18px;
     padding: 10px 28px;
@@ -288,7 +356,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   }}
 
   .speech-card {{
-    background: rgba(10, 15, 26, 0.96);
+    background: rgba(10, 15, 26, 0.84);
+    backdrop-filter: blur(20px);
     border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 32px;
     padding: 44px 50px;
@@ -322,7 +391,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   }}
 
   .footer-card {{
-    background: rgba(15, 23, 42, 0.92);
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
     border: 2px solid #D4AF37;
     border-radius: 26px;
     padding: 22px 36px;
@@ -350,8 +420,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   <div class="grid-pattern"></div>
 
   <div class="header-card">
-    <div class="brand-title">⚖️ आपला कायदा – ॲडव्होकेट प्रतीक्षा</div>
-    <div class="brand-sub">महाराष्ट्र कायदेशीर मार्गदर्शन व हक्क जागृती</div>
+    <div class="brand-title">⚖️ आपला कायदा (Aapla Kayda)</div>
+    <div class="brand-sub">महाराष्ट्र अधिकृत कायदेशीर मार्गदर्शन व नागरिक हक्क</div>
   </div>
 
   <div class="center-content">
@@ -371,8 +441,8 @@ def build_scene_html(scene_info: dict, overall_title: str, bg_image_path: Option
   </div>
 
   <div class="footer-card">
-    <div class="footer-main">👉 अधिक कायदेशीर सल्ल्यासाठी आत्ताच फॉलो करा!</div>
-    <div class="footer-sub">@aaplakayda • Advocate Pratiksha • Like & Share ↗️</div>
+    <div class="footer-main">👉 अधिक कायदेशीर माहितीसाठी आत्ताच फॉलो करा!</div>
+    <div class="footer-sub">@aaplakayda • जनहितार्थ कायदेशीर जनजागृती • Like & Share ↗️</div>
   </div>
 </body>
 </html>"""
@@ -568,7 +638,7 @@ def render_advocate_explainer_reel(
     scenes_with_audio: List[dict],
     bg_music_preset: str = "legal_ambient",
     output_dir: Optional[str] = None,
-    overall_title: str = "आपला कायदा – ॲडव्होकेट प्रतीक्षा",
+    overall_title: str = "आपला कायदा – कायदेशीर माहिती",
     progress_callback=None
 ) -> Tuple[str, List[dict]]:
     """

@@ -107,8 +107,8 @@ ${actionableStep}
   ].join(', ');
 
   // Hashtags (3-8 focused hashtags)
-  const hashtags = '#आपलाकायदा #AdvocatePratiksha #जमीनकायदे #गुंठेवारी #तुकडेबंदी #SatbaraUtara #MaharashtraRevenue #LegalAdviceMarathi';
-  const onScreenText = `${coverText} | Advocate Pratiksha`;
+  const hashtags = '#आपलाकायदा #जमीनकायदे #गुंठेवारी #तुकडेबंदी #SatbaraUtara #MaharashtraRevenue #LegalAdviceMarathi';
+  const onScreenText = `${coverText} | आपला कायदा`;
 
   // Pinned Comment encouraging discussion
   const pinnedComment = `तुम्ही किंवा तुमच्या कुटुंबातील कोणाची जमीन खरेदी, गुंठेवारी किंवा ७/१२ फेरफार नोंदीमध्ये अडचण झाली आहे का? खालील कमेंटमध्ये सांगा, योग्य कायदेशीर मार्गदर्शन केले जाईल.`;
@@ -242,7 +242,7 @@ function getScenarioExample(title, category) {
 function generateFormatAScript({ title, category, hook, applicable_law, applicable_section }) {
   const example = getScenarioExample(title, category);
   return `${hook}
-नमस्कार, मी Advocate Pratiksha, आणि हा आहे आपला कायदा.
+नमस्कार, कायद्याचे सत्य जाणून घ्या – हा आहे आपला कायदा.
 
 ${example}
 
@@ -258,7 +258,7 @@ ${applicable_law} च्या ${applicable_section ? `कलम ${applicable_se
 function generateFormatBScript({ title, category, hook, applicable_law, applicable_section, legal_question }) {
   const example = getScenarioExample(title, category);
   return `${hook}
-नमस्कार, मी Advocate Pratiksha, आणि हा आहे आपला कायदा.
+नमस्कार, कायद्याचे सत्य जाणून घ्या – हा आहे आपला कायदा.
 
 ${example}
 अशा परिस्थितीत घाबरून न जाता किंवा मध्यस्थांच्या सांगण्यावर पैसे वाया न घालवता कायद्याचा योग्य आधार घ्या.

@@ -154,8 +154,8 @@ def parse_pasted_script(raw_text: str, custom_title: str = None, duration: str =
         "duration": dur_str,
         "hook": chunks[0][:150],
         "scenes": scenes,
-        "caption": f"{calc_title}\n\nअधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा.",
-        "hashtags": "#आपलाकायदा #AdvocatePratiksha #MaharashtraLaw #कायदेशीरमाहिती #Reels #LegalAdvice",
+        "caption": f"{calc_title}\n\nअधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा.",
+        "hashtags": "#आपलाकायदा #MaharashtraLaw #कायदेशीरमाहिती #Reels #LegalAdvice",
         "best_posting_time": "संध्याकाळी ०७:०० PM ते ०८:३० PM"
     }
 
@@ -258,7 +258,7 @@ def get_status():
         "port": PORT,
         "engine": "FFmpeg 7.1 + Edge-TTS Neural Marathi + PIL Devanagari",
         "voices": [
-            {"id": "aarohi", "name": "ॲडव्होकेट प्रतीक्षा (Aarohi - Female Marathi)", "recommended": True},
+            {"id": "aarohi", "name": "मराठी स्त्री आवाज (Aarohi - Female Marathi)", "recommended": True},
             {"id": "manohar", "name": "मनोहर (Manohar - Male Marathi)", "recommended": False},
             {"id": "custom", "name": "स्वतःचा रेकॉर्ड केलेला आवाज (Custom Upload)", "recommended": False}
         ],
@@ -346,7 +346,7 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
         
         # 2. Audio Generation with Marathi Normalizer (7/12 -> सातबारा, कलमे, BNSS)
         JOBS[job_id]["progress"] = 30
-        JOBS[job_id]["message"] = f"Advocate Pratiksha यांचा मराठी आवाज तयार होत आहे... ({total_scenes} सीन्स)"
+        JOBS[job_id]["message"] = f"मराठी कायदेशीर आवाज तयार होत आहे... ({total_scenes} सीन्स)"
         
         scenes_with_audio = []
         if custom_audio_file and os.path.exists(custom_audio_file):
@@ -372,7 +372,7 @@ def run_video_generation_job(job_id, script_data, voice_key, bg_music_preset, cu
             scenes_with_audio=scenes_with_audio,
             bg_music_preset=bg_music_preset,
             output_dir=reel_dir,
-            overall_title=script_data.get("title_mr", "आपला कायदा – ॲडव्होकेट प्रतीक्षा"),
+            overall_title=script_data.get("title_mr", "आपला कायदा – कायदेशीर माहिती"),
             progress_callback=job_progress_cb
         )
         
@@ -425,7 +425,7 @@ def api_preview_voice():
     """
     try:
         data = request.json or {}
-        sample_text = data.get("text", "").strip() or "नमस्कार, मी ॲडव्होकेट प्रतीक्षा. आपला कायदा मध्ये आपले स्वागत आहे. आज आपण गुंठेवारी आणि सातबारा विषयी महत्त्वाची कायदेशीर माहिती जाणून घेणार आहोत."
+        sample_text = data.get("text", "").strip() or "नमस्कार, हा आहे आपला कायदा. आज आपण गुंठेवारी आणि सातबारा विषयी महत्त्वाची कायदेशीर माहिती जाणून घेणार आहोत."
         voice_key = data.get("voice", "aarohi")
         try:
             speed = float(data.get("speed", 1.10))

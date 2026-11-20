@@ -500,7 +500,7 @@ ${detected.actionPlan}
 
   const caption = `${title} ⚖️📜
 
-Advocate Pratiksha यांच्याकडून सोप्या मराठीत थेट कायदेशीर मार्गदर्शन.
+आपला कायदा – सोप्या मराठीत थेट कायदेशीर मार्गदर्शन.
 
 📌 लागू कायदा: ${finalLaw} ${finalSection ? `(कलम ${finalSection})` : ''}
 
@@ -515,18 +515,18 @@ ${detected.actionPlan}
 
 (सूचना: ही माहिती सामान्य जनजागृतीसाठी आहे. प्रत्यक्ष प्रकरणातील गुणदोषांवर आधारित तज्ज्ञ वकिलांचा सल्ला घ्यावा.)
 
-#आपलाकायदा #AdvocatePratiksha #MarathiLaw #कायदेशीरहक्क #महाराष्ट्र #BNS2023 #BNSS2023 #जमीनकायदे`;
+#आपलाकायदा #MarathiLaw #कायदेशीरहक्क #महाराष्ट्र #BNS2023 #BNSS2023 #जमीनकायदे`;
 
   const seoKeywords = [
     title,
     `${title} कायदेशीर उपाय`,
-    'Advocate Pratiksha कायदेशीर सल्ला',
+    'आपला कायदा कायदेशीर सल्ला',
     finalLaw,
     `कलम ${finalSection}`,
     'महाराष्ट्र शासन कायदेशीर नियम'
   ].join(', ');
 
-  const hashtags = '#आपलाकायदा #AdvocatePratiksha #MarathiLaw #कायदेशीरहक्क #Maharashtra #BNS2023';
+  const hashtags = '#आपलाकायदा #MarathiLaw #कायदेशीरहक्क #Maharashtra #BNS2023';
 
   // Construct structured scenes for Tab 9 Video Generator
   const scenes = [
@@ -556,7 +556,7 @@ ${detected.actionPlan}
       type: 'cta',
       title: 'कायदेशीर सल्ला व कृती',
       text: 'कायद्याची अचूक माहिती हीच आपली खरी ताकद आहे! अधिक कायदेशीर मार्गदर्शनासाठी फॉलो करा आपला कायदा.',
-      visual_cue: 'Advocate Pratiksha CTA'
+      visual_cue: 'आपला कायदा कायदेशीर मार्गदर्शन'
     }
   ];
 

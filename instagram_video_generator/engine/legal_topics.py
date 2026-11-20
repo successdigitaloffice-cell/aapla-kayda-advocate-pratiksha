@@ -47,7 +47,7 @@ LEGAL_TOPICS_DATABASE = [
                     "type": "cta",
                     "title": "जागा अधिकृत करा",
                     "text": "सक्षम वास्तुविशारदाकडून रेखांकन मंजूर करून अर्ज करा. अशाच अधिकृत कायदेशीर माहितीसाठी फॉलो करा 'आपला कायदा'.",
-                    "visual_cue": "Advocate Pratiksha branding & follow button",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -174,7 +174,7 @@ LEGAL_TOPICS_DATABASE = [
                     "type": "cta",
                     "title": "कायद्याची मदत घ्या",
                     "text": "आपल्या अधिकारांची जाणीव ठेवा आणि अन्याय सहन करू नका. दररोज कायदेशीर मार्गदर्शनासाठी फॉलो करा 'आपला कायदा'!",
-                    "visual_cue": "Advocate Pratiksha branding",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -261,7 +261,7 @@ LEGAL_TOPICS_DATABASE = [
                     "type": "cta",
                     "title": "वेळेत पाऊल उचला",
                     "text": "कायद्याची वेळेत घेतलेली मदत तुम्हाला तुमच्या हक्काची जमीन मिळवून देते. अधिक माहितीसाठी फॉलो करा 'आपला कायदा'!",
-                    "visual_cue": "Advocate Pratiksha Call to Action",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -522,7 +522,7 @@ LEGAL_TOPICS_DATABASE = [
                     "type": "cta",
                     "title": "शेतकऱ्यांपर्यंत पोहोचवा",
                     "text": "हा व्हिडिओ प्रत्येक शेतकरी बांधवाला नक्की पाठवा आणि दररोज कायदेशीर मार्गदर्शनासाठी फॉलो करा 'आपला कायदा'!",
-                    "visual_cue": "Advocate Pratiksha branding",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -609,7 +609,7 @@ LEGAL_TOPICS_DATABASE = [
                     "type": "cta",
                     "title": "कायद्याची ताकद वापरा",
                     "text": "आपल्या शेतीचे रक्षण करा. हा व्हिडिओ प्रत्येक शेतकरी ग्रुपमध्ये शेअर करा आणि फॉलो करा 'आपला कायदा'!",
-                    "visual_cue": "Advocate Pratiksha branding",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -696,7 +696,7 @@ LEGAL_TOPICS_DATABASE = [
                     "type": "cta",
                     "title": "कायद्याची मदत घ्या",
                     "text": "आपल्या कष्टाच्या पैशांची सुरक्षा करा. हा व्हिडिओ सर्व घर खरेदीदारांपर्यंत पोहोचवा आणि फॉलो करा 'आपला कायदा'!",
-                    "visual_cue": "Advocate Pratiksha branding",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -797,7 +797,7 @@ def generate_custom_script(custom_query: str, duration: str = "30") -> dict:
                     "type": "cta",
                     "title": "आपले पैसे वसूल करा",
                     "text": "वेळेत कायदेशीर नोटीस पाठवून हक्काचे पैसे परत मिळवा. अशाच अधिकृत कायदेशीर मार्गदर्शनासाठी फॉलो करा 'आपला कायदा'.",
-                    "visual_cue": "Advocate Pratiksha Follow CTA",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -846,7 +846,7 @@ def generate_custom_script(custom_query: str, duration: str = "30") -> dict:
                     "type": "cta",
                     "title": "सुरक्षित व्यवहार करा",
                     "text": "केवळ कुलमुखत्यारपत्रावर कधीही पैसे देऊ नका; आधी वकिलांकडून सर्च रिपोर्ट तपासा. अधिक माहितीसाठी फॉलो करा 'आपला कायदा'.",
-                    "visual_cue": "Advocate Pratiksha Branding",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -895,7 +895,7 @@ def generate_custom_script(custom_query: str, duration: str = "30") -> dict:
                     "type": "cta",
                     "title": "आपले हक्क शाबूत ठेवा",
                     "text": "फसवणूक करणाऱ्याला कायद्याचा धाक दाखवा. अधिकृत कायदेशीर संरक्षणासाठी आजच फॉलो करा 'आपला कायदा'.",
-                    "visual_cue": "Advocate Pratiksha Follow CTA",
+                    "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन",
                     "template": "courtroom_scales.png"
                 }
             ],
@@ -943,7 +943,7 @@ def generate_custom_script(custom_query: str, duration: str = "30") -> dict:
                 "type": "cta",
                 "title": "वकिलांचा सल्ला घ्या",
                 "text": "कोणताही व्यवहार करण्यापूर्वी तज्ज्ञ वकिलांचा कायदेशीर सल्ला अवश्य घ्या. अशाच अधिकृत सोप्या माहितीसाठी फॉलो करा 'आपला कायदा'!",
-                "visual_cue": "Advocate Pratiksha branding & CTA",
+                "visual_cue": "आपला कायदा अधिकृत कायदेशीर मार्गदर्शन & CTA",
                 "template": "courtroom_scales.png"
             }
         ],

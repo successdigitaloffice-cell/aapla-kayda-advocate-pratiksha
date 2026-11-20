@@ -687,7 +687,7 @@ export default function Tab3VideoStudio({
       hashtagList = '#आपलाकायदा #AdvocatePratiksha #MarathiLaw #कायदेशीरहक्क #महाराष्ट्र';
     }
 
-    const cta = `हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!`;
+    const cta = `हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!`;
 
     setScriptData({
       hook,
@@ -703,7 +703,7 @@ export default function Tab3VideoStudio({
     setHashtags(hashtagList);
     setSeoKeywords(seoInfo.metaKeywords.join(', '));
 
-    setCaptionText(`${title} ⚖️📜\n\nAdvocate Pratiksha यांच्याकडून सोप्या मराठीत सविस्तर कायदेशीर मार्गदर्शन.\n\n📌 लागू कायदा व तरतूद: ${legalSection}\n\n💡 वास्तववादी उदाहरण व उपाय:\n${formatA}\n\n👉 ही अत्यंत महत्त्वाची कायदेशीर माहिती आपल्या कुटुंबियांना व मित्रांना नक्की शेअर करा!\nफॉलो करा 👉 @aaplakayda\n\n${hashtagList}`);
+    setCaptionText(`${title} ⚖️📜\n\nआपला कायदा – सोप्या मराठीत सविस्तर कायदेशीर मार्गदर्शन.\n\n📌 लागू कायदा व तरतूद: ${legalSection}\n\n💡 वास्तववादी उदाहरण व उपाय:\n${formatA}\n\n👉 ही अत्यंत महत्त्वाची कायदेशीर माहिती आपल्या कुटुंबियांना व मित्रांना नक्की शेअर करा!\nफॉलो करा 👉 @aaplakayda\n\n${hashtagList}`);
     setVisualPrompt(visualPromptCue);
   };
 
@@ -1453,7 +1453,7 @@ export default function Tab3VideoStudio({
                         : 'bg-navy-950 text-slate-400 border-navy-800'
                     }`}
                   >
-                    <span>आरोही (स्त्री आवाज - Pratiksha)</span>
+                    <span>आरोही (मराठी स्त्री आवाज)</span>
                     {selectedVoice === 'aarohi' && <Check className="w-3.5 h-3.5" />}
                   </button>
                   <button
@@ -1679,7 +1679,7 @@ export default function Tab3VideoStudio({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-navy-800 pb-3">
               <h2 className="text-base sm:text-lg font-bold text-white flex items-center space-x-2">
                 <span className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">8</span>
-                <span>Advocate Pratiksha टॉकिंग अवतार प्रिव्ह्यू व डाऊनलोड (Talking Avatar Video)</span>
+                <span>कायदेशीर व्हिडिओ प्रिव्ह्यू व डाऊनलोड (Full HD Video Reel)</span>
               </h2>
               {renderedVideoUrl && (
                 <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
@@ -1715,7 +1715,7 @@ export default function Tab3VideoStudio({
                     {downloadVideoUrl && (
                       <button
                         type="button"
-                        onClick={() => downloadFileFromUrl(downloadVideoUrl, `Advocate_Pratiksha_${(topicTitle || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
+                        onClick={() => downloadFileFromUrl(downloadVideoUrl, `Aapla_Kayda_${(topicTitle || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
                         className="mt-3 w-full max-w-[260px] flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 font-extrabold text-xs shadow-lg shadow-gold-500/20 transition-all cursor-pointer"
                       >
                         <Download className="w-4 h-4" />
@@ -1785,7 +1785,7 @@ export default function Tab3VideoStudio({
                   {downloadVideoUrl && (
                     <button
                       type="button"
-                      onClick={() => downloadFileFromUrl(downloadVideoUrl, `Advocate_Pratiksha_${(topicTitle || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
+                      onClick={() => downloadFileFromUrl(downloadVideoUrl, `Aapla_Kayda_${(topicTitle || 'Reel').replace(/[^a-zA-Z0-9\u0900-\u097F_-]/g, '_')}.mp4`)}
                       className="flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 font-bold text-xs sm:text-sm shadow-lg shadow-gold-500/20 transition-all cursor-pointer"
                     >
                       <Download className="w-4 h-4" />
@@ -1799,7 +1799,7 @@ export default function Tab3VideoStudio({
                       const url = URL.createObjectURL(blob);
                       const a = document.createElement('a');
                       a.href = url;
-                      a.download = `Advocate_Pratiksha_Script_${Date.now()}.txt`;
+                      a.download = `Aapla_Kayda_Script_${Date.now()}.txt`;
                       a.click();
                     }}
                     className="flex items-center justify-center space-x-2 py-3 rounded-xl bg-navy-800 hover:bg-navy-750 text-white font-bold text-xs sm:text-sm border border-navy-700 transition-all shadow-md"
@@ -1829,7 +1829,7 @@ export default function Tab3VideoStudio({
                           <span>{reel.created_at || 'Reel MP4'}</span>
                           <span className="text-gold-400 font-bold">{reel.size_mb ? `${reel.size_mb} MB` : '1080p'}</span>
                         </div>
-                        <h4 className="text-xs font-bold text-white line-clamp-1">{reel.title || 'Advocate Pratiksha Reel'}</h4>
+                        <h4 className="text-xs font-bold text-white line-clamp-1">{reel.title || 'Aapla Kayda Reel'}</h4>
                       </div>
                       <div className="mt-2.5 flex items-center space-x-2">
                         <button
