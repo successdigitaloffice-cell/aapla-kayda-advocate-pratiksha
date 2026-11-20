@@ -37,6 +37,173 @@ import {
   resetBackendUrl
 } from '../utils/api';
 
+// High-Retention 3-Second Scroll-Stopping Viral Hook Generator
+const generateTopicHooks = (titleInput, categoryInput) => {
+  const title = (titleInput || '').replace(/[?!।]/g, '').trim();
+  const category = categoryInput || '';
+  const tLower = (title + ' ' + category).toLowerCase();
+
+  // 1. गुंठेवारी
+  if (tLower.includes('गुंठेवारी') || tLower.includes('gunthewari') || tLower.includes('नियमितीकरण')) {
+    return {
+      shock: 'थांबा! १ किंवा २ गुंठे जागेत घर बांधलंय? मनपाची डिमोलिशन नोटीस येण्यापूर्वी हा एक नियम आत्ताच ऐका — अन्यथा लाखोंचे नुकसान होईल!',
+      secret: 'गुंठेवारी नियमितीकरणाचा हा अधिकृत शासन निर्णय वापरून अनधिकृत प्लॉटवर अधिकृत ७/१२ नोंद कशी मिळवायची ते ऐका!',
+      scenario: 'तुम्ही १ किंवा २ गुंठे जागेत घर बांधले आहे आणि पाडकामाची भीती वाटतेय? हा एक अर्ज करा, बांधकाम अधिकृत होईल!'
+    };
+  }
+
+  // 2. कोर्ट मॅरेज व प्रेमविवाह
+  if (tLower.includes('मॅरेज') || tLower.includes('लग्नाची संमती') || tLower.includes('प्रेमविवाह') || tLower.includes('special marriage') || tLower.includes('आंतरजातीय') || tLower.includes('court marriage')) {
+    return {
+      shock: 'सावधान! कोर्ट मॅरेज करताना घरच्यांनी खोट्या अपहरणाची तक्रार किंवा धमकी दिली असेल, तर घाबरू नका — सुप्रीम कोर्टाचा हा निकाल ऐका!',
+      secret: 'पालकांच्या संमतीशिवाय आणि त्रासाविना कायदेशीर कोर्ट मॅरेज करण्याचे तुमचे संविधानात्मक मूलभूत अधिकार ऐका!',
+      scenario: 'घरच्यांचा आंतरजातीय विवाहाला तीव्र विरोध आहे? सुप्रीम कोर्टाच्या लता सिंग निकालानुसार मोफत पोलीस संरक्षण कसे मिळवायचे ते ऐका!'
+    };
+  }
+
+  // 3. लिव्ह-इन रिलेशनशिप
+  if (tLower.includes('लिव्ह-इन') || tLower.includes('लिव्ह इन') || tLower.includes('live-in') || tLower.includes('live in')) {
+    return {
+      shock: 'तुम्ही लिव्ह-इन रिलेशनशिपमध्ये राहताय? मग सावधान! सर्वोच्च न्यायालयाचे हे ३ नियम तुम्हाला माहिती नसतील, तर भविष्यात मोठा कायदेशीर धोका होऊ शकतो!',
+      secret: 'लिव्ह-इनमध्ये राहणाऱ्या महिलांना घरगुती हिंसाचार कायद्यान्वये मासिक पोटगी आणि निवासाचा १००% हक्क मिळवून देणारा नियम ऐका!',
+      scenario: 'दीर्घकाळ एकत्र राहिल्यानंतर मुलाने लग्नास नकार दिला आणि घरातून बाहेर काढले? कोर्टातून अंतरिम संरक्षण कसे मिळवावे?'
+    };
+  }
+
+  // 4. स्त्रीधन व दागिने
+  if (tLower.includes('स्त्रीधन') || tLower.includes('stridhan') || tLower.includes('दागिने') || tLower.includes('हुंडा') || tLower.includes('घटस्फोट पोटगी')) {
+    return {
+      shock: 'लग्नात मिळालेले १ तोळाही सोनं सासरचे हडपू शकत नाहीत! सुप्रीम कोर्टाचा निकाल ऐका, स्त्रीधनाचा एक-एक दागिना परत मिळवण्याचा १००% कायदेशीर मार्ग!',
+      secret: 'सासरच्यांवर फौजदारी गुन्हा दाखल करून स्वतःचे सर्व दागिने सुरक्षित परत मिळवण्याचा सर्वोच्च न्यायालयाचा प्रतिभा राणी निकाल ऐका!',
+      scenario: 'घटस्फोट किंवा वादाच्या वेळी सासरच्यांनी लग्नाचे सर्व दागिने स्वतःकडे डांबून ठेवलेत? हे स्त्रीधन तात्काळ कसे परत घ्यायचे?'
+    };
+  }
+
+  // 5. शेती वहिवाट रस्ता
+  if (tLower.includes('रस्ता') || tLower.includes('वहिवाट') || tLower.includes('पांदण') || tLower.includes('मामलतदार') || tLower.includes('शेती रस्ता')) {
+    return {
+      shock: 'शेतात ट्रॅक्टर नेण्याचा वहिवाटीचा रस्ता शेजारच्या शेतकऱ्याने मुद्दाम कुंपण घालून बंद केलाय? कोर्टात न जाता मामलेदार कोर्टाच्या कलम ५ नुसार ७ दिवसांत रस्ता मोकळा करा!',
+      secret: 'शेतकऱ्यांना माहिती नसलेला मामलेदार कोर्ट ॲक्ट कलम ५ चा हा अधिकार कोणत्याही वकिलाशिवाय अडवलेला रस्ता कसा उघडतो ते पहा!',
+      scenario: 'शेजारी शेतात जायचा पारंपरिक वहिवाटीचा रस्ता अडवतोय? पोलीस किंवा भांडण न करता तहसीलदारांकडून हा मनाई हुकूम मिळवा!'
+    };
+  }
+
+  // 6. शेतजमीन मोजणी व बांध कोरणे
+  if (tLower.includes('बांध') || tLower.includes('सीमावाद') || tLower.includes('मोजणी') || tLower.includes('भूमी अभिलेख') || tLower.includes('अतिक्रमण')) {
+    return {
+      shock: 'शेजारचा शेतकरी रोज तुमचा बांध कोरून जमिनीत घुसतोय? वाद घालू नका, भूमी अभिलेख ई-मोजणी आणि BNS अन्वये थेट गुन्हा दाखल करून आपली जमीन परत मिळवा!',
+      secret: 'महाराष्ट्र जमीन महसूल संहिता कलम १३८ चा वापर करून शेताचा कोरलेला बांध आणि अतिक्रमण कायमचे कसे हटवायचे ते शिका!',
+      scenario: 'शेजारच्याने रात्रीच्या अंधारात शेताचा दगडी बांध हलवलाय? ई-मोजणी करून शासकीय सर्व्हेअरकडून हद्द कशी निश्चित करावी?'
+    };
+  }
+
+  // 7. तुकडेबंदी कायदा
+  if (tLower.includes('तुकडेबंदी') || tLower.includes('tukdebandi') || tLower.includes('८ब') || tLower.includes('8b')) {
+    return {
+      shock: '१ गुंठा शेतजमीन खरेदी केलीये पण तुकडेबंदीमुळे तलाठी ७/१२ वर नाव लावत नाहीये? हा नवीन शासन निर्णय तलाठ्याला दाखवा, त्वरित फेरफार मंजूर होईल!',
+      secret: 'तुकडेबंदी कलम ८-ब शिथिल करणारा महसूल विभागाचा नवीन जीआर वापरून १ ते ३ गुंठ्यांचा फेरफार कसा करून घ्यायचा ते ऐका!',
+      scenario: 'तुकडेबंदीच्या नावाखाली तलाठी खरेदीदाराचे नाव लावायला टाळाटाळ करतोय? उपविभागीय अधिकाऱ्यांकडे अपील कसे करायचे ते ऐका!'
+    };
+  }
+
+  // 8. जमीन खरेदी ३० वर्षांचा सर्च रिपोर्ट
+  if (tLower.includes('३० वर्ष') || tLower.includes('सर्च रिपोर्ट') || tLower.includes('दस्तऐवज') || tLower.includes('इंडेक्स २') || tLower.includes('खरेदी करताना')) {
+    return {
+      shock: 'थांबा! जमीन खरेदी करताना केवळ ७/१२ पाहून पैसे देण्याची चूक अजिबात करू नका; हा १ कागद तपासला नाही तर आयुष्यभराची कमाई क्षणात बुडेल!',
+      secret: 'दुय्यम निबंधक कार्यालयातील मागील ३० वर्षांचा इंडेक्स २ सर्च रिपोर्ट काढून जमिनीवरील सावकारी बोजा कसा शोधायचा ते शिका!',
+      scenario: 'जमीन किंवा प्लॉट घेताना दलाल सांगतोय म्हणून विश्वास ठेवताय? हे ५ महसुली दस्तऐवज तपासल्याशिवाय १ रुपयाही देऊ नका!'
+    };
+  }
+
+  // 9. कुलमुखत्यारपत्र (POA)
+  if (tLower.includes('कुलमुखत्यार') || tLower.includes('power of attorney') || tLower.includes('poa') || tLower.includes('मुखत्यार')) {
+    return {
+      shock: 'सावधान! बिल्डर किंवा दलाल फक्त पॉवर ऑफ ॲटर्नीवर प्लॉट विकतोय? सुप्रीम कोर्टाने असा व्यवहार १००% बेकायदेशीर ठरवलाय, ही चूक कधीही करू नका!',
+      secret: 'सूरज लॅम्प खटल्यातील सुप्रीम कोर्टाचा निकाल: कुलमुखत्यारपत्राने कधीही मालकी हक्क मिळत नाही, फसवणूक टाळण्याचा मार्ग ऐका!',
+      scenario: 'जमिनीची पॉवर ऑफ ॲटर्नी घेऊन दलालाने परस्पर व्यवहार केलाय? दुय्यम निबंधकांकडे रद्दीकरण दस्त कसा करायचा ते ऐका!'
+    };
+  }
+
+  // 10. पोलीस नोटीस व BNSS 2023 कलम ३५
+  if (tLower.includes('पोलीस') || tLower.includes('अटक') || tLower.includes('bnss') || tLower.includes('bns') || tLower.includes('fir') || tLower.includes('३५')) {
+    return {
+      shock: 'पोलीस ठाण्यातून थेट अटकेची धमकी आलीये? एक सेकंद थांबा! नवीन BNSS कलम ३५ नुसार ७ वर्षांखालील गुन्ह्यात पोलिसांना थेट अटक करण्याचा अधिकारच नाही!',
+      secret: 'नवीन भारतीय नागरिक सुरक्षा संहितेने सामान्य नागरिकांना दिलेले हे ३ गुप्त अधिकार पोलिसांनाही हतबल करतात!',
+      scenario: 'किरकोळ वादातून पोलीस ठाण्यातून फोन आला आणि जेलमध्ये टाकण्याची धमकी दिली? घाबरू नका, हा कायदा पोलिसांना सांगा!'
+    };
+  }
+
+  // 11. भोगवटादार वर्ग २
+  if (tLower.includes('वर्ग २') || tLower.includes('वर्ग 2') || tLower.includes('भोगवटादार') || tLower.includes('वतन') || tLower.includes('देवस्थान')) {
+    return {
+      shock: 'थांबा! ७/१२ उताऱ्यावर भोगवटादार वर्ग २ किंवा वतन जमीन असा शेरा असेल, तर जिल्हाधिकारी परवानगीशिवाय केलेला व्यवहार शून्य ठरेल!',
+      secret: 'शासनाचा विहित नजराणा भरून वर्ग २ ची जमीन वर्ग १ मध्ये कशी रूपांतरित करायची ते अधिकृत शासन निर्णयानुसार ऐका!',
+      scenario: 'अल्प दरात देवस्थान किंवा वतन जमीन खरेदी करताय? महसूल विभागाने जमीन जप्त करू नये म्हणून ही खबरदारी घ्या!'
+    };
+  }
+
+  // 12. अकृषिक NA परवानगी
+  if (tLower.includes('अकृषिक') || tLower.includes('na') || tLower.includes('deemed na') || tLower.includes('बिनशेती')) {
+    return {
+      shock: 'प्लॉट NA करण्यासाठी वर्षानुवर्षे खेटे मारताय? महसूल विभागाच्या डीम्ड एनए नियमांनुसार आता घरबसल्या अधिकृत बिनशेती आदेश मिळवा!',
+      secret: 'शेतजमिनीचा बिगरशेती वापर करताना ४० पट महसूल दंड टाळण्याचा आणि डीम्ड एनए सनद मिळवण्याचा अधिकृत नियम!',
+      scenario: 'शेतजमिनीत फार्महाऊस किंवा गोदाम बांधले आणि महसूल विभागाने दंडाची नोटीस पाठवली? नियमितीकरण कसे करावे?'
+    };
+  }
+
+  // 13. बोजा कमी करणे
+  if (tLower.includes('बोजा') || tLower.includes('कर्ज') || tLower.includes('boja') || tLower.includes('noc')) {
+    return {
+      shock: 'बँकेचे कर्ज फिटूनही ७/१२ वर अजून बँकेचेच नाव दिसतेय? तलाठ्याच्या मागे न लागता ई-हक्क पोर्टलवरून अवघ्या ४८ तासांत बोजा कसा हटवायचा ते ऐका!',
+      secret: 'बँक एनओसी आणि फॉर्म १६ वापरून घरबसल्या मोबाईलवरून ७/१२ वरील बोजा शून्य करण्याचा सोपा महसुली मार्ग!',
+      scenario: 'पीक कर्ज पूर्ण फेडूनही तलाठी बोजा हटवत नाहीये? लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे तक्रार कशी करायची ते ऐका!'
+    };
+  }
+
+  // 14. ७/१२ फेरफार नोंद
+  if (tLower.includes('फेरफार') || tLower.includes('७/१२') || tLower.includes('7/12') || tLower.includes('तलाठी') || tLower.includes('satbara')) {
+    return {
+      shock: 'खरेदीखत करूनही तलाठी महिनोनमहिने फेरफार नोंद प्रमाणित करत नाहीये? महसूल संहिता कलम १५० अन्वये तलाठ्यावर कायदेशीर कारवाई कशी करायची ते ऐका!',
+      secret: 'ई-हक्क प्रणालीवरून फेरफार नोंदीची कायदेशीर मुदत आणि तलाठ्याने काम न केल्यास तहसीलदारांकडे अपील करण्याचा नियम!',
+      scenario: 'खरेदीखत झाले पण तलाठी फेरफार नोंद टाळतोय? महाराष्ट्र जमीन महसूल संहिता कलम १५० नुसार तुमचे हक्क काय आहेत?'
+    };
+  }
+
+  // 15. वारस हक्क व मुलीचा वाटा
+  if (tLower.includes('वारस') || tLower.includes('मुलगी') || tLower.includes('बहीण') || tLower.includes('वडिलोपार्जित') || tLower.includes('वाटप')) {
+    return {
+      shock: 'भाऊ शेतात वाटा द्यायला नकार देतोय? सुप्रीम कोर्टाचा विनीता शर्मा निकाल सांगतो, वडिलांच्या संपत्तीत मुलींचा जन्मसिद्ध समान हक्क कोणीही हिरावू शकत नाही!',
+      secret: 'वडिलोपार्जित शेतजमिनीत आणि घरावर मुलींचे नाव ७/१२ वर चढवण्याची सोपी कायदेशीर पद्धत ऐका!',
+      scenario: 'लग्न २००५ पूर्वी झाले म्हणून बहिणीला शेतीत वाटा नाकारला जातोय? सुप्रीम कोर्टाचा हा ऐतिहासिक निकाल भावांना दाखवा!'
+    };
+  }
+
+  // 16. चेक बाउन्स
+  if (tLower.includes('चेक') || tLower.includes('cheque') || tLower.includes('बाउन्स') || tLower.includes('138')) {
+    return {
+      shock: 'धनादेश बाऊन्स झाला आणि समोरचा फोन उचलत नाहीये? घाबरू नका, त्याला दुप्पट दंड आणि २ वर्षे तुरुंगवासाची शिक्षा घडवणारी ही एक नोटीस ३० दिवसांत कशी पाठवायची ते ऐका!',
+      secret: 'चेक बाऊन्स झाल्यावर पैसे देणाऱ्याला एका पैशाचीही सूट न देणारा एन.आय. ॲक्ट कलम १३८ चा हा नियम समजून घ्या!',
+      scenario: 'उसनवारीचे किंवा व्यवसायाचे पैसे अडकलेत आणि चेक बाऊन्स झालाय? पुढील ३० दिवसांत ही १ कायदेशीर कृती करा!'
+    };
+  }
+
+  // 17. सायबर गुन्हे व १९३०
+  if (tLower.includes('सायबर') || tLower.includes('cyber') || tLower.includes('1930') || tLower.includes('ओटीपी')) {
+    return {
+      shock: 'बँक खात्यातून किंवा OTP शिवाय अचानक पैसे कापले गेले? पुढच्या ६० मिनिटांत हा नंबर फिरवला नाही तर तुमचे कष्टाचे पैसे कायमचे बुडतील!',
+      secret: 'सायबर फ्रॉड झाल्यानंतर पहिल्या गोल्डन अवरमध्ये १९३० वरून बँक खाते फ्रीझ करून १००% रिफंड मिळवण्याची युक्ती!',
+      scenario: 'एका चुकीच्या लिंकवर क्लिक झाले आणि बँकेतून पैसे उडाले? सायबर सेलमध्ये न जाता मोबाईलवरून त्वरित पैसे कसे परत मिळवायचे?'
+    };
+  }
+
+  // 18. Default Fallback
+  return {
+    shock: `थांबा! जर तुमच्यासमोर '${title}' अशी कायदेशीर अडचण आली असेल, तर कोर्टात हजारो रुपये खर्च करण्यापूर्वी हा अधिकृत कायदा आधी समजून घ्या!`,
+    secret: `'${title}' या विषयावर सामान्य नागरिकांना कायद्याने दिलेले हे ३ अधिकार तुमचे कष्टाचे पैसे आणि वेळ वाचवू शकतात!`,
+    scenario: `समजा, '${title}' या कायदेशीर मुद्द्यावर कोणी तुमची अडवणूक करत असेल, तर सक्षम प्राधिकरणाकडे अशी कायदेशीर दाद मागा!`
+  };
+};
+
 export default function Tab3VideoStudio({
   selectedTopic,
   onNavigateTab
@@ -53,6 +220,10 @@ export default function Tab3VideoStudio({
   const [selectedVoice, setSelectedVoice] = useState('aarohi'); // 'aarohi', 'manohar'
   const [selectedMusic, setSelectedMusic] = useState('legal_ambient');
   const [selectedFormat, setSelectedFormat] = useState('A'); // Format A (Dramatic Hook) vs Format B (Educational Step-by-Step)
+
+  // 3-Sec High-Retention Viral Hook Styles ('shock', 'secret', 'scenario')
+  const [hookVariants, setHookVariants] = useState({ shock: '', secret: '', scenario: '' });
+  const [activeHookStyle, setActiveHookStyle] = useState('shock'); // Format A (Dramatic Hook) vs Format B (Educational Step-by-Step)
 
   // Generated Script & Assets
   const [scriptData, setScriptData] = useState({
@@ -76,11 +247,11 @@ export default function Tab3VideoStudio({
 
   // SEO & Captions
   const [captionText, setCaptionText] = useState('');
-  const [hashtags, setHashtags] = useState('#आपलाकायदा #AdvocatePratiksha #LandLaws #Maharashtra #BNSS2023 #Satbara');
+  const [hashtags, setHashtags] = useState('#आपलाकायदा #कायदेशीरसल्ला #LandLaws #Maharashtra #BNSS2023 #Satbara');
   const [seoKeywords, setSeoKeywords] = useState('गुंठेवारी, तुकडेबंदी, ७/१२ फेरफार, Advocate Pratiksha');
   const [seoMetadata, setSeoMetadata] = useState({
     googleTrends: ['गुंठेवारी ३१ डिसेंबर २०२० नियम', 'gunthewari regularization fee 2026', '1 guntha satbara transfer'],
-    metaKeywords: ['गुंठेवारी नियमितीकरण', 'महाराष्ट्र जमीन कायदे', 'Advocate Pratiksha', 'Reels Viral Legal Guide'],
+    metaKeywords: ['गुंठेवारी नियमितीकरण', 'महाराष्ट्र जमीन कायदे', 'कायदेशीर सल्ला', 'Reels Viral Legal Guide'],
     viralAudioCue: 'Dramatic Legal Disclosure Audio / Fast-Paced Explainer',
     realLifeScenario: 'समजा, पुण्याच्या बाणेर किंवा चाकण भागात एका मध्यमवर्गीय कुटुंबाने २ गुंठे प्लॉट साध्या नोटरीवर घेतला आणि घर बांधायला सुरुवात केली, पण मनपाने बांधकाम अनधिकृत ठरवून डिमोलिशनची नोटीस बजावली...',
     searchVolumeSurge: 'Google Trends MH +500% Search Surge'
@@ -122,6 +293,29 @@ export default function Tab3VideoStudio({
 
   const audioPreviewRef = useRef(null);
 
+  // Switch between 3 psychological hook styles (Shock, Secret Power, Citizen Challenge)
+  const handleSwitchHookStyle = (styleKey) => {
+    if (!hookVariants || !hookVariants[styleKey]) return;
+    setActiveHookStyle(styleKey);
+    const newHook = hookVariants[styleKey];
+    const scriptBody = selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB;
+    setScriptData(prev => ({
+      ...prev,
+      hook: newHook,
+      fullText: `${newHook}\n\n${scriptBody}\n\n${prev.callToAction}`
+    }));
+  };
+
+  // Switch between Format A and Format B while preserving active hook & CTA
+  const handleSelectFormat = (fmt) => {
+    setSelectedFormat(fmt);
+    const body = fmt === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB;
+    setScriptData(prev => ({
+      ...prev,
+      fullText: `${prev.hook}\n\n${body}\n\n${prev.callToAction}`
+    }));
+  };
+
   // Prepopulate if topic was selected from dashboard/trends
   useEffect(() => {
     if (selectedTopic) {
@@ -160,6 +354,10 @@ export default function Tab3VideoStudio({
     let title = typeof topicInput === 'string' ? topicInput : (topicInput?.topic_name || topicInput?.title || '');
     let category = categoryInput || (typeof topicInput === 'object' ? topicInput?.category : '') || 'महाराष्ट्र जमीन महसूल व गुंठेवारी';
 
+    const hooks = generateTopicHooks(title, category);
+    setHookVariants(hooks);
+    setActiveHookStyle('shock');
+
     const tLower = (title + ' ' + category).toLowerCase();
 
     let hook = '';
@@ -180,7 +378,7 @@ export default function Tab3VideoStudio({
       realLifeScenario: '',
       searchVolumeSurge: 'Google Trends MH +500% Search Surge'
     };
-    let hashtagList = '#आपलाकायदा #AdvocatePratiksha #Maharashtra #MarathiLaw';
+    let hashtagList = '#आपलाकायदा #कायदेशीरसल्ला #Maharashtra #MarathiLaw';
 
     // 1. गुंठेवारी नियम व खरेदी (Gunthewari)
     if (tLower.includes('गुंठेवारी') || tLower.includes('gunthewari') || tLower.includes('नियमितीकरण')) {
@@ -203,12 +401,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['gunthewari niyam 2026', '1 guntha plot registry maharashtra', 'gunthewari compounding fee', 'pune gunthewari regularisation'],
-        metaKeywords: ['गुंठेवारी नियमितीकरण', 'महाराष्ट्र जमीन कायदे', 'Advocate Pratiksha', 'Reels Viral Legal Guide'],
+        metaKeywords: ['गुंठेवारी नियमितीकरण', 'महाराष्ट्र जमीन कायदे', 'कायदेशीर सल्ला', 'Reels Viral Legal Guide'],
         viralAudioCue: 'Dramatic Legal Disclosure Audio / Fast-Paced Cinematic Explainer',
         realLifeScenario: 'समजा, पुण्याच्या बाणेर किंवा चाकण भागात एका मध्यमवर्गीय कुटुंबाने २ गुंठे प्लॉट साध्या नोटरीवर घेतला आणि घर बांधायला सुरुवात केली, पण मनपाने बांधकाम अनधिकृत ठरवून डिमोलिशनची नोटीस बजावली...',
         searchVolumeSurge: 'Google Trends MH +520% Search Surge'
       };
-      hashtagList = '#गुंठेवारी #GunthewariCompounding #LandLaws #Maharashtra #Satbara #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#गुंठेवारी #GunthewariCompounding #LandLaws #Maharashtra #Satbara #आपलाकायदा #कायदेशीरसल्ला';
 
     // 2. कोर्ट मॅरेज व प्रेमविवाह (Court Marriage & Love Life)
     } else if (tLower.includes('मॅरेज') || tLower.includes('लग्नाची संमती') || tLower.includes('प्रेमविवाह') || tLower.includes('special marriage') || tLower.includes('आंतरजातीय') || tLower.includes('court marriage')) {
@@ -231,12 +429,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['court marriage process maharashtra without parents', 'special marriage act rules in marathi', 'police protection for inter caste marriage', 'court marriage documents list pune'],
-        metaKeywords: ['Court Marriage Maharashtra', 'Love Life Legal Rights', 'Special Marriage Act 1954', 'Advocate Pratiksha', 'Lata Singh Judgement'],
+        metaKeywords: ['Court Marriage Maharashtra', 'Love Life Legal Rights', 'Special Marriage Act 1954', 'कायदेशीर सल्ला', 'Lata Singh Judgement'],
         viralAudioCue: 'Inspiring & Bold Legal Voiceover Audio / High Virality Emotional Hook',
         realLifeScenario: 'समजा, पुण्यातील राहुल (वय २४) आणि प्रियांका (वय २२) यांनी सज्ञान असताना स्वतःच्या पसंतीने कोर्ट मॅरेज करण्याचे ठरवले, परंतु मुलीच्या घरच्यांनी आंतरजातीय विवाह म्हणून विरोध केला आणि मुलावर थेट अपहरणाची खोटी पोलीस तक्रार दाखल करण्याची धमकी दिली...',
         searchVolumeSurge: 'Google Trends MH +680% Search Surge | Meta Reels High Explore Traffic'
       };
-      hashtagList = '#कोर्टमॅरेज #CourtMarriage #LoveLifeLaw #SpecialMarriageAct #LataSinghCase #प्रेमविवाह #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#कोर्टमॅरेज #CourtMarriage #LoveLifeLaw #SpecialMarriageAct #LataSinghCase #प्रेमविवाह #आपलाकायदा #कायदेशीरसल्ला';
 
     // 3. लिव्ह-इन रिलेशनशिप कायदेशीर अधिकार (Live-in Relationship Legal Rights)
     } else if (tLower.includes('लिव्ह-इन') || tLower.includes('लिव्ह इन') || tLower.includes('live-in') || tLower.includes('live in')) {
@@ -259,12 +457,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['live in relationship legal rights in india marathi', 'live in partner maintenance under DV act', 'supreme court live in relationship guidelines', 'can live in partner claim maintenance'],
-        metaKeywords: ['Live-in Relationship Law', 'Women Legal Rights', 'Domestic Violence Act', 'Advocate Pratiksha', 'Maintenance Law'],
+        metaKeywords: ['Live-in Relationship Law', 'Women Legal Rights', 'Domestic Violence Act', 'कायदेशीर सल्ला', 'Maintenance Law'],
         viralAudioCue: 'Empowering & Assertive Legal Audio / Dramatic Revelation',
         realLifeScenario: 'समजा, एका तरुणीने सज्ञान असताना आपल्या पार्टनरसोबत ३ वर्षे पुण्यात एकत्र फ्लॅटवर लिव्ह-इन रिलेशनशिपमध्ये संसार केला, परंतु नंतर मुलाने अचानक विवाह करण्यास नकार देऊन तिला घरातून बाहेर काढले आणि आर्थिक सहकार्य पूर्णपणे बंद केले...',
         searchVolumeSurge: 'Google Trends MH +460% Search Surge | High Engagement Viral Category'
       };
-      hashtagList = '#LiveInRelationship #WomenRights #DVAct #कौटुंबिककायदे #LegalRights #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#LiveInRelationship #WomenRights #DVAct #कौटुंबिककायदे #LegalRights #आपलाकायदा #कायदेशीरसल्ला';
 
     // 4. स्त्रीधन व सासरचे वाद (Stridhan & Alimony)
     } else if (tLower.includes('स्त्रीधन') || tLower.includes('stridhan') || tLower.includes('दागिने') || tLower.includes('हुंडा') || tLower.includes('घटस्फोट पोटगी')) {
@@ -287,12 +485,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['stridhan rights after divorce in marathi', 'stridhan recovery under DV act procedure', 'supreme court pratibha rani case stridhan', 'sasarche lok dagine det nahit kay karave'],
-        metaKeywords: ['स्त्रीधन कायदेशीर हक्क', 'Stridhan Law India', 'Advocate Pratiksha', 'Gold Recovery Law', 'Women Legal Awareness'],
+        metaKeywords: ['स्त्रीधन कायदेशीर हक्क', 'Stridhan Law India', 'कायदेशीर सल्ला', 'Gold Recovery Law', 'Women Legal Awareness'],
         viralAudioCue: 'Authoritative Legal Tone / High Authority Audio Track',
         realLifeScenario: 'समजा, नाशिकच्या एका तरुणीचा विवाहानंतर सासरच्यांशी मतभेद झाले आणि तिला घरातून हाकलून देण्यात आले, मात्र लग्नात माहेरून मिळालेले २५ तोळे सोन्याचे दागिने आणि चांदीचे भांडे सासरच्यांनी स्वतःच्या लॉकरमध्ये ठेवून देण्यास नकार दिला...',
         searchVolumeSurge: 'Google Trends MH +480% Search Surge'
       };
-      hashtagList = '#स्त्रीधन #StridhanRecovery #WomenRights #HinduMarriageAct #AdvocatePratiksha #आपलाकायदा';
+      hashtagList = '#स्त्रीधन #StridhanRecovery #WomenRights #HinduMarriageAct #कायदेशीरसल्ला #आपलाकायदा';
 
     // 5. शेतातील वहिवाटीचा रस्ता अडवणे (Farm Road Dispute)
     } else if (tLower.includes('रस्ता') || tLower.includes('वहिवाट') || tLower.includes('पांदण') || tLower.includes('मामलतदार') || tLower.includes('शेती रस्ता')) {
@@ -315,12 +513,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['mamlatdar court act kalam 5 application format marathi', 'shetat zanyacha rasta adavla kay karave', 'mlrc section 143 rasta arja', 'tahsildar court rasta vivad'],
-        metaKeywords: ['शेती वहिवाट रस्ता', 'मामलतदार कोर्ट कलम ५', 'Advocate Pratiksha', 'पांदण रस्ता', 'शेतकरी कायदे'],
+        metaKeywords: ['शेती वहिवाट रस्ता', 'मामलतदार कोर्ट कलम ५', 'कायदेशीर सल्ला', 'पांदण रस्ता', 'शेतकरी कायदे'],
         viralAudioCue: 'Serious Rural Agricultural Theme / Fast-Paced Explainer',
         realLifeScenario: 'समजा, सोलापूरचे शेतकरी बापूराव यांच्या शेतात ट्रॅक्टर आणि बैलगाडी नेण्याचा पारंपरिक बांधावरून जाणारा रस्ता शेजारच्या शेतकऱ्याने मुद्दाम चर खोदून व काटेरी तार लावून अडवला, ज्यामुळे पेरणीचे काम ठप्प झाले...',
         searchVolumeSurge: 'Google Trends MH +410% Search Surge'
       };
-      hashtagList = '#शेतीरस्ता #वहिवाटारस्ता #मामलतदारकोर्ट #MLRC143 #शेतकरी #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#शेतीरस्ता #वहिवाटारस्ता #मामलतदारकोर्ट #MLRC143 #शेतकरी #आपलाकायदा #कायदेशीरसल्ला';
 
     // 6. शेतजमीन सीमावाद व मोजणी (Boundary & Mojani)
     } else if (tLower.includes('बांध') || tLower.includes('सीमावाद') || tLower.includes('मोजणी') || tLower.includes('भूमी अभिलेख') || tLower.includes('अतिक्रमण')) {
@@ -343,12 +541,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['mahabhumi e mojani online application process', 'bandh korla complaint tahsildar', 'kachha pakka mojani marathi rules', 'dyslr boundary demarcation'],
-        metaKeywords: ['शेतजमीन मोजणी', 'बांध कोरणे कायदा', 'भूमी अभिलेख ई-मोजणी', 'Advocate Pratiksha', 'शेतकरी हक्क'],
+        metaKeywords: ['शेतजमीन मोजणी', 'बांध कोरणे कायदा', 'भूमी अभिलेख ई-मोजणी', 'कायदेशीर सल्ला', 'शेतकरी हक्क'],
         viralAudioCue: 'High Energy Documentary Score / Clear Marathi Voiceover',
         realLifeScenario: 'समजा, अहमदनगरच्या एका शेतकऱ्याच्या शेजारील व्यक्तीने रात्रीच्या अंधारात शेताचा मूळ दगडी बांध कोरून २ फूट जमीन स्वतःच्या शेतात दाबली आणि सकाळी वाद घालून भांडण उकरून काढले...',
         searchVolumeSurge: 'Google Trends MH +390% Search Surge'
       };
-      hashtagList = '#शेतजमीनमोजणी #सीमावाद #बांधकोरणे #भूमीअभिलेख #ईमोजणी #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#शेतजमीनमोजणी #सीमावाद #बांधकोरणे #भूमीअभिलेख #ईमोजणी #आपलाकायदा #कायदेशीरसल्ला';
 
     // 7. तुकडेबंदी कायदा व फेरफार
     } else if (tLower.includes('तुकडेबंदी') || tLower.includes('tukdebandi') || tLower.includes('८ब') || tLower.includes('8b')) {
@@ -371,12 +569,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['tukdebandi kayda marathi latest news', '1 guntha satbara nond high court', 'fragmentation act section 8b circular', 'kharedikhat tukdebandi ferfar'],
-        metaKeywords: ['तुकडेबंदी कायदा', '१ गुंठा फेरफार', 'खरेदीखत नोंद', 'Advocate Pratiksha', 'जमीन महसूल'],
+        metaKeywords: ['तुकडेबंदी कायदा', '१ गुंठा फेरफार', 'खरेदीखत नोंद', 'कायदेशीर सल्ला', 'जमीन महसूल'],
         viralAudioCue: 'Fast Paced Legal Voiceover with Subtitles',
         realLifeScenario: 'समजा, साताऱ्याच्या एका शेतकऱ्याने मुलीच्या लग्नासाठी शेतातील २ गुंठे जमीन गावातील एका नागरिकाला खरेदीखत करून दिली, पण तलाठ्यांनी तुकडेबंदी कलम ८-ब चे कारण देऊन ७/१२ वर खरेदीदाराचे नाव लावण्यास स्पष्ट नकार दिला...',
         searchVolumeSurge: 'Google Trends MH +540% Search Surge'
       };
-      hashtagList = '#तुकडेबंदी #TukdebandiLaw #Satbara #फेरफार #शेतजमीन #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#तुकडेबंदी #TukdebandiLaw #Satbara #फेरफार #शेतजमीन #आपलाकायदा #कायदेशीरसल्ला';
 
     // 8. जमीन खरेदी करताना ३० वर्षांची तपासणी (Search Report)
     } else if (tLower.includes('३० वर्ष') || tLower.includes('सर्च रिपोर्ट') || tLower.includes('दस्तऐवज') || tLower.includes('इंडेक्स २') || tLower.includes('खरेदी करताना')) {
@@ -399,12 +597,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['jamin kharedi karta kay kalji ghyavi marathi', 'search report index 2 online maharashtra', 'title clear certificate format', 'land purchase checklist marathi'],
-        metaKeywords: ['जमीन खरेदी खबरदारी', 'सर्च रिपोर्ट इंडेक्स २', 'खरेदीखत नियम', 'Advocate Pratiksha', 'Property Verification'],
+        metaKeywords: ['जमीन खरेदी खबरदारी', 'सर्च रिपोर्ट इंडेक्स २', 'खरेदीखत नियम', 'कायदेशीर सल्ला', 'Property Verification'],
         viralAudioCue: 'Suspenseful Intro Audio transitioning into Clear Legal Guidance',
         realLifeScenario: 'समजा, एका नोकरदार व्यक्तीने रिटायरमेंटच्या पैशातून ५ एकर शेतजमीन खरेदी केली, पण ३० वर्षांचा सर्च रिपोर्ट न काढल्यामुळे जुन्या सावकारी कर्जाचा बोजा आणि मूळ वारसांचा न्यायालयात दावा चालू असल्याचे नंतर समोर आले...',
         searchVolumeSurge: 'Google Trends MH +490% Search Surge'
       };
-      hashtagList = '#जमीनखरेदी #सर्चरिपोर्ट #इंडेक्स२ #TitleVerification #खरेदीखत #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#जमीनखरेदी #सर्चरिपोर्ट #इंडेक्स२ #TitleVerification #खरेदीखत #आपलाकायदा #कायदेशीरसल्ला';
 
     // 9. बनावट कुलमुखत्यारपत्र (Power of Attorney Fraud)
     } else if (tLower.includes('कुलमुखत्यार') || tLower.includes('power of attorney') || tLower.includes('poa') || tLower.includes('मुखत्यार')) {
@@ -427,12 +625,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['power of attorney property sale supreme court judgement suraj lamp', 'kulmukhtyarpatra radd kase karave', 'can gpa holder sell property in maharashtra'],
-        metaKeywords: ['कुलमुखत्यारपत्र फसवणूक', 'Power of Attorney Law', 'Suraj Lamp Case', 'Advocate Pratiksha', 'मालमत्ता सुरक्षा'],
+        metaKeywords: ['कुलमुखत्यारपत्र फसवणूक', 'Power of Attorney Law', 'Suraj Lamp Case', 'कायदेशीर सल्ला', 'मालमत्ता सुरक्षा'],
         viralAudioCue: 'Dramatic Legal Revelation Music Track',
         realLifeScenario: 'समजा, मुंबईत राहणाऱ्या एका व्यक्तीने आपल्या कोकणातील वडिलोपार्जित जमिनीच्या देखभालीसाठी स्थानिक मित्राला कुलमुखत्यारपत्र दिले, पण त्या मित्राने मूळ मालकाला कोणतीही कल्पना न देता ती जमीन तिसऱ्या व्यक्तीला विकून कोट्यवधी रुपये हडपले...',
         searchVolumeSurge: 'Google Trends MH +370% Search Surge'
       };
-      hashtagList = '#कुलमुखत्यारपत्र #PowerOfAttorney #SurajLamp #PropertyFraud #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#कुलमुखत्यारपत्र #PowerOfAttorney #SurajLamp #PropertyFraud #आपलाकायदा #कायदेशीरसल्ला';
 
     // 10. पोलीस नोटीस व थेट अटक संरक्षण (BNSS 2023)
     } else if (tLower.includes('पोलीस') || tLower.includes('अटक') || tLower.includes('bnss') || tLower.includes('bns') || tLower.includes('fir') || tLower.includes('३५')) {
@@ -455,12 +653,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['police arrest rules BNSS section 35 marathi', 'can police arrest without warrant in maharashtra', 'bnss kalam 35 notice format marathi'],
-        metaKeywords: ['BNSS 2023 कलम ३५', 'पोलीस अटक नियम', 'नागरिक अधिकार', 'Advocate Pratiksha', 'नवीन फौजदारी कायदे'],
+        metaKeywords: ['BNSS 2023 कलम ३५', 'पोलीस अटक नियम', 'नागरिक अधिकार', 'कायदेशीर सल्ला', 'नवीन फौजदारी कायदे'],
         viralAudioCue: 'Tense Dramatic Audio with Confident Legal Clarification',
         realLifeScenario: 'समजा, किरकोळ शेजारील वादावरून किंवा खोट्या तक्रारीवरून पोलीस ठाण्यातून फोन आला की "लगेच पोलीस ठाण्यात हजर व्हा, नाहीतर पोलीस पाठवून उचलून आणू आणि जेलमध्ये टाकू"...',
         searchVolumeSurge: 'Google Trends MH +580% Search Surge'
       };
-      hashtagList = '#BNSS2023 #PoliceNotice #नागरिकअधिकार #कलम३५ #पोलीसअटक #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#BNSS2023 #PoliceNotice #नागरिकअधिकार #कलम३५ #पोलीसअटक #आपलाकायदा #कायदेशीरसल्ला';
 
     // 11. भोगवटादार वर्ग २ (Class 2 Land)
     } else if (tLower.includes('वर्ग २') || tLower.includes('वर्ग 2') || tLower.includes('भोगवटादार') || tLower.includes('वतन') || tLower.includes('देवस्थान')) {
@@ -483,12 +681,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['bhogvatadar varg 2 land transfer maharashtra niyam', 'collector permission for class 2 land marathi', 'vatan jamin kharedi niyam'],
-        metaKeywords: ['भोगवटादार वर्ग २', 'जिल्हाधिकारी परवानगी', 'वतन जमीन नियम', 'Advocate Pratiksha', 'जमीन खरेदी'],
+        metaKeywords: ['भोगवटादार वर्ग २', 'जिल्हाधिकारी परवानगी', 'वतन जमीन नियम', 'कायदेशीर सल्ला', 'जमीन खरेदी'],
         viralAudioCue: 'Cautious Informational Legal Track',
         realLifeScenario: 'समजा, तुम्हाला अल्प दरात वर्ग २ (Class 2) ची देवस्थान किंवा वतन जमीन मिळतीय म्हणून तुम्ही साध्या स्टॅम्पवर व्यवहार केला, पण नंतर महसूल विभागाने जमीन जप्त करण्याची नोटीस बजावली...',
         searchVolumeSurge: 'Google Trends MH +360% Search Surge'
       };
-      hashtagList = '#भोगवटादारवर्ग२ #Class2Land #जिल्हाधिकारीपरवानगी #LandRevenue #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#भोगवटादारवर्ग२ #Class2Land #जिल्हाधिकारीपरवानगी #LandRevenue #आपलाकायदा #कायदेशीरसल्ला';
 
     // 12. अकृषिक (NA) परवानगी व दंड
     } else if (tLower.includes('अकृषिक') || tLower.includes('na') || tLower.includes('deemed na') || tLower.includes('बिनशेती') || tLower.includes('दंड')) {
@@ -511,12 +709,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['deemed na maharashtra niyam 2026', 'mlrc section 42 45 na penalty marathi', 'shetjamin binseti kashi karavi'],
-        metaKeywords: ['अकृषिक परवानगी NA', 'डीम्ड एनए नियम', 'बिनशेती जमीन', 'Advocate Pratiksha', 'जमीन कायदे'],
+        metaKeywords: ['अकृषिक परवानगी NA', 'डीम्ड एनए नियम', 'बिनशेती जमीन', 'कायदेशीर सल्ला', 'जमीन कायदे'],
         viralAudioCue: 'Fast Informative Legal Background Music',
         realLifeScenario: 'समजा, शेतजमिनीवर अकृषिक (NA) परवानगी न घेताच घर, फार्महाऊस किंवा गोदाम बांधले आणि महसूल विभागाने जमिनीच्या मूल्याच्या ४० पट दंडाची नोटीस बजावली...',
         searchVolumeSurge: 'Google Trends MH +380% Search Surge'
       };
-      hashtagList = '#अकृषिकपरवानगी #DeemedNA #बिनशेती #MLRC42 #महसूलनियम #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#अकृषिकपरवानगी #DeemedNA #बिनशेती #MLRC42 #महसूलनियम #आपलाकायदा #कायदेशीरसल्ला';
 
     // 13. बोजा कमी करणे (Bank Loan Removal)
     } else if (tLower.includes('बोजा') || tLower.includes('कर्ज') || tLower.includes('boja') || tLower.includes('noc')) {
@@ -539,12 +737,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['satbara boja kami karne online maharashtra', 'bank noc boja kami arja format', 'e haqq boja kami karne talathi'],
-        metaKeywords: ['७/१२ बोजा कमी करणे', 'बँक कर्ज फेरफार', 'ई-हक्क महाभूमी', 'Advocate Pratiksha', 'जमीन महसूल'],
+        metaKeywords: ['७/१२ बोजा कमी करणे', 'बँक कर्ज फेरफार', 'ई-हक्क महाभूमी', 'कायदेशीर सल्ला', 'जमीन महसूल'],
         viralAudioCue: 'Solution-Oriented Clear Explainer Audio',
         realLifeScenario: 'समजा, तुम्ही बँकेचे संपूर्ण कर्ज वेळेत फेडले, तरी तलाठी दप्तरी आपोआप नोंद होत नाही आणि इतर हक्कातील बोजा कायम राहिल्याने जमीन विकताना किंवा वारस नोंद करताना मोठी कायदेशीर अडचण येते...',
         searchVolumeSurge: 'Google Trends MH +420% Search Surge'
       };
-      hashtagList = '#बोजाकमीकरणे #Satbara #BankNOC #ईहक्क #जमीनमहसूल #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#बोजाकमीकरणे #Satbara #BankNOC #ईहक्क #जमीनमहसूल #आपलाकायदा #कायदेशीरसल्ला';
 
     // 14. ७/१२ फेरफार व वारस नोंद (Ferfar)
     } else if (tLower.includes('फेरफार') || tLower.includes('७/१२') || tLower.includes('7/12') || tLower.includes('तलाठी') || tLower.includes('satbara')) {
@@ -567,12 +765,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['talathi ferfar niyam maharashtra', '7 12 ferfar nond delay complaint', 'e haqq ferfar status check online', 'mlrc section 150 notice'],
-        metaKeywords: ['७/१२ फेरफार नोंद', 'तलाठी नियम', 'वादग्रस्त फेरफार', 'Advocate Pratiksha', 'जमीन महसूल'],
+        metaKeywords: ['७/१२ फेरफार नोंद', 'तलाठी नियम', 'वादग्रस्त फेरफार', 'कायदेशीर सल्ला', 'जमीन महसूल'],
         viralAudioCue: 'Clear Assertive Legal Explainer Audio Track',
         realLifeScenario: 'समजा, तुम्ही कायदेशीर खरेदीखत केले किंवा कुटुंबप्रमुखांच्या निधनानंतर वारस नोंदीसाठी अर्ज केला, परंतु तलाठ्याकडून विनाकारण फेरफार प्रलंबित ठेवला जात आहे...',
         searchVolumeSurge: 'Google Trends MH +510% Search Surge'
       };
-      hashtagList = '#फेरफारनोंद #७१२उतारा #तलाठी #MLRC150 #ईहक्क #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#फेरफारनोंद #७१२उतारा #तलाठी #MLRC150 #ईहक्क #आपलाकायदा #कायदेशीरसल्ला';
 
     // 15. वारस हक्क व मुलीचा वाटा
     } else if (tLower.includes('वारस') || tLower.includes('मुलगी') || tLower.includes('बहीण') || tLower.includes('वडिलोपार्जित') || tLower.includes('वाटप')) {
@@ -595,12 +793,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['vadiloparjit jamin mulicha hakka marathi', 'vineeta sharma vs rakesh sharma marathi summary', 'hindu succession act section 6 daughters share'],
-        metaKeywords: ['वारस हक्क मुलीचा वाटा', 'विनीता शर्मा निकाल', 'वडिलोपार्जित जमीन', 'Advocate Pratiksha', 'महिला कायदे'],
+        metaKeywords: ['वारस हक्क मुलीचा वाटा', 'विनीता शर्मा निकाल', 'वडिलोपार्जित जमीन', 'कायदेशीर सल्ला', 'महिला कायदे'],
         viralAudioCue: 'Empowering Judicial Narrative Audio Track',
         realLifeScenario: 'समजा, वडिलोपार्जित शेतजमीन किंवा घराचे वाटप करताना लग्न २००५ पूर्वी झाले या कारणावरून बहिणीला किंवा मुलीला हक्क देण्यास नकार दिला जात आहे...',
         searchVolumeSurge: 'Google Trends MH +470% Search Surge'
       };
-      hashtagList = '#वारसहक्क #मुलींचावाटा #विनीताशर्मा #HinduSuccession #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#वारसहक्क #मुलींचावाटा #विनीताशर्मा #HinduSuccession #आपलाकायदा #कायदेशीरसल्ला';
 
     // 16. चेक बाउन्स (Cheque Bounce)
     } else if (tLower.includes('चेक') || tLower.includes('cheque') || tLower.includes('बाउन्स') || tLower.includes('138')) {
@@ -623,12 +821,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['cheque bounce kalam 138 notice format marathi', 'check bounce case rules time limit', 'cheque bounce niyam maharashtra'],
-        metaKeywords: ['चेक बाउन्स कायदा', 'कलम १३८ नोटीस', 'धनादेश अनादर', 'Advocate Pratiksha', 'न्यायालयीन प्रक्रिया'],
+        metaKeywords: ['चेक बाउन्स कायदा', 'कलम १३८ नोटीस', 'धनादेश अनादर', 'कायदेशीर सल्ला', 'न्यायालयीन प्रक्रिया'],
         viralAudioCue: 'Fast Paced Alert Audio / Informative Voiceover',
         realLifeScenario: 'समजा, समोरच्या व्यक्तीने दिलेला चेक बँकेत "अपूरा निधी" असल्यामुळे बाउन्स झाला आणि बँक मेमो मिळाला, तर वेळ वाया घालवू नका...',
         searchVolumeSurge: 'Google Trends MH +430% Search Surge'
       };
-      hashtagList = '#चेकबाउन्स #ChequeBounce #Section138 #NIACT #धनादेश #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#चेकबाउन्स #ChequeBounce #Section138 #NIACT #धनादेश #आपलाकायदा #कायदेशीरसल्ला';
 
     // 17. सायबर गुन्हे व १९३० (Cyber Fraud)
     } else if (tLower.includes('सायबर') || tLower.includes('cyber') || tLower.includes('1930') || tLower.includes('ओटीपी')) {
@@ -651,12 +849,12 @@ export default function Tab3VideoStudio({
       };
       seoInfo = {
         googleTrends: ['cyber crime helpline 1930 marathi', 'online banking fraud paise parat kase milavave', 'cybercrime portal maharashtra complaint'],
-        metaKeywords: ['सायबर फसवणूक', 'हेल्पलाइन १९३०', 'गोल्डन अवर', 'Advocate Pratiksha', 'बँकिंग सुरक्षा'],
+        metaKeywords: ['सायबर फसवणूक', 'हेल्पलाइन १९३०', 'गोल्डन अवर', 'कायदेशीर सल्ला', 'बँकिंग सुरक्षा'],
         viralAudioCue: 'Urgent Alert Tone / High CTR Hook Voiceover',
         realLifeScenario: 'समजा, वीज बिल, लॉटरी किंवा बँक केवायसीच्या खोट्या मेसेजवर क्लिक करून तुमच्या खात्यातून परस्पर पैसे कापले गेले, तर वेळ अजिबात वाया घालवू नका...',
         searchVolumeSurge: 'Google Trends MH +530% Search Surge'
       };
-      hashtagList = '#सायबरसुरक्षा #CyberCrime1930 #OnlineFraud #GoldenHour #बँकफसवणूक #आपलाकायदा #AdvocatePratiksha';
+      hashtagList = '#सायबरसुरक्षा #CyberCrime1930 #OnlineFraud #GoldenHour #बँकफसवणूक #आपलाकायदा #कायदेशीरसल्ला';
 
     // 18. Default Title-Centric Fallback
     } else {
@@ -678,24 +876,27 @@ export default function Tab3VideoStudio({
         isCompliant: true
       };
       seoInfo = {
-        googleTrends: [`${title.slice(0, 30)} कायदेशीर माहिती`, `${title.slice(0, 30)} नियम महाराष्ट्र`, 'advocate pratiksha legal advice'],
-        metaKeywords: [title.slice(0, 25), 'महाराष्ट्र कायदेशीर हक्क', 'Advocate Pratiksha', 'Reels Viral Legal Guide'],
+        googleTrends: [`${title.slice(0, 30)} कायदेशीर माहिती`, `${title.slice(0, 30)} नियम महाराष्ट्र`, 'aapla kayda legal advice'],
+        metaKeywords: [title.slice(0, 25), 'महाराष्ट्र कायदेशीर हक्क', 'कायदेशीर सल्ला', 'Reels Viral Legal Guide'],
         viralAudioCue: 'Standard Legal Explainer Music / Clear Voiceover',
         realLifeScenario: `समजा, "${title.replace(/[?!।]/g, '')}" या कायदेशीर मुद्द्यावर तुमच्या किंवा तुमच्या कुटुंबावर अन्याय होत असेल आणि समोरची व्यक्ती सहकार्य करत नसेल...`,
         searchVolumeSurge: 'Google Trends MH +350% Search Surge'
       };
-      hashtagList = '#आपलाकायदा #AdvocatePratiksha #MarathiLaw #कायदेशीरहक्क #महाराष्ट्र';
+      hashtagList = '#आपलाकायदा #कायदेशीरसल्ला #MarathiLaw #कायदेशीरहक्क #महाराष्ट्र';
     }
+
+    // Ensure the 3-sec high-retention viral hook is always chosen by default
+    const finalHook = hooks.shock || hook;
 
     const cta = `हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!`;
 
     setScriptData({
-      hook,
+      hook: finalHook,
       bodyFormatA: formatA,
       bodyFormatB: formatB,
       legalSection,
       callToAction: cta,
-      fullText: `${hook}\n\n${formatA}\n\n${cta}`
+      fullText: `${finalHook}\n\n${formatA}\n\n${cta}`
     });
 
     setVerificationData(verificationInfo);
@@ -1116,7 +1317,7 @@ export default function Tab3VideoStudio({
 
               <div className="flex items-center space-x-2 bg-navy-950 p-1 rounded-xl border border-navy-800 text-xs">
                 <button
-                  onClick={() => setSelectedFormat('A')}
+                  onClick={() => handleSelectFormat('A')}
                   className={`px-3 py-1 rounded-lg font-bold transition-all ${
                     selectedFormat === 'A' ? 'bg-gold-500 text-navy-950' : 'text-slate-400 hover:text-white'
                   }`}
@@ -1124,7 +1325,7 @@ export default function Tab3VideoStudio({
                   Format A (सविस्तर अडचण व उपाय)
                 </button>
                 <button
-                  onClick={() => setSelectedFormat('B')}
+                  onClick={() => handleSelectFormat('B')}
                   className={`px-3 py-1 rounded-lg font-bold transition-all ${
                     selectedFormat === 'B' ? 'bg-gold-500 text-navy-950' : 'text-slate-400 hover:text-white'
                   }`}
@@ -1135,16 +1336,71 @@ export default function Tab3VideoStudio({
             </div>
 
             <div className="space-y-3">
-              {/* Hook Box */}
-              <div className="bg-navy-900 rounded-xl p-3.5 border border-gold-500/30">
-                <label className="text-[11px] font-bold text-gold-400 uppercase tracking-wider block mb-1">
-                  पहिल्या ३ सेकंदांचा हाय-इम्पॅक्ट हुक (Viral Hook):
-                </label>
+              {/* Hook Box with 3 High-Retention Psychological Variants */}
+              <div className="bg-navy-900 rounded-xl p-3.5 border border-gold-500/30 space-y-2.5">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <label className="text-[11px] font-bold text-gold-400 uppercase tracking-wider flex items-center space-x-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                    <span>पहिल्या ३ सेकंदांचा हाय-इम्पॅक्ट हुक (3-Sec High-Retention Viral Hook):</span>
+                  </label>
+                  <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-bold self-start sm:self-auto">
+                    🔥 3-Sec Stop Rate +85%
+                  </span>
+                </div>
+
+                {/* 3 Psychological Hook Switchers */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pt-0.5">
+                  <button
+                    type="button"
+                    onClick={() => handleSwitchHookStyle('shock')}
+                    className={`px-2.5 py-1.5 rounded-lg text-xs font-bold text-left transition-all border flex items-center space-x-1.5 ${
+                      activeHookStyle === 'shock'
+                        ? 'bg-rose-500/20 text-rose-300 border-rose-500/50 shadow-sm'
+                        : 'bg-navy-950/70 text-slate-400 border-navy-800 hover:text-white hover:border-navy-700'
+                    }`}
+                  >
+                    <span>🚨</span>
+                    <span className="truncate">धक्कादायक इशारा (Shock)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSwitchHookStyle('secret')}
+                    className={`px-2.5 py-1.5 rounded-lg text-xs font-bold text-left transition-all border flex items-center space-x-1.5 ${
+                      activeHookStyle === 'secret'
+                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm'
+                        : 'bg-navy-950/70 text-slate-400 border-navy-800 hover:text-white hover:border-navy-700'
+                    }`}
+                  >
+                    <span>💡</span>
+                    <span className="truncate">गुप्त कायदेशीर उपाय (Power)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSwitchHookStyle('scenario')}
+                    className={`px-2.5 py-1.5 rounded-lg text-xs font-bold text-left transition-all border flex items-center space-x-1.5 ${
+                      activeHookStyle === 'scenario'
+                        ? 'bg-blue-500/20 text-blue-300 border-blue-500/50 shadow-sm'
+                        : 'bg-navy-950/70 text-slate-400 border-navy-800 hover:text-white hover:border-navy-700'
+                    }`}
+                  >
+                    <span>⚡</span>
+                    <span className="truncate">नागरिक अडचण (Challenge)</span>
+                  </button>
+                </div>
+
                 <textarea
                   rows={2}
                   value={scriptData.hook}
-                  onChange={(e) => setScriptData({ ...scriptData, hook: e.target.value })}
-                  className="w-full bg-transparent text-sm text-white font-medium focus:outline-none resize-none"
+                  onChange={(e) => {
+                    const newHook = e.target.value;
+                    const scriptBody = selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB;
+                    setScriptData({
+                      ...scriptData,
+                      hook: newHook,
+                      fullText: `${newHook}\n\n${scriptBody}\n\n${scriptData.callToAction}`
+                    });
+                  }}
+                  className="w-full bg-navy-950/80 p-2.5 rounded-lg border border-gold-500/20 text-xs sm:text-sm text-white font-medium focus:outline-none focus:border-gold-400 resize-none leading-relaxed"
                 />
               </div>
 
