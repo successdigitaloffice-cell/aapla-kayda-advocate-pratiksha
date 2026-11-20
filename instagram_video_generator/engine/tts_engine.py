@@ -34,16 +34,16 @@ VOICE_MAP = {
 
 def speed_to_rate(speed) -> str:
     """
-    Converts numeric speed multipliers (0.85, 1.0, 1.10, 1.20, 1.30)
-    to edge_tts percentage string (e.g. "-15%", "+0%", "+10%", "+20%", "+30%").
-    Default is 1.10x (+10%) for natural Marathi pace.
+    Converts numeric speed multipliers (0.85, 0.95, 1.0, 1.05, 1.10, 1.15, 1.25)
+    to edge_tts percentage string (e.g. "-5%", "+0%", "+5%", "+10%", "+15%").
+    Default is 1.05x (+5%) for crystal-clear, articulate, natural Marathi pace.
     """
     if speed is None:
-        return "+10%"
+        return "+5%"
     try:
         val = float(speed)
     except (ValueError, TypeError):
-        return "+10%"
+        return "+5%"
     
     # Calculate percentage offset from 1.0
     pct = int(round((val - 1.0) * 100))

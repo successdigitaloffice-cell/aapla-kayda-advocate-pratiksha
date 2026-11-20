@@ -917,7 +917,7 @@ export default function Tab3VideoStudio({
   const handlePreviewVoice = async () => {
     setIsPreviewPlaying(true);
     try {
-      const speedMap = { slow: 0.95, normal: 1.10, fast: 1.25 };
+      const speedMap = { slow: 0.95, normal: 1.05, fast: 1.15 };
       const sample = `प्लॉट खरेदी करताना हा एक कागद तपासला नाही, तर तुमचे लाखो रुपये अडकू शकतात!`;
       const res = await fetch(getApiUrl('/api/video-engine/preview-voice'), {
         method: 'POST',
@@ -925,7 +925,7 @@ export default function Tab3VideoStudio({
         body: JSON.stringify({
           text: sample,
           voice: selectedVoice,
-          speed: speedMap[voiceSpeed] || 1.10
+          speed: speedMap[voiceSpeed] || 1.05
         })
       });
       if (res.ok) {
@@ -961,8 +961,8 @@ export default function Tab3VideoStudio({
       const scriptBody = selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB;
       const fullScript = `${scriptData.hook}\n\n${scriptBody}\n\n${scriptData.callToAction}`;
 
-      const speedMap = { slow: 0.95, normal: 1.10, fast: 1.25 };
-      const chosenSpeed = speedMap[voiceSpeed] || 1.10;
+      const speedMap = { slow: 0.95, normal: 1.05, fast: 1.15 };
+      const chosenSpeed = speedMap[voiceSpeed] || 1.05;
 
       const payload = {
         script_text: fullScript,
@@ -1739,7 +1739,7 @@ export default function Tab3VideoStudio({
               <div className="p-3.5 rounded-xl bg-navy-900 border border-navy-750">
                 <label className="text-xs font-semibold text-slate-300 block mb-2 flex items-center">
                   <Sliders className="w-4 h-4 text-purple-400 mr-1.5" />
-                  <span>आवाज गती (Speed):</span>
+                  <span>आवाज गती व उच्चार स्पष्टता (Voice Pace):</span>
                 </label>
                 <div className="grid grid-cols-3 gap-1 text-xs">
                   {['slow', 'normal', 'fast'].map((spd) => (
@@ -1752,12 +1752,12 @@ export default function Tab3VideoStudio({
                           : 'bg-navy-950 text-slate-400 border-navy-800'
                       }`}
                     >
-                      {spd === 'slow' ? 'संथ' : spd === 'normal' ? '1.10x' : '1.25x'}
+                      {spd === 'slow' ? '0.95x संथ' : spd === 'normal' ? '1.05x अचूक (Default)' : '1.15x वेगवान'}
                     </button>
                   ))}
                 </div>
                 <div className="text-[10px] text-slate-400 mt-2">
-                  Instagram Reels साठी 1.10x वेग अत्यंत प्रभावी मानला जातो.
+                  कायदेशीर शब्दांच्या अचूक देवनागरी उच्चारणासाठी 1.05x वेग सर्वोत्तम स्पष्टता देतो.
                 </div>
               </div>
 

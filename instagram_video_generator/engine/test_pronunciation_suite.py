@@ -71,6 +71,52 @@ def run_audit():
             "status": status
         })
 
+    # 3. Test 25 Advanced Inflections, Ranges, Acronyms & Municipal Cases
+    ADVANCED_ACCURACY_TEST_CASES_25 = [
+        ("7/12 वर", "सातबाऱ्यावर"),
+        ("७/१२ वरील", "सातबाऱ्यावरील"),
+        ("7/12 वरून", "सातबाऱ्यावरून"),
+        ("7/12 चा", "सातबाऱ्याचा"),
+        ("7/12 ची", "सातबाऱ्याची"),
+        ("7/12 चे", "सातबाऱ्याचे"),
+        ("मनपाची", "महापालिकेची"),
+        ("मनपाने", "महापालिकेने"),
+        ("मनपा", "महापालिका"),
+        ("1 ते 3 गुंठे", "एक ते तीन गुंठे"),
+        ("१ ते २ गुंठे", "एक ते दोन गुंठे"),
+        ("15 ते 30 दिवस", "पंधरा ते तीस दिवस"),
+        ("कलम 8-ब", "कलम आठ ब"),
+        ("कलम 175(3)", "कलम एकशे पंच्याहत्तर उपकलम तीन"),
+        ("कलम 318(4)", "कलम तीनशे अठरा उपकलम चार"),
+        ("कलम 5(2)", "कलम पाच उपकलम दोन"),
+        ("पायरी १", "पायरी क्रमांक एक"),
+        ("पायरी २", "पायरी क्रमांक दोन"),
+        ("पायरी ३", "पायरी क्रमांक तीन"),
+        ("वर्ग २", "वर्ग दोन"),
+        ("फॉर्म १६", "फॉर्म क्रमांक सोळा"),
+        ("उपअधीक्षक भूमी अभिलेख (DySLR)", "उपअधीक्षक भूमी अभिलेख (डी.वाय.एस.एल.आर.)"),
+        ("भारतीय नागरिक सुरक्षा संहिता (BNSS)", "भारतीय नागरिक सुरक्षा संहिता (बी.एन.एस.एस.)"),
+        ("सायबर हेल्पलाइन १९३०", "सायबर हेल्पलाईन क्रमांक एकोणीस तीस"),
+        ("धनादेश बाऊन्स", "धनादेश बाऊन्स")
+    ]
+
+    print("[PART C] Testing 25 Advanced Inflections, Ranges & Municipal Pronunciations...")
+    adv_passed = 0
+    for idx, (orig, exp) in enumerate(ADVANCED_ACCURACY_TEST_CASES_25, 1):
+        norm = normalize_marathi_text(orig)
+        matched = (norm.strip() == exp.strip()) or (exp in norm)
+        status = "PASS" if matched else "FAIL"
+        if matched:
+            adv_passed += 1
+        results.append({
+            "category": "Advanced Accuracy",
+            "id": f"A-{idx:02d}",
+            "original": orig,
+            "normalized": norm,
+            "expected": exp,
+            "status": status
+        })
+
     # Print Formatted Markdown Table
     print("\n" + "-" * 90)
     print(f"{'ID':<6} | {'Original Text':<22} | {'Normalized Text':<35} | {'Status'}")
@@ -81,7 +127,8 @@ def run_audit():
     print("-" * 90)
     print(f"Total Legal Terms Tested: {len(LEGAL_TEST_CASES_50)} | Passed: {legal_passed}/{len(LEGAL_TEST_CASES_50)}")
     print(f"Total Numbers/Dates Tested: {len(NUMBER_TEST_CASES_30)} | Passed: {num_passed}/{len(NUMBER_TEST_CASES_30)}")
-    overall_pass = (legal_passed == len(LEGAL_TEST_CASES_50)) and (num_passed == len(NUMBER_TEST_CASES_30))
+    print(f"Total Advanced Accuracy Tested: {len(ADVANCED_ACCURACY_TEST_CASES_25)} | Passed: {adv_passed}/{len(ADVANCED_ACCURACY_TEST_CASES_25)}")
+    overall_pass = (legal_passed == len(LEGAL_TEST_CASES_50)) and (num_passed == len(NUMBER_TEST_CASES_30)) and (adv_passed == len(ADVANCED_ACCURACY_TEST_CASES_25))
     print(f"Overall Pronunciation Engine Status: {'100% PASS' if overall_pass else 'ISSUES FOUND'}")
     print("=" * 90)
 
