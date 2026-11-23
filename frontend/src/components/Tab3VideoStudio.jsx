@@ -34,7 +34,8 @@ import {
   getApiUrl,
   getActiveBackendUrl,
   setCustomBackendUrl,
-  resetBackendUrl
+  resetBackendUrl,
+  ensureBackendConnected
 } from '../utils/api';
 
 // High-Retention 3-Second Scroll-Stopping Viral Hook Generator
@@ -273,6 +274,19 @@ export default function Tab3VideoStudio({
   const [showBackendConfig, setShowBackendConfig] = useState(false);
   const [backendTestStatus, setBackendTestStatus] = useState(null);
 
+  useEffect(() => {
+    const handleBackendReady = (e) => {
+      const url = e.detail;
+      if (url) {
+        setCloudBackendUrl(url);
+        setCustomUrlInput(url);
+        loadReelsHistory();
+      }
+    };
+    window.addEventListener('ak_backend_ready', handleBackendReady);
+    return () => window.removeEventListener('ak_backend_ready', handleBackendReady);
+  }, []);
+
   const handleTestBackend = async (url) => {
     setBackendTestStatus('testing');
     try {
@@ -323,6 +337,8 @@ export default function Tab3VideoStudio({
       setTopicTitle(title);
       setTopicCategory(selectedTopic.category || 'महाराष्ट्र जमीन महसूल');
       generateWorkflowScript(selectedTopic, selectedTopic.category);
+      setRenderedVideoUrl(null);
+      setDownloadVideoUrl(null);
     } else {
       const defaultTitle = 'गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!';
       setTopicTitle(defaultTitle);
@@ -338,12 +354,6 @@ export default function Tab3VideoStudio({
         const data = await res.json();
         const reels = data.reels || [];
         setHistoryReels(reels);
-        if (reels.length > 0 && !renderedVideoUrl) {
-          // Pre-load latest completed reel into Step 8 preview
-          const latest = reels[0];
-          setRenderedVideoUrl(resolveMediaUrl(latest.preview_url));
-          setDownloadVideoUrl(resolveMediaUrl(latest.download_url));
-        }
       }
     } catch (e) {
       console.error('Failed to load reels history:', e);
@@ -955,9 +965,14 @@ export default function Tab3VideoStudio({
     setIsGenerating(true);
     setRenderError(null);
     setRenderProgress(10);
-    setRenderStatusMessage('100% Text & Topic Visual Explainer Engine सुरू होत आहे...');
+    setRenderStatusMessage('व्हिडिओ रेंडरिंग सुरू होत आहे...');
+    setRenderedVideoUrl(null);
+    setDownloadVideoUrl(null);
+    setCurrentStep(8);
 
     try {
+      await ensureBackendConnected();
+
       const scriptBody = selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB;
       const fullScript = `${scriptData.hook}\n\n${scriptBody}\n\n${scriptData.callToAction}`;
 
@@ -1912,17 +1927,12 @@ export default function Tab3VideoStudio({
                 <span>मागील</span>
               </button>
               <button
-                onClick={() => {
-                  if (renderedVideoUrl) {
-                    setCurrentStep(8);
-                  } else {
-                    handleStartRealVideoGeneration();
-                  }
-                }}
+                onClick={handleStartRealVideoGeneration}
                 disabled={isGenerating}
                 className="flex items-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md"
               >
-                <span>{renderedVideoUrl ? 'प्रिव्ह्यू व एक्सपोर्ट पहा' : 'व्हिडिओ रेंडर करा व एक्सपोर्ट पहा'}</span>
+                <Sparkles className="w-4 h-4" />
+                <span>{isGenerating ? 'रेंडरिंग सुरू आहे...' : '🎬 हा व्हिडिओ तयार करा (Generate Video Reel)'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -1940,10 +1950,37 @@ export default function Tab3VideoStudio({
               {renderedVideoUrl && (
                 <span className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Real Talking Avatar MP4 • Lip-Synced</span>
+                  <span>100% Text & Topic Visual Explainer MP4</span>
                 </span>
               )}
             </div>
+
+            {/* Live Generation Progress Card for Step 8 */}
+            {isGenerating && (
+              <div className="p-5 rounded-2xl bg-navy-900 border border-gold-500/50 text-center space-y-3 shadow-2xl">
+                <div className="flex items-center justify-center space-x-2 text-gold-400 font-bold text-sm">
+                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <span>{renderStatusMessage || 'व्हिडिओ रेंडरिंग सुरू आहे...'}</span>
+                  <span>({renderProgress}%)</span>
+                </div>
+                <div className="w-full bg-navy-950 rounded-full h-3 overflow-hidden max-w-lg mx-auto border border-navy-700">
+                  <div
+                    className="bg-gradient-to-r from-gold-500 via-amber-400 to-emerald-400 h-full transition-all duration-300"
+                    style={{ width: `${renderProgress}%` }}
+                  />
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  मराठी ऑडिओ, कायदेशीर दृश्ये, अचूक टेक्स्ट व बॅकग्राउंड म्युझिक एकत्रित केले जात आहे...
+                </p>
+              </div>
+            )}
+
+            {renderError && (
+              <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span>{renderError}</span>
+              </div>
+            )}
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
               {/* Left Column: Interactive Reel Video Player */}
@@ -1955,8 +1992,7 @@ export default function Tab3VideoStudio({
                         key={resolveMediaUrl(renderedVideoUrl)}
                         controls
                         playsInline
-                        crossOrigin="anonymous"
-                        autoPlay
+                        preload="metadata"
                         src={resolveMediaUrl(renderedVideoUrl)}
                         className="w-full h-full object-contain"
                       />
@@ -1978,6 +2014,16 @@ export default function Tab3VideoStudio({
                         <span>Reel MP4 डाऊनलोड करा</span>
                       </button>
                     )}
+
+                    <button
+                      type="button"
+                      onClick={handleStartRealVideoGeneration}
+                      disabled={isGenerating}
+                      className="mt-2 w-full max-w-[260px] flex items-center justify-center space-x-2 py-2 rounded-xl bg-navy-800 hover:bg-navy-750 text-slate-300 hover:text-white font-bold text-xs border border-navy-700 cursor-pointer"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                      <span>🔄 पुन्हा नवीन व्हिडिओ बनवा (Re-generate)</span>
+                    </button>
                   </div>
                 ) : (
                   <div className="w-full max-w-[260px] aspect-[9/16] rounded-2xl bg-navy-950 border border-dashed border-navy-700 flex flex-col items-center justify-center p-4 text-slate-500 text-xs">
@@ -1988,7 +2034,7 @@ export default function Tab3VideoStudio({
                       disabled={isGenerating}
                       className="mt-3 px-4 py-2 rounded-xl bg-gold-500 text-navy-950 font-bold text-xs"
                     >
-                      आत्ता रेंडर करा
+                      🎬 आत्ता व्हिडिओ रेंडर करा
                     </button>
                   </div>
                 )}

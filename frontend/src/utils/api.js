@@ -1,12 +1,12 @@
 // Centralized API Base configuration
 // When hosted on GitHub Pages or custom domain, route API calls to the live Cloudflare HTTPS backend
-export const DEFAULT_LIVE_BACKEND_URL = 'https://photograph-villa-desirable-according.trycloudflare.com';
+export const DEFAULT_LIVE_BACKEND_URL = 'https://riders-companion-lights-honey.trycloudflare.com';
 
 export function getActiveBackendUrl() {
   if (typeof window === 'undefined') return DEFAULT_LIVE_BACKEND_URL;
   return (
-    localStorage.getItem('AK_CUSTOM_BACKEND_URL') ||
     window.__AK_BACKEND_URL__ ||
+    localStorage.getItem('AK_CUSTOM_BACKEND_URL') ||
     DEFAULT_LIVE_BACKEND_URL
   );
 }
@@ -24,36 +24,88 @@ export function resetBackendUrl() {
   window.__AK_BACKEND_URL__ = DEFAULT_LIVE_BACKEND_URL;
 }
 
-// Auto-discovery of latest tunnel URL on GitHub Pages
+// Function to test if a backend URL is responsive
+export async function testBackendHealth(baseUrl, timeoutMs = 2500) {
+  if (!baseUrl) return false;
+  try {
+    const clean = baseUrl.trim().replace(/\/$/, '');
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    const res = await window.fetch(`${clean}/api/health`, {
+      method: 'GET',
+      mode: 'cors',
+      signal: ctrl.signal,
+      cache: 'no-store'
+    });
+    clearTimeout(timer);
+    return res.ok;
+  } catch (_) {
+    return false;
+  }
+}
+
+// Self-healing auto-discovery that ensures active backend connection
+export async function ensureBackendConnected() {
+  if (typeof window === 'undefined') return DEFAULT_LIVE_BACKEND_URL;
+
+  // 1. If currently active backend responds, return it
+  const current = getActiveBackendUrl();
+  const currentAlive = await testBackendHealth(current, 2000);
+  if (currentAlive) {
+    window.__AK_BACKEND_URL__ = current;
+    return current;
+  }
+
+  // 2. If current fails, try default URL if different
+  if (current !== DEFAULT_LIVE_BACKEND_URL) {
+    const defaultAlive = await testBackendHealth(DEFAULT_LIVE_BACKEND_URL, 2000);
+    if (defaultAlive) {
+      window.__AK_BACKEND_URL__ = DEFAULT_LIVE_BACKEND_URL;
+      localStorage.setItem('AK_CUSTOM_BACKEND_URL', DEFAULT_LIVE_BACKEND_URL);
+      window.dispatchEvent(new CustomEvent('ak_backend_ready', { detail: DEFAULT_LIVE_BACKEND_URL }));
+      return DEFAULT_LIVE_BACKEND_URL;
+    }
+  }
+
+  // 3. Auto-discover from repo manifests
+  const manifestUrls = [
+    './tunnel_info.json',
+    'https://raw.githubusercontent.com/successdigitaloffice-cell/aapla-kayda-advocate-pratiksha/main/data/tunnel_info.json',
+    'https://raw.githubusercontent.com/successdigitaloffice-cell/aapla-kayda-advocate-pratiksha/main/docs/tunnel_info.json'
+  ];
+
+  for (const manifestUrl of manifestUrls) {
+    try {
+      const res = await window.fetch(manifestUrl, { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        const liveUrl = (data.cloudflareUrl || data.url || '').trim().replace(/\/$/, '');
+        if (liveUrl && liveUrl.startsWith('https://')) {
+          const isAlive = await testBackendHealth(liveUrl, 3000);
+          if (isAlive) {
+            window.__AK_BACKEND_URL__ = liveUrl;
+            localStorage.setItem('AK_CUSTOM_BACKEND_URL', liveUrl);
+            console.log('[API] Auto-discovered and verified live Cloudflare backend:', liveUrl);
+            window.dispatchEvent(new CustomEvent('ak_backend_ready', { detail: liveUrl }));
+            return liveUrl;
+          }
+        }
+      }
+    } catch (_) {}
+  }
+
+  return current;
+}
+
+// Trigger initial connection verification immediately on load
 if (typeof window !== 'undefined') {
   const isHosted =
     window.location.hostname.includes('github.io') ||
     window.location.hostname.includes('netlify.app') ||
     window.location.hostname.includes('vercel.app');
 
-  if (isHosted && !localStorage.getItem('AK_CUSTOM_BACKEND_URL')) {
-    // Attempt to discover latest tunnel endpoint from repository manifest
-    const manifestUrls = [
-      './tunnel_info.json',
-      'https://raw.githubusercontent.com/successdigitaloffice-cell/aapla-kayda-advocate-pratiksha/main/data/tunnel_info.json'
-    ];
-
-    (async () => {
-      for (const manifestUrl of manifestUrls) {
-        try {
-          const res = await window.fetch(manifestUrl, { cache: 'no-store' });
-          if (res.ok) {
-            const data = await res.json();
-            const liveUrl = (data.cloudflareUrl || data.url || '').trim().replace(/\/$/, '');
-            if (liveUrl && liveUrl.startsWith('https://')) {
-              window.__AK_BACKEND_URL__ = liveUrl;
-              console.log('[API] Auto-discovered live Cloudflare backend:', liveUrl);
-              break;
-            }
-          }
-        } catch (_) {}
-      }
-    })();
+  if (isHosted) {
+    ensureBackendConnected();
   }
 }
 
@@ -71,7 +123,8 @@ export function getApiUrl(path) {
     typeof window !== 'undefined' &&
     (window.location.hostname.includes('github.io') ||
       window.location.hostname.includes('netlify.app') ||
-      window.location.hostname.includes('vercel.app'));
+      window.location.hostname.includes('vercel.app') ||
+      window.location.protocol === 'file:');
 
   if (isHosted) {
     const backend = getActiveBackendUrl().replace(/\/$/, '');

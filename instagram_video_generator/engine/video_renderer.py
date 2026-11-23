@@ -610,6 +610,7 @@ def combine_clips_with_music(clips_list: List[str], bg_music_path: Optional[str]
             "-c:v", "copy",
             "-c:a", "aac",
             "-b:a", "192k",
+            "-movflags", "+faststart",
             "-shortest",
             output_final_mp4
         ]
@@ -618,12 +619,14 @@ def combine_clips_with_music(clips_list: List[str], bg_music_path: Optional[str]
             if os.path.exists(temp_combined):
                 if os.path.exists(output_final_mp4):
                     os.remove(output_final_mp4)
-                os.rename(temp_combined, output_final_mp4)
+                fs_cmd = [FFMPEG_EXE, "-y", "-i", temp_combined, "-c", "copy", "-movflags", "+faststart", output_final_mp4]
+                subprocess.run(fs_cmd, check=True)
     else:
         if os.path.exists(temp_combined):
             if os.path.exists(output_final_mp4):
                 os.remove(output_final_mp4)
-            os.rename(temp_combined, output_final_mp4)
+            fs_cmd = [FFMPEG_EXE, "-y", "-i", temp_combined, "-c", "copy", "-movflags", "+faststart", output_final_mp4]
+            subprocess.run(fs_cmd, check=True)
             
     # Cleanup temp
     if os.path.exists(temp_combined):

@@ -508,6 +508,7 @@ def render_advocate_talking_reel(
             "-c:v", "copy",
             "-c:a", "aac",
             "-b:a", "192k",
+            "-movflags", "+faststart",
             final_reel_path
         ]
     else:
@@ -515,6 +516,7 @@ def render_advocate_talking_reel(
             FFMPEG_EXE, "-y",
             "-f", "concat", "-safe", "0", "-i", concat_list_path,
             "-c", "copy",
+            "-movflags", "+faststart",
             final_reel_path
         ]
 
