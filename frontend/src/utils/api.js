@@ -1,6 +1,6 @@
 // Centralized API Base configuration
 // When hosted on GitHub Pages or custom domain, route API calls to the live Cloudflare HTTPS backend
-export const DEFAULT_LIVE_BACKEND_URL = 'https://riders-companion-lights-honey.trycloudflare.com';
+export const DEFAULT_LIVE_BACKEND_URL = 'https://spencer-cards-election-avenue.trycloudflare.com';
 
 export function getActiveBackendUrl() {
   if (typeof window === 'undefined') return DEFAULT_LIVE_BACKEND_URL;

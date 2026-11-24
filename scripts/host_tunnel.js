@@ -288,6 +288,18 @@ function updateTunnelStatus() {
     }
 
     updateDesktopShortcuts(primaryUrl);
+
+    // Auto-sync tunnel URL to GitHub repository so GitHub Pages never goes out of sync
+    if (activeCloudflareUrl) {
+      setTimeout(() => {
+        try {
+          execSync('git add data/tunnel_info.json docs/tunnel_info.json CLOUDFLARE_URL.txt PUBLIC_HOST_URL.txt AAPLA_KAYDA_PORTAL_PERMANENT.html', { cwd: ROOT_DIR, stdio: 'ignore', windowsHide: true });
+          execSync(`git commit -m "chore: Sync active live Cloudflare tunnel ${activeCloudflareUrl}"`, { cwd: ROOT_DIR, stdio: 'ignore', windowsHide: true });
+          execSync('git push origin main', { cwd: ROOT_DIR, stdio: 'ignore', windowsHide: true });
+          console.log('[AaplaKaydaTunnel] Live tunnel successfully pushed to GitHub Pages!');
+        } catch (_) {}
+      }, 1500);
+    }
   } catch (e) {
     console.error('[AaplaKaydaTunnel] Error updating tunnel status:', e.message);
   }

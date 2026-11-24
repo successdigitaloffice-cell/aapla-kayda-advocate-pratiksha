@@ -41,15 +41,24 @@
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Base Body Styles */
-body {
+/* Base Body and HTML Styles with High-Performance Mobile Scrolling */
+html, body {
   background-color: #070b14;
   color: #e2e8f0;
   font-family: 'Mukta', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
+  max-width: 100vw;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+  touch-action: manipulation;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 /* Custom Scrollbar for inner elements */

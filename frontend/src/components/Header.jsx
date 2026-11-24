@@ -3,7 +3,7 @@ import { Scale, ShieldCheck, Calendar, Sparkles, Smartphone, User, LogOut } from
 
 export default function Header({ activeDay = 8, totalPublished = 7, onNavigateTab, currentUser, onLogout }) {
   return (
-    <header className="border-b border-navy-750 bg-navy-950/95 backdrop-blur-md sticky top-0 z-50">
+    <header className="border-b border-navy-750 bg-navy-950/95 backdrop-blur-md relative z-30">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between gap-3">
         {/* Brand Title & Logo */}
         <div

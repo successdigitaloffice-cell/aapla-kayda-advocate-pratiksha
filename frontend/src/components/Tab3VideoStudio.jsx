@@ -1195,8 +1195,43 @@ export default function Tab3VideoStudio({
         </div>
       )}
 
-      {/* 8-Step Progress Stepper Bar (Horizontal Scrollable for Mobile) */}
-      <div className="bg-navy-850/80 border border-navy-700/80 rounded-2xl p-3 sm:p-4 overflow-x-auto no-scrollbar">
+      {/* Mobile Compact Step Controller (Zero Scroll Trap) */}
+      <div className="sm:hidden bg-navy-850/95 border border-navy-750 rounded-xl p-3 flex items-center justify-between shadow-lg">
+        <div className="flex items-center space-x-2.5">
+          <span className="w-7 h-7 rounded-full bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 font-black text-xs flex items-center justify-center shadow">
+            {currentStep}
+          </span>
+          <div>
+            <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">
+              पायरी {currentStep} / {stepsList.length}
+            </div>
+            <div className="text-xs font-bold text-white">
+              {stepsList[currentStep - 1]?.label}
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center space-x-1.5">
+          <button
+            type="button"
+            onClick={() => setCurrentStep(prev => Math.max(1, prev - 1))}
+            disabled={currentStep === 1}
+            className="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-750 text-slate-300 disabled:opacity-25 text-xs font-bold border border-navy-700 active:scale-95 transition-all"
+          >
+            ◀ मागील
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentStep(prev => Math.min(stepsList.length, prev + 1))}
+            disabled={currentStep === stepsList.length}
+            className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 disabled:opacity-25 text-xs font-bold shadow active:scale-95 transition-all"
+          >
+            पुढील ▶
+          </button>
+        </div>
+      </div>
+
+      {/* Desktop/Tablet 8-Step Progress Stepper Bar */}
+      <div className="hidden sm:block bg-navy-850/80 border border-navy-700/80 rounded-2xl p-3 sm:p-4 overflow-x-auto no-scrollbar">
         <div className="flex items-center justify-between min-w-[700px]">
           {stepsList.map((step, idx) => {
             const isActive = currentStep === step.num;
@@ -1987,7 +2022,10 @@ export default function Tab3VideoStudio({
               <div className="lg:col-span-5 bg-navy-900 rounded-2xl p-4 border border-navy-750 flex flex-col items-center justify-center text-center">
                 {renderedVideoUrl ? (
                   <div className="w-full flex flex-col items-center">
-                    <div className="relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden border-2 border-gold-500/50 shadow-2xl bg-black mb-3">
+                    <div
+                      className="relative w-full max-w-[240px] sm:max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden border-2 border-gold-500/50 shadow-2xl bg-black mb-3 mx-auto"
+                      style={{ touchAction: 'pan-y' }}
+                    >
                       <video
                         key={resolveMediaUrl(renderedVideoUrl)}
                         controls
@@ -2002,6 +2040,9 @@ export default function Tab3VideoStudio({
                       <span>1080 x 1920 Full HD</span>
                       <span>•</span>
                       <span>मराठी व्हॉइस-ओव्हर सिंक</span>
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-1">
+                      📱 स्क्रोल करण्यासाठी व्हिडिओच्या बाजूने किंवा खाली स्वाइप करा
                     </div>
 
                     {downloadVideoUrl && (
@@ -2042,7 +2083,7 @@ export default function Tab3VideoStudio({
 
               {/* Right Column: Instagram Ready Toolkit & Teleprompter */}
               <div className="lg:col-span-7 space-y-4 flex flex-col justify-between">
-                {/* Teleprompter Script Card */}
+                {/* Teleprompter Script Card (Unconstrained Native Mobile Scroll) */}
                 <div className="p-4 rounded-xl bg-navy-900/90 border border-navy-750">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold text-gold-400">टेलिप्रॉम्प्टर स्क्रिप्ट (Teleprompter Script):</span>
@@ -2054,7 +2095,7 @@ export default function Tab3VideoStudio({
                       <span>{copiedField === 'fullScript' ? 'कॉपी झाले!' : 'स्क्रिप्ट कॉपी करा'}</span>
                     </button>
                   </div>
-                  <div className="max-h-44 overflow-y-auto text-xs text-slate-200 leading-relaxed font-sans pr-2 space-y-2 border-t border-navy-800 pt-2">
+                  <div className="text-xs text-slate-200 leading-relaxed font-sans space-y-2 border-t border-navy-800 pt-2">
                     <p className="font-bold text-gold-300">"{scriptData.hook}"</p>
                     <p>{selectedFormat === 'A' ? scriptData.bodyFormatA : scriptData.bodyFormatB}</p>
                     <p className="text-slate-400 italic">"{scriptData.callToAction}"</p>
@@ -2076,7 +2117,7 @@ export default function Tab3VideoStudio({
                       <span>{copiedField === 'allInstagram' ? 'कॉपी झाले!' : 'सर्व एकत्र कॉपी करा'}</span>
                     </button>
                   </div>
-                  <div className="bg-navy-950 p-2.5 rounded-lg text-xs text-slate-300 max-h-24 overflow-y-auto font-mono">
+                  <div className="bg-navy-950 p-2.5 rounded-lg text-xs text-slate-300 font-mono">
                     <p className="whitespace-pre-line">{captionText}</p>
                     <p className="text-gold-400 mt-1">{hashtags}</p>
                   </div>
@@ -2139,6 +2180,7 @@ export default function Tab3VideoStudio({
                           onClick={() => {
                             setRenderedVideoUrl(resolveMediaUrl(reel.preview_url));
                             setDownloadVideoUrl(resolveMediaUrl(reel.download_url));
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
                           }}
                           className="flex-1 py-1.5 rounded-lg bg-navy-800 hover:bg-navy-750 text-[11px] font-bold text-gold-400 flex items-center justify-center space-x-1 cursor-pointer"
                         >
