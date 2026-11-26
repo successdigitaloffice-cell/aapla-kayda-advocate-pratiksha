@@ -324,12 +324,12 @@ function startCloudflareTunnel() {
       windowsHide: true
     });
 
-    const urlRegex = /https:\/\/[a-zA-Z0-9-]+\.trycloudflare\.com/;
+    const urlRegex = /https:\/\/(?!api\.)[a-zA-Z0-9-]+\.trycloudflare\.com/;
 
     function handleData(chunk) {
       const text = chunk.toString();
       const match = text.match(urlRegex);
-      if (match && match[0]) {
+      if (match && match[0] && !match[0].includes('api.trycloudflare.com')) {
         const detectedUrl = match[0];
         if (detectedUrl !== activeCloudflareUrl) {
           activeCloudflareUrl = detectedUrl;

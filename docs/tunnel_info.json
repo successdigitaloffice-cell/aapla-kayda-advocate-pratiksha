@@ -3,8 +3,8 @@
   "name": "Aapla Kayda AI Legal & Video Studio",
   "port": 5050,
   "videoPort": 5055,
-  "url": "https://api.trycloudflare.com",
-  "cloudflareUrl": "https://api.trycloudflare.com",
+  "url": "http://localhost:5050",
+  "cloudflareUrl": null,
   "publicIp": "103.102.95.52",
-  "updatedAt": "2026-11-26T16:16:50.890Z"
+  "updatedAt": "2026-11-26T16:20:11.213Z"
 }

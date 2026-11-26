@@ -14,7 +14,8 @@ sys.path.insert(0, CURRENT_DIR)
 from marathi_normalizer import (
     normalize_marathi_text,
     LEGAL_TEST_CASES_50,
-    NUMBER_TEST_CASES_30
+    NUMBER_TEST_CASES_30,
+    JODSHABDH_TEST_CASES_40
 )
 
 async def test_single_tts(text: str, voice: str = "mr-IN-AarohiNeural") -> bool:
@@ -117,6 +118,24 @@ def run_audit():
             "status": status
         })
 
+    # 4. Test 40 Jodshabdh & Compound Words (जोडशब्द व जोडाक्षरे)
+    print("[PART D] Testing 40 Jodshabdh & Marathi Compound Words (जोडशब्द व जोडाक्षरे)...")
+    jod_passed = 0
+    for idx, (orig, exp) in enumerate(JODSHABDH_TEST_CASES_40, 1):
+        norm = normalize_marathi_text(orig)
+        matched = (norm.strip() == exp.strip()) or (exp in norm)
+        status = "PASS" if matched else "FAIL"
+        if matched:
+            jod_passed += 1
+        results.append({
+            "category": "Jodshabdh",
+            "id": f"J-{idx:02d}",
+            "original": orig,
+            "normalized": norm,
+            "expected": exp,
+            "status": status
+        })
+
     # Print Formatted Markdown Table
     print("\n" + "-" * 90)
     print(f"{'ID':<6} | {'Original Text':<22} | {'Normalized Text':<35} | {'Status'}")
@@ -128,12 +147,18 @@ def run_audit():
     print(f"Total Legal Terms Tested: {len(LEGAL_TEST_CASES_50)} | Passed: {legal_passed}/{len(LEGAL_TEST_CASES_50)}")
     print(f"Total Numbers/Dates Tested: {len(NUMBER_TEST_CASES_30)} | Passed: {num_passed}/{len(NUMBER_TEST_CASES_30)}")
     print(f"Total Advanced Accuracy Tested: {len(ADVANCED_ACCURACY_TEST_CASES_25)} | Passed: {adv_passed}/{len(ADVANCED_ACCURACY_TEST_CASES_25)}")
-    overall_pass = (legal_passed == len(LEGAL_TEST_CASES_50)) and (num_passed == len(NUMBER_TEST_CASES_30)) and (adv_passed == len(ADVANCED_ACCURACY_TEST_CASES_25))
+    print(f"Total Jodshabdh Tested: {len(JODSHABDH_TEST_CASES_40)} | Passed: {jod_passed}/{len(JODSHABDH_TEST_CASES_40)}")
+    overall_pass = (
+        (legal_passed == len(LEGAL_TEST_CASES_50)) and 
+        (num_passed == len(NUMBER_TEST_CASES_30)) and 
+        (adv_passed == len(ADVANCED_ACCURACY_TEST_CASES_25)) and 
+        (jod_passed == len(JODSHABDH_TEST_CASES_40))
+    )
     print(f"Overall Pronunciation Engine Status: {'100% PASS' if overall_pass else 'ISSUES FOUND'}")
     print("=" * 90)
 
-    # 3. Live TTS Voice Synthesis Test
-    print("\n[PART C] Live Edge-TTS Voice Synthesis Test...")
+    # 5. Live TTS Voice Synthesis Test
+    print("\n[PART E] Live Edge-TTS Voice Synthesis Test...")
     test_phrase = normalize_marathi_text("7/12 उतारा, कलम 420 आणि 498A अंतर्गत 2026 मधील सर्वोच्च न्यायालय निकाल.")
     print(f"Synthesizing test phrase: '{test_phrase}'")
     out_dir = os.path.join(CURRENT_DIR, "..", "uploads")
