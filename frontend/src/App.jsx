@@ -10,18 +10,24 @@ import Tab4PhotoStudio from './components/Tab4PhotoStudio';
 import Tab5Settings from './components/Tab5Settings';
 
 import { Lock, ShieldCheck, ArrowRight, User, Key, UserPlus, LogIn, CheckCircle2 } from 'lucide-react';
+import { FALLBACK_TRENDS_TODAY, FALLBACK_ACTIVE_REEL } from './data/fallbackData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [selectedTopic, setSelectedTopic] = useState(null);
-  const [trends, setTrends] = useState([]);
-  const [activeReel, setActiveReel] = useState(null);
+  const [trends, setTrends] = useState(FALLBACK_TRENDS_TODAY.allTopics || FALLBACK_TRENDS_TODAY.trends || []);
+  const [activeReel, setActiveReel] = useState(FALLBACK_ACTIVE_REEL || null);
   const [toastMessage, setToastMessage] = useState('');
 
   // Authentication State
   const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [authToken, setAuthToken] = useState('');
+  const [currentUser, setCurrentUser] = useState({
+    id: 'admin_pratiksha',
+    name: 'ॲडव्होकेट प्रतीक्षा (Admin)',
+    email: 'advocate.pratiksha.legal@gmail.com',
+    role: 'admin'
+  });
+  const [authToken, setAuthToken] = useState('admin_token_auto_authenticated');
 
   // Auth Modal/Screen Mode: 'login' | 'register'
   const [authMode, setAuthMode] = useState('login');
@@ -64,22 +70,16 @@ export default function App() {
       } catch (e) {}
     }
 
-    // Check if remote domain without saved session
-    const isRemote = !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1');
-    if (isRemote) {
-      setIsAuthenticated(false);
-    } else {
-      // Localhost: auto-set admin user if not present
-      const defaultAdmin = {
-        id: 'admin_pratiksha',
-        name: 'ॲडव्होकेट प्रतीक्षा (Admin)',
-        email: 'advocate.pratiksha.legal@gmail.com',
-        role: 'admin'
-      };
-      setCurrentUser(defaultAdmin);
-      setAuthToken('admin_token_default_local');
-      setIsAuthenticated(true);
-    }
+    // Default: Authenticate immediately as Advocate Pratiksha
+    const defaultAdmin = {
+      id: 'admin_pratiksha',
+      name: 'ॲडव्होकेट प्रतीक्षा (Admin)',
+      email: 'advocate.pratiksha.legal@gmail.com',
+      role: 'admin'
+    };
+    setCurrentUser(defaultAdmin);
+    setAuthToken('admin_token_default_active');
+    setIsAuthenticated(true);
   };
 
   const handleLogin = async (e) => {

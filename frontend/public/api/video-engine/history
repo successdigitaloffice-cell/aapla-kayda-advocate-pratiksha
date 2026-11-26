@@ -1,0 +1,1971 @@
+{
+  "success": true,
+  "reels": [
+    {
+      "folder_name": "test_explainer_reel",
+      "created_at": "2026-11-16 01:13:00",
+      "title": "प्लॉट खरेदीतील सर्वात मोठी फसवणूक व ७/१२ फेरफार कायदेशीर नियम",
+      "duration": 32.7,
+      "size_mb": 3.69,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/test_explainer_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/test_explainer_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795710194_script_1795710194",
+      "created_at": "2026-11-26 21:56:31",
+      "title": "जमीन खरेदी करताना फक्त खरेदीखत करू नका! हे ५ महसुली दस्तऐवज तपासले नाहीत तर जमीन हातातून जाईल",
+      "duration": 82.2,
+      "size_mb": 7.86,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "थांबा! जमीन खरेदी करताना केवळ ७/१२",
+          "text": "थांबा! जमीन खरेदी करताना केवळ ७/१२ पाहून पैसे देण्याची चूक अजिबात करू नका; हा १ कागद तपासला नाही तर आयुष्यभराची कमाई क्षणात बुडेल!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 12.96
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, एका नोकरदार व्यक्तीने रिटायरमेंट..",
+          "text": "समजा, एका नोकरदार व्यक्तीने रिटायरमेंटच्या पैशातून ५ एकर शेतजमीन खरेदी केली, पण ३० वर्षांचा सर्च रिपोर्ट न काढल्यामुळे जुन्या सावकारी कर्जाचा बोजा आणि मूळ वारसांचा न्यायालयात दावा चालू असल्याचे नंतर समोर आले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "daughter_inheritance_sec6.jpg",
+          "duration": 17.78
+        },
+        {
+          "scene_num": 3,
+          "title": "जमीन खरेदी करण्यापूर्वी केवळ विक्रेता ..",
+          "text": "जमीन खरेदी करण्यापूर्वी केवळ विक्रेता सांगतोय म्हणून विश्वास ठेवू नका; दुय्यम निबंधक कार्यालयातून मागील ३० वर्षांचे इंडेक्स २ (Index 2) व सर्च रिपोर्ट काढून टायटल क्लिअर असल्याचे तपासा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 15.79
+        },
+        {
+          "scene_num": 4,
+          "title": "त्याचप्रमाणे जमिनीचा मूळ ७/१२, ई-फेरफा..",
+          "text": "त्याचप्रमाणे जमिनीचा मूळ ७/१२, ई-फेरफार नोंदी (Mutation Register), भोगवटादार वर्ग १ आहे की वर्ग २ आणि स्थानिक वृत्तपत्रात १५ दिवसांची 'जाहीर नोटीस' (Public Notice) देणे कायद्याने आवश्यक असते.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 17.69
+        },
+        {
+          "scene_num": 5,
+          "title": "या ५ कागदपत्रांची अचूक तपासणी केली",
+          "text": "या ५ कागदपत्रांची अचूक तपासणी केली तरच खरेदीखत सुरक्षित राहते आणि भविष्यातील दिवाणी कोर्टाच्या दाव्यांपासून कायमची मुक्ती मिळते.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 11.28
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795710194_script_1795710194/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795710194_script_1795710194/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795710108_script_1795710108",
+      "created_at": "2026-11-26 21:55:38",
+      "title": "जमीन खरेदी करताना फक्त खरेदीखत करू नका! हे ५ महसुली दस्तऐवज तपासले नाहीत तर जमीन हातातून जाईल",
+      "duration": 82.2,
+      "size_mb": 7.86,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "थांबा! जमीन खरेदी करताना केवळ ७/१२",
+          "text": "थांबा! जमीन खरेदी करताना केवळ ७/१२ पाहून पैसे देण्याची चूक अजिबात करू नका; हा १ कागद तपासला नाही तर आयुष्यभराची कमाई क्षणात बुडेल!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 12.96
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, एका नोकरदार व्यक्तीने रिटायरमेंट..",
+          "text": "समजा, एका नोकरदार व्यक्तीने रिटायरमेंटच्या पैशातून ५ एकर शेतजमीन खरेदी केली, पण ३० वर्षांचा सर्च रिपोर्ट न काढल्यामुळे जुन्या सावकारी कर्जाचा बोजा आणि मूळ वारसांचा न्यायालयात दावा चालू असल्याचे नंतर समोर आले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "daughter_inheritance_sec6.jpg",
+          "duration": 17.78
+        },
+        {
+          "scene_num": 3,
+          "title": "जमीन खरेदी करण्यापूर्वी केवळ विक्रेता ..",
+          "text": "जमीन खरेदी करण्यापूर्वी केवळ विक्रेता सांगतोय म्हणून विश्वास ठेवू नका; दुय्यम निबंधक कार्यालयातून मागील ३० वर्षांचे इंडेक्स २ (Index 2) व सर्च रिपोर्ट काढून टायटल क्लिअर असल्याचे तपासा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 15.79
+        },
+        {
+          "scene_num": 4,
+          "title": "त्याचप्रमाणे जमिनीचा मूळ ७/१२, ई-फेरफा..",
+          "text": "त्याचप्रमाणे जमिनीचा मूळ ७/१२, ई-फेरफार नोंदी (Mutation Register), भोगवटादार वर्ग १ आहे की वर्ग २ आणि स्थानिक वृत्तपत्रात १५ दिवसांची 'जाहीर नोटीस' (Public Notice) देणे कायद्याने आवश्यक असते.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 17.69
+        },
+        {
+          "scene_num": 5,
+          "title": "या ५ कागदपत्रांची अचूक तपासणी केली",
+          "text": "या ५ कागदपत्रांची अचूक तपासणी केली तरच खरेदीखत सुरक्षित राहते आणि भविष्यातील दिवाणी कोर्टाच्या दाव्यांपासून कायमची मुक्ती मिळते.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 11.28
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795710108_script_1795710108/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795710108_script_1795710108/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795622510_script_1795622510",
+      "created_at": "2026-11-25 21:33:27",
+      "title": "शेताचा बांध कोरून शेजाऱ्याने जमीन दाबली? भूमी अभिलेख खात्याकडून मोजणी कशी करून घ्यावी?",
+      "duration": 85.2,
+      "size_mb": 7.65,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "शेजारचा शेतकरी रोज तुमचा बांध कोरून",
+          "text": "शेजारचा शेतकरी रोज तुमचा बांध कोरून जमिनीत घुसतोय? वाद घालू नका, भूमी अभिलेख ई-मोजणी आणि BNS अन्वये थेट गुन्हा दाखल करून आपली जमीन परत मिळवा!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "bnss_2023_police_justice.jpg",
+          "duration": 16.7
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, अहमदनगरच्या एका शेतकऱ्याच्या शेज..",
+          "text": "समजा, अहमदनगरच्या एका शेतकऱ्याच्या शेजारील व्यक्तीने रात्रीच्या अंधारात शेताचा मूळ दगडी बांध कोरून २ फूट जमीन स्वतःच्या शेतात दाबली आणि सकाळी वाद घालून भांडण उकरून काढले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "police_rights_notice_35.jpg",
+          "duration": 15
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता १९६६ च्या",
+          "text": "महाराष्ट्र जमीन महसूल संहिता १९६६ च्या कलम १३८ अन्वये कोणालाही शेताचा अधिकृत बांध कोरण्याचा किंवा सीमाचिन्ह नष्ट करण्याचा अधिकार नाही; असे केल्यास ते बेकायदेशीर कृत्य ठरते.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "bnss_2023_police_justice.jpg",
+          "duration": 16.42
+        },
+        {
+          "scene_num": 4,
+          "title": "यावर उपाय म्हणून महाभूमी ई-मोजणी पोर्ट..",
+          "text": "यावर उपाय म्हणून महाभूमी ई-मोजणी पोर्टलवर जाऊन उपअधीक्षक भूमी अभिलेख (DySLR) कार्यालयाकडे 'हद्द कायम मोजणी' (क वर्ग किंवा पक्की मोजणी) साठी अर्ज करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "police_rights_notice_35.jpg",
+          "duration": 14.83
+        },
+        {
+          "scene_num": 5,
+          "title": "शासकीय मोजणी अधिकारी (Surveyor) दोन्ही..",
+          "text": "शासकीय मोजणी अधिकारी (Surveyor) दोन्ही बाजूंच्या ७/१२ व मूळ टिपणानुसार मोजणी करून हद्द निश्चित करतात आणि अतिक्रमण असल्यास तहसीलदार कोर्टातून अतिक्रमण निष्कासनाचे आदेश मिळतात.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "bnss_2023_police_justice.jpg",
+          "duration": 15.53
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "police_rights_notice_35.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795622510_script_1795622510/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795622510_script_1795622510/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795622322_script_1795622322",
+      "created_at": "2026-11-25 21:29:37",
+      "title": "शेताचा बांध कोरून शेजाऱ्याने जमीन दाबली? भूमी अभिलेख खात्याकडून मोजणी कशी करून घ्यावी?",
+      "duration": 24,
+      "size_mb": 5.71,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "शेजारचा शेतकरी रोज तुमचा बांध कोरून",
+          "text": "शेजारचा शेतकरी रोज तुमचा बांध कोरून जमिनीत घुसतोय? वाद घालू नका, भूमी अभिलेख ई-मोजणी आणि BNS अन्वये थेट गुन्हा दाखल करून आपली जमीन परत मिळवा!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "bnss_2023_police_justice.jpg",
+          "duration": 4.66
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, अहमदनगरच्या एका शेतकऱ्याच्या शेज..",
+          "text": "समजा, अहमदनगरच्या एका शेतकऱ्याच्या शेजारील व्यक्तीने रात्रीच्या अंधारात शेताचा मूळ दगडी बांध कोरून २ फूट जमीन स्वतःच्या शेतात दाबली आणि सकाळी वाद घालून भांडण उकरून काढले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "police_rights_notice_35.jpg",
+          "duration": 4.66
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता १९६६ च्या",
+          "text": "महाराष्ट्र जमीन महसूल संहिता १९६६ च्या कलम १३८ अन्वये कोणालाही शेताचा अधिकृत बांध कोरण्याचा किंवा सीमाचिन्ह नष्ट करण्याचा अधिकार नाही; असे केल्यास ते बेकायदेशीर कृत्य ठरते.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "bnss_2023_police_justice.jpg",
+          "duration": 4.66
+        },
+        {
+          "scene_num": 4,
+          "title": "यावर उपाय म्हणून महाभूमी ई-मोजणी पोर्ट..",
+          "text": "यावर उपाय म्हणून महाभूमी ई-मोजणी पोर्टलवर जाऊन उपअधीक्षक भूमी अभिलेख (DySLR) कार्यालयाकडे 'हद्द कायम मोजणी' (क वर्ग किंवा पक्की मोजणी) साठी अर्ज करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "police_rights_notice_35.jpg",
+          "duration": 4.66
+        },
+        {
+          "scene_num": 5,
+          "title": "शासकीय मोजणी अधिकारी (Surveyor) दोन्ही..",
+          "text": "शासकीय मोजणी अधिकारी (Surveyor) दोन्ही बाजूंच्या ७/१२ व मूळ टिपणानुसार मोजणी करून हद्द निश्चित करतात आणि अतिक्रमण असल्यास तहसीलदार कोर्टातून अतिक्रमण निष्कासनाचे आदेश मिळतात.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "bnss_2023_police_justice.jpg",
+          "duration": 4.66
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "police_rights_notice_35.jpg",
+          "duration": 4.66
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795622322_script_1795622322/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795622322_script_1795622322/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795516824_script_1795516824",
+      "created_at": "2026-11-24 16:12:30",
+      "title": "स्त्रीधन म्हणजे काय? लग्नात मिळालेले दागिने आणि भेटवस्तू सासरच्यांनी परत न दिल्यास तात्काळ कायदेशीर कारवाई कशी करावी?",
+      "duration": 98.2,
+      "size_mb": 8.34,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "लग्नात मिळालेले १ तोळाही सोनं सासरचे",
+          "text": "लग्नात मिळालेले १ तोळाही सोनं सासरचे हडपू शकत नाहीत! सुप्रीम कोर्टाचा निकाल ऐका, स्त्रीधनाचा एक-एक दागिना परत मिळवण्याचा १००% कायदेशीर मार्ग!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 13.85
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, नाशिकच्या एका तरुणीचा विवाहानंतर..",
+          "text": "समजा, नाशिकच्या एका तरुणीचा विवाहानंतर सासरच्यांशी मतभेद झाले आणि तिला घरातून हाकलून देण्यात आले, मात्र लग्नात माहेरून मिळालेले २५ तोळे सोन्याचे दागिने आणि चांदीचे भांडे सासरच्यांनी स्वतःच्या लॉकरमध्ये ठेवून देण्यास नकार दिला.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 19.06
+        },
+        {
+          "scene_num": 3,
+          "title": "सर्वोच्च न्यायालयाच्या प्रतिभा राणी वि..",
+          "text": "सर्वोच्च न्यायालयाच्या प्रतिभा राणी विरुद्ध सुरज कुमार या ऐतिहासिक निकालानुसार लग्नाच्या वेळी किंवा नंतर वधूला मिळालेले सर्व दागिने, कपडे व मालमत्ता हे तिचे 'स्त्रीधन' (Stridhan) असते आणि त्यावर केवळ तिचाच १००% निरंकुश मालकी हक्क असतो; पती किंवा सासू-सासऱ्यांचा त्यावर काडीचाही अधिकार नसतो.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 24.14
+        },
+        {
+          "scene_num": 4,
+          "title": "स्त्रीधन परत न दिल्यास भारतीय न्याय",
+          "text": "स्त्रीधन परत न दिल्यास भारतीय न्याय संहिता (BNS 2023) कलम ३१६ अन्वये गुन्हेगारी विश्वासघाताचा (Criminal Breach of Trust) गंभीर फौजदारी गुन्हा दाखल होतो.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 17.59
+        },
+        {
+          "scene_num": 5,
+          "title": "कौटुंबिक न्यायालयात हिंदू विवाह कायदा ..",
+          "text": "कौटुंबिक न्यायालयात हिंदू विवाह कायदा कलम २७ अन्वये किंवा घरगुती हिंसाचार कायद्याच्या कलम १९(८) अन्वये अर्ज करून पोलीस संरक्षणात सर्व स्त्रीधन सासरच्यांकडून तात्काळ जप्त करून परत मिळवता येते.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 16.87
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795516824_script_1795516824/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795516824_script_1795516824/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795441544_script_1795441544",
+      "created_at": "2026-11-23 19:17:44",
+      "title": "शेतातील वहिवाटीचा रस्ता शेजाऱ्याने अडवला? तहसीलदार कोर्टात कलम ५ अन्वये अर्ज कसा करावा?",
+      "duration": 81.4,
+      "size_mb": 8.02,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "शेतात ट्रॅक्टर नेण्याचा वहिवाटीचा रस्त..",
+          "text": "शेतात ट्रॅक्टर नेण्याचा वहिवाटीचा रस्ता शेजारच्या शेतकऱ्याने मुद्दाम कुंपण घालून बंद केलाय? कोर्टात न जाता मामलेदार कोर्टाच्या कलम ५ नुसार ७ दिवसांत रस्ता मोकळा करा!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 14.16
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, सोलापूरचे शेतकरी बापूराव यांच्या..",
+          "text": "समजा, सोलापूरचे शेतकरी बापूराव यांच्या शेतात ट्रॅक्टर आणि बैलगाडी नेण्याचा पारंपरिक बांधावरून जाणारा रस्ता शेजारच्या शेतकऱ्याने मुद्दाम चर खोदून व काटेरी तार लावून अडवला, ज्यामुळे पेरणीचे काम ठप्प झाले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 16.73
+        },
+        {
+          "scene_num": 3,
+          "title": "मामलतदार न्यायालये अधिनियम १९०६ च्या कलम",
+          "text": "मामलतदार न्यायालये अधिनियम १९०६ च्या कलम ५(२) नुसार तहसीलदार कोर्टात अडवलेला रस्ता तात्काळ मोकळा करण्याचे अधिकार आहेत; रस्ता अडवल्याची तारीख स्पष्ट नमूद करून अर्जासोबत ७/१२ आणि नकाशा जोडावा लागतो.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 18.12
+        },
+        {
+          "scene_num": 4,
+          "title": "तहसीलदार मंडळ अधिकारी किंवा नायब तहसील..",
+          "text": "तहसीलदार मंडळ अधिकारी किंवा नायब तहसीलदारांमार्फत घटनास्थळाचा प्रत्यक्ष पंचनामा करतात आणि अडथळा निर्माण करणाऱ्या व्यक्तीला तात्काळ रस्ता खुला करण्याचा मनाई हुकूम जारी करतात.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 14.26
+        },
+        {
+          "scene_num": 5,
+          "title": "तसेच महाराष्ट्र जमीन महसूल संहिता कलम",
+          "text": "तसेच महाराष्ट्र जमीन महसूल संहिता कलम १४३ अन्वये शेतात जाण्यासाठी नवीन नकाशा रस्त्याची मागणीही तहसीलदारांकडे करता येते.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 11.42
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795441544_script_1795441544/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795441544_script_1795441544/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795360491_script_1795360491",
+      "created_at": "2026-11-22 20:47:13",
+      "title": "तुकडेबंदी कायदा: शेतजमिनीचा १ किंवा २ गुंठे तुकडा खरेदी केला तर 7/12 वर नाव का लागत नाही?",
+      "duration": 88.8,
+      "size_mb": 8.59,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "१ गुंठा शेतजमीन खरेदी केलीये पण",
+          "text": "१ गुंठा शेतजमीन खरेदी केलीये पण तुकडेबंदीमुळे तलाठी ७/१२ वर नाव लावत नाहीये? हा नवीन शासन निर्णय तलाठ्याला दाखवा, त्वरित फेरफार मंजूर होईल!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 13.18
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, साताऱ्याच्या एका शेतकऱ्याने मुली..",
+          "text": "समजा, साताऱ्याच्या एका शेतकऱ्याने मुलीच्या लग्नासाठी शेतातील २ गुंठे जमीन गावातील एका नागरिकाला खरेदीखत करून दिली, पण तलाठ्यांनी तुकडेबंदी कलम ८-ब चे कारण देऊन ७/१२ वर खरेदीदाराचे नाव लावण्यास स्पष्ट नकार दिला.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 18.38
+        },
+        {
+          "scene_num": 3,
+          "title": "मुंबई तुकडे प्रतिबंध व एकत्रीकरण कायदा",
+          "text": "मुंबई तुकडे प्रतिबंध व एकत्रीकरण कायदा १९४७ कलम ८-ब नुसार अकृषिक (NA) मंजुरी किंवा सक्षम अधिकाऱ्याचे रेखांकन असल्याशिवाय शेतजमिनीच्या लहान तुकड्यांची स्वतंत्र नोंद घेण्यास मनाई आहे.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 17.62
+        },
+        {
+          "scene_num": 4,
+          "title": "जर जमिनीचा तुकडा प्राधिकरणाच्या हद्दीत..",
+          "text": "जर जमिनीचा तुकडा प्राधिकरणाच्या हद्दीत असेल तर गुंठेवारी अंतर्गत नियमित करून घ्या किंवा शेतजमिनीचे अधिकृत पोटहिस्सा मोजणी (Hissa Mojani) करून घेऊन सहहिस्सेदार म्हणून नोंद करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 14.66
+        },
+        {
+          "scene_num": 5,
+          "title": "नोंदणीकृत दस्त असताना तलाठ्याने मनमानी..",
+          "text": "नोंदणीकृत दस्त असताना तलाठ्याने मनमानी नकार दिल्यास महाराष्ट्र जमीन महसूल संहिता कलम १५० व २४७ अन्वये उपविभागीय अधिकाऱ्यांकडे (SDO) ६० दिवसांत अपील दाखल करा.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 18.19
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795360491_script_1795360491/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795360491_script_1795360491/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795264174_script_1795264174",
+      "created_at": "2026-11-21 18:01:39",
+      "title": "लिव्ह-इन रिलेशनशिपमध्ये राहणाऱ्या महिलांचे कायदेशीर अधिकार: पोटगी, घरगुती हिंसाचार संरक्षण आणि मुलांचे हक्क",
+      "duration": 90,
+      "size_mb": 8.18,
+      "voice": "aarohi",
+      "speed": 1.05,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुम्ही लिव्ह-इन रिलेशनशिपमध्ये राहताय?..",
+          "text": "तुम्ही लिव्ह-इन रिलेशनशिपमध्ये राहताय? मग सावधान! सर्वोच्च न्यायालयाचे हे ३ नियम तुम्हाला माहिती नसतील, तर भविष्यात मोठा कायदेशीर धोका होऊ शकतो!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "stridhan_legal_protection.jpg",
+          "duration": 13.61
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, एका तरुणीने सज्ञान असताना आपल्या",
+          "text": "समजा, एका तरुणीने सज्ञान असताना आपल्या पार्टनरसोबत ३ वर्षे पुण्यात एकत्र फ्लॅटवर लिव्ह-इन रिलेशनशिपमध्ये संसार केला, परंतु नंतर मुलाने अचानक विवाह करण्यास नकार देऊन तिला घरातून बाहेर काढले आणि आर्थिक सहकार्य पूर्णपणे बंद केले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 19.46
+        },
+        {
+          "scene_num": 3,
+          "title": "सर्वोच्च न्यायालयाच्या डी. वेलुसामी वि..",
+          "text": "सर्वोच्च न्यायालयाच्या डी. वेलुसामी विरुद्ध डी. पचयम्मल आणि इंद्रा शर्मा निकालांनुसार, जर जोडपे दीर्घकाळ एकाच घरात पती-पत्नीसारखे राहिले असेल (Relationship in the nature of marriage), तर महिलेला घरगुती हिंसाचार संरक्षण कायदा २००५ अन्वये संपूर्ण कायदेशीर अधिकार मिळतात.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 22.49
+        },
+        {
+          "scene_num": 4,
+          "title": "महिलेवर मानसिक, शारीरिक किंवा आर्थिक अ..",
+          "text": "महिलेवर मानसिक, शारीरिक किंवा आर्थिक अत्याचार झाल्यास ती कलम १२ अन्वये न्यायालयात दाद मागू शकते आणि कलम २० अन्वये मासिक पोटगी (Maintenance) व कलम १९ अन्वये निवासाचा अधिकार मागू शकते.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "stridhan_legal_protection.jpg",
+          "duration": 16.54
+        },
+        {
+          "scene_num": 5,
+          "title": "तसेच अशा नात्यातून जन्मलेल्या अपत्याला..",
+          "text": "तसेच अशा नात्यातून जन्मलेल्या अपत्याला हिंदू विवाह कायदा कलम १६ अन्वये वडिलांच्या संपत्तीत १००% कायदेशीर वारसा हक्क मिळतो.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 11.16
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "stridhan_legal_protection.jpg",
+          "duration": 10.32
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795264174_script_1795264174/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795264174_script_1795264174/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795184646_script_1795184646",
+      "created_at": "2026-11-20 19:57:35",
+      "title": "लिव्ह-इन रिलेशनशिपमध्ये राहणाऱ्या महिलांचे कायदेशीर अधिकार: पोटगी, घरगुती हिंसाचार संरक्षण आणि मुलांचे हक्क",
+      "duration": 86,
+      "size_mb": 8.06,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुम्ही लिव्ह-इन रिलेशनशिपमध्ये राहताय?..",
+          "text": "तुम्ही लिव्ह-इन रिलेशनशिपमध्ये राहताय? मग सावधान! सर्वोच्च न्यायालयाचे हे ३ नियम तुम्हाला माहिती नसतील, तर भविष्यात मोठा कायदेशीर धोका होऊ शकतो!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "stridhan_legal_protection.jpg",
+          "duration": 13.06
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, एका तरुणीने सज्ञान असताना आपल्या",
+          "text": "समजा, एका तरुणीने सज्ञान असताना आपल्या पार्टनरसोबत ३ वर्षे पुण्यात एकत्र फ्लॅटवर लिव्ह-इन रिलेशनशिपमध्ये संसार केला, परंतु नंतर मुलाने अचानक विवाह करण्यास नकार देऊन तिला घरातून बाहेर काढले आणि आर्थिक सहकार्य पूर्णपणे बंद केले.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 18.6
+        },
+        {
+          "scene_num": 3,
+          "title": "सर्वोच्च न्यायालयाच्या डी. वेलुसामी वि..",
+          "text": "सर्वोच्च न्यायालयाच्या डी. वेलुसामी विरुद्ध डी. पचयम्मल आणि इंद्रा शर्मा निकालांनुसार, जर जोडपे दीर्घकाळ एकाच घरात पती-पत्नीसारखे राहिले असेल (Relationship in the nature of marriage), तर महिलेला घरगुती हिंसाचार संरक्षण कायदा २००५ अन्वये संपूर्ण कायदेशीर अधिकार मिळतात.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 21.48
+        },
+        {
+          "scene_num": 4,
+          "title": "महिलेवर मानसिक, शारीरिक किंवा आर्थिक अ..",
+          "text": "महिलेवर मानसिक, शारीरिक किंवा आर्थिक अत्याचार झाल्यास ती कलम १२ अन्वये न्यायालयात दाद मागू शकते आणि कलम २० अन्वये मासिक पोटगी (Maintenance) व कलम १९ अन्वये निवासाचा अधिकार मागू शकते.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "stridhan_legal_protection.jpg",
+          "duration": 15.82
+        },
+        {
+          "scene_num": 5,
+          "title": "तसेच अशा नात्यातून जन्मलेल्या अपत्याला..",
+          "text": "तसेच अशा नात्यातून जन्मलेल्या अपत्याला हिंदू विवाह कायदा कलम १६ अन्वये वडिलांच्या संपत्तीत १००% कायदेशीर वारसा हक्क मिळतो.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 10.68
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत कायदेशीर माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "stridhan_legal_protection.jpg",
+          "duration": 9.96
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795184646_script_1795184646/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795184646_script_1795184646/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795184367_script_1795184367",
+      "created_at": "2026-11-20 19:50:38",
+      "title": "थांबा! १ किंवा २ गुंठे जागेत घर बांधलंय?...",
+      "duration": 46.6,
+      "size_mb": 4.94,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "थांबा! १ किंवा २ गुंठे जागेत",
+          "text": "थांबा! १ किंवा २ गुंठे जागेत घर बांधलंय? मनपाची डिमोलिशन नोटीस येण्यापूर्वी हा एक नियम आत्ताच ऐका — अन्यथा लाखोंचे नुकसान होईल!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 12.43
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, पुण्याच्या बाणेर किंवा चाकण भागात",
+          "text": "समजा, पुण्याच्या बाणेर किंवा चाकण भागात एका मध्यमवर्गीय कुटुंबाने २ गुंठे प्लॉट साध्या नोटरीवर घेतला आणि घर बांधायला सुरुवात केली, पण मनपाने बांधकाम अनधिकृत ठरवून डिमोलिशनची नोटीस बजावली.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 15.46
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००..",
+          "text": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००१ नुसार ३१ डिसेंबर २०२० पूर्वी झालेले ५०० चौरस मीटर आतील भूखंड अधिकृत कम्पाउंडिंग शुल्क भरून महापालिकेत नियमित करून घेता येतात.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 15.07
+        },
+        {
+          "scene_num": 4,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा आणि मित्रांना शेअर करा!",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "rural_farm_road_vahiwat.jpg",
+          "duration": 6.02
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795184367_script_1795184367/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795184367_script_1795184367/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795182320_reel",
+      "created_at": "2026-11-20 19:16:15",
+      "title": "कोर्ट मॅरेज करताना पालकांच्या संमतीची गरज असते का? स्पेशल मॅरेज ॲक्ट १९५४ आणि पोलीस संरक्षणाचा अधिकार",
+      "duration": 47.7,
+      "size_mb": 4.83,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "घरच्यांचा प्रेमविवाहाला विरोध?",
+          "text": "घरच्यांचा प्रेमविवाहाला तीव्र विरोध आहे आणि कोर्ट मॅरेज करायचंय? पालकांच्या संमतीशिवाय विवाह कायदेशीर कसा होतो ते ऐका!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 10.61
+        },
+        {
+          "scene_num": 2,
+          "title": "पालकांची खोटी धमकी किंवा तक्रार",
+          "text": "समजा, सज्ञान मुला-मुलीने स्वतःच्या पसंतीने कोर्ट मॅरेज करण्याचे ठरवले, परंतु मुलीच्या घरच्यांनी आंतरजातीय विवाह म्हणून मुलावर खोट्या तक्रारीची धमकी दिली.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 12.53
+        },
+        {
+          "scene_num": 3,
+          "title": "संविधानाचे कलम २१ आणि स्पेशल मॅरेज ॲक्ट",
+          "text": "भारतीय संविधानाच्या कलम २१ आणि स्पेशल मॅरेज ॲक्ट १९५४ नुसार प्रत्येक सज्ञान नागरिकाला स्वतःच्या मर्जीने विवाह करण्याचा मूलभूत अधिकार आहे; यात पालकांच्या संमतीची कोणतीही कायदेशीर गरज नसते.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "court_marriage_registrar.jpg",
+          "duration": 16.42
+        },
+        {
+          "scene_num": 4,
+          "title": "अधिकृत कायदेशीर संरक्षण",
+          "text": "धमक्या आल्यास सर्वोच्च न्यायालयाच्या लता सिंग निकालानुसार थेट पोलीस संरक्षण मिळवा. अशाच माहितीसाठी फॉलो करा आपला कायदा!",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "special_marriage_act.jpg",
+          "duration": 10.56
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795182320_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795182320_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795102935_script_1795102935",
+      "created_at": "2026-11-19 21:12:32",
+      "title": "चाचणी व्हिडिओ",
+      "duration": 7.8,
+      "size_mb": 1.4,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "none",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "समजा, पुण्यातील एका नागरिकाने प्लॉट घे..",
+          "text": "समजा, पुण्यातील एका नागरिकाने प्लॉट घेतला आणि फसवणूक झाली.",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 5.98
+        },
+        {
+          "scene_num": 2,
+          "title": "कायदेशीर उपाय ऐका!",
+          "text": "कायदेशीर उपाय ऐका!",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 3.5
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795102935_script_1795102935/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795102935_script_1795102935/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795102474_script_1795102474",
+      "created_at": "2026-11-19 21:06:47",
+      "title": "कोर्ट मॅरेज करताना पालकांच्या संमतीची गरज असते का? स्पेशल मॅरेज ॲक्ट १९५४ आणि पोलीस संरक्षणाचा अधिकार",
+      "duration": 91.3,
+      "size_mb": 7.7,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "घरच्यांचा प्रेमविवाहाला तीव्र विरोध आह..",
+          "text": "घरच्यांचा प्रेमविवाहाला तीव्र विरोध आहे आणि कोर्ट मॅरेज करायचंय? पालकांच्या संमतीशिवाय विवाह कायदेशीर कसा होतो ते ऐका!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 10.61
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, पुण्यातील राहुल (वय २४) आणि",
+          "text": "समजा, पुण्यातील राहुल (वय २४) आणि प्रियांका (वय २२) यांनी सज्ञान असताना स्वतःच्या पसंतीने कोर्ट मॅरेज करण्याचे ठरवले, परंतु मुलीच्या घरच्यांनी आंतरजातीय विवाह म्हणून विरोध केला आणि मुलावर थेट अपहरणाची खोटी पोलीस तक्रार दाखल करण्याची धमकी दिली.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 20.78
+        },
+        {
+          "scene_num": 3,
+          "title": "भारतीय संविधानाच्या कलम २१ आणि स्पेशल",
+          "text": "भारतीय संविधानाच्या कलम २१ आणि स्पेशल मॅरेज ॲक्ट १९५४ नुसार प्रत्येक सज्ञान नागरिकाला (मुलगा २१ व मुलगी १८ वर्षे पूर्ण) स्वतःच्या मर्जीने जोडीदार निवडण्याचा आणि विवाह करण्याचा मूलभूत अधिकार आहे; यात पालकांच्या संमतीची कोणतीही कायदेशीर गरज नसते.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "daughter_inheritance_sec6.jpg",
+          "duration": 21.34
+        },
+        {
+          "scene_num": 4,
+          "title": "विवाह नोंदणी अधिकाऱ्यांकडे (Marriage R..",
+          "text": "विवाह नोंदणी अधिकाऱ्यांकडे (Marriage Registrar) ३० दिवसांची नोटीस देऊन ३ सज्ञान साक्षीदारांच्या उपस्थितीत कायदेशीर विवाह संपन्न होतो आणि अधिकृत मॅरेज सर्टिफिकेट मिळते.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 14.11
+        },
+        {
+          "scene_num": 5,
+          "title": "घरच्यांकडून छळ किंवा धमक्या आल्यास सर्..",
+          "text": "घरच्यांकडून छळ किंवा धमक्या आल्यास सर्वोच्च न्यायालयाच्या ऐतिहासिक 'लता सिंग विरुद्ध उत्तर प्रदेश' निकालानुसार थेट पोलीस अधीक्षक (SP) कार्यालयाकडून कायदेशीर पोलीस संरक्षण (Police Protection) मिळवण्याचा पूर्ण अधिकार आहे.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 17.4
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 10.63
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795102474_script_1795102474/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795102474_script_1795102474/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1795097865_script_1795097865",
+      "created_at": "2026-11-19 19:49:58",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!",
+      "duration": 87.7,
+      "size_mb": 7.46,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुम्ही १ किंवा २ गुंठे अनधिकृत",
+          "text": "तुम्ही १ किंवा २ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे? मनपा किंवा नगरपालिकेकडून नोटीस येण्यापूर्वी हा एक गुंठेवारी नियम त्वरित समजून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 11.93
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, पुण्याच्या बाणेर किंवा चाकण भागात",
+          "text": "समजा, पुण्याच्या बाणेर किंवा चाकण भागात एका मध्यमवर्गीय कुटुंबाने २ गुंठे प्लॉट साध्या नोटरीवर घेतला आणि घर बांधायला सुरुवात केली, पण मनपाने बांधकाम अनधिकृत ठरवून डिमोलिशनची नोटीस बजावली.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 15.46
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००..",
+          "text": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००१ (२०२१ सुधारित शासन निर्णय) नुसार ३१ डिसेंबर २०२० पूर्वी झालेले ५०० चौरस मीटर आतील भूखंड अधिकृत कम्पाउंडिंग शुल्क भरून महापालिकेत किंवा प्राधिकरणात नियमित करून घेता येतात.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 19.54
+        },
+        {
+          "scene_num": 4,
+          "title": "यासाठी परवानाधारक वास्तुविशारदाकडून (A..",
+          "text": "यासाठी परवानाधारक वास्तुविशारदाकडून (Architect) लेआउट व मोजणी नकाशा मंजूर करून घ्या आणि सक्षम प्राधिकरणाकडे (मनपा/नगरपरिषद/PMDRA/CIDCO) आवश्यक कागदपत्रांसह अधिकृत नियमितीकरण दाखल्यासाठी अर्ज करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 16.94
+        },
+        {
+          "scene_num": 5,
+          "title": "दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq..",
+          "text": "दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq) पोर्टलद्वारे अर्ज करून ७/१२ उताऱ्यावर स्वतंत्र मालकीची व बिनशेती (NA) नोंद करून घ्या; काम प्रलंबित ठेवल्यास लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील करा.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 16.82
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 10.63
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1795097865_script_1795097865/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1795097865_script_1795097865/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794843334_script_1794843334",
+      "created_at": "2026-11-16 21:07:21",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!",
+      "duration": 89.9,
+      "size_mb": 7.6,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुम्ही १ किंवा २ गुंठे अनधिकृत",
+          "text": "तुम्ही १ किंवा २ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे? मनपा किंवा नगरपालिकेकडून नोटीस येण्यापूर्वी हा एक गुंठेवारी नियम त्वरित समजून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 11.93
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, तुम्ही १ ते ३ गुंठे",
+          "text": "समजा, तुम्ही १ ते ३ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे किंवा खरेदीखत केले आहे, तर केवळ नोटरीवर किंवा साध्या स्टॅम्पवर बँकेचे कर्ज मिळत नाही आणि ७/१२ वर स्वतंत्र मालकी हक्क सिद्ध करताना मोठी कायदेशीर अडचण येते.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 17.66
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००..",
+          "text": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००१ (२०२१ सुधारित शासन निर्णय) नुसार ३१ डिसेंबर २०२० पूर्वी झालेले ५०० चौरस मीटर आतील भूखंड अधिकृत कम्पाउंडिंग शुल्क भरून महापालिकेत किंवा प्राधिकरणात नियमित करून घेता येतात.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 19.54
+        },
+        {
+          "scene_num": 4,
+          "title": "यासाठी परवानाधारक वास्तुविशारदाकडून (A..",
+          "text": "यासाठी परवानाधारक वास्तुविशारदाकडून (Architect) लेआउट व मोजणी नकाशा मंजूर करून घ्या आणि सक्षम प्राधिकरणाकडे (मनपा/नगरपरिषद/PMDRA/CIDCO) आवश्यक कागदपत्रांसह अधिकृत नियमितीकरण दाखल्यासाठी अर्ज करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 16.94
+        },
+        {
+          "scene_num": 5,
+          "title": "दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq..",
+          "text": "दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq) पोर्टलद्वारे अर्ज करून ७/१२ उताऱ्यावर स्वतंत्र मालकीची व बिनशेती (NA) नोंद करून घ्या; काम प्रलंबित ठेवल्यास लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील करा.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 16.82
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 10.63
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794843334_script_1794843334/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794843334_script_1794843334/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794839058_script_1794839058",
+      "created_at": "2026-11-16 19:56:26",
+      "title": "गुंठेवारी नियमितीकरण २०२६: संपूर्ण कायदेशीर प्रक्रिया व नियम",
+      "duration": 86.1,
+      "size_mb": 7.49,
+      "voice": "aarohi",
+      "speed": 1.15,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुम्ही १ किंवा २ गुंठे अनधिकृत",
+          "text": "तुम्ही १ किंवा २ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे? मनपा किंवा नगरपालिकेकडून नोटीस येण्यापूर्वी हा एक गुंठेवारी नियम त्वरित समजून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 11.45
+        },
+        {
+          "scene_num": 2,
+          "title": "समजा, तुम्ही १ ते ३ गुंठे",
+          "text": "समजा, तुम्ही १ ते ३ गुंठे अनधिकृत प्लॉटवर घर बांधले आहे किंवा खरेदीखत केले आहे, तर केवळ नोटरीवर किंवा साध्या स्टॅम्पवर बँकेचे कर्ज मिळत नाही आणि ७/१२ वर स्वतंत्र मालकी हक्क सिद्ध करताना मोठी कायदेशीर अडचण येते.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 16.92
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००..",
+          "text": "महाराष्ट्र गुंठेवारी विकास अधिनियम २००१ (२०२१ सुधारित शासन निर्णय) नुसार ३१ डिसेंबर २०२० पूर्वी झालेले ५०० चौरस मीटर आतील भूखंड अधिकृत कम्पाउंडिंग शुल्क भरून महापालिकेत किंवा प्राधिकरणात नियमित करून घेता येतात.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 18.72
+        },
+        {
+          "scene_num": 4,
+          "title": "यासाठी परवानाधारक वास्तुविशारदाकडून (A..",
+          "text": "यासाठी परवानाधारक वास्तुविशारदाकडून (Architect) लेआउट व मोजणी नकाशा मंजूर करून घ्या आणि सक्षम प्राधिकरणाकडे (मनपा/नगरपरिषद/PMDRA/CIDCO) आवश्यक कागदपत्रांसह अधिकृत नियमितीकरण दाखल्यासाठी अर्ज करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 16.22
+        },
+        {
+          "scene_num": 5,
+          "title": "दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq..",
+          "text": "दाखला मिळताच तलाठ्याकडे ई-हक्क (e-Haqq) पोर्टलद्वारे अर्ज करून ७/१२ उताऱ्यावर स्वतंत्र मालकीची व बिनशेती (NA) नोंद करून घ्या; काम प्रलंबित ठेवल्यास लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील करा.",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 16.13
+        },
+        {
+          "scene_num": 6,
+          "title": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह",
+          "text": "हा सविस्तर कायदेशीर व्हिडिओ आत्ताच सेव्ह करा, मित्रांना शेअर करा आणि अधिकृत सल्ल्यासाठी फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_06.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 10.2
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794839058_script_1794839058/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794839058_script_1794839058/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794838549_script_1794838549",
+      "created_at": "2026-11-16 19:47:36",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!",
+      "duration": 37.5,
+      "size_mb": 4.62,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या",
+          "text": "जमीन किंवा घर खरेदी करताना या २ महत्त्वाच्या कायदेशीर पायऱ्या लगेच पूर्ण करा:",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 6.94
+        },
+        {
+          "scene_num": 3,
+          "title": "पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२",
+          "text": "पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२ वर खरेदीदाराच्या नावाची फेरफार नोंद तातडीने तपासा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 8.98
+        },
+        {
+          "scene_num": 4,
+          "title": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास",
+          "text": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 9.02
+        },
+        {
+          "scene_num": 5,
+          "title": "हा व्हिडिओ आत्ताच सेव्ह करा आणि",
+          "text": "हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.53
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794838549_script_1794838549/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794838549_script_1794838549/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794838548_script_1794838548",
+      "created_at": "2026-11-16 19:47:33",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!",
+      "duration": 37.5,
+      "size_mb": 4.62,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या",
+          "text": "जमीन किंवा घर खरेदी करताना या २ महत्त्वाच्या कायदेशीर पायऱ्या लगेच पूर्ण करा:",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 6.94
+        },
+        {
+          "scene_num": 3,
+          "title": "पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२",
+          "text": "पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२ वर खरेदीदाराच्या नावाची फेरफार नोंद तातडीने तपासा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 8.98
+        },
+        {
+          "scene_num": 4,
+          "title": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास",
+          "text": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 9.02
+        },
+        {
+          "scene_num": 5,
+          "title": "हा व्हिडिओ आत्ताच सेव्ह करा आणि",
+          "text": "हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.53
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794838548_script_1794838548/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794838548_script_1794838548/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794838453_script_1794838453",
+      "created_at": "2026-11-16 19:45:10",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!",
+      "duration": 37.5,
+      "size_mb": 4.07,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या",
+          "text": "जमीन किंवा घर खरेदी करताना या २ महत्त्वाच्या कायदेशीर पायऱ्या लगेच पूर्ण करा:\nपायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२ वर खरेदीदाराच्या नावाची फेरफार नोंद तातडीने तपासा.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 15.22
+        },
+        {
+          "scene_num": 3,
+          "title": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास",
+          "text": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 9.02
+        },
+        {
+          "scene_num": 4,
+          "title": "हा व्हिडिओ आत्ताच सेव्ह करा आणि",
+          "text": "हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.53
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794838453_script_1794838453/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794838453_script_1794838453/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794838013_script_1794838013",
+      "created_at": "2026-11-16 19:37:39",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 31.6,
+      "size_mb": 3.81,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या",
+          "text": "जमीन किंवा घर खरेदी करताना या २ महत्त्वाच्या कायदेशीर पायऱ्या लगेच पूर्ण करा:",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 6.94
+        },
+        {
+          "scene_num": 3,
+          "title": "पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२",
+          "text": "पायरी १: ई-हक्क (e-Haqq) पोर्टलवरून ७/१२ वर खरेदीदाराच्या नावाची फेरफार नोंद तातडीने तपासा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 8.98
+        },
+        {
+          "scene_num": 4,
+          "title": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास",
+          "text": "पायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यान्वये तहसीलदारांकडे प्रथम अपील दाखल करा.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 9.02
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794838013_script_1794838013/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794838013_script_1794838013/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794825390_script_1794825390",
+      "created_at": "2026-11-16 16:07:35",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० चा नियम आणि नियमितीकरण शुल्क समजून घ्या!",
+      "duration": 42.8,
+      "size_mb": 4.84,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "महाराष्ट्र जमीन महसूल संहिता कलम १५०",
+          "text": "महाराष्ट्र जमीन महसूल संहिता कलम १५० आणि गुंठेवारी कायद्यानुसार केवळ खरेदीखत पुरेसे नसते.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 8.59
+        },
+        {
+          "scene_num": 3,
+          "title": "जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा",
+          "text": "जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा १ ते ३ गुंठे प्लॉट घेतला असेल, तर तुकडेबंदी कलम ८ब नुसार अधिकृत मोजणी नकाशा घेऊन सक्षम प्राधिकरणाकडे नियमितीकरण शुल्क भरा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 14.69
+        },
+        {
+          "scene_num": 4,
+          "title": "तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद",
+          "text": "तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद प्रमाणित करणे कायद्याने बंधनकारक आहे.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.91
+        },
+        {
+          "scene_num": 5,
+          "title": "हा व्हिडिओ आत्ताच सेव्ह करा आणि",
+          "text": "हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.53
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794825390_script_1794825390/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794825390_script_1794825390/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794824255_script_1794824255",
+      "created_at": "2026-11-16 15:48:33",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 41.4,
+      "size_mb": 4.86,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "महाराष्ट्र जमीन महसूल संहिता कलम १५०",
+          "text": "महाराष्ट्र जमीन महसूल संहिता कलम १५० आणि गुंठेवारी कायद्यानुसार केवळ खरेदीखत पुरेसे नसते.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 8.59
+        },
+        {
+          "scene_num": 3,
+          "title": "जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा",
+          "text": "जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा १ ते ३ गुंठे प्लॉट घेतला असेल, तर तुकडेबंदी कलम ८ब नुसार अधिकृत मोजणी नकाशा घेऊन सक्षम प्राधिकरणाकडे नियमितीकरण शुल्क भरा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 14.69
+        },
+        {
+          "scene_num": 4,
+          "title": "तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद",
+          "text": "तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद प्रमाणित करणे कायद्याने बंधनकारक आहे.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.91
+        },
+        {
+          "scene_num": 5,
+          "title": "हा व्हिडिओ आत्ताच सेव्ह करा आणि",
+          "text": "हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 5.16
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794824255_script_1794824255/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794824255_script_1794824255/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794817378_script_1794817378",
+      "created_at": "2026-11-16 13:54:11",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 42.8,
+      "size_mb": 4.84,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट किंवा जमीन खरेदी करताना हा",
+          "text": "प्लॉट किंवा जमीन खरेदी करताना हा एक सरकारी कागद तपासला नाही, तर तुमचे लाखो रुपये कायमचे अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 9.07
+        },
+        {
+          "scene_num": 2,
+          "title": "महाराष्ट्र जमीन महसूल संहिता कलम १५०",
+          "text": "महाराष्ट्र जमीन महसूल संहिता कलम १५० आणि गुंठेवारी कायद्यानुसार केवळ खरेदीखत पुरेसे नसते.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 8.59
+        },
+        {
+          "scene_num": 3,
+          "title": "जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा",
+          "text": "जर तुम्ही ३१ डिसेंबर २०२० पूर्वीचा १ ते ३ गुंठे प्लॉट घेतला असेल, तर तुकडेबंदी कलम ८ब नुसार अधिकृत मोजणी नकाशा घेऊन सक्षम प्राधिकरणाकडे नियमितीकरण शुल्क भरा.",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 14.69
+        },
+        {
+          "scene_num": 4,
+          "title": "तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद",
+          "text": "तलाठ्याला १५ दिवसांच्या आत फेरफार नोंद प्रमाणित करणे कायद्याने बंधनकारक आहे.",
+          "clip_file": "clip_04.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.91
+        },
+        {
+          "scene_num": 5,
+          "title": "हा व्हिडिओ आत्ताच सेव्ह करा आणि",
+          "text": "हा व्हिडिओ आत्ताच सेव्ह करा आणि फॉलो करा आपला कायदा – ॲडव्होकेट प्रतीक्षा!",
+          "clip_file": "clip_05.mp4",
+          "visual_asset": "scene_4_cta_registered_deed.jpg",
+          "duration": 6.53
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794817378_script_1794817378/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794817378_script_1794817378/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794772424_script_1794772424",
+      "created_at": "2026-11-16 01:24:19",
+      "title": "प्लॉट खरेदीतील फसवणूक आणि ७/१२ फेरफार कायदेशीर नियम",
+      "duration": 30.2,
+      "size_mb": 3.22,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "visual_style": "100% Text & Topic Visual Explainer (Zero Avatar)",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "प्लॉट खरेदी करण्यापूर्वी हा एक कागद",
+          "text": "प्लॉट खरेदी करण्यापूर्वी हा एक कागद तपासला नाही, तर तुमचे लाखो रुपये अडकू शकतात!",
+          "clip_file": "clip_01.mp4",
+          "visual_asset": "scene_1_hook_plot_fraud.jpg",
+          "duration": 7.42
+        },
+        {
+          "scene_num": 2,
+          "title": "केवळ खरेदीखत केले म्हणजे मालकी हक्क",
+          "text": "केवळ खरेदीखत केले म्हणजे मालकी हक्क मिळत नाही. ७/१२ वर नाव लागल्याशिवाय खरेदी अपूर्ण असते.",
+          "clip_file": "clip_02.mp4",
+          "visual_asset": "scene_2_problem_satbara_ferfar.jpg",
+          "duration": 8.98
+        },
+        {
+          "scene_num": 3,
+          "title": "तुकडेबंदी कायदा कलम ८ब नुसार १",
+          "text": "तुकडेबंदी कायदा कलम ८ब नुसार १ ते ३ गुंठे जमिनीची ई-मोजणी व फेरफार नोंद अधिकृत करता येते.\nअधिक माहितीसाठी आणि अधिकृत कायदेशीर मार्गदर्शनासाठी आत्ताच फॉलो करा आपला कायदा!",
+          "clip_file": "clip_03.mp4",
+          "visual_asset": "scene_3_solution_survey_map.jpg",
+          "duration": 15.6
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794772424_script_1794772424/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794772424_script_1794772424/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794770133_script_1794770133",
+      "created_at": "2026-11-16 00:49:13",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 41.2,
+      "size_mb": 3.15,
+      "voice": "aarohi",
+      "speed": 1.25,
+      "bg_music": "legal_ambient",
+      "avatar_used": "pratiksha_avatar_1794762163498_WhatsApp_Image_2026-11-15_at_10_32_13_PM_jpeg.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे क",
+          "text": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे का? मग हा कायदेशीर नियम नक्की समजून घ्या; नाहीतर मोठे आर्थिक नुकसान होऊ शकते!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.62
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या ",
+          "text": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या लगेच पूर्ण करा:\nपायरी १: ई-फेरफार पोर्टलवरून अर्जाची स्थिती तपासा आणि कलम १५० अन्वये नोटीस जारी झाली आहे का याची खात्री करा.\nपायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यानुसार तहसीलदारांकडे प्रथम अपील नोंदवा.",
+          "clip_file": "clip_02.mp4",
+          "duration": 20.54
+        },
+        {
+          "scene_num": 3,
+          "title": "कायद्याची ही ताकद प्रत्येक नागरिकाला माह",
+          "text": "कायद्याची ही ताकद प्रत्येक नागरिकाला माहीत हवी.",
+          "clip_file": "clip_03.mp4",
+          "duration": 4.2
+        },
+        {
+          "scene_num": 4,
+          "title": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व",
+          "text": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व जमीन खरेदीदार मित्रांना नक्की शेअर करा! Follow आपला कायदा – Advocate Pratiksha.",
+          "clip_file": "clip_04.mp4",
+          "duration": 9.24
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794770133_script_1794770133/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794770133_script_1794770133/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794769708_plain_room_gunthewari_30s_reel",
+      "created_at": "2026-11-16 00:41:30",
+      "title": "",
+      "duration": 36.5,
+      "size_mb": 2.77,
+      "voice": "aarohi",
+      "speed": 1.15,
+      "bg_music": "corporate_legal",
+      "avatar_used": "plain_g1_neu_1080.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमच्या जमिनीचा किंवा प्लॉटचा ७/१२ तुकडे",
+          "text": "तुमच्या जमिनीचा किंवा प्लॉटचा ७/१२ तुकडेबंदी कायद्यात अडकलाय का? ३१ डिसेंबर २०२० च्या कट-ऑफ तारखेचा नवा नियम समजून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "duration": 11.02
+        },
+        {
+          "scene_num": 2,
+          "title": "अनेक लोकांना अनधिकृत गुंठेवारी खरेदी केल",
+          "text": "अनेक लोकांना अनधिकृत गुंठेवारी खरेदी केल्यामुळे ७/१२ वर नाव नोंदवता येत नाही आणि बांधकाम परवानगी नाकारली जाते.",
+          "clip_file": "clip_02.mp4",
+          "duration": 9.22
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र गुंठेवारी विकास सुधारणा अधिनि",
+          "text": "महाराष्ट्र गुंठेवारी विकास सुधारणा अधिनियमानुसार, नगर रचना विभागाकडे नियमितीकरण शुल्क भरून कायदेशीर सनद मिळवता येते!",
+          "clip_file": "clip_03.mp4",
+          "duration": 9.67
+        },
+        {
+          "scene_num": 4,
+          "title": "जमीन, ७/१२ आणि घर खरेदीच्या कायदेशीर संर",
+          "text": "जमीन, ७/१२ आणि घर खरेदीच्या कायदेशीर संरक्षणासाठी आपला कायदा – Advocate Pratiksha ला आत्ताच फॉलो करा!",
+          "clip_file": "clip_04.mp4",
+          "duration": 8.95
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794769708_plain_room_gunthewari_30s_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794769708_plain_room_gunthewari_30s_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794768474_gunthewari_ferfar_1080_reel",
+      "created_at": "2026-11-16 00:20:06",
+      "title": "",
+      "duration": 33.1,
+      "size_mb": 2.51,
+      "voice": "aarohi",
+      "speed": 1.15,
+      "bg_music": "corporate_legal",
+      "avatar_used": "neu_1080.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमच्या ७/१२ उताऱ्यावर बेकायदेशीर फेरफार",
+          "text": "तुमच्या ७/१२ उताऱ्यावर बेकायदेशीर फेरफार झालाय का? १५ दिवसांत कायदेशीर हरकत कशी नोंदवायची ते जाणून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.41
+        },
+        {
+          "scene_num": 2,
+          "title": "तलाठी कार्यालयात कलम १५० ची नोटीस न देता",
+          "text": "तलाठी कार्यालयात कलम १५० ची नोटीस न देताच फेरफार मंजूर केला जातो, ज्यामुळे जमिनीचा ताबा धोक्यात येतो.",
+          "clip_file": "clip_02.mp4",
+          "duration": 9.02
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता कलम २४७ नुस",
+          "text": "महाराष्ट्र जमीन महसूल संहिता कलम २४७ नुसार उपविभागीय अधिकाऱ्यांकडे (SDO) तातडीने अपील दाखल करा!",
+          "clip_file": "clip_03.mp4",
+          "duration": 8.95
+        },
+        {
+          "scene_num": 4,
+          "title": "जमीन व प्रॉपर्टीच्या अशाच महत्त्वाच्या क",
+          "text": "जमीन व प्रॉपर्टीच्या अशाच महत्त्वाच्या कायदेशीर सल्ल्यासाठी आपला कायदा – Advocate Pratiksha ला फॉलो करा!",
+          "clip_file": "clip_04.mp4",
+          "duration": 8.11
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794768474_gunthewari_ferfar_1080_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794768474_gunthewari_ferfar_1080_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794767057_script_1794767057",
+      "created_at": "2026-11-15 23:58:50",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 41.2,
+      "size_mb": 1.53,
+      "voice": "aarohi",
+      "speed": 1.25,
+      "bg_music": "legal_ambient",
+      "avatar_used": "advocate_pratiksha_full_character_locked.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे क",
+          "text": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे का? मग हा कायदेशीर नियम नक्की समजून घ्या; नाहीतर मोठे आर्थिक नुकसान होऊ शकते!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.62
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या ",
+          "text": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या लगेच पूर्ण करा:\nपायरी १: ई-फेरफार पोर्टलवरून अर्जाची स्थिती तपासा आणि कलम १५० अन्वये नोटीस जारी झाली आहे का याची खात्री करा.\nपायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यानुसार तहसीलदारांकडे प्रथम अपील नोंदवा.",
+          "clip_file": "clip_02.mp4",
+          "duration": 20.54
+        },
+        {
+          "scene_num": 3,
+          "title": "कायद्याची ही ताकद प्रत्येक नागरिकाला माह",
+          "text": "कायद्याची ही ताकद प्रत्येक नागरिकाला माहीत हवी.",
+          "clip_file": "clip_03.mp4",
+          "duration": 4.2
+        },
+        {
+          "scene_num": 4,
+          "title": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व",
+          "text": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व जमीन खरेदीदार मित्रांना नक्की शेअर करा! Follow आपला कायदा – Advocate Pratiksha.",
+          "clip_file": "clip_04.mp4",
+          "duration": 9.24
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794767057_script_1794767057/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794767057_script_1794767057/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794766475_ferfar_712_full_reel",
+      "created_at": "2026-11-15 23:49:21",
+      "title": "",
+      "duration": 36.5,
+      "size_mb": 1.46,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "avatar_used": "advocate_pratiksha_full_character_locked.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झाल",
+          "text": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झालाय का? 15 दिवसांत कायदेशीर हरकत कशी नोंदवायची ते जाणून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.65
+        },
+        {
+          "scene_num": 2,
+          "title": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास",
+          "text": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास तलाठी कार्यालयाकडून कलम 150 अन्वये नोटीस जारी होते.",
+          "clip_file": "clip_02.mp4",
+          "duration": 8.42
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 14",
+          "text": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 149 आणि 150 नुसार 15 दिवसांत लेखी हरकत घ्या आणि 2026 मध्ये आपल्या जमिनीचे रक्षण करा.",
+          "clip_file": "clip_03.mp4",
+          "duration": 14.06
+        },
+        {
+          "scene_num": 4,
+          "title": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ",
+          "text": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ॲडव्होकेट प्रतीक्षा यांना फॉलो करा.",
+          "clip_file": "clip_04.mp4",
+          "duration": 6.7
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794766475_ferfar_712_full_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794766475_ferfar_712_full_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794766253_reel",
+      "created_at": "2026-11-15 23:46:02",
+      "title": "",
+      "duration": 36.5,
+      "size_mb": 1.46,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "avatar_used": "advocate_pratiksha_full_character_locked.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झाल",
+          "text": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झालाय का? 15 दिवसांत कायदेशीर हरकत कशी नोंदवायची ते जाणून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.65
+        },
+        {
+          "scene_num": 2,
+          "title": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास",
+          "text": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास तलाठी कार्यालयाकडून कलम 150 अन्वये नोटीस जारी होते.",
+          "clip_file": "clip_02.mp4",
+          "duration": 8.42
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 14",
+          "text": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 149 आणि 150 नुसार 15 दिवसांत लेखी हरकत घ्या आणि 2026 मध्ये आपल्या जमिनीचे रक्षण करा.",
+          "clip_file": "clip_03.mp4",
+          "duration": 14.06
+        },
+        {
+          "scene_num": 4,
+          "title": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ",
+          "text": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ॲडव्होकेट प्रतीक्षा यांना फॉलो करा.",
+          "clip_file": "clip_04.mp4",
+          "duration": 6.7
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794766253_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794766253_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794765917_reel",
+      "created_at": "2026-11-15 23:40:17",
+      "title": "",
+      "duration": 36.5,
+      "size_mb": 1.59,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "avatar_used": "advocate_pratiksha_full_character_locked.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झाल",
+          "text": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झालाय का? 15 दिवसांत कायदेशीर हरकत कशी नोंदवायची ते जाणून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.65
+        },
+        {
+          "scene_num": 2,
+          "title": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास",
+          "text": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास तलाठी कार्यालयाकडून कलम 150 अन्वये नोटीस जारी होते.",
+          "clip_file": "clip_02.mp4",
+          "duration": 8.42
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 14",
+          "text": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 149 आणि 150 नुसार 15 दिवसांत लेखी हरकत घ्या आणि 2026 मध्ये आपल्या जमिनीचे रक्षण करा.",
+          "clip_file": "clip_03.mp4",
+          "duration": 14.06
+        },
+        {
+          "scene_num": 4,
+          "title": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ",
+          "text": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ॲडव्होकेट प्रतीक्षा यांना फॉलो करा.",
+          "clip_file": "clip_04.mp4",
+          "duration": 6.7
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794765917_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794765917_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794765272_reel",
+      "created_at": "2026-11-15 23:26:34",
+      "title": "",
+      "duration": 36.5,
+      "size_mb": 1.56,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "avatar_used": "advocate_pratiksha_full_character_locked.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झाल",
+          "text": "तुमच्या 7/12 उताऱ्यावर चुकीचा फेरफार झालाय का? 15 दिवसांत कायदेशीर हरकत कशी नोंदवायची ते जाणून घ्या!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.65
+        },
+        {
+          "scene_num": 2,
+          "title": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास",
+          "text": "खोट्या दस्ताच्या आधारे नाव चढवले गेल्यास तलाठी कार्यालयाकडून कलम 150 अन्वये नोटीस जारी होते.",
+          "clip_file": "clip_02.mp4",
+          "duration": 8.42
+        },
+        {
+          "scene_num": 3,
+          "title": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 14",
+          "text": "महाराष्ट्र जमीन महसूल संहिता 1966 कलम 149 आणि 150 नुसार 15 दिवसांत लेखी हरकत घ्या आणि 2026 मध्ये आपल्या जमिनीचे रक्षण करा.",
+          "clip_file": "clip_03.mp4",
+          "duration": 14.06
+        },
+        {
+          "scene_num": 4,
+          "title": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ",
+          "text": "अशाच कायदेशीर माहितीसाठी आपला कायदा आणि ॲडव्होकेट प्रतीक्षा यांना फॉलो करा.",
+          "clip_file": "clip_04.mp4",
+          "duration": 6.7
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794765272_reel/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794765272_reel/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794764513_script_1794764513",
+      "created_at": "2026-11-15 23:13:52",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 41.2,
+      "size_mb": 2.81,
+      "voice": "aarohi",
+      "speed": 1.25,
+      "bg_music": "legal_ambient",
+      "avatar_used": "pratiksha_master_avatar.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे क",
+          "text": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे का? मग हा कायदेशीर नियम नक्की समजून घ्या; नाहीतर मोठे आर्थिक नुकसान होऊ शकते!",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.62
+        },
+        {
+          "scene_num": 2,
+          "title": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या ",
+          "text": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या लगेच पूर्ण करा:\nपायरी १: ई-फेरफार पोर्टलवरून अर्जाची स्थिती तपासा आणि कलम १५० अन्वये नोटीस जारी झाली आहे का याची खात्री करा.\nपायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यानुसार तहसीलदारांकडे प्रथम अपील नोंदवा.",
+          "clip_file": "clip_02.mp4",
+          "duration": 20.54
+        },
+        {
+          "scene_num": 3,
+          "title": "कायद्याची ही ताकद प्रत्येक नागरिकाला माह",
+          "text": "कायद्याची ही ताकद प्रत्येक नागरिकाला माहीत हवी.",
+          "clip_file": "clip_03.mp4",
+          "duration": 4.2
+        },
+        {
+          "scene_num": 4,
+          "title": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व",
+          "text": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व जमीन खरेदीदार मित्रांना नक्की शेअर करा! Follow आपला कायदा – Advocate Pratiksha.",
+          "clip_file": "clip_04.mp4",
+          "duration": 9.24
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794764513_script_1794764513/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794764513_script_1794764513/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794764268_script_1794764268",
+      "created_at": "2026-11-15 23:09:15",
+      "title": "7/12 फेरफार व कलम 420 नियम 2026",
+      "duration": 26.4,
+      "size_mb": 1.84,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "avatar_used": "pratiksha_master_avatar.jpg",
+      "talking_avatar_rendered": true,
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "नमस्कार, मी Advocate Pratiksha.\n7/12 उता",
+          "text": "नमस्कार, मी Advocate Pratiksha.\n7/12 उतारा आणि गुंठेवारी regularisation संदर्भात महत्त्वाचा नियम.",
+          "clip_file": "clip_01.mp4",
+          "duration": 9.65
+        },
+        {
+          "scene_num": 2,
+          "title": "कलम 420 आणि BNSS अंतर्गत 15 दिवसांत फेरफ",
+          "text": "कलम 420 आणि BNSS अंतर्गत 15 दिवसांत फेरफार नोंद करणे बंधनकारक आहे.",
+          "clip_file": "clip_02.mp4",
+          "duration": 11.04
+        },
+        {
+          "scene_num": 3,
+          "title": "2026 मधील हा महत्त्वाचा कायदेशीर अधिकार ",
+          "text": "2026 मधील हा महत्त्वाचा कायदेशीर अधिकार प्रत्येक नागरिकाला समजला पाहिजे.",
+          "clip_file": "clip_03.mp4",
+          "duration": 7.49
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794764268_script_1794764268/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794764268_script_1794764268/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794763277_script_1794763277",
+      "created_at": "2026-11-15 22:52:24",
+      "title": "गुंठेवारी ३१ डिसेंबर २०२० कट-ऑफ: नियमितीकरणाचा प्रत्यक्ष सरकारी नियम",
+      "duration": 50.2,
+      "size_mb": 4.56,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "तुमची जमीन किंवा प्लॉट खरेदी अडकली",
+          "text": "तुमची जमीन किंवा प्लॉट खरेदी अडकली आहे का? मग हा कायदेशीर नियम नक्की समजून घ्या; नाहीतर मोठे आर्थिक नुकसान होऊ शकते!",
+          "duration": 10.85,
+          "clip_file": "clip_01.mp4",
+          "image_file": "scene_1.png"
+        },
+        {
+          "scene_num": 2,
+          "title": "नमस्कार, मी Advocate Pratiksha.",
+          "text": "नमस्कार, मी Advocate Pratiksha.",
+          "duration": 3.98,
+          "clip_file": "clip_02.mp4",
+          "image_file": "scene_2.png"
+        },
+        {
+          "scene_num": 3,
+          "title": "जमीन किंवा घर खरेदी करताना या",
+          "text": "जमीन किंवा घर खरेदी करताना या २ पायऱ्या लगेच पूर्ण करा:\nपायरी १: ई-फेरफार पोर्टलवरून अर्जाची स्थिती तपासा आणि कलम १५० अन्वये नोटीस जारी झाली आहे का याची खात्री करा.\nपायरी २: तलाठ्याने विनाकारण काम अडवल्यास थेट लोकसेवा हक्क कायद्यानुसार तहसीलदारांकडे प्रथम अपील नोंदवा.",
+          "duration": 23.26,
+          "clip_file": "clip_03.mp4",
+          "image_file": "scene_3.png"
+        },
+        {
+          "scene_num": 4,
+          "title": "कायद्याची ही ताकद प्रत्येक नागरिकाला म...",
+          "text": "कायद्याची ही ताकद प्रत्येक नागरिकाला माहीत हवी.",
+          "duration": 4.68,
+          "clip_file": "clip_04.mp4",
+          "image_file": "scene_4.png"
+        },
+        {
+          "scene_num": 5,
+          "title": "हा व्हिडिओ सेव्ह करा आणि आपल्या",
+          "text": "हा व्हिडिओ सेव्ह करा आणि आपल्या शेतकरी व जमीन खरेदीदार मित्रांना नक्की शेअर करा! Follow आपला कायदा – Advocate Pratiksha.",
+          "duration": 10.42,
+          "clip_file": "clip_05.mp4",
+          "image_file": "scene_5.png"
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794763277_script_1794763277/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794763277_script_1794763277/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794763153_script_1794763153",
+      "created_at": "2026-11-15 22:49:37",
+      "title": "गुंठेवारी व सातबारा",
+      "duration": 9.6,
+      "size_mb": 1.78,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "नमस्कार, मी Advocate Pratiksha.",
+          "text": "नमस्कार, मी Advocate Pratiksha.",
+          "duration": 3.98,
+          "clip_file": "clip_01.mp4",
+          "image_file": "scene_1.png"
+        },
+        {
+          "scene_num": 2,
+          "title": "आपला कायदा मध्ये स्वागत आहे.",
+          "text": "आपला कायदा मध्ये स्वागत आहे.",
+          "duration": 3.5,
+          "clip_file": "clip_02.mp4",
+          "image_file": "scene_2.png"
+        },
+        {
+          "scene_num": 3,
+          "title": "अधिकार समजून घ्या, जागरूक राहा!",
+          "text": "अधिकार समजून घ्या, जागरूक राहा!",
+          "duration": 4.03,
+          "clip_file": "clip_03.mp4",
+          "image_file": "scene_3.png"
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794763153_script_1794763153/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794763153_script_1794763153/final_reel.mp4"
+    },
+    {
+      "folder_name": "reel_1794762584_script_1794762584",
+      "created_at": "2026-11-15 22:40:21",
+      "title": "????????? ?????????? ????",
+      "duration": 12,
+      "size_mb": 1.97,
+      "voice": "aarohi",
+      "speed": 1.1,
+      "bg_music": "legal_ambient",
+      "clips": [
+        {
+          "scene_num": 1,
+          "title": "???????, ?? ????????? ?????????. ???? ...",
+          "text": "???????, ??\n?????????\n?????????.\n????\n?????\n?????\n????\n??????\n???.\n??\n???\n?????????\n?????????\n???????????\n??????\n??????????\n??????\n?????\n?????",
+          "duration": 4.66,
+          "clip_file": "clip_01.mp4",
+          "image_file": "scene_1.png"
+        },
+        {
+          "scene_num": 2,
+          "title": "????. ?? ??????? ???? ???????? ?????????",
+          "text": "????.\n??\n???????\n????\n????????\n?????????\n?????\n???\n??????\n????\n?????.\n?????\n?????????????",
+          "duration": 4.66,
+          "clip_file": "clip_02.mp4",
+          "image_file": "scene_2.png"
+        },
+        {
+          "scene_num": 3,
+          "title": "???? ??? ??? ???? ???? ????????",
+          "text": "????\n???\n???\n????\n????\n????????\n???.\n??\n???????\n????\n???\n???\n????\n?????\n????\n???!",
+          "duration": 4.66,
+          "clip_file": "clip_03.mp4",
+          "image_file": "scene_3.png"
+        }
+      ],
+      "final_video": "final_reel.mp4",
+      "preview_url": "/api/video-engine/preview/reel_1794762584_script_1794762584/final_reel.mp4",
+      "download_url": "/api/video-engine/download/reel_1794762584_script_1794762584/final_reel.mp4"
+    }
+  ]
+}

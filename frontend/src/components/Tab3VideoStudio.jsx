@@ -37,6 +37,7 @@ import {
   resetBackendUrl,
   ensureBackendConnected
 } from '../utils/api';
+import { FALLBACK_REELS_HISTORY } from '../data/fallbackData';
 
 // High-Retention 3-Second Scroll-Stopping Viral Hook Generator
 const generateTopicHooks = (titleInput, categoryInput) => {
@@ -266,7 +267,7 @@ export default function Tab3VideoStudio({
   const [renderError, setRenderError] = useState(null);
   const [renderedVideoUrl, setRenderedVideoUrl] = useState(null);
   const [downloadVideoUrl, setDownloadVideoUrl] = useState(null);
-  const [historyReels, setHistoryReels] = useState([]);
+  const [historyReels, setHistoryReels] = useState(FALLBACK_REELS_HISTORY || []);
   const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
   const [copiedField, setCopiedField] = useState(null);
   const [cloudBackendUrl, setCloudBackendUrl] = useState(getActiveBackendUrl());

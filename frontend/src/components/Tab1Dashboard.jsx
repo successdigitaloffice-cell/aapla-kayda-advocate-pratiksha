@@ -12,6 +12,7 @@ import {
   Sparkles,
   RefreshCw
 } from 'lucide-react';
+import { FALLBACK_TARGET_60_DATA } from '../data/fallbackData';
 
 export default function Tab1Dashboard({
   activeReel,
@@ -20,10 +21,10 @@ export default function Tab1Dashboard({
   onNavigateTab
 }) {
   const [stats, setStats] = useState({
-    publishedCount: 7,
-    readyCount: 4,
-    pendingCount: 49,
-    total60Days: 60,
+    publishedCount: FALLBACK_TARGET_60_DATA?.completedDays || 7,
+    readyCount: FALLBACK_TARGET_60_DATA?.readyDays || 4,
+    pendingCount: FALLBACK_TARGET_60_DATA?.pendingDays || 49,
+    total60Days: FALLBACK_TARGET_60_DATA?.targetTotalDays || 60,
     tracked90Days: 90,
     updatedToday: 10
   });

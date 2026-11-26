@@ -14,6 +14,7 @@ import {
   CheckCircle2,
   Bookmark
 } from 'lucide-react';
+import { FALLBACK_TARGET_60, FALLBACK_TRACKER_90 } from '../data/fallbackData';
 
 export default function Tab2TrendingTopics({
   trends = [],
@@ -24,8 +25,8 @@ export default function Tab2TrendingTopics({
   const [subView, setSubView] = useState('daily'); // 'daily', 'target60', 'tracker90'
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [target60Data, setTarget60Data] = useState([]);
-  const [tracker90Data, setTracker90Data] = useState([]);
+  const [target60Data, setTarget60Data] = useState(FALLBACK_TARGET_60 || []);
+  const [tracker90Data, setTracker90Data] = useState(FALLBACK_TRACKER_90 || []);
   const [loadingExtra, setLoadingExtra] = useState(false);
 
   useEffect(() => {
