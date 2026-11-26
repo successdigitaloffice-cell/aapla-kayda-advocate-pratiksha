@@ -1,1 +1,1 @@
-https://federation-ace-comment-highway.trycloudflare.com
+https://api.trycloudflare.com
