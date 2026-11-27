@@ -208,6 +208,22 @@ export function initDatabase() {
     );
   `);
 
+  // 11. Central Video Created Tracking (Additive Feature 1)
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS video_tracking (
+      content_key TEXT PRIMARY KEY,
+      canonical_slug TEXT NOT NULL,
+      title TEXT NOT NULL,
+      category TEXT,
+      day_number INTEGER,
+      aliases TEXT, -- JSON array of string aliases/ids
+      is_created INTEGER DEFAULT 1,
+      marked_by TEXT DEFAULT 'advocate_pratiksha',
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
   // Seed default settings and initial admin account
   seedDefaultSettings();
   seedInitialAdmin();

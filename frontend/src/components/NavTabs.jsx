@@ -5,7 +5,8 @@ import {
   Clapperboard,
   FileText,
   Settings,
-  Sparkles
+  Sparkles,
+  BookOpen
 } from 'lucide-react';
 
 export default function NavTabs({ activeTab, setActiveTab, counts = {} }) {
@@ -35,8 +36,16 @@ export default function NavTabs({ activeTab, setActiveTab, counts = {} }) {
       badge: '1-Click'
     },
     {
-      id: 'photo',
+      id: 'only-content',
       number: '४',
+      label: 'Only Content',
+      marathi: 'फक्त कंटेंट',
+      icon: BookOpen,
+      badge: '६० स्क्रिप्ट्स'
+    },
+    {
+      id: 'photo',
+      number: '५',
       label: 'Document Library',
       marathi: 'कायदेशीर कागदपत्रे',
       icon: FileText,
@@ -44,7 +53,7 @@ export default function NavTabs({ activeTab, setActiveTab, counts = {} }) {
     },
     {
       id: 'settings',
-      number: '५',
+      number: '६',
       label: 'Settings & Cloud',
       marathi: 'सेटिंग्ज व डिप्लॉय',
       icon: Settings

@@ -15,12 +15,14 @@ import {
   Bookmark
 } from 'lucide-react';
 import { FALLBACK_TARGET_60, FALLBACK_TRACKER_90 } from '../data/fallbackData';
+import VideoCreatedCheckbox from './VideoCreatedCheckbox';
 
 export default function Tab2TrendingTopics({
   trends = [],
   onRefreshTrends,
   onSelectTopic,
-  onNavigateTab
+  onNavigateTab,
+  notify
 }) {
   const [subView, setSubView] = useState('daily'); // 'daily', 'target60', 'tracker90'
   const [searchQuery, setSearchQuery] = useState('');
@@ -282,7 +284,7 @@ export default function Tab2TrendingTopics({
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-navy-800 flex items-center justify-between gap-2">
+            <div className="mt-4 pt-3 border-t border-navy-800 flex flex-wrap items-center justify-between gap-2">
               {item.officialSource ? (
                 <a
                   href={item.officialSource}
@@ -297,17 +299,25 @@ export default function Tab2TrendingTopics({
                 <div />
               )}
 
-              <button
-                onClick={() => {
-                  if (onSelectTopic) onSelectTopic(item.raw || item);
-                  onNavigateTab('studio');
-                }}
-                className="flex items-center space-x-1.5 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-3.5 py-1.5 rounded-xl font-bold text-xs shadow-md transition-all"
-              >
-                <Video className="w-3.5 h-3.5" />
-                <span>व्हिडिओ बनवा</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex flex-wrap items-center gap-2">
+                {/* FEATURE 1: Manual Video Created Checkbox adjacent to 'व्हिडिओ बनवा' */}
+                <VideoCreatedCheckbox
+                  item={item.raw || item}
+                  onNotify={notify}
+                />
+
+                <button
+                  onClick={() => {
+                    if (onSelectTopic) onSelectTopic(item.raw || item);
+                    onNavigateTab('studio');
+                  }}
+                  className="flex items-center space-x-1.5 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-3.5 py-1.5 rounded-xl font-bold text-xs shadow-md transition-all"
+                >
+                  <Video className="w-3.5 h-3.5" />
+                  <span>व्हिडिओ बनवा</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
           </div>
         ))}

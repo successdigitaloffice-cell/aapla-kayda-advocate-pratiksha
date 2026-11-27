@@ -38,6 +38,7 @@ import {
   ensureBackendConnected
 } from '../utils/api';
 import { FALLBACK_REELS_HISTORY } from '../data/fallbackData';
+import VideoCreatedCheckbox from './VideoCreatedCheckbox';
 
 // High-Retention 3-Second Scroll-Stopping Viral Hook Generator
 const generateTopicHooks = (titleInput, categoryInput) => {
@@ -208,7 +209,8 @@ const generateTopicHooks = (titleInput, categoryInput) => {
 
 export default function Tab3VideoStudio({
   selectedTopic,
-  onNavigateTab
+  onNavigateTab,
+  notify
 }) {
   // Mode: 'recording' (Live Camera & Teleprompter) vs 'creative' (AI Generated Avatar & Video)
   const [studioMode, setStudioMode] = useState('creative');
@@ -1962,15 +1964,23 @@ export default function Tab3VideoStudio({
                 <ArrowLeft className="w-4 h-4" />
                 <span>मागील</span>
               </button>
-              <button
-                onClick={handleStartRealVideoGeneration}
-                disabled={isGenerating}
-                className="flex items-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>{isGenerating ? 'रेंडरिंग सुरू आहे...' : '🎬 हा व्हिडिओ तयार करा (Generate Video Reel)'}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="flex flex-wrap items-center gap-2">
+                {/* FEATURE 1: Manual Video Created Checkbox */}
+                <VideoCreatedCheckbox
+                  item={selectedTopic || { title: reelTitle, category }}
+                  onNotify={notify}
+                />
+
+                <button
+                  onClick={handleStartRealVideoGeneration}
+                  disabled={isGenerating}
+                  className="flex items-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>{isGenerating ? 'रेंडरिंग सुरू आहे...' : '🎬 हा व्हिडिओ तयार करा (Generate Video Reel)'}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -2203,14 +2213,22 @@ export default function Tab3VideoStudio({
               </div>
             )}
 
-            <div className="pt-4 flex items-center justify-between border-t border-navy-800">
-              <button
-                onClick={() => setCurrentStep(1)}
-                className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-navy-800 text-slate-300 hover:text-white text-xs font-semibold"
-              >
-                <RotateCcw className="w-4 h-4 text-gold-400" />
-                <span>नवीन व्हिडिओ तयार करा</span>
-              </button>
+            <div className="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-navy-800">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => setCurrentStep(1)}
+                  className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-navy-800 hover:bg-navy-750 text-slate-300 hover:text-white text-xs font-semibold"
+                >
+                  <RotateCcw className="w-4 h-4 text-gold-400" />
+                  <span>नवीन व्हिडिओ तयार करा</span>
+                </button>
+
+                {/* FEATURE 1: Manual Video Created Checkbox */}
+                <VideoCreatedCheckbox
+                  item={selectedTopic || { title: reelTitle, category }}
+                  onNotify={notify}
+                />
+              </div>
               <button
                 onClick={() => onNavigateTab && onNavigateTab('dashboard')}
                 className="flex items-center space-x-2 bg-navy-800 hover:bg-navy-750 text-white px-5 py-2 rounded-xl font-bold text-xs"

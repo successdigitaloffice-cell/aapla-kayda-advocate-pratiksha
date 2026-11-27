@@ -13,12 +13,14 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { FALLBACK_TARGET_60_DATA } from '../data/fallbackData';
+import VideoCreatedCheckbox from './VideoCreatedCheckbox';
 
 export default function Tab1Dashboard({
   activeReel,
   trends = [],
   onSelectTopic,
-  onNavigateTab
+  onNavigateTab,
+  notify
 }) {
   const [stats, setStats] = useState({
     publishedCount: FALLBACK_TARGET_60_DATA?.completedDays || 7,
@@ -222,16 +224,25 @@ export default function Tab1Dashboard({
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-                <button
-                  onClick={() => {
-                    if (onSelectTopic) onSelectTopic(topTrend);
-                    onNavigateTab('studio');
-                  }}
-                  className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all"
-                >
-                  <Video className="w-4 h-4" />
-                  <span>या विषयावर व्हिडिओ तयार करा (1-Click)</span>
-                </button>
+                <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                  <button
+                    onClick={() => {
+                      if (onSelectTopic) onSelectTopic(topTrend);
+                      onNavigateTab('studio');
+                    }}
+                    className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-gradient-to-r from-gold-500 to-amber-500 hover:from-gold-400 hover:to-amber-400 text-navy-950 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-all"
+                  >
+                    <Video className="w-4 h-4" />
+                    <span>या विषयावर व्हिडिओ तयार करा (1-Click)</span>
+                  </button>
+
+                  {/* FEATURE 1: Manual Video Created Tracking Checkbox */}
+                  <VideoCreatedCheckbox
+                    item={topTrend}
+                    onNotify={notify}
+                  />
+                </div>
+
                 <button
                   onClick={() => onNavigateTab('trends')}
                   className="w-full sm:w-auto text-xs text-slate-400 hover:text-gold-400 font-medium flex items-center justify-center space-x-1 py-1"

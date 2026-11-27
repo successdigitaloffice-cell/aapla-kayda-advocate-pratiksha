@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import NavTabs from './components/NavTabs';
 
-// 5 Consolidated Professional Tabs matching Master Execution Prompt
+// Tabs
 import Tab1Dashboard from './components/Tab1Dashboard';
 import Tab2TrendingTopics from './components/Tab2TrendingTopics';
 import Tab3VideoStudio from './components/Tab3VideoStudio';
 import Tab4PhotoStudio from './components/Tab4PhotoStudio';
 import Tab5Settings from './components/Tab5Settings';
+import Tab6OnlyContent from './components/Tab6OnlyContent';
+
+import { VideoTrackingProvider } from './context/VideoTrackingContext';
 
 import { Lock, ShieldCheck, ArrowRight, User, Key, UserPlus, LogIn, CheckCircle2 } from 'lucide-react';
 import { FALLBACK_TRENDS_TODAY, FALLBACK_ACTIVE_REEL } from './data/fallbackData';
@@ -442,73 +445,84 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 flex flex-col font-sans selection:bg-gold-500 selection:text-navy-950">
-      {/* 1. Header */}
-      <Header
-        activeDay={activeReel?.day_number || 8}
-        totalPublished={7}
-        onNavigateTab={(tab) => setActiveTab(tab)}
-        currentUser={currentUser}
-        onLogout={handleLogout}
-      />
+    <VideoTrackingProvider onGlobalNotify={notify}>
+      <div className="min-h-screen bg-navy-950 text-slate-100 flex flex-col font-sans selection:bg-gold-500 selection:text-navy-950">
+        {/* 1. Header */}
+        <Header
+          activeDay={activeReel?.day_number || 8}
+          totalPublished={7}
+          onNavigateTab={(tab) => setActiveTab(tab)}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+        />
 
-      {/* 2. Modern 5-Tab Navigation Bar */}
-      <NavTabs
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        counts={{
-          trendsCount: trends.length || '10',
-          activeReels: 'Live'
-        }}
-      />
+        {/* 2. Modern 6-Tab Navigation Bar */}
+        <NavTabs
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          counts={{
+            trendsCount: trends.length || '10',
+            activeReels: 'Live'
+          }}
+        />
 
-      {/* 3. Main Workspace Container with Mobile Friendly Bottom Padding */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 pt-3 sm:pt-6 pb-28 sm:pb-20 overflow-x-hidden">
-        {activeTab === 'dashboard' && (
-          <Tab1Dashboard
-            activeReel={activeReel}
-            trends={trends}
-            onSelectTopic={handleSelectTopicForStudio}
-            onNavigateTab={(tab) => setActiveTab(tab)}
-          />
+        {/* 3. Main Workspace Container with Mobile Friendly Bottom Padding */}
+        <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 pt-3 sm:pt-6 pb-28 sm:pb-20 overflow-x-hidden">
+          {activeTab === 'dashboard' && (
+            <Tab1Dashboard
+              activeReel={activeReel}
+              trends={trends}
+              onSelectTopic={handleSelectTopicForStudio}
+              onNavigateTab={(tab) => setActiveTab(tab)}
+              notify={notify}
+            />
+          )}
+
+          {activeTab === 'trends' && (
+            <Tab2TrendingTopics
+              trends={trends}
+              onRefreshTrends={handleRefreshTrends}
+              onSelectTopic={handleSelectTopicForStudio}
+              onNavigateTab={(tab) => setActiveTab(tab)}
+              notify={notify}
+            />
+          )}
+
+          {activeTab === 'studio' && (
+            <Tab3VideoStudio
+              selectedTopic={selectedTopic}
+              onNavigateTab={(tab) => setActiveTab(tab)}
+              notify={notify}
+            />
+          )}
+
+          {activeTab === 'only-content' && (
+            <Tab6OnlyContent
+              notify={notify}
+            />
+          )}
+
+          {activeTab === 'photo' && (
+            <Tab4PhotoStudio />
+          )}
+
+          {activeTab === 'settings' && (
+            <Tab5Settings
+              currentUser={currentUser}
+              authToken={authToken}
+              notify={notify}
+            />
+          )}
+        </main>
+
+        {/* 4. Floating Toast Notification */}
+        {toastMessage && (
+          <div className="fixed bottom-5 right-5 z-50 bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-2xl animate-bounce flex items-center space-x-2">
+            <ShieldCheck className="w-4 h-4" />
+            <span>{toastMessage}</span>
+          </div>
         )}
-
-        {activeTab === 'trends' && (
-          <Tab2TrendingTopics
-            trends={trends}
-            onRefreshTrends={handleRefreshTrends}
-            onSelectTopic={handleSelectTopicForStudio}
-            onNavigateTab={(tab) => setActiveTab(tab)}
-          />
-        )}
-
-        {activeTab === 'studio' && (
-          <Tab3VideoStudio
-            selectedTopic={selectedTopic}
-            onNavigateTab={(tab) => setActiveTab(tab)}
-          />
-        )}
-
-        {activeTab === 'photo' && (
-          <Tab4PhotoStudio />
-        )}
-
-        {activeTab === 'settings' && (
-          <Tab5Settings
-            currentUser={currentUser}
-            authToken={authToken}
-            notify={notify}
-          />
-        )}
-      </main>
-
-      {/* 4. Floating Toast Notification */}
-      {toastMessage && (
-        <div className="fixed bottom-5 right-5 z-50 bg-gradient-to-r from-gold-500 to-amber-500 text-navy-950 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-2xl animate-bounce flex items-center space-x-2">
-          <ShieldCheck className="w-4 h-4" />
-          <span>{toastMessage}</span>
-        </div>
-      )}
-    </div>
+      </div>
+    </VideoTrackingProvider>
   );
 }

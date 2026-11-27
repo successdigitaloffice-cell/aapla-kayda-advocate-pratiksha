@@ -5,10 +5,11 @@ import {
   FALLBACK_ACTIVE_REEL,
   FALLBACK_REELS_HISTORY
 } from '../data/fallbackData';
+import { ALL_COMPLETE_SCRIPTS } from '../data/completeScriptsData';
 
 // Centralized API Base configuration
 // When hosted on GitHub Pages or custom domain, route API calls to the live Cloudflare HTTPS backend
-export const DEFAULT_LIVE_BACKEND_URL = 'https://spencer-cards-election-avenue.trycloudflare.com';
+export const DEFAULT_LIVE_BACKEND_URL = 'https://harvest-bath-framing-rewards.trycloudflare.com';
 
 export function getActiveBackendUrl() {
   if (typeof window === 'undefined') return DEFAULT_LIVE_BACKEND_URL;
@@ -185,6 +186,17 @@ export function getMockApiResponse(path) {
     body = FALLBACK_ACTIVE_REEL;
   } else if (p.includes('video-engine/history')) {
     body = { success: true, count: (FALLBACK_REELS_HISTORY || []).length, reels: FALLBACK_REELS_HISTORY || [] };
+  } else if (p.includes('content/all-scripts')) {
+    body = { success: true, count: (ALL_COMPLETE_SCRIPTS || []).length, scripts: ALL_COMPLETE_SCRIPTS || [] };
+  } else if (p.includes('content/video-tracking-status')) {
+    let savedMap = {};
+    try {
+      const raw = localStorage.getItem('aapla_kayda_video_tracking');
+      if (raw) savedMap = JSON.parse(raw);
+    } catch (_) {}
+    body = { success: true, tracking: savedMap, list: Object.values(savedMap) };
+  } else if (p.includes('content/toggle-video-created')) {
+    body = { success: true, message: 'या कंटेंटवर व्हिडिओ बनवलेला आहे' };
   } else if (p.includes('auth/login') || p.includes('auth/register')) {
     body = {
       success: true,

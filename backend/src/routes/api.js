@@ -16,6 +16,7 @@ import { get60DaysContentBank } from '../services/contentBank60Days.js';
 import { getAvatarsList, saveAvatarPhoto, setDefaultAvatar, deleteAvatarPhoto, getDefaultAvatar, generateAdvocateVisualPrompt } from '../services/avatarService.js';
 import { getInstagramLiveAnalytics } from '../services/instagramService.js';
 import { get60DaysTarget, get90DaysTracker } from '../services/legalTrackerService.js';
+import { getAllCompleteScripts, normalizeContentSlug, buildFullFaceVideoScript } from '../services/completeScriptBank.js';
 
 const router = Router();
 
@@ -1365,6 +1366,139 @@ router.get('/video-engine/google-flow-status', (req, res) => {
       gemini_flow_ready: Boolean(process.env.GEMINI_API_KEY)
     }
   });
+});
+
+// ==========================================
+// CENTRAL VIDEO CREATED TRACKING & ONLY-CONTENT SCRIPTS (FEATURES 1 & 2)
+// ==========================================
+
+router.get('/content/video-tracking-status', (req, res) => {
+  try {
+    const rows = db.prepare('SELECT * FROM video_tracking').all();
+    const trackingMap = {};
+    for (const r of rows) {
+      const isCreated = r.is_created === 1;
+      const data = {
+        isCreated,
+        contentKey: r.content_key,
+        canonicalSlug: r.canonical_slug,
+        title: r.title,
+        category: r.category,
+        dayNumber: r.day_number,
+        updatedAt: r.updated_at
+      };
+      // Primary keys
+      trackingMap[r.content_key] = data;
+      if (r.canonical_slug) trackingMap[r.canonical_slug] = data;
+      if (r.day_number) trackingMap[`day_${r.day_number}`] = data;
+      // Also map aliases
+      if (r.aliases) {
+        try {
+          const aliasList = JSON.parse(r.aliases);
+          if (Array.isArray(aliasList)) {
+            for (const alias of aliasList) {
+              if (alias) trackingMap[String(alias)] = data;
+            }
+          }
+        } catch (e) {}
+      }
+    }
+    res.json({ success: true, tracking: trackingMap, list: rows });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+router.post('/content/toggle-video-created', (req, res) => {
+  try {
+    const {
+      contentKey,
+      canonicalSlug,
+      title = 'कायदेशीर विषय',
+      category = 'जमीन महसूल',
+      dayNumber = null,
+      aliases = [],
+      isCreated = true,
+      markedBy = 'advocate_pratiksha'
+    } = req.body;
+
+    if (!contentKey && !canonicalSlug && !title) {
+      return res.status(400).json({ success: false, error: 'contentKey or title is required' });
+    }
+
+    const key = contentKey || canonicalSlug || normalizeContentSlug(title);
+    const slug = canonicalSlug || normalizeContentSlug(title);
+    const aliasArr = Array.isArray(aliases) ? aliases : (aliases ? [aliases] : []);
+    if (dayNumber) aliasArr.push(`day_${dayNumber}`);
+    if (slug && !aliasArr.includes(slug)) aliasArr.push(slug);
+    if (key && !aliasArr.includes(key)) aliasArr.push(key);
+    const aliasesJson = JSON.stringify(aliasArr);
+
+    const intCreated = isCreated ? 1 : 0;
+
+    const stmt = db.prepare(`
+      INSERT INTO video_tracking (content_key, canonical_slug, title, category, day_number, aliases, is_created, marked_by, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(content_key) DO UPDATE SET
+        is_created = excluded.is_created,
+        aliases = excluded.aliases,
+        updated_at = CURRENT_TIMESTAMP
+    `);
+
+    stmt.run(key, slug, title, category, dayNumber, aliasesJson, intCreated, markedBy);
+
+    // Fetch and return updated state
+    const rows = db.prepare('SELECT * FROM video_tracking').all();
+    const trackingMap = {};
+    for (const r of rows) {
+      const createdBool = r.is_created === 1;
+      const data = {
+        isCreated: createdBool,
+        contentKey: r.content_key,
+        canonicalSlug: r.canonical_slug,
+        title: r.title,
+        category: r.category,
+        dayNumber: r.day_number,
+        updatedAt: r.updated_at
+      };
+      trackingMap[r.content_key] = data;
+      if (r.canonical_slug) trackingMap[r.canonical_slug] = data;
+      if (r.day_number) trackingMap[`day_${r.day_number}`] = data;
+      if (r.aliases) {
+        try {
+          const aliasList = JSON.parse(r.aliases);
+          if (Array.isArray(aliasList)) {
+            for (const alias of aliasList) {
+              if (alias) trackingMap[String(alias)] = data;
+            }
+          }
+        } catch (e) {}
+      }
+    }
+
+    res.json({
+      success: true,
+      message: intCreated === 1 ? 'या कंटेंटवर व्हिडिओ बनवलेला आहे' : 'व्हिडिओ स्टेटस अपडेट केले',
+      isCreated: intCreated === 1,
+      contentKey: key,
+      tracking: trackingMap
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+router.get('/content/all-scripts', (req, res) => {
+  try {
+    const scripts = getAllCompleteScripts();
+    res.json({
+      success: true,
+      count: scripts.length,
+      scripts
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 export default router;
